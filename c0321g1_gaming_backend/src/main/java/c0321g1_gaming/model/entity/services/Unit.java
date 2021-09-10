@@ -1,0 +1,50 @@
+package c0321g1_gaming.model.entity.services;
+
+import c0321g1_gaming.model.entity.order.Order;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Unit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int unitId;
+    private String name;
+    @OneToMany(mappedBy ="unitDto",cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Services> servicesList;
+
+    public Unit() {
+    }
+
+    public Unit(String name, List<Services> servicesList) {
+        this.name = name;
+        this.servicesList = servicesList;
+    }
+
+    public int getUnitId() {
+        return unitId;
+    }
+
+    public void setUnitId(int unitId) {
+        this.unitId = unitId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Services> getServicesList() {
+        return servicesList;
+    }
+
+    public void setServicesList(List<Services> servicesList) {
+        this.servicesList = servicesList;
+    }
+}
