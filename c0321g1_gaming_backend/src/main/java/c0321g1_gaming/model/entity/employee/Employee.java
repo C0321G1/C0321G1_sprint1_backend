@@ -2,10 +2,9 @@ package c0321g1_gaming.model.entity.employee;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.security.Account;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Employee {
@@ -19,25 +18,27 @@ public class Employee {
     private String startWorkDate;
     private String level;
     private String email;
-    private String fullName;
-
+    private String name;
+    private String image;
     private int flagDelete;
-    @ManyToMany
-    @JoinTable(name = "employee_address",
-            joinColumns = @JoinColumn(name = "employeeId")
-            , inverseJoinColumns = @JoinColumn(name = "addressId"))
-    @JsonBackReference
-    private List<Address> addressList;
+    @ManyToOne
+    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
+    private Address address;
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
+
+    @ManyToOne
+    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
+    private Gender gender;
+
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Account account;
 
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, int flagDelete, List<Address> addressList, Position position, Account account) {
+    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDelete, Address address, Position position, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -46,19 +47,11 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
-        this.fullName = fullName;
+        this.name = name;
         this.flagDelete = flagDelete;
-        this.addressList = addressList;
+        this.address = address;
         this.position = position;
         this.account = account;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getEmployeeId() {
@@ -75,6 +68,14 @@ public class Employee {
 
     public void setYearOfExp(String yearOfExp) {
         this.yearOfExp = yearOfExp;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getPhone() {
@@ -117,12 +118,12 @@ public class Employee {
         this.email = email;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getFlagDelete() {
@@ -133,12 +134,12 @@ public class Employee {
         this.flagDelete = flagDelete;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Position getPosition() {

@@ -20,26 +20,22 @@ public class Customer {
     private String fullName;
     private int flagDelete;
     private String phone;
-    @ManyToMany
-    @JoinTable(name = "customer_address",
-            joinColumns = @JoinColumn(name = "customerId")
-            ,inverseJoinColumns = @JoinColumn(name = "addressId"))
-    @JsonBackReference
-    private List<Address> addressList;
+    @ManyToOne
+    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
+    private Address address;
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orderList;
-    @OneToOne
-    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Account account;
 
     public Customer() {
     }
 
-    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressList, CustomerStatus customerStatus, List<Order> orderList, Account account) {
+    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account) {
         this.customerId = customerId;
         this.email = email;
         this.code = code;
@@ -47,19 +43,10 @@ public class Customer {
         this.fullName = fullName;
         this.flagDelete = flagDelete;
         this.phone = phone;
-        this.addressList = addressList;
+        this.address = address;
         this.customerStatus = customerStatus;
         this.orderList = orderList;
         this.account = account;
-    }
-
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getCustomerId() {
@@ -76,6 +63,14 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDateOfBirth() {
@@ -110,12 +105,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public CustomerStatus getCustomerStatus() {

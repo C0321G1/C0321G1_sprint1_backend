@@ -28,7 +28,8 @@ public class Account {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
     @OneToOne
     @JoinColumn(name = "employeeId", referencedColumnName = "employeeId")
