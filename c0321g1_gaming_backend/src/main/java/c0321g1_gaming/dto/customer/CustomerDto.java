@@ -14,7 +14,7 @@ public class CustomerDto {
     private String fullName;
     private int flag;
     private String phone;
-    private List<Address> addressList;
+    private Address address;
     private CustomerStatus customerStatus;
     private List<Order> orderList;
     private Account account;
@@ -23,14 +23,14 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, List<Address> addressList, CustomerStatus customerStatus, List<Order> orderList, Account account, String code) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.fullName = fullName;
         this.flag = flag;
         this.phone = phone;
-        this.addressList = addressList;
+        this.address = address;
         this.customerStatus = customerStatus;
         this.orderList = orderList;
         this.account = account;
@@ -93,12 +93,12 @@ public class CustomerDto {
         this.phone = phone;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public CustomerStatus getCustomerStatus() {

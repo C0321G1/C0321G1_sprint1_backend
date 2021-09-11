@@ -38,7 +38,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDel, Address address, Position position, Account account) {
+    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -48,10 +48,28 @@ public class Employee {
         this.level = level;
         this.email = email;
         this.name = name;
+        this.image = image;
         this.flagDel = flagDel;
         this.address = address;
         this.position = position;
+        this.gender = gender;
         this.account = account;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Long getEmployeeId() {

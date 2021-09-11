@@ -19,14 +19,14 @@ public class EmployeeDto {
     private String code;
     private String image;
     private int flagDel;
-    private List<Address> addressList;
+    private Address address;
     private Position position;
     private Account account;
     private Gender gender;
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, int flagDel, List<Address> addressList, Position position, Account account) {
+    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -36,10 +36,12 @@ public class EmployeeDto {
         this.email = email;
         this.fullName = fullName;
         this.code = code;
+        this.image = image;
         this.flagDel = flagDel;
-        this.addressList = addressList;
+        this.address = address;
         this.position = position;
         this.account = account;
+        this.gender = gender;
     }
 
     public void setCode(String code) {
@@ -138,12 +140,12 @@ public class EmployeeDto {
         this.flagDel = flagDel;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Position getPosition() {
