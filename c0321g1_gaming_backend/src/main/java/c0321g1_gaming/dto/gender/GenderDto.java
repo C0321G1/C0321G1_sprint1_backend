@@ -1,5 +1,6 @@
-package c0321g1_gaming.dto.employee;
+package c0321g1_gaming.dto.gender;
 
+import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import java.util.List;
 
@@ -7,14 +8,24 @@ public class GenderDto {
     private Long genderId;
     private String name;
     private List<Employee> employeeList;
+    private List<Customer> customerList;
 
     public GenderDto() {
     }
 
-    public GenderDto(Long genderId, String name, List<Employee> employeeList) {
+    public GenderDto(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList) {
         this.genderId = genderId;
         this.name = name;
         this.employeeList = employeeList;
+        this.customerList = customerList;
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
 
     public Long getGenderId() {

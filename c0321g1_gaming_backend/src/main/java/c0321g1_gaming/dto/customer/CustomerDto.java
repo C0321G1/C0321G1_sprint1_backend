@@ -2,6 +2,7 @@ package c0321g1_gaming.dto.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import java.util.List;
@@ -19,11 +20,12 @@ public class CustomerDto {
     private List<Order> orderList;
     private Account account;
     private String code;
+    private Gender gender;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -35,6 +37,15 @@ public class CustomerDto {
         this.orderList = orderList;
         this.account = account;
         this.code = code;
+        this.gender = gender;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public String getCode() {
