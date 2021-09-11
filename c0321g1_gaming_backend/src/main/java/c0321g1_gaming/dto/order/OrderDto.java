@@ -1,13 +1,8 @@
 package c0321g1_gaming.dto.order;
-
-import c0321g1_gaming.dto.computer.ComputerDto;
-import c0321g1_gaming.dto.customer.CustomerDto;
-import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.computer.Computer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import c0321g1_gaming.model.entity.services.Services;
-
 import java.util.List;
 
 
@@ -15,22 +10,21 @@ public class OrderDto {
     private Long orderId;
     private int quantity;
     private int total;
-    private Computer computerDto;
-    private List<Services> servicesDtoList;
-    private Customer customerDto;
-    private OrderDetail orderDetailDto;
+    private Computer computer;
+    private Services services;
+    private Customer customer;
+    private List<OrderDetail> orderDetail;
     public OrderDto() {
     }
 
-    public OrderDto(Long orderId, int quantity, int total, Computer computerDto,
-                    List<Services> servicesDtoList, Customer customerDto, OrderDetail orderDetailDto) {
+    public OrderDto(Long orderId, int quantity, int total, Computer computer, Services services, Customer customer, List<OrderDetail> orderDetail) {
         this.orderId = orderId;
         this.quantity = quantity;
         this.total = total;
-        this.computerDto = computerDto;
-        this.servicesDtoList = servicesDtoList;
-        this.customerDto = customerDto;
-        this.orderDetailDto = orderDetailDto;
+        this.computer = computer;
+        this.services = services;
+        this.customer = customer;
+        this.orderDetail = orderDetail;
     }
 
     public Long getOrderId() {
@@ -57,35 +51,35 @@ public class OrderDto {
         this.total = total;
     }
 
-    public Computer getComputerDto() {
-        return computerDto;
+    public Computer getComputer() {
+        return computer;
     }
 
-    public void setComputerDto(Computer computerDto) {
-        this.computerDto = computerDto;
+    public void setComputer(Computer computer) {
+        this.computer = computer;
     }
 
-    public List<Services> getServicesDtoList() {
-        return servicesDtoList;
+    public Services getServices() {
+        return services;
     }
 
-    public void setServicesDtoList(List<Services> servicesDtoList) {
-        this.servicesDtoList = servicesDtoList;
+    public void setServices(Services services) {
+        this.services = services;
     }
 
-    public Customer getCustomerDto() {
-        return customerDto;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerDto(Customer customerDto) {
-        this.customerDto = customerDto;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public OrderDetail getOrderDetailDto() {
-        return orderDetailDto;
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
     }
 
-    public void setOrderDetailDto(OrderDetail orderDetailDto) {
-        this.orderDetailDto = orderDetailDto;
+    public void setOrderDetail(List<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
     }
 }
