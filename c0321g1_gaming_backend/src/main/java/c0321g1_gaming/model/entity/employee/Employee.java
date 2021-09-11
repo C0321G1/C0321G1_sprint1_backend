@@ -20,7 +20,7 @@ public class Employee {
     private String email;
     private String name;
     private String image;
-    private int flagDelete;
+    private int flagDel;
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
@@ -38,7 +38,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDelete, Address address, Position position, Account account) {
+    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDel, Address address, Position position, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -48,7 +48,7 @@ public class Employee {
         this.level = level;
         this.email = email;
         this.name = name;
-        this.flagDelete = flagDelete;
+        this.flagDel = flagDel;
         this.address = address;
         this.position = position;
         this.account = account;
@@ -126,12 +126,12 @@ public class Employee {
         this.name = name;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlagDel() {
+        return flagDel;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlagDel(int flagDel) {
+        this.flagDel = flagDel;
     }
 
     public Address getAddress() {

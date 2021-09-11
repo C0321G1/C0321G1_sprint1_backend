@@ -18,7 +18,7 @@ public class Customer {
     private String code;
     private String dateOfBirth;
     private String fullName;
-    private int flagDelete;
+    private int flag;
     private String phone;
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
@@ -35,13 +35,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account) {
+    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account) {
         this.customerId = customerId;
         this.email = email;
         this.code = code;
         this.dateOfBirth = dateOfBirth;
         this.fullName = fullName;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.phone = phone;
         this.address = address;
         this.customerStatus = customerStatus;
@@ -89,12 +89,12 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlag(int flagDelete) {
+        this.flag = flagDelete;
     }
 
     public String getPhone() {
