@@ -27,8 +27,7 @@ public class Services {
     public Services() {
     }
 
-    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unitDto, List<Order> orderList) {
-
+    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<Order> orderList) {
         this.servicesId = servicesId;
         this.quantity = quantity;
         this.prices = prices;
@@ -37,7 +36,6 @@ public class Services {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.unit = unitDto;
         this.orderList = orderList;
     }
 
@@ -97,28 +95,12 @@ public class Services {
         this.image = image;
     }
 
-
     public Unit getUnit() {
         return unit;
     }
 
     public void setUnit(Unit unit) {
         this.unit = unit;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-
-    public Unit getUnitDto() {
-        return unitDto;
-    }
-
-    public void setUnitDto(Unit unitDto) {
-        this.unitDto = unitDto;
     }
 
     public List<Order> getOrderList() {
