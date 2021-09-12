@@ -15,11 +15,11 @@ public class Services {
     private int prices;
     private String name;
     private String code;
-    private int flagDelete;
+    private int flag;
     private String image;
     @ManyToOne
     @JoinColumn(name = "unitId",referencedColumnName = "unitId")
-    private Unit unitDto;
+    private Unit unit;
     @OneToMany(mappedBy = "services", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orderList;
@@ -27,39 +27,15 @@ public class Services {
     public Services() {
     }
 
-    public Services(Long servicesId, int quantity, int prices, String name, String code, int flagDelete, String image, Unit unitDto, List<Order> orderList) {
+    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<Order> orderList) {
         this.servicesId = servicesId;
         this.quantity = quantity;
         this.prices = prices;
         this.name = name;
         this.code = code;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.image = image;
-        this.unitDto = unitDto;
-        this.orderList = orderList;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Unit getUnitDto() {
-        return unitDto;
-    }
-
-    public void setUnitDto(Unit unitDto) {
-        this.unitDto = unitDto;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
+        this.unit = unit;
         this.orderList = orderList;
     }
 
@@ -95,12 +71,20 @@ public class Services {
         this.name = name;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public String getCode() {
+        return code;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getImage() {
@@ -112,10 +96,18 @@ public class Services {
     }
 
     public Unit getUnit() {
-        return unitDto;
+        return unit;
     }
 
-    public void setUnit(Unit unitDto) {
-        this.unitDto = unitDto;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }
