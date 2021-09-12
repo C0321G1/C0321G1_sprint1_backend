@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
+import c0321g1_gaming.model.entity.employee.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -21,6 +22,9 @@ public class Customer {
     private int flag;
     private String phone;
     @ManyToOne
+    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
+    private Gender gender;
+    @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
     @ManyToOne
@@ -35,7 +39,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account) {
+    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Gender gender, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account) {
         this.customerId = customerId;
         this.email = email;
         this.code = code;
@@ -43,6 +47,7 @@ public class Customer {
         this.fullName = fullName;
         this.flag = flag;
         this.phone = phone;
+        this.gender = gender;
         this.address = address;
         this.customerStatus = customerStatus;
         this.orderList = orderList;
@@ -93,8 +98,8 @@ public class Customer {
         return flag;
     }
 
-    public void setFlag(int flagDelete) {
-        this.flag = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getPhone() {
@@ -103,6 +108,14 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Address getAddress() {
