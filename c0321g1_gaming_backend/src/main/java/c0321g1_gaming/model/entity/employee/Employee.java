@@ -33,13 +33,15 @@ public class Employee {
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name,
+                    String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -55,22 +57,6 @@ public class Employee {
         this.position = position;
         this.gender = gender;
         this.account = account;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public Long getEmployeeId() {
@@ -145,6 +131,14 @@ public class Employee {
         this.name = name;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getFlagDel() {
         return flagDel;
     }
@@ -167,6 +161,14 @@ public class Employee {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Account getAccount() {
