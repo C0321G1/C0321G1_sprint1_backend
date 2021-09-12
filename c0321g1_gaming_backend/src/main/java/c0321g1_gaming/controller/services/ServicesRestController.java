@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
 @RestController
 @CrossOrigin("http://localhost:4200")
 @RequestMapping(value = "/services")
@@ -59,10 +60,12 @@ public class ServicesRestController {
             servicesService.save(services1);
             return new ResponseEntity<>(HttpStatus.OK);
         }
+
     }
 
     @GetMapping("")
-    public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable pageable, Optional<String> name) {
+    public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable
+                                                                  pageable, Optional<String> name) {
         String keyword = "";
         if (name.isPresent()) {
             keyword = name.get();
@@ -75,22 +78,26 @@ public class ServicesRestController {
     }
 
     @GetMapping("/searchNameCodePrices")
-    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable,Optional<String> code,
-                                                                     Optional<String> name,Optional<String> prices ){
-        String keywordCode= code.orElse("");
-        String keywordName= name.orElse("");
-        String keywordPrices= prices.orElse("");
-        Page<Services> servicesPage=servicesService.pageServicesCodeNamePrices(keywordCode,keywordName,keywordPrices,pageable);
-        return new ResponseEntity<>(servicesPage,HttpStatus.OK);
+    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable
+                                                                             pageable, Optional<String> code,
+                                                                     Optional<String> name, Optional<String> prices) {
+        String keywordCode = code.orElse("");
+        String keywordName = name.orElse("");
+        String keywordPrices = prices.orElse("");
+        Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
+        return new ResponseEntity<>(servicesPage, HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Services> deleteServices(@PathVariable Long id){
-        Services services =servicesService.findById(id);
-        if (services==null){
+    public ResponseEntity<Services> deleteServices(@PathVariable Long id) {
+        Services services = servicesService.findById(id);
+        if (services == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
+        } else {
             servicesService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
+
+}
 }
