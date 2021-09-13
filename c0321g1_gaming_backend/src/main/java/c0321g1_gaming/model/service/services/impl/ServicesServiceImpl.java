@@ -38,7 +38,8 @@ public class ServicesServiceImpl implements IServicesService {
             }
         }
         services.setCode(code);
-        servicesRepository.saveServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),services.getQuantity(),services.getUnit().getUnitId());
+//        servicesRepository.updateServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),services.getQuantity(),services.getUnit().getUnitId(),services.getServicesId());
+   servicesRepository.updateFlag(services.getFlag(),services.getServicesId());
     }
 
     @Override

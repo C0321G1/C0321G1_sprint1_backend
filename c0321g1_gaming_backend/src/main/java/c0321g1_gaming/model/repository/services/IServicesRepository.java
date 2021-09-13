@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IServicesRepository extends JpaRepository<Services, Long> {
-    @Query(value = " select * from services where concat(code,`name`,prices) like ?1 and flag = 1 ", nativeQuery = true)
+    @Query(value = " select * from services where concat(code,`name`,prices) like ?1 and flag = 1 ", nativeQuery = true,
+    countQuery = " select count(*) from services where concat(code,`name`,prices) like ?1 and flag = 1 ")
     Page<Services> pageServicesAll(String name, Pageable pageable);
 
-    @Query(value = "select * from services where (code like ?1 ) and ( `name` like ?2 ) and (prices like ?3 ) and flag = 1", nativeQuery = true)
+    @Query(value = "select * from services where (code like ?1 ) and ( `name` like ?2 ) and (prices like ?3 ) and flag = 1", nativeQuery = true,
+    countQuery = "select count(*) from services where (code like ?1 ) and ( `name` like ?2 ) and (prices like ?3 ) and flag = 1")
     Page<Services> pageServicesCodeNamePrices(String code, String name, String prices, Pageable pageable);
 
     @Query(value = "delete from services where (services_id = ?1 )", nativeQuery = true)
@@ -21,7 +23,14 @@ public interface IServicesRepository extends JpaRepository<Services, Long> {
     @Query(value = "select * from services where (services_id = ?1) and flag = 1", nativeQuery = true)
     Services findByIdServices(Long id);
 
-    @Query(value = "insert into services (`code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
-            "value ( ?1 , ?2 , ?3 , ?4 ,?5 ,?6, ?7)", nativeQuery = true)
+    @Query(value = "insert into services ( `code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
+            "value ( ?1 , ?2 , ?3 , ?4 ,?5 ,?6, ?7 )", nativeQuery = true)
     void saveServices(String code, int flag, String image, String name, double prices, int quantity, int unitId);
+
+    @Query(value = "update services " +
+            "set  `code` = ?1 , `flag` = ?2 , `image` = ?3 , `name` = ?4, `prices` ?5 , `quantity` = ?6 , `unit_id` = ?7  where services_id = ?8" , nativeQuery = true)
+    void updateServices(String code, int flag, String image, String name, double prices, int quantity, int unitId,Long servicesId);
+    @Query(value = "UPDATE services " +
+            "SET   `flag` =?1  WHERE services_id =?2 " , nativeQuery = true)
+    void updateFlag(int flagDelete,Long servicesId);
 }
