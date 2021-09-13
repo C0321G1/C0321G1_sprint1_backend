@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,15 +25,6 @@ public class GameRestController {
     private IGameService gameService;
 
     // Creator: Nhung
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findGameById(@PathVariable Long id) {
-        Optional<Game> game = gameService.findById(id);
-        if (!game.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(game, HttpStatus.OK);
-    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -71,39 +61,11 @@ public class GameRestController {
         } else if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         } else {
-            Game newGame = new Game();
-            BeanUtils.copyProperties(gameDto, newGame);
-            gameService.updateGame(newGame);
+            gameDto.setGameId(game.get().getGameId());
+            BeanUtils.copyProperties(gameDto, game.get());
+            gameService.updateGame(game.get());
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
-//
-//    //    Creator: Thúy
-//    @GetMapping
-//    public ResponseEntity<List<Game>> showListGame(Optional<String> name, Optional<String> gameType) {
-//        String nameValue = name.orElse("");
-//        String gameTypeValue = gameType.orElse("");
-//        List<Game> gameList = gameService.getGameBySearchingName(nameValue, gameTypeValue);
-//        return new ResponseEntity<>(gameList, HttpStatus.OK);
-//    }
-//
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<Game> findById(@PathVariable Long id) {
-//        Optional<Game> gameOptional = gameService.findById(id);
-//        if (!gameOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<Game> deleteGame(@PathVariable Long id, @RequestBody Game game) {
-//        Optional<Game> gameOptional = gameService.findById(id);
-//        if (!gameOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        game.setFlagDelete(1);
-//        gameService.saveGame(game);
-//        return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
-//    }
+
 }

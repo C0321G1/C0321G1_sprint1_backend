@@ -13,23 +13,18 @@ import java.util.Optional;
 public interface IGameRepository extends JpaRepository<Game, Long> {
     // Creator: Nhung
 
+    @Query(value = "SELECT game_id,`name`,content,image,gaming,trailer,game_type_id,flag_delete FROM game WHERE game_id = ?;", nativeQuery = true)
+    Optional<Game> findById(Long gameId);
+
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO game(`name`,content,image,gaming,trailer,game_type_id,flag_delete) VALUES (?1,?2,?3,?4,?5,?6,?7);", nativeQuery = true)
     void saveGame(String name, String content, String image, String gaming, String trailer, Long gameTypeId, int flagDelete);
 
-    @Transactional
     @Modifying
-    @Query(value = "UPDATE game SET (`name` =?1, content =?2, image =?3, gaming =?4, trailer =?5, game_type_id =?6) WHERE game_id = ?7;", nativeQuery = true)
-    void updateGame(String name, String content, String image, String gaming, String trailer, Long gameTypeId, Long gameId);
+    @Transactional
+    @Query(value ="UPDATE game " +
+            "set `name` =?1,content = ?2,image = ?3,gaming=?4,trailer=?5,game_type_id=?6,flag_delete=?7 where game.game_id = ?8" , nativeQuery = true)
+    void updateGame(String name, String content, String image, String gaming, String trailer, Long gameTypeId,int flagDelete, Long gameId);
 
-    @Query(value = "SELECT game_id,`name`,content,image,gaming,trailer,game_type_id,flag_delete FROM game WHERE game_id = ?;", nativeQuery = true)
-    Optional<Game> findById(Long gameId);
-//
-//    //Create : Thúy
-//
-//    @Query(value = "select * from game " +
-//            "join game_type on game.game_type_id = game_type.game_type_id " +
-//            "where ( game.name like ?1 ) and (game_type.name like ?2 ) and game.flag_delete = 0", nativeQuery = true)
-//    List<Game> getGameBySearchingName(String name, String gameType);
 }
