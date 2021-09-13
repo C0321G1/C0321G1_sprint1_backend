@@ -17,11 +17,11 @@ import java.util.List;
 @RequestMapping("gameType/api")
 public class GameTypeRestController {
     @Autowired
-    private IGameTypeService gameTypeService;
+    private IGameTypeService IGameTypeService;
 
     @GetMapping
     public ResponseEntity<List<GameType>> list() {
-        List<GameType> gameTypeList = gameTypeService.findAll();
+        List<GameType> gameTypeList = IGameTypeService.findAll();
         if (gameTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

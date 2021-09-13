@@ -6,15 +6,17 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IGameService {
-    // Nhung
-    Optional<Game> findById(Long id);
+    // Creator: Nhung
+    Optional<Game> findById(Long gameId);
 
-    Game save(Game game);
+    void saveGame(Game game);
+
+    void updateGame(Game game);
 
 //    Creator: Thúy
 //    List<Game> findAll();
-
+//
 //    void delete(Long id);
-
-    List<Game> getGameBySearchingName(String name, String gameType);
+//
+//    List<Game> getGameBySearchingName(String name, String gameType);
 }
