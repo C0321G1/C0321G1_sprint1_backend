@@ -21,17 +21,23 @@ public class Customer {
     private String fullName;
     private int flag;
     private String phone;
+
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
+
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
+
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orderList;
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
+
     @ManyToOne
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;

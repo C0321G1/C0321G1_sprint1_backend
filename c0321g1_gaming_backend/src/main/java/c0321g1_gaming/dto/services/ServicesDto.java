@@ -2,6 +2,8 @@ package c0321g1_gaming.dto.services;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
 
+import java.util.List;
+
 
 public class ServicesDto {
     private Long servicesId;
@@ -12,12 +14,12 @@ public class ServicesDto {
     private int flag;
     private String image;
     private Unit unit;
-    private Order order;
+    private List<Order> orderList;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, Order order) {
+    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, List<Order> orderList) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
@@ -26,7 +28,7 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.order = order;
+        this.orderList = orderList;
     }
 
     public String getCode() {
@@ -93,11 +95,11 @@ public class ServicesDto {
         this.unit = unit;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }

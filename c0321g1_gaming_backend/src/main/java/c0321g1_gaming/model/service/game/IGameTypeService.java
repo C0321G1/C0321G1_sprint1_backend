@@ -4,6 +4,6 @@ import c0321g1_gaming.model.entity.game.GameType;
 
 import java.util.List;
 
-public interface GameTypeService {
+public interface IGameTypeService {
     List<GameType> findAll();
 }
