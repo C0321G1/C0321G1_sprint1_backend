@@ -38,7 +38,7 @@ public class StatisticRestController {
 
     @GetMapping("by-account/{startTime}/{endTime}")
     public ResponseEntity<List<?>> findStatisticByAccount(@PathVariable String startTime, @PathVariable String endTime) {
-        List<?> statisticByAccountList = statisticService.getStatisticByMonth(startTime,endTime);
+        List<?> statisticByAccountList = statisticService.getStatisticByAccount(startTime,endTime);
         if (statisticByAccountList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

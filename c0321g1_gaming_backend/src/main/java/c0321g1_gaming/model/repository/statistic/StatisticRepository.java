@@ -16,7 +16,7 @@ public interface StatisticRepository extends JpaRepository<OrderDetail, Long> {
             "join account_computer on account.account_id = account_computer.account_id\n" +
             "join computer on account_computer.computer_id = computer.computer_id\n" +
             "join category on account.category_id = category.category_id\n" +
-            "where start_time > date(start_time) and end_time < date(end_time)\n" +
+            "where start_time > date(:startDate) and end_time < date(:endDate)\n" +
             "group by computer;")
     List<?> getStatisticByComputer(String startDate, String endDate);
 
@@ -27,7 +27,7 @@ public interface StatisticRepository extends JpaRepository<OrderDetail, Long> {
             "join account_computer on account.account_id = account_computer.account_id\n" +
             "join computer on account_computer.computer_id = computer.computer_id\n" +
             "join category on account.category_id = category.category_id\n" +
-            "where start_time > date(start_time) and end_time < date(end_time)\n" +
+            "where start_time > date(:startDate) and end_time < date(:endDate)\n" +
             "group by month;")
     List<?> getStatisticByMonth(String startDate, String endDate);
 
@@ -38,7 +38,7 @@ public interface StatisticRepository extends JpaRepository<OrderDetail, Long> {
             "join account_computer on account.account_id = account_computer.account_id\n" +
             "join computer on account_computer.computer_id = computer.computer_id\n" +
             "join category on account.category_id = category.category_id\n" +
-            "where start_time > date(start_time) and end_time < date(end_time)\n" +
+            "where start_time > date(:startDate) and end_time < date(:endDate)\n" +
             "group by account;")
     List<?> getStatisticByAccount(String startDate, String endDate);
 }
