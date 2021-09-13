@@ -56,7 +56,6 @@ public class Category {
         this.discount = discount;
     }
 
-
     public String getStartTime() {
         return startTime;
     }

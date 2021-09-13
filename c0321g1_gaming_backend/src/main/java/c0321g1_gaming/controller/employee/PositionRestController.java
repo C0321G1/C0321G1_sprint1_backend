@@ -1,7 +1,5 @@
 package c0321g1_gaming.controller.employee;
-
 import c0321g1_gaming.model.entity.employee.Position;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.service.employee.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
-    @Query(value="select * from address", nativeQuery = true)
+    @Query(value = "select * from address", nativeQuery = true)
     List<Address> getAddressList();
 }

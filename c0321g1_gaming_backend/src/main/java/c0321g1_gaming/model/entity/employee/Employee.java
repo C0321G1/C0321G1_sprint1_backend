@@ -3,6 +3,9 @@ package c0321g1_gaming.model.entity.employee;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import javax.persistence.*;
@@ -27,7 +30,7 @@ public class Employee {
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
 
-    @ManyToOne(targetEntity = Position.class)
+    @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
 
