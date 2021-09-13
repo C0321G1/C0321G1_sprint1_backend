@@ -4,10 +4,12 @@ import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
 import c0321g1_gaming.model.entity.computer.ComputerStatus;
 import c0321g1_gaming.model.entity.computer.ComputerType;
 import c0321g1_gaming.model.entity.order.Order;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import java.util.List;
 
-public class ComputerDto {
+public class ComputerDto implements Validator {
 
     private Long computerId;
     private String computerCode;
@@ -124,5 +126,15 @@ public class ComputerDto {
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }

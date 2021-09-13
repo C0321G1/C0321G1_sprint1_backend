@@ -11,18 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ComputerServiceImpl implements ComputerService{
+public class ComputerServiceImpl implements ComputerService {
 
     @Autowired
     ComputerRepository computerRepository;
 
     @Override
     public Page<Computer> getAllComputer(Pageable pageable) {
-<<<<<<< HEAD
-        return computerRepository.findAll(pageable);
-=======
+
         return computerRepository.findAllComputer(pageable);
->>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
     }
 
     @Override
@@ -44,12 +41,32 @@ public class ComputerServiceImpl implements ComputerService{
     public void deleteComputer(Computer computer) {
         computerRepository.delete(computer);
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
->>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
+
+    @Override
+    public void createComputer(String computer_code, String location, String start_used_date,
+                               String configuration, String warranty_period, Integer flag_delete,
+                               Long id_type, Long id_manufacturer, Long id_status) {
+        computerRepository.createComputer(computer_code, location, start_used_date, configuration,
+                warranty_period, flag_delete, id_type, id_manufacturer, id_status);
+    }
+
+    @Override
+    public void updateComputer(String computer_code, String location, String start_used_date,
+                               String configuration, String warranty_period, Long id_type,
+                               Long id_manufacturer, Long id_status, Long computer_id) {
+        computerRepository.updateComputer(computer_code, location, start_used_date, configuration, warranty_period,
+                id_type, id_manufacturer, id_status, computer_id);
+    }
+
+    @Override
+    public Computer searchComputerCode(String computerCode) {
+        return computerRepository.searchComputerCode(computerCode);
+    }
+
+
 }
