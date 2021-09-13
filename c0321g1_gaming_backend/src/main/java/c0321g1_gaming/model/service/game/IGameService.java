@@ -15,4 +15,6 @@ public interface IGameService {
 
 //    Creator: Thúy
     List<Game> getGameBySearchingName(String name, String gameType);
+
+    void updateGameFlag(int flagDelete, Long gameId);
 }
