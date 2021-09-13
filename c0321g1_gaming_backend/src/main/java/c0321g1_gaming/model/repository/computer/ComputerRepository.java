@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface ComputerRepository extends JpaRepository<Computer, Long> {
     @Query(value = "SELECT * FROM Computer WHERE computer.flag_delete=0", nativeQuery = true)
     Page<Computer> findAllComputer(Pageable pageable);
+
+    @Query(value = "select * from Computer where ((computer_code like ?1) and (location like ?2))  and flag_delete = 0", nativeQuery = true)
+    Page<Computer> searchComputer(String computerId, String location, Pageable pageable);
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ComputerServiceImpl implements ComputerService{
+public class ComputerServiceImpl implements ComputerService {
 
     @Autowired
     ComputerRepository computerRepository;
@@ -27,8 +27,10 @@ public class ComputerServiceImpl implements ComputerService{
     }
 
     @Override
-    public Page<Computer> searchComputer(Pageable pageable) {
-        return null;
+    public Page<Computer> searchComputer(String computerId, String location, Pageable pageable) {
+        computerId = "%" + computerId + "%";
+        location = "%" + location + "%";
+        return computerRepository.searchComputer(computerId, location, pageable);
     }
 
     @Override
@@ -45,4 +47,6 @@ public class ComputerServiceImpl implements ComputerService{
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
+
+
 }

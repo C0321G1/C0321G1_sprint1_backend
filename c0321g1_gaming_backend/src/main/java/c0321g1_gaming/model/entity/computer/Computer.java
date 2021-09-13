@@ -105,7 +105,7 @@ public class Computer {
         return computerStatus;
     }
 
-    public void setComputerStatus(ComputerStatus computerStatus) {
+    public Computer(ComputerStatus computerStatus) {
         this.computerStatus = computerStatus;
     }
 

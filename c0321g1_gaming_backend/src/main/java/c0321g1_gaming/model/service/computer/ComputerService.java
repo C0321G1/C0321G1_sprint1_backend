@@ -12,11 +12,13 @@ public interface ComputerService {
 
     List<Computer> findAll();
 
-    Page<Computer> searchComputer(Pageable pageable);
+    Page<Computer> searchComputer(String computerId, String location, Pageable pageable);
 
     Optional<Computer> findComputerById(Long id);
 
     void deleteComputer(Computer computer);
 
     void saveComputer(Computer computer);
+
+
 }
