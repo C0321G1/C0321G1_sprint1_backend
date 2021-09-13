@@ -38,7 +38,7 @@ public class ServicesServiceImpl implements IServicesService {
             }
         }
         services.setCode(code);
-        servicesRepository.save(services);
+        servicesRepository.saveServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),services.getQuantity(),services.getUnit().getUnitId());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Override
     public Services findById(Long id) {
-        return servicesRepository.findById(id).orElse(null);
+        return servicesRepository.findByIdServices(id);
     }
 
     @Override
@@ -58,6 +58,8 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Override
     public void deleteById(Long id) {
-        servicesRepository.deleteById(id);
+        servicesRepository.deleteServicesId(id);
     }
+
+
 }

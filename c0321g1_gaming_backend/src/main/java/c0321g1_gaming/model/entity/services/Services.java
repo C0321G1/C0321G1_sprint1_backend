@@ -1,5 +1,7 @@
 package c0321g1_gaming.model.entity.services;
 
+import c0321g1_gaming.dto.order.OrderDetailDto;
+import c0321g1_gaming.model.entity.order.OrderDetail;
 import c0321g1_gaming.model.entity.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -22,12 +24,12 @@ public class Services {
     private Unit unit;
     @OneToMany(mappedBy = "services", cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Orders> ordersList;
+    private List<OrderDetail> ordersList;
 
     public Services() {
     }
 
-    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<Orders> ordersList) {
+    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<OrderDetail> ordersList) {
         this.servicesId = servicesId;
         this.quantity = quantity;
         this.prices = prices;
@@ -103,11 +105,11 @@ public class Services {
         this.unit = unit;
     }
 
-    public List<Orders> getOrdersList() {
+    public List<OrderDetail> getOrdersList() {
         return ordersList;
     }
 
-    public void setOrdersList(List<Orders> ordersList) {
+    public void setOrdersList(List<OrderDetail> ordersList) {
         this.ordersList = ordersList;
     }
 }

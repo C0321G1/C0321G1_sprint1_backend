@@ -15,7 +15,7 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<OrderDetail> orderDetail;
     private int status;

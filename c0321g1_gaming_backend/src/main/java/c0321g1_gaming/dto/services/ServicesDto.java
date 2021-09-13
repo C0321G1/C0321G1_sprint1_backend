@@ -25,12 +25,11 @@ public class ServicesDto {
     @NotBlank(message = "Trường này không được để trống")
     private String image;
     private Unit unit;
-    private List<Orders> ordersList;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, List<Orders> ordersList) {
+    public ServicesDto(Long servicesId, String code, @NotNull(message = "Trường này không được để trống") @Min(value = 0, message = "Trường này phải lớn hơn 0") int quantity, @NotNull(message = "Trường này không được để trống") @Min(value = 1000, message = "Trường này phải lớn hơn 1000") int prices, @NotBlank(message = "Trường này không được để trống") String name, int flag, @NotBlank(message = "Trường này không được để trống") String image, Unit unit) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
@@ -39,15 +38,6 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.ordersList = ordersList;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getServicesId() {
@@ -56,6 +46,14 @@ public class ServicesDto {
 
     public void setServicesId(Long servicesId) {
         this.servicesId = servicesId;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getQuantity() {
@@ -104,13 +102,5 @@ public class ServicesDto {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
-    }
-
-    public List<Orders> getOrdersList() {
-        return ordersList;
-    }
-
-    public void setOrdersList(List<Orders> ordersList) {
-        this.ordersList = ordersList;
     }
 }

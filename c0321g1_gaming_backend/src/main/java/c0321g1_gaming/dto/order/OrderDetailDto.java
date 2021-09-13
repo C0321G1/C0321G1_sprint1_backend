@@ -1,20 +1,27 @@
 package c0321g1_gaming.dto.order;
 
 import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.services.Services;
 
 import java.util.List;
 
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private List<Orders> ordersDtoList;
+    private Orders orders;
+    private Services services;
+    private int quantity;
+    private int totalPrices;
 
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, List<Orders> ordersDtoList) {
+    public OrderDetailDto(Long orderDetailId, Orders orders, Services services, int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.ordersDtoList = ordersDtoList;
+        this.orders = orders;
+        this.services = services;
+        this.quantity = quantity;
+        this.totalPrices = totalPrices;
     }
 
     public Long getOrderDetailId() {
@@ -25,11 +32,35 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public List<Orders> getOrdersDtoList() {
-        return ordersDtoList;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setOrdersDtoList(List<Orders> ordersDtoList) {
-        this.ordersDtoList = ordersDtoList;
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getTotalPrices() {
+        return totalPrices;
+    }
+
+    public void setTotalPrices(int totalPrices) {
+        this.totalPrices = totalPrices;
     }
 }
