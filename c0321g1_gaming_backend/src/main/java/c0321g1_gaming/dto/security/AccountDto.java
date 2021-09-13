@@ -6,6 +6,7 @@ import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
 
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

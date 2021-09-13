@@ -26,7 +26,7 @@ public class Account {
     private Set<Role> roles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
+//    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
