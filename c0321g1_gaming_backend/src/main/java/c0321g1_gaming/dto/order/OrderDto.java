@@ -15,19 +15,17 @@ public class OrderDto {
     private Long orderId;
     private int quantity;
     private int total;
-    private Computer computerDto;
     private List<Services> servicesDtoList;
     private Customer customerDto;
     private OrderDetail orderDetailDto;
     public OrderDto() {
     }
 
-    public OrderDto(Long orderId, int quantity, int total, Computer computerDto,
+    public OrderDto(Long orderId, int quantity, int total,
                     List<Services> servicesDtoList, Customer customerDto, OrderDetail orderDetailDto) {
         this.orderId = orderId;
         this.quantity = quantity;
-        this.total = total;
-        this.computerDto = computerDto;
+        this.total = total;;
         this.servicesDtoList = servicesDtoList;
         this.customerDto = customerDto;
         this.orderDetailDto = orderDetailDto;
@@ -55,14 +53,6 @@ public class OrderDto {
 
     public void setTotal(int total) {
         this.total = total;
-    }
-
-    public Computer getComputerDto() {
-        return computerDto;
-    }
-
-    public void setComputerDto(Computer computerDto) {
-        this.computerDto = computerDto;
     }
 
     public List<Services> getServicesDtoList() {
