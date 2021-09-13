@@ -12,9 +12,5 @@ public interface IGameService {
     Game save(Game game);
 
 //    Creator: Thúy
-//    List<Game> findAll();
-
-//    void delete(Long id);
-
     List<Game> getGameBySearchingName(String name, String gameType);
 }

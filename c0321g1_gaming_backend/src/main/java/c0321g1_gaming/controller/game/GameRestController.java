@@ -38,26 +38,41 @@ public class GameRestController {
         String nameValue = name.orElse("");
         String gameTypeValue = gameType.orElse("");
         List<Game> gameList = gameService.getGameBySearchingName(nameValue, gameTypeValue);
+        if (gameList.size() == 0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(gameList, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Game> findById(@PathVariable Long id){
+    public ResponseEntity<Game> findById(@PathVariable Long id) {
         Optional<Game> gameOptional = gameService.findById(id);
-        if (!gameOptional.isPresent()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (gameOptional.get().getGameId().equals(null)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(gameOptional.get(),HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Game> deleteGame(@PathVariable Long id, @RequestBody Game game) {
-        Optional<Game> gameOptional = gameService.findById(id);
+        if (gameOptional.get().getGameId().equals("")) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         if (!gameOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        game.setFlagDelete(1);
-        gameService.save(game);
         return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Game> deleteGame(@PathVariable Long id) {
+        Optional<Game> gameOptional = gameService.findById(id);
+        if (gameOptional.get().getGameId().equals(null)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        if (gameOptional.get().getGameId().equals("")) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        if (!gameOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        gameOptional.get().setFlagDelete(1);
+        gameService.save(gameOptional.get());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
