@@ -9,5 +9,4 @@ public interface IServicesService {
     Page<Services> pageServicesAll(String name, Pageable pageable);
     Services findById(Long id);
     Page<Services> pageServicesCodeNamePrices(String code,String name,String prices,Pageable pageable);
-    void deleteById(Long id);
 }
