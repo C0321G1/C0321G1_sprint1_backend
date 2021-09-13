@@ -5,6 +5,8 @@ import c0321g1_gaming.model.repository.services.IServicesRepository;
 import c0321g1_gaming.model.repository.services.IUnitRepository;
 import c0321g1_gaming.model.service.services.IServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,7 +42,22 @@ public class ServicesServiceImpl implements IServicesService {
     }
 
     @Override
+    public Page<Services> pageServicesAll(String name, Pageable pageable) {
+        return servicesRepository.pageServicesAll("%"+name+"%",pageable);
+    }
+
+    @Override
     public Services findById(Long id) {
         return servicesRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Page<Services> pageServicesCodeNamePrices(String code, String name, String prices, Pageable pageable) {
+        return servicesRepository.pageServicesCodeNamePrices("%"+code+"%","%"+name+"%","%"+prices+"%",pageable);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        servicesRepository.deleteById(id);
     }
 }
