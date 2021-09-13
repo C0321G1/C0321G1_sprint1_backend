@@ -94,7 +94,8 @@ public class ComputerRestController {
         if (computer == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        computerService.deleteComputer(computer.get());
+        computer.get().setFlagDelete(1);
+        computerService.saveComputer(computer.get());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -7,11 +7,11 @@ import c0321g1_gaming.model.entity.security.Account;
 
 public class EmployeeDto {
     private Long employeeId;
-    private Long yearOfExp;
+    private String yearOfExp;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private Long level;
+    private String level;
     private String email;
     private String fullName;
     private String code;
@@ -24,7 +24,7 @@ public class EmployeeDto {
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
+    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -42,19 +42,75 @@ public class EmployeeDto {
         this.gender = gender;
     }
 
-    public Long getYearOfExp() {
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(Long yearOfExp) {
+    public void setYearOfExp(String yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
-    public Long getLevel() {
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getStartWorkDate() {
+        return startWorkDate;
+    }
+
+    public void setStartWorkDate(String startWorkDate) {
+        this.startWorkDate = startWorkDate;
+    }
+
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Long level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -105,64 +161,4 @@ public class EmployeeDto {
     public void setAccount(Account account) {
         this.account = account;
     }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getStartWorkDate() {
-        return startWorkDate;
-    }
-
-    public void setStartWorkDate(String startWorkDate) {
-        this.startWorkDate = startWorkDate;
-    }
-
-
 }

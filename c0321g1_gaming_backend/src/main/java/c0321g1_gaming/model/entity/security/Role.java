@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long roleId;
+	private Integer roleId;
 	private ERole name;
 
 	public Role() {
@@ -17,11 +17,11 @@ public class Role {
 		this.name = name;
 	}
 
-	public Long getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Long roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 
