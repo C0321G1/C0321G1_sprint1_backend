@@ -1,25 +1,36 @@
 package c0321g1_gaming.dto.services;
-import c0321g1_gaming.model.entity.order.Order;
+import c0321g1_gaming.model.entity.order.Orders;
 import c0321g1_gaming.model.entity.services.Unit;
 
 import java.util.List;
 
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+
 public class ServicesDto {
     private Long servicesId;
     private String code;
+    @NotNull(message = "Trường này không được để trống")
+    @Min(value = 0,message = "Trường này phải lớn hơn 0")
     private int quantity;
+    @NotNull( message = "Trường này không được để trống")
+    @Min(value = 1000,message = "Trường này phải lớn hơn 1000")
     private int prices;
+    @NotBlank(message = "Trường này không được để trống")
     private String name;
     private int flag;
+    @NotBlank(message = "Trường này không được để trống")
     private String image;
     private Unit unit;
-    private List<Order> orderList;
+    private List<Orders> ordersList;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, List<Order> orderList) {
+    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, List<Orders> ordersList) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
@@ -28,7 +39,7 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.orderList = orderList;
+        this.ordersList = ordersList;
     }
 
     public String getCode() {
@@ -95,11 +106,11 @@ public class ServicesDto {
         this.unit = unit;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Orders> getOrdersList() {
+        return ordersList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 }

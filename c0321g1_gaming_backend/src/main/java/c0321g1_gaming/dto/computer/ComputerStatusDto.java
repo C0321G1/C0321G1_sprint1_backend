@@ -8,15 +8,15 @@ import java.util.List;
 public class ComputerStatusDto {
     private Long computerStatusId;
     private String name;
-    private List<Computer> computerList;
+    private List<Computer> computerDtoList;
 
     public ComputerStatusDto() {
     }
 
-    public ComputerStatusDto(Long computerStatusId, String name, List<Computer> computerList) {
+    public ComputerStatusDto(Long computerStatusId, String name, List<Computer> computerDtoList) {
         this.computerStatusId = computerStatusId;
         this.name = name;
-        this.computerList = computerList;
+        this.computerDtoList = computerDtoList;
     }
 
     public Long getComputerStatusId() {
@@ -35,11 +35,11 @@ public class ComputerStatusDto {
         this.name = name;
     }
 
-    public List<Computer> getComputerList() {
-        return computerList;
+    public List<Computer> getComputerDtoList() {
+        return computerDtoList;
     }
 
-    public void setComputerList(List<Computer> computerList) {
-        this.computerList = computerList;
+    public void setComputerDtoList(List<Computer> computerDtoList) {
+        this.computerDtoList = computerDtoList;
     }
 }

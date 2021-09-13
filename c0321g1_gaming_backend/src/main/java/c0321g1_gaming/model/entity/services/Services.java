@@ -1,6 +1,6 @@
 package c0321g1_gaming.model.entity.services;
 
-import c0321g1_gaming.model.entity.order.Order;
+import c0321g1_gaming.model.entity.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -22,12 +22,12 @@ public class Services {
     private Unit unit;
     @OneToMany(mappedBy = "services", cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Order> orderList;
+    private List<Orders> ordersList;
 
     public Services() {
     }
 
-    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<Order> orderList) {
+    public Services(Long servicesId, int quantity, int prices, String name, String code, int flag, String image, Unit unit, List<Orders> ordersList) {
         this.servicesId = servicesId;
         this.quantity = quantity;
         this.prices = prices;
@@ -36,25 +36,7 @@ public class Services {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.orderList = orderList;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+        this.ordersList = ordersList;
     }
 
     public Long getServicesId() {
@@ -89,6 +71,14 @@ public class Services {
         this.name = name;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public int getFlag() {
         return flag;
     }
@@ -109,7 +99,15 @@ public class Services {
         return unit;
     }
 
-    public void setUnit(Unit unitDto) {
-        this.unit = unitDto;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 }

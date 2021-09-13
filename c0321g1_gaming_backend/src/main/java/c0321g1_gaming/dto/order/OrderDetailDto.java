@@ -1,20 +1,20 @@
 package c0321g1_gaming.dto.order;
 
-import c0321g1_gaming.model.entity.order.Order;
+import c0321g1_gaming.model.entity.order.Orders;
 
 import java.util.List;
 
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private Order order;
+    private List<Orders> ordersDtoList;
 
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, Order order) {
+    public OrderDetailDto(Long orderDetailId, List<Orders> ordersDtoList) {
         this.orderDetailId = orderDetailId;
-        this.order = order;
+        this.ordersDtoList = ordersDtoList;
     }
 
     public Long getOrderDetailId() {
@@ -25,11 +25,11 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Orders> getOrdersDtoList() {
+        return ordersDtoList;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrdersDtoList(List<Orders> ordersDtoList) {
+        this.ordersDtoList = ordersDtoList;
     }
 }
