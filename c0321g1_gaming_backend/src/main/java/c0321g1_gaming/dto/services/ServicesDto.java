@@ -22,13 +22,13 @@ public class ServicesDto {
     private int flag;
     @NotBlank(message = "Trường này không được để trống")
     private String image;
-    private Unit unit;
-    private Order order;
+    private UnitDto unit;
+//    private Order order;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, Order order) {
+    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, UnitDto unit, Order order) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
@@ -37,7 +37,7 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-        this.order = order;
+//        this.order = order;
     }
 
     public String getCode() {
@@ -96,19 +96,19 @@ public class ServicesDto {
         this.image = image;
     }
 
-    public Unit getUnit() {
+    public UnitDto getUnit() {
         return unit;
     }
 
-    public void setUnit(Unit unit) {
+    public void setUnit(UnitDto unit) {
         this.unit = unit;
     }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 }

@@ -10,15 +10,15 @@ import java.util.List;
 public class UnitDto {
     private int unitId;
     private String name;
-    private List<Services> servicesDtoList;
+
 
     public UnitDto() {
     }
 
-    public UnitDto(int unitId, String name, List<Services> servicesDtoList) {
+    public UnitDto(int unitId, String name) {
         this.unitId = unitId;
         this.name = name;
-        this.servicesDtoList = servicesDtoList;
+
     }
 
     public int getUnitId() {
@@ -37,11 +37,4 @@ public class UnitDto {
         this.name = name;
     }
 
-    public List<Services> getServicesDtoList() {
-        return servicesDtoList;
-    }
-
-    public void setServicesDtoList(List<Services> servicesDtoList) {
-        this.servicesDtoList = servicesDtoList;
-    }
 }
