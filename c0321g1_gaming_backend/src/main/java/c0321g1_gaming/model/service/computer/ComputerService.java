@@ -17,6 +17,9 @@ public interface ComputerService {
     Optional<Computer> findComputerById(Long id);
 
     void deleteComputer(Computer computer);
+<<<<<<< HEAD
+=======
 
     void saveComputer(Computer computer);
+>>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
 }
