@@ -25,7 +25,7 @@ public class Address {
     @JsonBackReference(value = "address-customer")
     private List<Customer> customerList;
    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-   @JsonBackReference
+   @JsonBackReference(value = "address-employee")
     private List<Employee> employeeList;
 
     public Address() {
