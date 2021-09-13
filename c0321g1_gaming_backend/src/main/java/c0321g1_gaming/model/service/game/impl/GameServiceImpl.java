@@ -28,18 +28,17 @@ public class GameServiceImpl implements IGameService {
 
     @Override
     public void updateGame(Game game) {
-        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getGameId());
-
+        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete(), game.getGameId());
     }
 
-//    Creator: Thúy
-//    @Override
-//    public void delete(Long id) {
-//        gameRepository.deleteById(id);
-//    }
+    //    Creator: Thúy
+    @Override
+    public List<Game> getGameBySearchingName(String name, String gameType) {
+        return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
+    }
 
-//    @Override
-//    public List<Game> getGameBySearchingName(String name, String gameType) {
-//        return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
-//    }
+    @Override
+    public void updateGameFlag(int flagDelete, Long gameId) {
+        gameRepository.updateGameFlag(flagDelete, gameId);
+    }
 }
