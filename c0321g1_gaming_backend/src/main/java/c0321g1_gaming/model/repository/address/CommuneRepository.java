@@ -1,4 +1,16 @@
 package c0321g1_gaming.model.repository.address;
 
-public interface CommuneRepository {
+import c0321g1_gaming.model.entity.address.Commune;
+import c0321g1_gaming.model.entity.address.District;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface CommuneRepository extends JpaRepository<Commune,Long> {
+
+    @Query(value="select * from commune", nativeQuery = true)
+    List<Commune> getCommuneList();
 }

@@ -13,7 +13,7 @@ public class Category {
     private String discount;
     private String startTime;
     private String endTime;
-    private int fee;
+    private String fee;
     private String type;
     @OneToOne(mappedBy = "category",cascade = CascadeType.ALL)
     private Account account;
@@ -21,7 +21,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long categoryId, String description, String discount, String startTime, String endTime, int fee, String type, Account account) {
+    public Category(Long categoryId, String description, String discount, String startTime, String endTime, String fee, String type, Account account) {
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;
@@ -56,7 +56,6 @@ public class Category {
         this.discount = discount;
     }
 
-
     public String getStartTime() {
         return startTime;
     }
@@ -73,11 +72,11 @@ public class Category {
         this.endTime = endTime;
     }
 
-    public int getFee() {
+    public String getFee() {
         return fee;
     }
 
-    public void setFee(int fee) {
+    public void setFee(String fee) {
         this.fee = fee;
     }
 
