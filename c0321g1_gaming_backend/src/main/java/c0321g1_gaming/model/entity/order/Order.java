@@ -15,6 +15,7 @@ public class Order {
     private int quantity;
     private int prices;
     private int totalPrices;
+    private int status;
     @ManyToOne
     @JoinColumn(name = "servicesId", referencedColumnName = "servicesId")
     private Services services;
@@ -28,14 +29,23 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long orderId, int quantity, int prices, int totalPrices, Services services, Customer customer, List<OrderDetail> orderDetail) {
+    public Order(Long orderId, int quantity, int prices, int totalPrices, int status, Services services, Customer customer, List<OrderDetail> orderDetail) {
         this.orderId = orderId;
         this.quantity = quantity;
         this.prices = prices;
         this.totalPrices = totalPrices;
+        this.status = status;
         this.services = services;
         this.customer = customer;
         this.orderDetail = orderDetail;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Long getOrderId() {

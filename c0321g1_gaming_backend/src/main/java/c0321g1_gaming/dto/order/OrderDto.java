@@ -10,6 +10,7 @@ public class OrderDto {
     private Long orderId;
     private int quantity;
     private int total;
+    private int status;
     private Computer computer;
     private Services services;
     private Customer customer;
@@ -17,14 +18,23 @@ public class OrderDto {
     public OrderDto() {
     }
 
-    public OrderDto(Long orderId, int quantity, int total, Computer computer, Services services, Customer customer, List<OrderDetail> orderDetail) {
+    public OrderDto(Long orderId, int quantity, int total, int status, Computer computer, Services services, Customer customer, List<OrderDetail> orderDetail) {
         this.orderId = orderId;
         this.quantity = quantity;
         this.total = total;
+        this.status = status;
         this.computer = computer;
         this.services = services;
         this.customer = customer;
         this.orderDetail = orderDetail;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Long getOrderId() {
