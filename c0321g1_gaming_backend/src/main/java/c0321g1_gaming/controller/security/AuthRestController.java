@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthRestController {
+
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -30,6 +31,7 @@ public class AuthRestController {
     @Autowired
     JwtUtils jwtUtils;
 
+    //creator: Tra
     @PostMapping("signin")
     public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -46,9 +48,6 @@ public class AuthRestController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getAccountId(),
                 userDetails.getUsername(),
-                userDetails.getCategory(),
                 roles));
     }
-
-
 }

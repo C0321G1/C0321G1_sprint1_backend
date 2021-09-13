@@ -12,6 +12,7 @@ import java.util.Date;
 
 @Component
 public class JwtUtils {
+	//creator: Tra
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 	@Value("${bezkoder.app.jwtSecret}")

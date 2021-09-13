@@ -1,7 +1,7 @@
 package c0321g1_gaming.model.service.user_detail_service_impl;
 
 import c0321g1_gaming.model.entity.security.Account;
-import c0321g1_gaming.model.repository.account_repository.AccountRepository;
+import c0321g1_gaming.model.repository.account.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    //creator: Tra
     @Autowired
     AccountRepository accountRepository;
 

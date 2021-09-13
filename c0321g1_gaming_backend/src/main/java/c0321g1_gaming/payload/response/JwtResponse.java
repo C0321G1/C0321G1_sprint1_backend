@@ -8,6 +8,8 @@ import c0321g1_gaming.model.entity.employee.Employee;
 import java.util.List;
 
 public class JwtResponse {
+
+	//creator: Tra
 	private String token;
 	private String type = "Bearer";
 	private Long id;
@@ -18,7 +20,7 @@ public class JwtResponse {
 	private List<AccountComputer> accountComputer;
 	private List<String> roles;
 
-	public JwtResponse(String accessToken, Long id, String username, Category category, List<String> roles) {
+	public JwtResponse(String accessToken, Long id, String username, List<String> roles) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
@@ -35,6 +37,8 @@ public class JwtResponse {
 		this.accountComputer = accountComputer;
 		this.roles = roles;
 	}
+
+
 
 	public String getToken() {
 		return token;

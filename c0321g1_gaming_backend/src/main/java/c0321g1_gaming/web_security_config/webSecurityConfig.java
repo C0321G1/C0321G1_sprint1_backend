@@ -17,13 +17,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.List;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
         prePostEnabled = true)
 public class webSecurityConfig extends WebSecurityConfigurerAdapter {
+    //creator: Tra
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
