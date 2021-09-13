@@ -2,6 +2,7 @@ package c0321g1_gaming.controller.services;
 
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
+import c0321g1_gaming.model.entity.services.Unit;
 import c0321g1_gaming.model.service.services.IServicesService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +60,15 @@ public class ServicesRestController {
         Services services = new Services();
         System.out.println(servicesDto);
         BeanUtils.copyProperties(servicesDto,services);
+        Unit unit = new Unit();
+        unit.setUnitId(servicesDto.getUnit().getUnitId());
+        services.setFlag(1);
+        services.setUnit(unit);
         servicesService.save(services);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
                                                  @PathVariable Long id) {
         Services services = servicesService.findById(id);
@@ -75,7 +80,11 @@ public class ServicesRestController {
             Services services1 = new Services();
             servicesDto.setServicesId(services.getServicesId());
             BeanUtils.copyProperties(servicesDto, services1);
-            servicesService.save(services1);
+            Unit unit = new Unit();
+            unit.setUnitId(servicesDto.getUnit().getUnitId());
+            services1.setUnit(unit);
+            services1.setFlag(1);
+            servicesService.update(services1);
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }

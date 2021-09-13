@@ -38,7 +38,7 @@ public class ServicesServiceImpl implements IServicesService {
             }
         }
         services.setCode(code);
-        servicesRepository.save(services);
+        servicesRepository.saveServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),services.getQuantity(),services.getUnit().getUnitId());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Override
     public Services findById(Long id) {
-        return servicesRepository.findById(id).orElse(null);
+        return servicesRepository.findByIdServices(id);
     }
 
     @Override
@@ -58,6 +58,31 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Override
     public void deleteById(Long id) {
-        servicesRepository.deleteById(id);
+        servicesRepository.deleteServicesId(id);
     }
+
+    @Override
+    public void update(Services services) {
+        List<Services> servicesList = servicesRepository.findAll();
+        String code = "";
+        if (servicesList.isEmpty()){
+            code = "SV-0001";
+        }else {
+            Long lastId = servicesList.get(servicesList.size() - 1).getServicesId();
+            if (lastId < 10){
+                code = "SV-000" + (lastId+1);
+            }else if (lastId< 100){
+                code = "SV-00" + (lastId+1);
+            }else if (lastId < 1000){
+                code = "SV-0" + (lastId +1);
+            }else {
+                code= "SV" + lastId;
+            }
+        }
+        services.setCode(code);
+        servicesRepository.updateServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),
+                services.getQuantity(),services.getUnit().getUnitId(),services.getServicesId());
+    }
+
+
 }
