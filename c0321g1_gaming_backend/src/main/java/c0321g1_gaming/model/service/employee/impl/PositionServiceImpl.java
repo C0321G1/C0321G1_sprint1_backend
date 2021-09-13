@@ -1,6 +1,5 @@
-package c0321g1_gaming.model.service.employee.employeeImpl;
+package c0321g1_gaming.model.service.employee.impl;
 
-import c0321g1_gaming.model.entity.address.Province;
 import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.repository.employee.PositionRepository;
 import c0321g1_gaming.model.service.employee.PositionService;
@@ -14,7 +13,6 @@ public class PositionServiceImpl implements PositionService {
 
     @Autowired
     PositionRepository positionRepository;
-
 
     @Override
     public List<Position> getPositionList() {

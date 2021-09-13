@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProvinceRepository extends JpaRepository<Province,Long> {
-
+public interface ProvinceRepository extends JpaRepository<Province, Long> {
     @Query(value="select * from province", nativeQuery = true)
     List<Province> getProvinceList();
 }

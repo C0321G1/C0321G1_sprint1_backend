@@ -15,7 +15,7 @@ public class Category {
     private String endTime;
     private String fee;
     private String type;
-    @OneToOne(mappedBy = "category",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "category")
     private Account account;
 
     public Category() {

@@ -15,17 +15,18 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String code;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
-    private String name;
+    private String fullName;
     private String image;
     private int flagDel;
-    @ManyToOne
+
+    @ManyToOne(targetEntity = Address.class)
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
 
@@ -33,18 +34,18 @@ public class Employee {
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Gender.class)
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne
+    @OneToOne(targetEntity = Account.class)
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name,
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
                     String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
@@ -54,7 +55,7 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
-        this.name = name;
+        this.fullName = fullName;
         this.image = image;
         this.flagDel = flagDel;
         this.address = address;
@@ -71,11 +72,11 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
+    public Long getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(String yearOfExp) {
+    public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -111,11 +112,11 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Long level) {
         this.level = level;
     }
 
@@ -127,12 +128,12 @@ public class Employee {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getImage() {

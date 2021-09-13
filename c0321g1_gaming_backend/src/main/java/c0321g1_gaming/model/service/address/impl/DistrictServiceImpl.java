@@ -1,4 +1,4 @@
-package c0321g1_gaming.model.service.address.addressImpl;
+package c0321g1_gaming.model.service.address.impl;
 
 import c0321g1_gaming.model.entity.address.District;
 import c0321g1_gaming.model.repository.address.DistrictRepository;

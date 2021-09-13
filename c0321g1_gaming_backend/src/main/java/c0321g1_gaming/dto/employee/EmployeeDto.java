@@ -7,11 +7,11 @@ import c0321g1_gaming.model.entity.security.Account;
 
 public class EmployeeDto {
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
     private String fullName;
     private String code;
@@ -21,10 +21,11 @@ public class EmployeeDto {
     private Position position;
     private Account account;
     private Gender gender;
+
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
+    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -74,11 +75,11 @@ public class EmployeeDto {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
+    public Long getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(String yearOfExp) {
+    public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -106,11 +107,11 @@ public class EmployeeDto {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Long level) {
         this.level = level;
     }
 

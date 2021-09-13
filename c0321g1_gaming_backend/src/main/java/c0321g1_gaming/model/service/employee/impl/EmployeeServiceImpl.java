@@ -1,4 +1,4 @@
-package c0321g1_gaming.model.service.employee.employeeImpl;
+package c0321g1_gaming.model.service.employee.impl;
 
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.repository.employee.EmployeeRepository;
@@ -8,9 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 @Service
-public class EmployeeServiceIpml implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -26,9 +27,17 @@ public class EmployeeServiceIpml implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> searchEmployee(Pageable pageable, String employeeId, String dateBirthFrom, String dateBirthTo,
-                                         String dateWorkFrom, String dateWorkTo, String position, String province) {
-        return employeeRepository.searchEmployee( pageable, employeeId, dateBirthFrom, dateBirthTo, dateWorkFrom,
-                dateWorkTo, position, province);
+    public Page<Employee> searchEmployee(Pageable pageable, String employeeId, String dateBirthFrom, String dateBirthTo, String dateWorkFrom, String dateWorkTo, String position, String province) {
+        return employeeRepository.searchEmployee( pageable, employeeId, dateBirthFrom, dateBirthTo, dateWorkFrom, dateWorkTo, position, province);
+    }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        employeeRepository.save(employee);
+    }
+
+    @Override
+    public Optional<Employee> findById(Long id) {
+        return employeeRepository.findById(id);
     }
 }

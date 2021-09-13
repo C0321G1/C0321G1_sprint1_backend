@@ -1,6 +1,7 @@
-package c0321g1_gaming.controller.employee;
-import c0321g1_gaming.model.entity.employee.Position;
-import c0321g1_gaming.model.service.employee.PositionService;
+package c0321g1_gaming.controller.gender;
+
+import c0321g1_gaming.model.entity.gender.Gender;
+import c0321g1_gaming.model.service.gender.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +13,17 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class PositionRestController {
+public class GenderRestController {
 
     @Autowired
-    PositionService positionService;
+    GenderService genderService;
 
-    @GetMapping("/position")
-    public ResponseEntity<List<Position>> getPositionList() {
-        List<Position> positionList = positionService.getPositionList();
-        if(positionList.isEmpty()) {
+    @GetMapping("/gender")
+    public ResponseEntity<List<Gender>> getGenderList() {
+        List<Gender> genderList = genderService.getGenderList();
+        if(genderList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(positionList, HttpStatus.OK);
+        return new ResponseEntity<>(genderList, HttpStatus.OK);
     }
 }
