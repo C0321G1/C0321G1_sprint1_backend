@@ -56,10 +56,6 @@ public class ServicesServiceImpl implements IServicesService {
         return servicesRepository.pageServicesCodeNamePrices("%"+code+"%","%"+name+"%","%"+prices+"%",pageable);
     }
 
-    @Override
-    public void deleteById(Long id) {
-        servicesRepository.deleteServicesId(id);
-    }
 
     @Override
     public void update(Services services) {
