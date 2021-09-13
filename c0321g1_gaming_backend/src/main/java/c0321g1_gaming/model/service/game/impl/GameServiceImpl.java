@@ -6,6 +6,9 @@ import c0321g1_gaming.model.service.game.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class GameServiceImpl implements IGameService {
     @Autowired
@@ -14,18 +17,29 @@ public class GameServiceImpl implements IGameService {
     // Creator: Nhung
 
     @Override
-    public Game findById(Long id) {
-        return gameRepository.findById(id).get();
+    public Optional<Game> findById(Long id) {
+        return gameRepository.findById(id);
     }
 
     @Override
     public void saveGame(Game game) {
-        gameRepository.saveGame(game.getName(),game.getContent(),game.getImage(),game.getGaming(),game.getTrailer(),game.getGameType().getGameTypeId(),game.getFlagDelete());
+        gameRepository.saveGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete());
     }
 
     @Override
     public void updateGame(Game game) {
-        gameRepository.updateGame(game.getName(),game.getContent(),game.getImage(),game.getGaming(),game.getTrailer(),game.getGameType().getGameTypeId(),game.getGameId());
+        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getGameId());
 
     }
+
+//    Creator: Thúy
+//    @Override
+//    public void delete(Long id) {
+//        gameRepository.deleteById(id);
+//    }
+
+//    @Override
+//    public List<Game> getGameBySearchingName(String name, String gameType) {
+//        return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
+//    }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("gametype/api")
+@RequestMapping("gameType/api")
 public class GameTypeRestController {
     @Autowired
     private IGameTypeService IGameTypeService;
