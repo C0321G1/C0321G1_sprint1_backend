@@ -15,4 +15,5 @@ public interface IServicesRepository extends JpaRepository<Services,Long> {
     @Query(value = "select * from services where (code like ?1 ) and ( `name` like ?2 ) and (prices like ?3 ) and flag = 1",nativeQuery = true)
     Page<Services> pageServicesCodeNamePrices(String code,String name,String prices,Pageable pageable);
 
+
 }
