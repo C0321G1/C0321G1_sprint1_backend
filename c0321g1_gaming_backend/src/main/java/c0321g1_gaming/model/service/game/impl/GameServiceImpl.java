@@ -13,6 +13,11 @@ import java.util.Optional;
 public class GameServiceImpl implements IGameService {
     @Autowired
     private IGameRepository gameRepository;
+<<<<<<< HEAD
+=======
+
+    // Creator: Nhung
+>>>>>>> 0b8414ec1c4ed7639a0495a897a215e388a37542
 
     @Override
     public Optional<Game> findById(Long id) {
@@ -20,13 +25,31 @@ public class GameServiceImpl implements IGameService {
     }
 
     @Override
-    public Game save(Game game) {
-        return gameRepository.save(game);
+    public void saveGame(Game game) {
+        gameRepository.saveGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete());
+    }
+
+    @Override
+    public void updateGame(Game game) {
+        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getGameId());
+
     }
 
 //    Creator: Thúy
+<<<<<<< HEAD
     @Override
     public List<Game> getGameBySearchingName(String name, String gameType) {
         return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
     }
+=======
+//    @Override
+//    public void delete(Long id) {
+//        gameRepository.deleteById(id);
+//    }
+
+//    @Override
+//    public List<Game> getGameBySearchingName(String name, String gameType) {
+//        return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
+//    }
+>>>>>>> 0b8414ec1c4ed7639a0495a897a215e388a37542
 }

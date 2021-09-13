@@ -1,13 +1,21 @@
 package c0321g1_gaming.controller.game;
 
+import c0321g1_gaming.dto.game.GameDto;
 import c0321g1_gaming.model.entity.game.Game;
 import c0321g1_gaming.model.service.game.IGameService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -17,19 +25,55 @@ public class GameRestController {
     @Autowired
     private IGameService gameService;
 
-    //    Nhung
-    @PostMapping
-    public ResponseEntity<Game> createSoTietKiem(@RequestBody Game game) {
-        return new ResponseEntity<>(gameService.save(game), HttpStatus.OK);
+// Creator: Nhung
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findGameById(@PathVariable Long id) {
+        Optional<Game> game = gameService.findById(id);
+        if (!game.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Game> updateCategory(@PathVariable Long id, @RequestBody Game game) {
-        Optional<Game> gameOptional = gameService.findById(id);
-        return gameOptional.map(findgame -> {
-            game.setGameId(findgame.getGameId());
-            return new ResponseEntity<>(gameService.save(game), HttpStatus.OK);
-        }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        }
+        Game game = new Game();
+        gameDto.setFlagDelete(1);
+        BeanUtils.copyProperties(gameDto, game);
+        gameService.saveGame(game);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PatchMapping("{id}")
+    public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult,
+                                           @PathVariable Long id) {
+        Optional<Game> game = gameService.findById(id);
+        if (!game.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        } else {
+            BeanUtils.copyProperties(gameDto, game.get());
+            gameService.updateGame(game.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
     //    Creator: Thúy
@@ -72,7 +116,7 @@ public class GameRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         gameOptional.get().setFlagDelete(1);
-        gameService.save(gameOptional.get());
+        gameService.saveGame(gameOptional.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
