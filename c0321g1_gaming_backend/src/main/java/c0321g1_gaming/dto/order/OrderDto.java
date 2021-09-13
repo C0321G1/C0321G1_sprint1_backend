@@ -13,22 +13,15 @@ import java.util.List;
 
 public class OrderDto {
     private Long orderId;
-    private int quantity;
-    private int total;
-    private List<Services> servicesDtoList;
-    private Customer customerDto;
-    private OrderDetail orderDetailDto;
+    private  Customer customer;
+    private int status =1;
     public OrderDto() {
     }
 
-    public OrderDto(Long orderId, int quantity, int total,
-                    List<Services> servicesDtoList, Customer customerDto, OrderDetail orderDetailDto) {
+    public OrderDto(Long orderId, Customer customer, int status) {
         this.orderId = orderId;
-        this.quantity = quantity;
-        this.total = total;;
-        this.servicesDtoList = servicesDtoList;
-        this.customerDto = customerDto;
-        this.orderDetailDto = orderDetailDto;
+        this.customer = customer;
+        this.status = status;
     }
 
     public Long getOrderId() {
@@ -39,43 +32,19 @@ public class OrderDto {
         this.orderId = orderId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public int getTotal() {
-        return total;
+    public int getStatus() {
+        return status;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public List<Services> getServicesDtoList() {
-        return servicesDtoList;
-    }
-
-    public void setServicesDtoList(List<Services> servicesDtoList) {
-        this.servicesDtoList = servicesDtoList;
-    }
-
-    public Customer getCustomerDto() {
-        return customerDto;
-    }
-
-    public void setCustomerDto(Customer customerDto) {
-        this.customerDto = customerDto;
-    }
-
-    public OrderDetail getOrderDetailDto() {
-        return orderDetailDto;
-    }
-
-    public void setOrderDetailDto(OrderDetail orderDetailDto) {
-        this.orderDetailDto = orderDetailDto;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

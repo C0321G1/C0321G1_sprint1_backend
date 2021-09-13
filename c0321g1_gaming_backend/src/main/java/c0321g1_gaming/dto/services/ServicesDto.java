@@ -1,6 +1,8 @@
 package c0321g1_gaming.dto.services;
-import c0321g1_gaming.model.entity.order.Order;
+import c0321g1_gaming.model.entity.order.Orders;
 import c0321g1_gaming.model.entity.services.Unit;
+
+import java.util.List;
 
 
 import javax.validation.constraints.Min;
@@ -22,13 +24,12 @@ public class ServicesDto {
     private int flag;
     @NotBlank(message = "Trường này không được để trống")
     private String image;
-    private UnitDto unit;
-//    private Order order;
+    private Unit unit;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, UnitDto unit, Order order) {
+    public ServicesDto(Long servicesId, String code, @NotNull(message = "Trường này không được để trống") @Min(value = 0, message = "Trường này phải lớn hơn 0") int quantity, @NotNull(message = "Trường này không được để trống") @Min(value = 1000, message = "Trường này phải lớn hơn 1000") int prices, @NotBlank(message = "Trường này không được để trống") String name, int flag, @NotBlank(message = "Trường này không được để trống") String image, Unit unit) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
@@ -37,15 +38,6 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-//        this.order = order;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getServicesId() {
@@ -54,6 +46,14 @@ public class ServicesDto {
 
     public void setServicesId(Long servicesId) {
         this.servicesId = servicesId;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getQuantity() {
@@ -96,19 +96,11 @@ public class ServicesDto {
         this.image = image;
     }
 
-    public UnitDto getUnit() {
+    public Unit getUnit() {
         return unit;
     }
 
-    public void setUnit(UnitDto unit) {
+    public void setUnit(Unit unit) {
         this.unit = unit;
     }
-//
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
 }
