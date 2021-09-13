@@ -11,11 +11,11 @@ import java.util.List;
 
 public class EmployeeDto {
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
     private String fullName;
     private String code;
@@ -25,10 +25,11 @@ public class EmployeeDto {
     private List<Address> addressDtoList;
     private Position positionDto;
     private Account accountDto;
+
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, int flagDelete, List<Address> addressDtoList, Position positionDto, Account accountDto) {
+    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, int flagDelete, List<Address> addressDtoList, Position positionDto, Account accountDto) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -44,10 +45,6 @@ public class EmployeeDto {
         this.accountDto = accountDto;
     }
 
-    public String getCode() {
-        return code;
-    }
-
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -56,11 +53,11 @@ public class EmployeeDto {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
+    public Long getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(String yearOfExp) {
+    public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -88,11 +85,11 @@ public class EmployeeDto {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Long level) {
         this.level = level;
     }
 
@@ -110,6 +107,14 @@ public class EmployeeDto {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getFlagDelete() {
