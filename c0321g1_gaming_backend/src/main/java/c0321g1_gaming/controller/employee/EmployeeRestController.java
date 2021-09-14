@@ -31,31 +31,41 @@ public class EmployeeRestController {
     public ResponseEntity<Page<Employee>> getAllEmployee(@PageableDefault(value = 5) Pageable pageable) {
         Page<Employee> employees = employeeService.getListEmployee(pageable);
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
     // khue create method delete Employee
     @DeleteMapping("/employee/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable int id) {
-        this.employeeService.deleteEmployee(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        if (id == 0){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }else {
+            Optional<Employee> employeeOptional = employeeService.findById((long) id);
+            if(!employeeOptional.isPresent()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }else {
+                this.employeeService.deleteEmployee(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+        }
     }
 
     // khue create method search Employee
     @GetMapping("employee/search")
     public ResponseEntity<Page<Employee>> getSearchEmployee(@PageableDefault(value = 5) Pageable pageable,
                                                             @RequestParam(defaultValue = "") String employeeId,
-                                                            @RequestParam(defaultValue = "") String dateBirthFrom,
-                                                            @RequestParam(defaultValue = "") String dateBirthTo,
-                                                            @RequestParam(defaultValue = "") String dateWorkFrom,
-                                                            @RequestParam(defaultValue = "") String dateWorkTo,
+                                                            @RequestParam(defaultValue = "1900-01-01") String dateBirthFrom,
+                                                            @RequestParam(defaultValue = "2050-12-12") String dateBirthTo,
+                                                            @RequestParam(defaultValue = "1900-01-01") String dateWorkFrom,
+                                                            @RequestParam(defaultValue = "2050-12-12") String dateWorkTo,
                                                             @RequestParam(defaultValue = "")String position,
                                                             @RequestParam(defaultValue = "")String province ) {
         Page<Employee> employees = employeeService.searchEmployee(pageable,employeeId,dateBirthFrom,dateBirthTo,
                 dateWorkFrom,dateWorkTo,position,province);
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
