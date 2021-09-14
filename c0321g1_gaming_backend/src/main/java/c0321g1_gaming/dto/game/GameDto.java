@@ -8,21 +8,19 @@ import javax.validation.constraints.*;
 public class GameDto {
     private Long gameId;
     @NotBlank(message = "Content is required")
-    @Size(max = 7000,message = "Content cannot be longer than 7000 characters")
+    @Size(max = 2007,message = "Content cannot be longer than 2000 characters")
     private String content;
     @NotNull
     private int flagDelete;
     @NotBlank(message = "Flag Delete is required")
     private String name;
     @NotBlank(message = "Name is required")
-
     private String image;
     @NotBlank(message = "Gaming is required")
     @Min(value = 0,message = "Gaming must be greater than or equal to 0")
     @Pattern(regexp = "^\\d+$",message = "Gaming must be a integer")
     private String gaming;
     @NotBlank(message = "Gaming is required")
-
     private String trailer;
     @NotNull(message = "gameType is required")
     private GameType gameType;
@@ -124,7 +122,7 @@ public class GameDto {
         return gameType;
     }
 
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
+    public void setGameType(GameType gameTypeId) {
+        this.gameType= gameTypeId;
     }
 }
