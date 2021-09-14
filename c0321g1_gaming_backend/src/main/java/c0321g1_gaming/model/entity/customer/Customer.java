@@ -1,7 +1,7 @@
 package c0321g1_gaming.model.entity.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -31,7 +31,7 @@ public class Customer {
     private CustomerStatus customerStatus;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Orders> ordersList;
+    private List<Order> orderList;
     @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
@@ -39,7 +39,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressList, CustomerStatus customerStatus, List<Orders> ordersList, Account account) {
+    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressList, CustomerStatus customerStatus, List<Order> orderList, Account account) {
         this.customerId = customerId;
         this.email = email;
         this.code = code;
@@ -49,7 +49,7 @@ public class Customer {
         this.phone = phone;
         this.addressList = addressList;
         this.customerStatus = customerStatus;
-        this.ordersList = ordersList;
+        this.orderList = orderList;
         this.account = account;
     }
 
@@ -126,12 +126,12 @@ public class Customer {
         this.customerStatus = customerStatus;
     }
 
-    public List<Orders> getOrdersList() {
-        return ordersList;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrdersList(List<Orders> ordersList) {
-        this.ordersList = ordersList;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
     public Account getAccount() {

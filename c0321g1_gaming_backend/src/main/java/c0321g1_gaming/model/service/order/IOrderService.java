@@ -1,7 +1,7 @@
 package c0321g1_gaming.model.service.order;
 
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.dto.order.OrderDto;
 
 public interface IOrderService {
-    void create(Orders order);
+    void create(OrderDto orderDto);
 }

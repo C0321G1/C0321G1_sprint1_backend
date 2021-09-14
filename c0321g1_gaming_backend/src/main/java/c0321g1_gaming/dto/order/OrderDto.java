@@ -13,14 +13,14 @@ import java.util.List;
 
 public class OrderDto {
     private Long orderId;
-    private  Customer customer;
+    private Long  customerId;
     private int status =1;
     public OrderDto() {
     }
 
-    public OrderDto(Long orderId, Customer customer, int status) {
+    public OrderDto(Long orderId, Long customerId, int status) {
         this.orderId = orderId;
-        this.customer = customer;
+        this.customerId = customerId;
         this.status = status;
     }
 
@@ -32,12 +32,12 @@ public class OrderDto {
         this.orderId = orderId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public int getStatus() {

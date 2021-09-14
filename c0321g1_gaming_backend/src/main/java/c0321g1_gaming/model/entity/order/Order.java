@@ -8,22 +8,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Orders {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<OrderDetail> orderDetail;
     private int status;
 
-    public Orders() {
+    public Order() {
     }
 
-    public Orders(Long orderId, Customer customer, List<OrderDetail> orderDetail, int status) {
+    public Order(Long orderId, Customer customer, List<OrderDetail> orderDetail, int status) {
         this.orderId = orderId;
         this.customer = customer;
         this.orderDetail = orderDetail;

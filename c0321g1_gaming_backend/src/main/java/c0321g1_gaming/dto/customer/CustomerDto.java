@@ -2,7 +2,7 @@ package c0321g1_gaming.dto.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 
 import java.util.List;
@@ -17,14 +17,14 @@ public class CustomerDto {
     private String phone;
     private List<Address> addressDtoList;
     private CustomerStatus customerStatusDto;
-    private List<Orders> ordersDtoList;
+    private List<Order> orderDtoList;
     private Account accountDto;
     private String code;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressDtoList, CustomerStatus customerStatusDto, List<Orders> ordersDtoList, Account accountDto, String code) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressDtoList, CustomerStatus customerStatusDto, List<Order> orderDtoList, Account accountDto, String code) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -33,7 +33,7 @@ public class CustomerDto {
         this.phone = phone;
         this.addressDtoList = addressDtoList;
         this.customerStatusDto = customerStatusDto;
-        this.ordersDtoList = ordersDtoList;
+        this.orderDtoList = orderDtoList;
         this.accountDto = accountDto;
         this.code = code;
     }
@@ -110,12 +110,12 @@ public class CustomerDto {
         this.customerStatusDto = customerStatusDto;
     }
 
-    public List<Orders> getOrdersDtoList() {
-        return ordersDtoList;
+    public List<Order> getOrderDtoList() {
+        return orderDtoList;
     }
 
-    public void setOrdersDtoList(List<Orders> ordersDtoList) {
-        this.ordersDtoList = ordersDtoList;
+    public void setOrderDtoList(List<Order> orderDtoList) {
+        this.orderDtoList = orderDtoList;
     }
 
     public Account getAccountDto() {

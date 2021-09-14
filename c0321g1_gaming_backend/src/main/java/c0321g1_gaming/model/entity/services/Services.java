@@ -1,8 +1,6 @@
 package c0321g1_gaming.model.entity.services;
 
-import c0321g1_gaming.dto.order.OrderDetailDto;
 import c0321g1_gaming.model.entity.order.OrderDetail;
-import c0321g1_gaming.model.entity.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
