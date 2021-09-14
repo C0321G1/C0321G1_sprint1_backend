@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -26,6 +27,9 @@ public class Customer {
             ,inverseJoinColumns = @JoinColumn(name = "addressId"))
     @JsonBackReference
     private List<Address> addressList;
+    @ManyToOne(targetEntity = Gender.class)
+    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
+    private Gender gender;
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
