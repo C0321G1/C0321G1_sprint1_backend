@@ -37,6 +37,16 @@ public class ServicesDto {
         this.unit = unit;
     }
 
+    public ServicesDto(String code, int quantity, int prices, String name, int flag, String image, Unit unit) {
+        this.code = code;
+        this.quantity = quantity;
+        this.prices = prices;
+        this.name = name;
+        this.flag = flag;
+        this.image = image;
+        this.unit = unit;
+    }
+
     public Long getServicesId() {
         return servicesId;
     }

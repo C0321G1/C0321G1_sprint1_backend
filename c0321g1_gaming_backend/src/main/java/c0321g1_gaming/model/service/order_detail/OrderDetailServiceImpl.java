@@ -6,19 +6,27 @@ import c0321g1_gaming.model.repository.order_detail.IOrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderDetailServiceImpl implements IOrderDetailService {
     @Autowired
     private IOrderDetailRepository orderDetailRepository;
+     //vu code
     @Override
     public void createDetail(OrderDetailDto orderDetailDto) {
-        this.orderDetailRepository.createDetail (
+        this.orderDetailRepository.createDetail(
                 orderDetailDto.getOrderId(),
                 orderDetailDto.getQuantity(),
                 orderDetailDto.getQuantity(),
                 orderDetailDto.getTotalPrices(),
                 orderDetailDto.getServiceId()
         );
+    }
+
+    @Override
+    public List<OrderDetail> findAllOderDetailsByOderId(Long oderId) {
+        return orderDetailRepository.getAllOderDetailByOderId(oderId);
 
     }
 }

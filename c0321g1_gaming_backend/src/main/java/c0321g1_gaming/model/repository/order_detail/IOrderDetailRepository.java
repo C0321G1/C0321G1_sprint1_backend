@@ -6,6 +6,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+
 
 @Repository
 public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Long> {
@@ -13,4 +18,8 @@ public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Long> 
     @Modifying
     @Query(value= " insert into order_detail(order_detail.quantity,  order_detail.total_prices, order_detail.services_id,order_detail.order_id)  value(?1, ?2, ?3 ?4);", nativeQuery = true)
     void createDetail(Long orderId, int quantity, int quantity1, int totalPrices, Long serviceId);
+
+    @Query(value = " select * from order_detail where order_id= :oderId", nativeQuery = true)
+    List<OrderDetail> getAllOderDetailByOderId(@Param("oderId") Long oderId);
+
 }

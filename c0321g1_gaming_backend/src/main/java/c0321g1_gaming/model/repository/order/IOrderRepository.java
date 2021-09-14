@@ -1,15 +1,43 @@
 package c0321g1_gaming.model.repository.order;
 
 import c0321g1_gaming.model.entity.order.Order;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
-
-     @Modifying
-     @Query(value= " insert into `order`(`order`.cutomer_id, `order`.status)  value(?1, ?2, ?3);", nativeQuery = true)
+    //vu code
+    @Modifying
+    @Query(value= " insert into `order`(`order`.cutomer_id, `order`.status)  value(?1, ?2, ?3);", nativeQuery = true)
     void createOrder( int status,Long customer_id);
+
+
+    @Query(value = " select * from orders where status = 1", nativeQuery = true)
+    Page<Order> pageOderAll(Pageable pageable);
+
+    @Query(value = "select * " +
+            "from orders " +
+            "where status=1 and orders.customer_id = :idCustomer", nativeQuery = true)
+    Page<Order> pageOderByCustomer(Pageable pageable, @Param("idCustomer") Long idCustomer);
+
+    @Query(value = "update orders set status=0 where order_id =:oderId"
+            , nativeQuery = true)
+    void updateConfirmPayment(@Param("oderId") Long oderId);
+
+    @Query(value = "select * from orders where status = 1 and order_id=:oderId"
+            , nativeQuery = true)
+    Optional<Order> findById(@Param("oderId") Long oderId);
 }
+
+
+
+
