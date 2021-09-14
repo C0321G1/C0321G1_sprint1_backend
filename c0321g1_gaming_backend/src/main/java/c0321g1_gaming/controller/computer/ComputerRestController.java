@@ -39,7 +39,7 @@ public class ComputerRestController {
     public ResponseEntity<Iterable<Computer>> getAllComputer() {
         List<Computer> computers = computerService.findAll();
         if (computers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
@@ -49,7 +49,7 @@ public class ComputerRestController {
     public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
         Page<Computer> computers = computerService.getAllComputer(pageable);
         if (computers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
@@ -59,7 +59,7 @@ public class ComputerRestController {
     public ResponseEntity<Iterable<ComputerManufacturer>> getAllComputerManufacturer() {
         List<ComputerManufacturer> computerManufacturers = computerManufacturerService.findAll();
         if (computerManufacturers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
     }
@@ -69,7 +69,7 @@ public class ComputerRestController {
     public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
         List<ComputerType> computerTypes = computerTypeService.findAll();
         if (computerTypes.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(computerTypes, HttpStatus.OK);
     }
@@ -79,7 +79,7 @@ public class ComputerRestController {
     public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
         List<ComputerStatus> computerStatus = computerStatusService.findAll();
         if (computerStatus.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(computerStatus, HttpStatus.OK);
     }
