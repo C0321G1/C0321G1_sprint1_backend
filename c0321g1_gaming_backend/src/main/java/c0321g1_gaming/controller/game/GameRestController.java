@@ -93,7 +93,7 @@ public class GameRestController {
     @PostMapping
     public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         Game game = new Game();
         gameDto.setFlagDelete(0);
@@ -105,11 +105,14 @@ public class GameRestController {
     @PatchMapping("{id}")
     public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult,
                                            @PathVariable Long id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Optional<Game> game = gameService.findById(id);
         if (!game.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             gameDto.setGameId(game.get().getGameId());
             BeanUtils.copyProperties(gameDto, game.get());

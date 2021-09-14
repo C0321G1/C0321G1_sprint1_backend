@@ -20,7 +20,7 @@ public class GameTypeRestController {
     private IGameTypeService IGameTypeService;
 
     @GetMapping
-    public ResponseEntity<List<GameType>> list() {
+    public ResponseEntity<Iterable<GameType>> list() {
         List<GameType> gameTypeList = IGameTypeService.findAll();
         if (gameTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

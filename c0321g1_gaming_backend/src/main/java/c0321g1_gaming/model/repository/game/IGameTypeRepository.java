@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface IGameTypeRepository extends JpaRepository<GameType, Long> {
-    @Query(value = "select game_type_id,`name` from game_type", nativeQuery = true)
+    @Query(value = "SELECT game_type_id,`name` FROM game_type", nativeQuery = true)
     List<GameType> findAll();
 }

@@ -3,12 +3,14 @@ package c0321g1_gaming.model.entity.game;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 public class GameType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long gameTypeId;
     private String name;
     @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)
