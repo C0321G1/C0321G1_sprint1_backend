@@ -31,11 +31,20 @@ public class ServicesRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
-        Services services = servicesService.findById(id);
-        if (services == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try {
+            Services services = servicesService.findById(id);
+            if (id == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else if (id == 0) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else if (services == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(services, HttpStatus.OK);
+        }catch (Exception e){
+            System.out.printf(e.getMessage());
         }
-        return new ResponseEntity<>(services, HttpStatus.OK);
+        return null;
     }
 
 

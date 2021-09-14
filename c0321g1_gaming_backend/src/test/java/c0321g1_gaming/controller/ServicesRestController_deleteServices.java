@@ -8,43 +8,28 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServicesRestcontroller_findById {
+public class ServicesRestController_deleteServices {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void findById_1() throws Exception {
+    public void deleteServices_25() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .get("/services/{id}", "null"))
+                        .patch("/services/delete/{id}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void findById_3() throws Exception {
+    public void deleteServices_27() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .get("/services/{id}", 30))
+                        .patch("/services/delete/{id}", 30))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
-    }
-
-    @Test
-    public void findById_4() throws Exception {
-        mockMvc.perform(
-                MockMvcRequestBuilders
-                        .get("/services/{id}", 1))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
-//                .andExpect(jsonPath("$.servicesId").value(1));
-//                .andExpect(jsonPath("$.name").value("nuoc loc"))
-//                .andExpect(jsonPath("$.code").value("DV-0001"));
-        //...
     }
 }
