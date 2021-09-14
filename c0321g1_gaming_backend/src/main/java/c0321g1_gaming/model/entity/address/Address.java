@@ -87,6 +87,14 @@ public class Address {
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
+//    @Override
+//    public boolean equals(Object obj) {
+//        if ( this == obj) return true;
+//        if (obj == null || getClass() != obj.getClass()) return false;
+//        Address that = (Address) obj;
+//        return addressId == that.addressId;
+//    }
 }
 
 

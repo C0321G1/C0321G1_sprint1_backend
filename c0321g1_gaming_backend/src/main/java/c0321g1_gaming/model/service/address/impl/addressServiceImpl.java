@@ -21,6 +21,7 @@ public class addressServiceImpl implements AddressService {
 
     @Override
     public void saveAddress(Address address) {
-        addressRepository.save(address);
+        addressRepository.saveAddress(address.getProvince().getProvinceId(), address.getDistrict().getDistrictId(),
+                address.getCommune().getCommuneId());
     }
 }

@@ -3,18 +3,51 @@ import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.entity.security.Account;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import javax.validation.constraints.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 
-public class EmployeeDto {
+public class EmployeeDto implements Validator {
+
     private Long employeeId;
+
+    @NotNull
+    @Min(0)
     private Long yearOfExp;
+
+    @NotEmpty
+    @Pattern(regexp = "(09\\d{8,9})|(\\(84\\)\\+9\\d{8,9})")
     private String phone;
+
+    @NotEmpty
     private String dateOfBirth;
+
+    @NotEmpty
     private String startWorkDate;
+
+    @NotNull
+    @Min(1)
     private Long level;
+
+    @NotEmpty
+    @Pattern(regexp = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")
     private String email;
+
+    @NotEmpty
+    @Size(min = 6, max = 100)
     private String fullName;
+
+    @NotEmpty
+    @Pattern(regexp = "EMP-\\d{4}")
     private String code;
+
     private String image;
     private int flagDel;
     private Address address;
@@ -161,5 +194,37 @@ public class EmployeeDto {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        EmployeeDto employeeDto = (EmployeeDto) target;
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar period = Calendar.getInstance();
+        Date date = null;
+        try {
+            date = dateFormat.parse(employeeDto.getDateOfBirth());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (date != null) {
+            period.setTime(date);
+        }
+        period.add(Calendar.DATE, 18 * 365);
+        if (period.getTimeInMillis() - System.currentTimeMillis() > 0) {
+            errors.rejectValue("dateOfBirth", "dateOfBirth", "Age must be not less than 18");
+        }
+
+        int timeDiff = employeeDto.getStartWorkDate().compareTo(LocalDate.now().toString());
+        if (timeDiff < 0) {
+            errors.rejectValue("startWorkDate", "startWorkDate", "Start work date must be not in past");
+        }
     }
 }

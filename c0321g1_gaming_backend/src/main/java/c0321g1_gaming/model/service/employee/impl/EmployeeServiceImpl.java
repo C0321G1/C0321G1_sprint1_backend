@@ -28,16 +28,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Page<Employee> searchEmployee(Pageable pageable, String employeeId, String dateBirthFrom, String dateBirthTo, String dateWorkFrom, String dateWorkTo, String position, String province) {
-        return employeeRepository.searchEmployee( pageable, employeeId, dateBirthFrom, dateBirthTo, dateWorkFrom, dateWorkTo, position, province);
+        return employeeRepository.searchEmployee(pageable, employeeId, dateBirthFrom, dateBirthTo, dateWorkFrom, dateWorkTo, position, province);
     }
 
+    //Linh create method saveEmployee
     @Override
     public void saveEmployee(Employee employee) {
-        employeeRepository.save(employee);
+        employeeRepository.saveEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
+                employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
+                employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
+                employee.getGender().getGenderId(), 0);
     }
 
+    //Linh create method findById
     @Override
     public Optional<Employee> findById(Long id) {
-        return employeeRepository.findById(id);
+        return employeeRepository.findEmployeeById(id);
+    }
+
+    //Linh create method editEmployee
+    @Override
+    public void editEmployee(Employee employee) {
+        employeeRepository.editEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
+                employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
+                employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
+                employee.getGender().getGenderId(), employee.getAccount().getAccountId(), employee.getEmployeeId());
+
     }
 }
