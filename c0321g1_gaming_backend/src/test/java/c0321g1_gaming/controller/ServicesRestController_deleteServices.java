@@ -16,7 +16,7 @@ public class ServicesRestController_deleteServices {
     private MockMvc mockMvc;
 
     @Test
-    public void deleteServices_25() throws Exception {
+    public void deleteServices_id_25() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .patch("/services/delete/{id}", "null"))
@@ -25,11 +25,20 @@ public class ServicesRestController_deleteServices {
     }
 
     @Test
-    public void deleteServices_27() throws Exception {
+    public void deleteServices_id_27() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/services/delete/{id}", 30))
+                        .patch("/services/delete/{id}", 50))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void deleteServices_id_28() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders
+                        .patch("/services/delete/{id}", 1))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
     }
 }

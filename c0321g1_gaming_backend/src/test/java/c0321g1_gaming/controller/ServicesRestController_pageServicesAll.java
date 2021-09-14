@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServicesRestcontroller_pageServicesAll {
+public class ServicesRestController_pageServicesAll {
     @Autowired
     private MockMvc mockMvc;
 
@@ -46,8 +46,8 @@ public class ServicesRestcontroller_pageServicesAll {
         int statusCode = pageResponseEntity.getStatusCodeValue();
 
         Assertions.assertEquals(200, statusCode);
-//        Assertions.assertEquals(1, servicesPage.getTotalElements());
-//        Assertions.assertEquals(1, servicesPage.getTotalPages());
+        Assertions.assertEquals(1, servicesPage.getTotalElements());
+        Assertions.assertEquals(1, servicesPage.getTotalPages());
 //        Assertions.assertEquals(1, servicesPage.getContent().get(0).getCode());
 //        Assertions.assertEquals(1, servicesPage.getContent().get(0).getName());
         //...

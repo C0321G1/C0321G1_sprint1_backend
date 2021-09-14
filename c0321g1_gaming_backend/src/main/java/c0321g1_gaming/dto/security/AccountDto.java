@@ -14,29 +14,35 @@ import java.util.Set;
 
 
 public class AccountDto {
-	private Long AccountId;
-	private String username;
-	private String email;
-	private String password;
-	private Set<Role> roles = new HashSet<>();
-	private Category category;
-	private Customer customerDto;
-	private Employee employeeDto;
-	public AccountDto() {
+    private Long AccountId;
+    private String username;
+    private String password;
+    private Set<Role> roles = new HashSet<>();
+    private Category category;
+    private Customer customerDto;
+    private Employee employeeDto;
+
+    public AccountDto() {
+    }
+
+
+	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customerDto, Employee employeeDto) {
+		AccountId = accountId;
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+		this.category = category;
+		this.customerDto = customerDto;
+		this.employeeDto = employeeDto;
 	}
 
-	public AccountDto(String username, String email, String password) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-	}
 
 	public Long getAccountId() {
 		return AccountId;
 	}
 
 	public void setAccountId(Long accountId) {
-		this.AccountId = accountId;
+		AccountId = accountId;
 	}
 
 	public String getUsername() {
@@ -45,14 +51,6 @@ public class AccountDto {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -69,5 +67,29 @@ public class AccountDto {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Customer getCustomerDto() {
+		return customerDto;
+	}
+
+	public void setCustomerDto(Customer customerDto) {
+		this.customerDto = customerDto;
+	}
+
+	public Employee getEmployeeDto() {
+		return employeeDto;
+	}
+
+	public void setEmployeeDto(Employee employeeDto) {
+		this.employeeDto = employeeDto;
 	}
 }

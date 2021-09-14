@@ -1,19 +1,19 @@
 package c0321g1_gaming.model.service.order;
 
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
 public interface IOrderService {
-    void create(Orders order);
+    void create(Order order);
 
-    Page<Orders> findAllOder(Pageable pageable);
+    Page<Order> findAllOder(Pageable pageable);
 
-    Page<Orders> findOderByIdCustomer(Pageable pageable,Long idCustomer);
+    Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer);
 
     void confirmPayments(Long idOrders);
 
-    Optional<Orders> findById(Long id);
+    Optional<Order> findById(Long id);
 }
