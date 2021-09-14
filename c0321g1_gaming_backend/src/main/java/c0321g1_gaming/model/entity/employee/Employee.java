@@ -12,12 +12,12 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String code;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
     private String fullName;
 
@@ -37,7 +37,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, int flagDelete, List<Address> addressList, Position position, Account account) {
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, int flagDelete, List<Address> addressList, Position position, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -53,14 +53,6 @@ public class Employee {
         this.account = account;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -69,12 +61,20 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
+    public Long getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(String yearOfExp) {
+    public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getPhone() {
@@ -101,11 +101,11 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Long level) {
         this.level = level;
     }
 

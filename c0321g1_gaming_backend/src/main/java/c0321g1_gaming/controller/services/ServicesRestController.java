@@ -34,6 +34,8 @@ public class ServicesRestController {
         Services services = servicesService.findById(id);
         if (services == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }if (id == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(services, HttpStatus.OK);
     }

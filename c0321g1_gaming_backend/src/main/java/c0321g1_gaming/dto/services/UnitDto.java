@@ -1,10 +1,5 @@
 package c0321g1_gaming.dto.services;
 
-import c0321g1_gaming.model.entity.services.Services;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import javax.persistence.*;
-import java.util.List;
 
 
 public class UnitDto {
