@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,48 +19,52 @@ public class Customer {
     private String code;
     private String dateOfBirth;
     private String fullName;
-    private int flagDelete;
+    private int flag;
     private String phone;
-    @ManyToMany
-    @JoinTable(name = "customer_address",
-            joinColumns = @JoinColumn(name = "customerId")
-            ,inverseJoinColumns = @JoinColumn(name = "addressId"))
-    @JsonBackReference
-    private List<Address> addressList;
+    @ManyToOne(targetEntity = Gender.class)
+    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
+    private Gender gender;
+
+    @ManyToOne
+    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
+    private Address address;
+
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
+
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orderList;
+
     @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
-    public Customer() {
+        public Customer() {
     }
 
-    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressList, CustomerStatus customerStatus, List<Order> orderList, Account account) {
+    public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, Gender gender) {
         this.customerId = customerId;
         this.email = email;
         this.code = code;
         this.dateOfBirth = dateOfBirth;
         this.fullName = fullName;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.phone = phone;
-        this.addressList = addressList;
+        this.address = address;
         this.customerStatus = customerStatus;
         this.orderList = orderList;
         this.account = account;
+        this.gender = gender;
     }
 
-
-    public String getCode() {
-        return code;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Long getCustomerId() {
@@ -78,6 +83,14 @@ public class Customer {
         this.email = email;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getDateOfBirth() {
         return dateOfBirth;
     }
@@ -94,12 +107,12 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlag(int flagDelete) {
+        this.flag = flagDelete;
     }
 
     public String getPhone() {
@@ -110,12 +123,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public CustomerStatus getCustomerStatus() {

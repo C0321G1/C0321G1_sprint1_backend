@@ -2,31 +2,41 @@ package c0321g1_gaming.dto.services;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
 
-import javax.persistence.*;
+import java.util.List;
 
 
 public class ServicesDto {
     private Long servicesId;
+    private String code;
     private int quantity;
     private int prices;
     private String name;
-    private int flagDelete;
+    private int flag;
     private String image;
-    private Unit unitDto;
-    private Order orderDto;
+    private Unit unit;
+    private List<Order> orderList;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, int quantity, int prices, String name, int flagDelete, String image, Unit unitDto, Order orderDto) {
+    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, List<Order> orderList) {
         this.servicesId = servicesId;
+        this.code = code;
         this.quantity = quantity;
         this.prices = prices;
         this.name = name;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.image = image;
-        this.unitDto = unitDto;
-        this.orderDto = orderDto;
+        this.unit = unit;
+        this.orderList = orderList;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Long getServicesId() {
@@ -61,12 +71,12 @@ public class ServicesDto {
         this.name = name;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getImage() {
@@ -77,19 +87,19 @@ public class ServicesDto {
         this.image = image;
     }
 
-    public Unit getUnitDto() {
-        return unitDto;
+    public Unit getUnit() {
+        return unit;
     }
 
-    public void setUnitDto(Unit unitDto) {
-        this.unitDto = unitDto;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
-    public Order getOrderDto() {
-        return orderDto;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrderDto(Order orderDto) {
-        this.orderDto = orderDto;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }
