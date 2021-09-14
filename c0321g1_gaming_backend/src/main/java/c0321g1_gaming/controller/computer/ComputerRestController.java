@@ -87,6 +87,9 @@ public class ComputerRestController {
     //Get computer by id
     @GetMapping("/computer/{id}")
     public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
+        if(id == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Optional<Computer> computer = computerService.findComputerById(id);
         if (!computer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -97,8 +100,14 @@ public class ComputerRestController {
     //Delete computer
     @DeleteMapping("/computer/{id}")
     public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
+        if(id==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Optional<Computer> computer = computerService.findComputerById(id);
-        if (computer == null) {
+        if (!computer.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if (computer.get().getComputerStatus().getComputerStatusId() == 1) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         computer.get().setFlagDelete(1);
@@ -110,20 +119,35 @@ public class ComputerRestController {
     @GetMapping("/computer/searchComputer")
     public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
                                                          @RequestParam Optional<String> computerId,
-                                                         @RequestParam Optional<String> location
-                                                         ){
-        String computerIdSearch= computerId.orElse("");
-        String locationSearch= location.orElse("");
-        /*
-        String startDateFromSearch= startDateFrom.orElse("");
-        String startDateToSearch= startDateTo.orElse("");
-        String statusSearch= status.orElse("");
-        String computerTypeSearch= computerType.orElse("");*/
-        Page<Computer> computerSearchPage=computerService.searchComputer(computerIdSearch, locationSearch, pageable);
-        if (computerSearchPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                                                         @RequestParam Optional<String> location,
+                                                         @RequestParam Optional<String> computerType,
+                                                         @RequestParam Optional<String> computerStatus,
+                                                         @RequestParam Optional<String> startDateFrom,
+                                                         @RequestParam Optional<String> startDateTo
+    ) {
+        Page<Computer> computerSearchPage;
+        String computerIdSearch = computerId.orElse("");
+        String locationSearch = location.orElse("");
+        String statusSearch = computerStatus.orElse("");
+        String computerTypeSearch = computerType.orElse("");
+        String startDateFromSearch = startDateFrom.orElse("");
+        String startDateToSearch = startDateTo.orElse("");
+        if (startDateFromSearch == "" && startDateToSearch == "") {
+            computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
+                    statusSearch, pageable);
+            if (computerSearchPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
         }
-        return new ResponseEntity<>(computerSearchPage,HttpStatus.OK);
-    }
+        else {
+            computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
+                    statusSearch, startDateFromSearch, startDateToSearch, pageable);
+            if (computerSearchPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
+        }
 
+    }
 }

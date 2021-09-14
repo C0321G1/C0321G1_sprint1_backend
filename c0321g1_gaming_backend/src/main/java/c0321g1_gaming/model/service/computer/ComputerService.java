@@ -12,7 +12,11 @@ public interface ComputerService {
 
     List<Computer> findAll();
 
-    Page<Computer> searchComputer(String computerId, String location, Pageable pageable);
+    Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                  String startDateFrom, String startDateTo, Pageable pageable);
+
+    Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                  Pageable pageable);
 
     Optional<Computer> findComputerById(Long id);
 

@@ -27,15 +27,29 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public Page<Computer> searchComputer(String computerId, String location, Pageable pageable) {
+    public Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                         String startDateFrom, String startDateTo, Pageable pageable) {
         computerId = "%" + computerId + "%";
         location = "%" + location + "%";
-        return computerRepository.searchComputer(computerId, location, pageable);
+        computerType = "%" + computerType + "%";
+        computerStatus = "%" + computerStatus + "%";
+        return computerRepository.searchComputer(computerId, location, computerType, computerStatus, startDateFrom,
+                startDateTo, pageable);
+    }
+
+    @Override
+    public Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                         Pageable pageable) {
+        computerId = "%" + computerId + "%";
+        location = "%" + location + "%";
+        computerType = "%" + computerType + "%";
+        computerStatus = "%" + computerStatus + "%";
+        return computerRepository.searchComputer(computerId, location, computerType, computerStatus, pageable);
     }
 
     @Override
     public Optional<Computer> findComputerById(Long id) {
-        return computerRepository.findById(id);
+        return computerRepository.findComputerById(id);
     }
 
     @Override
