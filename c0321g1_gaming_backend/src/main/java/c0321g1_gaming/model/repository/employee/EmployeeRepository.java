@@ -29,7 +29,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     // khue create method query search employee
     @Query(value = "SELECT employee.employee_id, employee.code, employee.date_of_birth, employee.email," +
-            "  employee.flag_del, employee.image, employee.level, employee.name,employee.phone," +
+            "  employee.flag_del, employee.image, employee.level, employee.full_name,employee.phone," +
             "  employee.start_work_date, employee.year_of_exp, employee.account_id," +
             "  employee.address_id, employee.gender_id, employee.position_id" +
             "   FROM `employee` " +
