@@ -4,6 +4,8 @@ import c0321g1_gaming.model.entity.game.Game;
 import c0321g1_gaming.model.repository.game.IGameRepository;
 import c0321g1_gaming.model.service.game.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,12 +35,17 @@ public class GameServiceImpl implements IGameService {
 
     //    Creator: Thúy
     @Override
-    public List<Game> getGameBySearchingName(String name, String gameType) {
-        return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");
+    public Page<Game> getAllGame(Pageable pageable) {
+        return gameRepository.getAllGame(pageable);
     }
 
     @Override
-    public void updateGameFlag(int flagDelete, Long gameId) {
-        gameRepository.updateGameFlag(flagDelete, gameId);
+    public Page<Game> getGameBySearching(Pageable pageable, String name, String gameType) {
+        return gameRepository.getGameBySearching(pageable, "%" + name + "%", "%" + gameType + "%");
+    }
+
+    @Override
+    public void deleteGameFlag(Long gameId) {
+        gameRepository.deleteGameFlag(gameId);
     }
 }
