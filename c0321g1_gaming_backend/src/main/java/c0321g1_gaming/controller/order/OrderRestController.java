@@ -1,6 +1,6 @@
 package c0321g1_gaming.controller.order;
 
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.service.order.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,35 +13,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/orders")
+@CrossOrigin("http://localhost:4200/")
+@RequestMapping("/order")
 public class OrderRestController {
     @Autowired
 
     IOrderService orderService;
+
     @GetMapping(value = "/list")
-    public ResponseEntity<Page<Orders>> findAllOder(@PageableDefault(value = 5) Pageable pageable){
-        Page<Orders> page = orderService.findAllOder(pageable);
-        if(page.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Page<Order>> findAllOder(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Order> page = orderService.findAllOder(pageable);
+        if (page.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(page,HttpStatus.OK);
+        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Page<Orders>> findAllOderByCustomerId(@PageableDefault(value = 5) Pageable pageable,
-                                                                @PathVariable Long id){
-        Page<Orders> page = orderService.findOderByIdCustomer(pageable,id);
-        if(page.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @GetMapping(value = "/{idCustomer}")
+    public ResponseEntity<Page<Order>> findAllOderByCustomerId(@PageableDefault(value = 5) Pageable pageable,
+                                                               @PathVariable Long idCustomer) {
+        Page<Order> page = orderService.findOderByIdCustomer(pageable, idCustomer);
+        if (page.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(page,HttpStatus.OK);
+        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    @PatchMapping(value ="/{id}")
-    public ResponseEntity<Page<Orders>> confirmPayment(@PageableDefault(value = 5) Pageable pageable,
-                                                                @PathVariable Long id){
-        Optional<Orders> optionalOrders = orderService.findById(id);
-        if(!optionalOrders.isPresent()){
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Void> confirmPayment(@PathVariable Long id) {
+        Optional<Order> optionalOrders = orderService.findById(id);
+        if (!optionalOrders.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         orderService.confirmPayments(id);

@@ -3,7 +3,7 @@ package c0321g1_gaming.dto.computer;
 import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
 import c0321g1_gaming.model.entity.computer.ComputerStatus;
 import c0321g1_gaming.model.entity.computer.ComputerType;
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 
 import java.util.List;
 
@@ -19,12 +19,12 @@ public class ComputerDto {
     private ComputerStatus computerStatusDto;
     private ComputerType computerTypeDto;
     private ComputerManufacturer computerManufacturerDto;
-    private List<Orders> ordersDtoList;
+    private List<Order> ordersDtoList;
     public ComputerDto() {
     }
 
     public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate,
-                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Orders> ordersDtoList) {
+                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> ordersDtoList) {
         this.computerId = computerId;
         this.computerCode = computerCode;
         this.location = location;
@@ -118,11 +118,11 @@ public class ComputerDto {
         this.computerManufacturerDto = computerManufacturerDto;
     }
 
-    public List<Orders> getOrderDtoList() {
+    public List<Order> getOrderDtoList() {
         return ordersDtoList;
     }
 
-    public void setOrderDtoList(List<Orders> ordersDtoList) {
+    public void setOrderDtoList(List<Order> ordersDtoList) {
         this.ordersDtoList = ordersDtoList;
     }
 }
