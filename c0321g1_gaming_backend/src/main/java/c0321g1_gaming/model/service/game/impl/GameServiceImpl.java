@@ -28,7 +28,7 @@ public class GameServiceImpl implements IGameService {
 
     @Override
     public void updateGame(Game game) {
-        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete(), game.getGameId());
+        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(),game.getFlagDelete(), game.getGameId());
     }
 
     //    Creator: Thúy

@@ -30,6 +30,27 @@ public class Game {
         this.gameType = gameType;
     }
 
+    public Game(Long gameId, String content, String name, String image, String gaming, String trailer, GameType gameType) {
+        this.gameId = gameId;
+        this.content = content;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
+    public Game(Long gameId, String content, int flagDelete, String name, String image, String gaming, String trailer, GameType gameType) {
+        this.gameId = gameId;
+        this.content = content;
+        this.flagDelete = flagDelete;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
     public Long getGameId() {
         return gameId;
     }
