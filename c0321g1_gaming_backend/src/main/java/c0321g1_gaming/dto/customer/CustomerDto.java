@@ -1,5 +1,8 @@
 package c0321g1_gaming.dto.customer;
 
+import c0321g1_gaming.dto.address.AddressDto;
+import c0321g1_gaming.dto.gender.GenderDto;
+import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import c0321g1_gaming.model.entity.gender.Gender;
@@ -25,6 +28,7 @@ public class CustomerDto {
     private Address address;
     private CustomerStatus customerStatus;
     private List<Order> orderList;
+    @NotNull
     private Account account;
     private String code;
     private Gender gender;
@@ -32,7 +36,7 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, @NotEmpty String fullName, int flag, @NotEmpty @Pattern(regexp = "\\d{10,12}", message = "Phone must have 10 -12 number") String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, @NotNull Account account, String code, Gender gender) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -45,22 +49,6 @@ public class CustomerDto {
         this.account = account;
         this.code = code;
         this.gender = gender;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getCustomerId() {
@@ -141,5 +129,21 @@ public class CustomerDto {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
