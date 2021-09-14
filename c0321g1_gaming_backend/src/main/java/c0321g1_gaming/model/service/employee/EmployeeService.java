@@ -25,6 +25,6 @@ public interface EmployeeService {
     //Linh create method editEmployee
     void editEmployee(Employee employee);
 
-    }
+}
 
 
