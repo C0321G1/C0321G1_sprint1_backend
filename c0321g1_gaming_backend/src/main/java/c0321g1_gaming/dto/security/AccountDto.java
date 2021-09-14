@@ -6,6 +6,7 @@ import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
 
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +14,12 @@ import java.util.Set;
 
 public class AccountDto {
 	private Long AccountId;
+
+	@Size(max = 15, message = "username maxlength is 15")
 	private String username;
 	private String email;
+
+	@Size(max = 15, message = "password maxlength is 15")
 	private String password;
 	private Set<Role> roles = new HashSet<>();
 	private Category category;

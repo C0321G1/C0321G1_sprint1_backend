@@ -17,7 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Transactional
     @Modifying
     @Query(value = "INSERT into category (discount, description, type)" +
-            "values = (discount = '10%', description = '1h 20.000 VND * số giờ chơi', type = 'Theo giờ')", nativeQuery = true)
+            "values ('10%','1h 20.000 VND * số giờ chơi', 'Theo giờ')", nativeQuery = true)
     void createCategory();
 
 }

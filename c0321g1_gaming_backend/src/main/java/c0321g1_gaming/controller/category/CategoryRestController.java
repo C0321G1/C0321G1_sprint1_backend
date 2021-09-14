@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("api/category")
 public class CategoryRestController {
 
     //creator : Tra
@@ -21,16 +21,12 @@ public class CategoryRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable Long id) {
-        Optional<Category> categoryOptional = categoryService.finById(id);
 
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        if (id.equals("")) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
+        Optional<Category> categoryOptional = categoryService.finById(id);
         if (!categoryOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
