@@ -13,23 +13,22 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
     @ManyToOne
-    @JoinColumn(name = "provinceId",referencedColumnName = "provinceId")
+    @JoinColumn(name = "provinceId", referencedColumnName = "provinceId")
     private Province province;
     @ManyToOne
-    @JoinColumn(name = "districtId",referencedColumnName = "districtId")
+    @JoinColumn(name = "districtId", referencedColumnName = "districtId")
     private District district;
     @ManyToOne
-    @JoinColumn(name = "communeId",referencedColumnName = "communeId")
+    @JoinColumn(name = "communeId", referencedColumnName = "communeId")
     private Commune commune;
-
-
-
-    @ManyToMany(mappedBy = "addressList",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Customer> customerList;
-    @ManyToMany(mappedBy = "addressList",cascade = CascadeType.ALL)
-    @JsonBackReference
+
+   @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
+   @JsonBackReference
     private List<Employee> employeeList;
+
     public Address() {
     }
 
@@ -90,3 +89,5 @@ public class Address {
         this.employeeList = employeeList;
     }
 }
+
+

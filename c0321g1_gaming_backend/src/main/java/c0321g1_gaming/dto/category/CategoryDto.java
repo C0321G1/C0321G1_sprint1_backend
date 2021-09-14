@@ -10,14 +10,14 @@ public class CategoryDto {
     private String name;
     private String startTime;
     private String endTime;
-    private int fee;
+    private String fee;
     private String type;
-    private Account accountDto;
+    private Account account;
 
     public CategoryDto() {
     }
 
-    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account accountDto) {
+    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, String fee, String type, Account account) {
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;
@@ -26,7 +26,7 @@ public class CategoryDto {
         this.endTime = endTime;
         this.fee = fee;
         this.type = type;
-        this.accountDto = accountDto;
+        this.account = account;
     }
 
     public Long getCategoryId() {
@@ -77,11 +77,11 @@ public class CategoryDto {
         this.endTime = endTime;
     }
 
-    public int getFee() {
+    public String getFee() {
         return fee;
     }
 
-    public void setFee(int fee) {
+    public void setFee(String fee) {
         this.fee = fee;
     }
 
@@ -93,11 +93,11 @@ public class CategoryDto {
         this.type = type;
     }
 
-    public Account getAccountDto() {
-        return accountDto;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountDto(Account accountDto) {
-        this.accountDto = accountDto;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
