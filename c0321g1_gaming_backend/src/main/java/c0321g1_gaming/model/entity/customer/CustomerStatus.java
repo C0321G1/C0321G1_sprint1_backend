@@ -24,7 +24,7 @@ public class CustomerStatus {
         this.customerList = customerList;
     }
 
-    public Long getCustomerStatusId() {
+    public Long getCustomerStatusId(int i) {
         return customerStatusId;
     }
 
@@ -32,7 +32,7 @@ public class CustomerStatus {
         this.customerStatusId = customerStatusId;
     }
 
-    public String getName() {
+    public String getName(String aDo) {
         return name;
     }
 

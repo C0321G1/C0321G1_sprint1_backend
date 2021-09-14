@@ -35,7 +35,7 @@ public class Gender {
         this.customerList = customerList;
     }
 
-    public Long getGenderId() {
+    public Long getGenderId(int i) {
         return genderId;
     }
 
@@ -43,7 +43,7 @@ public class Gender {
         this.genderId = genderId;
     }
 
-    public String getName() {
+    public String getName(String namNu) {
         return name;
     }
 

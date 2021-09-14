@@ -1,40 +1,37 @@
 package c0321g1_gaming.dto.customer;
 
-import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.customer.CustomerStatus;
-import c0321g1_gaming.model.entity.gender.Gender;
 
+import javax.validation.constraints.NotBlank;
 
 public class CusDTO {
     private Long customerId;
-    private String code;
-    private String email;
-    private String dateOfBirth;
     private String fullName;
-    private int flag;
+    private String email;
+    @NotBlank(message = "Please input date of birth")
+    private String dateOfBirth;
     private String phone;
-    private Address address;
-    private CustomerStatus customerStatus;
-    private Gender gender;
+    private Long addressId;
+    private Long genderId;
     private String password;
     private String username;
+    private int flag;
+    private Long customerStatusId;
 
     public CusDTO() {
     }
 
-    public CusDTO(Long customerId, String code, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, Gender gender, String password, String username) {
+    public CusDTO(Long customerId, String fullName, String email, String dateOfBirth, String phone, Long addressId, Long genderId, String password, String username, int flag, Long customerStatusId) {
         this.customerId = customerId;
-        this.code = code;
+        this.fullName = fullName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.fullName = fullName;
-        this.flag = flag;
         this.phone = phone;
-        this.address = address;
-        this.customerStatus = customerStatus;
-        this.gender = gender;
+        this.addressId = addressId;
+        this.genderId = genderId;
         this.password = password;
         this.username = username;
+        this.flag = flag;
+        this.customerStatusId = customerStatusId;
     }
 
     public Long getCustomerId() {
@@ -45,12 +42,12 @@ public class CusDTO {
         this.customerId = customerId;
     }
 
-    public String getCode() {
-        return code;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -69,22 +66,6 @@ public class CusDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public int getFlag(int i) {
-        return flag;
-    }
-
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -93,28 +74,20 @@ public class CusDTO {
         this.phone = phone;
     }
 
-    public Address getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
-    public CustomerStatus getCustomerStatus() {
-        return customerStatus;
+    public Long getGenderId() {
+        return genderId;
     }
 
-    public void setCustomerStatus(CustomerStatus customerStatus) {
-        this.customerStatus = customerStatus;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setGenderId(Long genderId) {
+        this.genderId = genderId;
     }
 
     public String getPassword() {
@@ -131,5 +104,21 @@ public class CusDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public Long getCustomerStatusId() {
+        return customerStatusId;
+    }
+
+    public void setCustomerStatusId(Long customerStatusId) {
+        this.customerStatusId = customerStatusId;
     }
 }
