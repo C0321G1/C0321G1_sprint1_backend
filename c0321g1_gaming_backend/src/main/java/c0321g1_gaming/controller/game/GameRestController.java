@@ -5,6 +5,9 @@ import c0321g1_gaming.model.entity.game.Game;
 import c0321g1_gaming.model.service.game.IGameService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -27,11 +29,19 @@ public class GameRestController {
 
     //    Creator: Thúy
     @GetMapping
-    public ResponseEntity<List<Game>> showListGame(Optional<String> name, Optional<String> gameType) {
-        String nameValue = name.orElse("");
-        String gameTypeValue = gameType.orElse("");
-        List<Game> gameList = gameService.getGameBySearchingName(nameValue, gameTypeValue);
-        if (gameList.size() == 0) {
+    public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 2) Pageable pageable) {
+        Page<Game> gameList = gameService.getAllGame(pageable);
+        if (gameList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(gameList, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<Game>> searchGame(@PageableDefault(value = 2) Pageable pageable,
+                                                 @RequestParam String name, @RequestParam String gameType) {
+        Page<Game> gameList = gameService.getGameBySearching(pageable, name, gameType);
+        if (gameList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(gameList, HttpStatus.OK);
@@ -45,22 +55,23 @@ public class GameRestController {
         Optional<Game> gameOptional = gameService.findById(id);
         if (!gameOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
         }
-        return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
     }
 
     @PatchMapping(value = "delete/{id}")
     public ResponseEntity<Game> deleteGame(@PathVariable Long id) {
-        Optional<Game> gameOptional = gameService.findById(id);
         if (id == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        Optional<Game> gameOptional = gameService.findById(id);
         if (!gameOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            gameService.deleteGameFlag(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        gameOptional.get().setFlagDelete(1);
-        gameService.updateGameFlag(gameOptional.get().getFlagDelete(), gameOptional.get().getGameId());
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 // Creator: Nhung
