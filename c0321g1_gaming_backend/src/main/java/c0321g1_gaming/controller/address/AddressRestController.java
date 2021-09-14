@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/address")
@@ -26,21 +28,34 @@ public class AddressRestController {
     //creator: vinhdn
     @Autowired
     CommuneService communeService;
+
+    //creator: vinhdn
     @GetMapping("/province")
-    public ResponseEntity<Iterable<Province>> getProvinceList() {
-        Iterable<Province> provinceList = provinceService.findAll();
+    public ResponseEntity<List<Province>> getProvinceList() {
+        List<Province> provinceList = provinceService.findAll();
+        if (provinceList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(provinceList, HttpStatus.OK);
     }
+
     //creator: vinhdn
     @GetMapping("/district")
-    public ResponseEntity<Iterable<District>> getDistrictList() {
-        Iterable<District> districtList = districtService.findAll();
+    public ResponseEntity<List<District>> getDistrictList() {
+        List<District> districtList = districtService.findAll();
+        if (districtList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
+
     //creator: vinhdn
     @GetMapping("/commune")
-    public ResponseEntity<Iterable<Commune>> getCommuneList() {
-        Iterable<Commune> communeList = communeService.findAll();
+    public ResponseEntity<List<Commune>> getCommuneList() {
+        List<Commune> communeList = communeService.findAll();
+        if (communeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(communeList, HttpStatus.OK);
     }
 }

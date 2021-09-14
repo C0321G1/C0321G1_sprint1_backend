@@ -6,13 +6,15 @@ import c0321g1_gaming.model.service.address.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DistrictServiceImpl implements DistrictService {
     @Autowired
     private DistrictRepository districtRepository;
-
+    //creator: vinhdn
     @Override
-    public Iterable<District> findAll() {
-        return districtRepository.findAll();
+    public List<District> findAll() {
+        return districtRepository.findAllQuery();
     }
 }

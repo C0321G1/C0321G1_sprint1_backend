@@ -2,6 +2,7 @@ package c0321g1_gaming.model.service.account;
 
 import c0321g1_gaming.model.entity.security.Account;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AccountService {
@@ -25,4 +26,6 @@ public interface AccountService {
 
     //creator: vinhdn
     void editAccount(String username, String password, Long id);
+    //creator: vinhdn
+    List<Account> findAllQuery();
 }

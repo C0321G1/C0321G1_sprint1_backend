@@ -6,13 +6,15 @@ import c0321g1_gaming.model.service.address.CommuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommuneServiceImpl implements CommuneService {
     @Autowired
     private CommuneRepository communeRepository;
-
+    //creator: vinhdn
     @Override
-    public Iterable<Commune> findAll() {
-        return communeRepository.findAll();
+    public List<Commune> findAll() {
+        return communeRepository.findAllQuery();
     }
 }

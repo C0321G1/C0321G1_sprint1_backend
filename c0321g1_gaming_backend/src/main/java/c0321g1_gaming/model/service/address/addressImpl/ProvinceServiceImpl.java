@@ -6,13 +6,15 @@ import c0321g1_gaming.model.service.address.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
     @Autowired
     private ProvinceRepository provinceRepository;
-
+    //creator: vinhdn
     @Override
-    public Iterable<Province> findAll() {
-        return provinceRepository.findAll();
+    public List<Province> findAll() {
+        return provinceRepository.findAllQuery();
     }
 }

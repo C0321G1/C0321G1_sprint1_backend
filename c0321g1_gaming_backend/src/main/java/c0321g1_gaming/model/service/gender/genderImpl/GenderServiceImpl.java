@@ -6,13 +6,15 @@ import c0321g1_gaming.model.service.gender.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GenderServiceImpl implements GenderService {
     @Autowired
     private GenderRepository genderRepository;
 
     @Override
-    public Iterable<Gender> findAll() {
+    public List<Gender> findAll() {
         return genderRepository.findAll();
     }
 }

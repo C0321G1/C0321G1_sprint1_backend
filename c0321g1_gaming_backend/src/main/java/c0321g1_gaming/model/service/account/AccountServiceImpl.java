@@ -5,6 +5,7 @@ import c0321g1_gaming.model.repository.account.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -53,6 +54,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void editAccount(String username, String password, Long id) {
         accountRepository.editAccountQuery(username, password, id);
+    }
+    //creator: vinhdn
+    @Override
+    public List<Account> findAllQuery() {
+        return accountRepository.findAllQuery();
     }
 
 }

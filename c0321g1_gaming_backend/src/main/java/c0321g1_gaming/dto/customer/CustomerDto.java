@@ -5,6 +5,10 @@ import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 
@@ -12,8 +16,11 @@ public class CustomerDto {
     private Long customerId;
     private String email;
     private String dateOfBirth;
+    @NotEmpty
     private String fullName;
     private int flag;
+    @NotEmpty
+    @Pattern(regexp = "\\d{10,12}",message = "Phone must have 10 -12 number")
     private String phone;
     private Address address;
     private CustomerStatus customerStatus;
