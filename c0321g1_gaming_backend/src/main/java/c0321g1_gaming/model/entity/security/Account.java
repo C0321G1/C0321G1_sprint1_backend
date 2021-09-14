@@ -32,11 +32,13 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private Customer customer;
 
-    @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+
+    @JsonBackReference(value = "account-employee")
     private Employee employee;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account-computer")
     private List<AccountComputer> accountComputer;
 
     public Account() {

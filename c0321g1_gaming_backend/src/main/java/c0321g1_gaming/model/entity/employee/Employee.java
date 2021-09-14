@@ -3,6 +3,9 @@ package c0321g1_gaming.model.entity.employee;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import javax.persistence.*;
@@ -19,28 +22,31 @@ public class Employee {
     private String startWorkDate;
     private Long level;
     private String email;
-    private String name;
+    private String fullName;
     private String image;
     private int flagDel;
-    @ManyToOne
+
+    @ManyToOne(targetEntity = Address.class)
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
+
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Gender.class)
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne
+    @OneToOne(targetEntity = Account.class)
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
     public Employee() {
     }
 
-    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String name, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
+                    String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -49,7 +55,7 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
-        this.name = name;
+        this.fullName = fullName;
         this.image = image;
         this.flagDel = flagDel;
         this.address = address;
@@ -122,12 +128,12 @@ public class Employee {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getImage() {

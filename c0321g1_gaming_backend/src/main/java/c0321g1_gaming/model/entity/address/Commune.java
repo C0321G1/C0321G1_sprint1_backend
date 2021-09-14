@@ -11,7 +11,8 @@ public class Commune {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long communeId;
     private String name;
-    @OneToMany(mappedBy = "commune",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "commune")
     @JsonBackReference
     private List<Address> addressList;
 
