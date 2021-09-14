@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class ServicesServiceImpl implements IServicesService {
     @Autowired
@@ -57,10 +58,6 @@ public class ServicesServiceImpl implements IServicesService {
         return servicesRepository.pageServicesCodeNamePrices("%"+code+"%","%"+name+"%","%"+prices+"%",pageable);
     }
 
-    @Override
-    public void deleteById(Long id) {
-        servicesRepository.deleteServicesId(id);
-    }
 
     @Override
     public void update(Services services) {
@@ -84,6 +81,7 @@ public class ServicesServiceImpl implements IServicesService {
         servicesRepository.updateServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),
                 services.getQuantity(),services.getUnit().getUnitId(),services.getServicesId());
     }
+
 
 
 }

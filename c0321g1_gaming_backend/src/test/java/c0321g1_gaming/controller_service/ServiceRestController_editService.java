@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -43,11 +44,24 @@ public class ServiceRestController_editService {
                 .andExpect(status().is4xxClientError());
     }
 
+    @Test
+    public void getInfoServices_id_2() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders
+                        .get("/services/{id}", 13))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Bia heniken"))
+                .andExpect(jsonPath("$.prices").value(12000))
+                .andExpect(jsonPath("$.quantity").value(100))
+                .andExpect(jsonPath("$.image").value("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a"))
+                .andExpect(jsonPath("$.code").value("SV-0015"));
+    }
+
 
     @Test
     public void editService_name_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName(null);
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -61,7 +75,30 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void editService_name_14() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(12000);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
+
+        Unit unit = new Unit();
+        unit.setUnitId(2);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -70,7 +107,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_prices_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -84,7 +120,7 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -94,7 +130,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_quantity_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -108,7 +143,7 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -118,7 +153,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_image_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -132,7 +166,30 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void editService_image_14() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("Tiger");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(12000);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage(null);
+
+        Unit unit = new Unit();
+        unit.setUnitId(2);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -141,7 +198,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_unit_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -155,7 +211,7 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -165,7 +221,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_price_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -179,7 +234,30 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void editService_price2_15() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("Tiger");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(-999);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
+
+        Unit unit = new Unit();
+        unit.setUnitId(2);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -189,7 +267,6 @@ public class ServiceRestController_editService {
     @Test
     public void editService_quantity_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
@@ -203,7 +280,7 @@ public class ServiceRestController_editService {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/services/create")
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())
@@ -212,9 +289,8 @@ public class ServiceRestController_editService {
 
 
     @Test
-    public void createStudent_name_18() throws Exception {
+    public void editStudent_name_18() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
-        servicesDto.setServicesId(13L);
         servicesDto.setName("Bia heniken");
         servicesDto.setPrices(12000);
         servicesDto.setQuantity(100);
@@ -225,7 +301,7 @@ public class ServiceRestController_editService {
         servicesDto.setUnit(unit);
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/services/{id}")
+                        .patch("/services/{id}",13)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(servicesDto)))
                 .andDo(print())

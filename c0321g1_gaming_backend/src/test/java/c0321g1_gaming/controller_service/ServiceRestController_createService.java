@@ -47,6 +47,28 @@ public class ServiceRestController_createService {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    public void createService_name_14() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(12000);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
+
+        Unit unit = new Unit();
+        unit.setUnitId(2);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .post("/services/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
     @Test
     public void createService_prices_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
@@ -116,13 +138,35 @@ public class ServiceRestController_createService {
                 .andExpect(status().is4xxClientError());
     }
     @Test
+    public void createService_image_14() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("Tiger");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(12000);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage("");
+
+        Unit unit = new Unit();
+        unit.setUnitId(2);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .post("/services/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    @Test
     public void createService_unit_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
         servicesDto.setCode("SV-9999");
         servicesDto.setPrices(12000);
-        servicesDto.setQuantity(0);
+        servicesDto.setQuantity(100);
         servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
 
         Unit unit = new Unit();
@@ -162,6 +206,29 @@ public class ServiceRestController_createService {
     }
 
     @Test
+    public void createService_price2_15() throws Exception {
+        ServicesDto servicesDto = new ServicesDto();
+        servicesDto.setName("Tiger");
+        servicesDto.setFlag(1);
+        servicesDto.setCode("SV-9999");
+        servicesDto.setPrices(-999);
+        servicesDto.setQuantity(100);
+        servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
+
+        Unit unit = new Unit();
+        unit.setUnitId(0);
+        servicesDto.setUnit(unit);
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .post("/services/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(servicesDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
     public void createService_quantity_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
@@ -172,7 +239,7 @@ public class ServiceRestController_createService {
         servicesDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021064426PMbo-huc.jpg?alt=media&token=356419bf-029f-4aae-84d2-24ff0a88958a");
 
         Unit unit = new Unit();
-        unit.setUnitId(0);
+        unit.setUnitId(2);
         servicesDto.setUnit(unit);
 
         this.mockMvc.perform(

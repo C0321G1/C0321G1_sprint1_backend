@@ -31,14 +31,16 @@ public class ServicesRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
+        if (id == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Services services = servicesService.findById(id);
         if (services == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }if (id == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
+
 
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -113,13 +115,14 @@ public class ServicesRestController {
         Page<Services> servicesPage=servicesService.pageServicesCodeNamePrices(keywordCode,keywordName,keywordPrices,pageable);
         return new ResponseEntity<>(servicesPage,HttpStatus.OK);
     }
-    @DeleteMapping("/{id}")
+    @PatchMapping("/delete/{id}")
     public ResponseEntity<Services> deleteServices(@PathVariable Long id){
         Services services =servicesService.findById(id);
         if (services==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {
-            servicesService.deleteById(id);
+            services.setFlag(0);
+            servicesService.update(services);
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }

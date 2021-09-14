@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface IServicesRepository extends JpaRepository<Services, Long> {
+
     @Query(value = " select * from services where concat(code,`name`,prices) like ?1 and flag = 1 ", nativeQuery = true,
             countQuery = "select count(*) from services where concat(code,`name`,prices) like ?1 and flag = 1 ")
     Page<Services> pageServicesAll(String name, Pageable pageable);
@@ -25,8 +26,15 @@ public interface IServicesRepository extends JpaRepository<Services, Long> {
     @Query(value = "delete from services where (services_id = ?1 )", nativeQuery = true)
     void deleteServicesId(Long id);
 
-    @Query(value = "select * from services where (services_id = ?1) and flag = 1", nativeQuery = true)
+    @Query(value = " select * from services where (services_id = ?1) and flag = 1", nativeQuery = true)
     Services findByIdServices(Long id);
+
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE services " +
+            "SET   `flag` = ?1  WHERE services_id = ?2 ", nativeQuery = true)
+    void updateFlag(int flagDelete, Long servicesId);
 
     @Modifying
     @Transactional
