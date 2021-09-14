@@ -1,24 +1,22 @@
 package c0321g1_gaming.dto.services;
 
 import c0321g1_gaming.model.entity.services.Services;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.*;
 import java.util.List;
 
 
 public class UnitDto {
     private int unitId;
     private String name;
-    private List<Services> servicesDtoList;
+    private List<Services> servicesList;
 
     public UnitDto() {
     }
 
-    public UnitDto(int unitId, String name, List<Services> servicesDtoList) {
+    public UnitDto(int unitId, String name, List<Services> servicesList) {
         this.unitId = unitId;
         this.name = name;
-        this.servicesDtoList = servicesDtoList;
+        this.servicesList = servicesList;
     }
 
     public int getUnitId() {
@@ -37,11 +35,11 @@ public class UnitDto {
         this.name = name;
     }
 
-    public List<Services> getServicesDtoList() {
-        return servicesDtoList;
+    public List<Services> getServicesList() {
+        return servicesList;
     }
 
-    public void setServicesDtoList(List<Services> servicesDtoList) {
-        this.servicesDtoList = servicesDtoList;
+    public void setServicesList(List<Services> servicesList) {
+        this.servicesList = servicesList;
     }
 }

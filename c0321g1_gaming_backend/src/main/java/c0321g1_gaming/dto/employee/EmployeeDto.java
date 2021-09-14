@@ -1,34 +1,30 @@
 package c0321g1_gaming.dto.employee;
-
-import c0321g1_gaming.dto.address.AddressDto;
-import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.entity.security.Account;
-
-import java.util.List;
 
 
 public class EmployeeDto {
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
     private String fullName;
     private String code;
-
-
-    private int flagDelete;
-    private List<Address> addressDtoList;
-    private Position positionDto;
-    private Account accountDto;
+    private String image;
+    private int flagDel;
+    private Address address;
+    private Position position;
+    private Account account;
+    private Gender gender;
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, int flagDelete, List<Address> addressDtoList, Position positionDto, Account accountDto) {
+    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -38,10 +34,96 @@ public class EmployeeDto {
         this.email = email;
         this.fullName = fullName;
         this.code = code;
-        this.flagDelete = flagDelete;
-        this.addressDtoList = addressDtoList;
-        this.positionDto = positionDto;
-        this.accountDto = accountDto;
+        this.image = image;
+        this.flagDel = flagDel;
+        this.address = address;
+        this.position = position;
+        this.account = account;
+        this.gender = gender;
+    }
+
+    public Long getYearOfExp() {
+        return yearOfExp;
+    }
+
+    public void setYearOfExp(Long yearOfExp) {
+        this.yearOfExp = yearOfExp;
+    }
+
+    public Long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getFlagDel() {
+        return flagDel;
+    }
+
+    public void setFlagDel(int flagDel) {
+        this.flagDel = flagDel;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public String getCode() {
@@ -56,13 +138,7 @@ public class EmployeeDto {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
-        return yearOfExp;
-    }
 
-    public void setYearOfExp(String yearOfExp) {
-        this.yearOfExp = yearOfExp;
-    }
 
     public String getPhone() {
         return phone;
@@ -88,59 +164,5 @@ public class EmployeeDto {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
-        return level;
-    }
 
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public int getFlagDelete() {
-        return flagDelete;
-    }
-
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
-    }
-
-    public List<Address> getAddressDtoList() {
-        return addressDtoList;
-    }
-
-    public void setAddressDtoList(List<Address> addressDtoList) {
-        this.addressDtoList = addressDtoList;
-    }
-
-    public Position getPositionDto() {
-        return positionDto;
-    }
-
-    public void setPositionDto(Position positionDto) {
-        this.positionDto = positionDto;
-    }
-
-    public Account getAccountDto() {
-        return accountDto;
-    }
-
-    public void setAccountDto(Account accountDto) {
-        this.accountDto = accountDto;
-    }
 }

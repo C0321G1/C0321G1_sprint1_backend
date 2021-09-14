@@ -1,34 +1,19 @@
-package c0321g1_gaming.model.entity.gender;
+package c0321g1_gaming.dto.gender;
+
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-public class Gender {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GenderDto {
     private Long genderId;
     private String name;
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "gender")
-    @JsonBackReference(value = "gender-employee")
     private List<Employee> employeeList;
-    @OneToMany(mappedBy = "gender")
-    @JsonBackReference(value = "gender-customer")
-=======
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Employee> employeeList;
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
->>>>>>> main
     private List<Customer> customerList;
-    public Gender() {
+
+    public GenderDto() {
     }
 
-    public Gender(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList) {
+    public GenderDto(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList) {
         this.genderId = genderId;
         this.name = name;
         this.employeeList = employeeList;

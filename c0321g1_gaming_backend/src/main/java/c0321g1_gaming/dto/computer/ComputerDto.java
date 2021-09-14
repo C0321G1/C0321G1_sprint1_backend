@@ -16,15 +16,15 @@ public class ComputerDto {
     private String startUsedDate;
     private String warrantyPeriod;
     private int flagDelete;
-    private ComputerStatus computerStatusDto;
-    private ComputerType computerTypeDto;
-    private ComputerManufacturer computerManufacturerDto;
-    private List<Order> orderDtoList;
+    private ComputerStatus computerStatus;
+    private ComputerType computerType;
+    private ComputerManufacturer computerManufacturer;
+    private List<Order> orderList;
     public ComputerDto() {
     }
 
     public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate,
-                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> orderDtoList) {
+                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatus, ComputerType computerType, ComputerManufacturer computerManufacturer, List<Order> orderList) {
         this.computerId = computerId;
         this.computerCode = computerCode;
         this.location = location;
@@ -32,10 +32,10 @@ public class ComputerDto {
         this.startUsedDate = startUsedDate;
         this.warrantyPeriod = warrantyPeriod;
         this.flagDelete = flagDelete;
-        this.computerStatusDto = computerStatusDto;
-        this.computerTypeDto = computerTypeDto;
-        this.computerManufacturerDto = computerManufacturerDto;
-        this.orderDtoList = orderDtoList;
+        this.computerStatus = computerStatus;
+        this.computerType = computerType;
+        this.computerManufacturer = computerManufacturer;
+        this.orderList = orderList;
     }
 
     public Long getComputerId() {
@@ -94,35 +94,35 @@ public class ComputerDto {
         this.flagDelete = flagDelete;
     }
 
-    public ComputerStatus getComputerStatusDto() {
-        return computerStatusDto;
+    public ComputerStatus getComputerStatus() {
+        return computerStatus;
     }
 
-    public void setComputerStatusDto(ComputerStatus computerStatusDto) {
-        this.computerStatusDto = computerStatusDto;
+    public void setComputerStatus(ComputerStatus computerStatus) {
+        this.computerStatus = computerStatus;
     }
 
-    public ComputerType getComputerTypeDto() {
-        return computerTypeDto;
+    public ComputerType getComputerType() {
+        return computerType;
     }
 
-    public void setComputerTypeDto(ComputerType computerTypeDto) {
-        this.computerTypeDto = computerTypeDto;
+    public void setComputerType(ComputerType computerType) {
+        this.computerType = computerType;
     }
 
-    public ComputerManufacturer getComputerManufacturerDto() {
-        return computerManufacturerDto;
+    public ComputerManufacturer getComputerManufacturer() {
+        return computerManufacturer;
     }
 
-    public void setComputerManufacturerDto(ComputerManufacturer computerManufacturerDto) {
-        this.computerManufacturerDto = computerManufacturerDto;
+    public void setComputerManufacturer(ComputerManufacturer computerManufacturer) {
+        this.computerManufacturer = computerManufacturer;
     }
 
-    public List<Order> getOrderDtoList() {
-        return orderDtoList;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrderDtoList(List<Order> orderDtoList) {
-        this.orderDtoList = orderDtoList;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }

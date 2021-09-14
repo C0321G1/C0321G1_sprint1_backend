@@ -1,4 +1,5 @@
 package c0321g1_gaming.model.service.address;
+<<<<<<< HEAD
 import c0321g1_gaming.model.entity.address.Address;
 import org.springframework.stereotype.Service;
 
@@ -8,4 +9,8 @@ public interface AddressService {
     List<Address> getAddressList();
     void saveAddress(Address address);
 
+=======
+
+public interface AddressService {
+>>>>>>> main
 }
