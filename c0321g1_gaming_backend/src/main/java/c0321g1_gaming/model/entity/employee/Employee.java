@@ -19,38 +19,22 @@ public class Employee {
     private String startWorkDate;
     private Long level;
     private String email;
-<<<<<<< HEAD
-    private String fullName;
-
-    private int flagDelete;
-    @ManyToMany
-    @JoinTable(name = "employee_address",
-            joinColumns = @JoinColumn(name = "employeeId")
-            , inverseJoinColumns = @JoinColumn(name = "addressId"))
-    @JsonBackReference
-    private List<Address> addressList;
-    @ManyToOne(targetEntity = Gender.class)
-    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
-    private Gender gender;
-=======
     private String name;
     private String image;
     private int flagDel;
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
->>>>>>> main
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
-
     @ManyToOne
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
-
     @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
+
 
     public Employee() {
     }

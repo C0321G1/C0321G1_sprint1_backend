@@ -7,24 +7,18 @@ import java.util.List;
 
 @Entity
 public class Gender {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genderId;
     private String name;
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "gender")
-    @JsonBackReference(value = "gender-employee")
-    private List<Employee> employeeList;
-    @OneToMany(mappedBy = "gender")
-    @JsonBackReference(value = "gender-customer")
-=======
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Employee> employeeList;
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
     @JsonBackReference
->>>>>>> main
     private List<Customer> customerList;
+
     public Gender() {
     }
 
@@ -32,14 +26,6 @@ public class Gender {
         this.genderId = genderId;
         this.name = name;
         this.employeeList = employeeList;
-        this.customerList = customerList;
-    }
-
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
-
-    public void setCustomerList(List<Customer> customerList) {
         this.customerList = customerList;
     }
 
@@ -66,4 +52,14 @@ public class Gender {
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
 }
+
+

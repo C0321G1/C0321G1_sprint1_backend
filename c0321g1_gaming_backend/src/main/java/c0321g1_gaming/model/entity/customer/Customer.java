@@ -21,23 +21,14 @@ public class Customer {
     private String fullName;
     private int flag;
     private String phone;
-<<<<<<< HEAD
-    @ManyToMany
-    @JoinTable(name = "customer_address",
-            joinColumns = @JoinColumn(name = "customerId")
-            ,inverseJoinColumns = @JoinColumn(name = "addressId"))
-    @JsonBackReference
-    private List<Address> addressList;
     @ManyToOne(targetEntity = Gender.class)
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
-=======
 
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
 
->>>>>>> main
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
@@ -50,11 +41,7 @@ public class Customer {
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
-    private Gender gender;
-
-    public Customer() {
+        public Customer() {
     }
 
     public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, Gender gender) {
