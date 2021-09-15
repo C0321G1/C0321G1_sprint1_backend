@@ -21,9 +21,6 @@ public class Customer {
     private String fullName;
     private int flag;
     private String phone;
-    @ManyToOne(targetEntity = Gender.class)
-    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
-    private Gender gender;
 
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
@@ -41,7 +38,11 @@ public class Customer {
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
-        public Customer() {
+    @ManyToOne
+    @JoinColumn(name = "genderId", referencedColumnName = "genderId")
+    private Gender gender;
+
+    public Customer() {
     }
 
     public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, Gender gender) {
@@ -56,14 +57,6 @@ public class Customer {
         this.customerStatus = customerStatus;
         this.orderList = orderList;
         this.account = account;
-        this.gender = gender;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -111,8 +104,8 @@ public class Customer {
         return flag;
     }
 
-    public void setFlag(int flagDelete) {
-        this.flag = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getPhone() {
@@ -153,5 +146,13 @@ public class Customer {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

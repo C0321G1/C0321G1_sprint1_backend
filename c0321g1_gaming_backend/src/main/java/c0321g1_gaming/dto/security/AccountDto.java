@@ -23,7 +23,8 @@ public class AccountDto {
 	public AccountDto() {
 	}
 
-	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
+	public AccountDto(Long accountId, String username, String email, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
+
 		AccountId = accountId;
 		this.username = username;
 		this.password = password;

@@ -13,9 +13,8 @@ public class DistrictServiceImpl implements DistrictService {
 
     @Autowired
     DistrictRepository districtRepository;
-
     @Override
-    public List<District> getDistrictList() {
-        return districtRepository.getDistrictList();
+    public List<District> findAll() {
+        return districtRepository.findAll();
     }
 }

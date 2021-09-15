@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class GenderServiceImpl implements GenderService {
 
@@ -18,4 +17,10 @@ public class GenderServiceImpl implements GenderService {
     public List<Gender> getGenderList() {
         return genderRepository.getGenderList();
     }
+
+    @Override
+    public List<Gender> findAll() {
+        return genderRepository.findAll();
+    }
 }
+
