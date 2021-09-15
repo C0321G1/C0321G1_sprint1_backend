@@ -43,24 +43,11 @@ public class ServicesRestController {
 
 
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
-    }
+
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-        }
+    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto) {
+
         Services services = new Services();
         System.out.println(servicesDto);
         BeanUtils.copyProperties(servicesDto,services);
@@ -73,14 +60,12 @@ public class ServicesRestController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
+    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto,
                                                  @PathVariable Long id) {
         Services services = servicesService.findById(id);
         if (services == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-        } else {
+        }  else {
             Services services1 = new Services();
             servicesDto.setServicesId(services.getServicesId());
             BeanUtils.copyProperties(servicesDto, services1);
@@ -125,5 +110,17 @@ public class ServicesRestController {
             servicesService.update(services);
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 }
