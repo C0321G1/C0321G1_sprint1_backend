@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Repository
 public interface IServicesRepository extends JpaRepository<Services, Long> {
@@ -28,15 +29,17 @@ public interface IServicesRepository extends JpaRepository<Services, Long> {
     @Query(value = " select * from services where (services_id = ?1) and flag = 1", nativeQuery = true)
     Services findByIdServices(Long id);
 
+
     @Transactional
     @Modifying
-    @Query(value = "UPDATE services " +
+    @Query(value = " UPDATE services " +
             "SET   `flag` = ?1  WHERE services_id = ?2 ", nativeQuery = true)
     void updateFlag(int flagDelete, Long servicesId);
 
+
     @Modifying
     @Transactional
-    @Query(value = "insert into services (`code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
+    @Query(value = " insert into services (`code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
             "value ( ?1 , ?2 , ?3 , ?4 ,?5 ,?6, ?7)", nativeQuery = true)
     void saveServices(String code, int flag, String image, String name, double prices, int quantity, int unitId);
 

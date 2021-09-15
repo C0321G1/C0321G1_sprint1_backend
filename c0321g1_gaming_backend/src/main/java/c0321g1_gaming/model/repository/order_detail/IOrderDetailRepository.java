@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Long> {
+    //Huynh code
     @Query(value = " select * from order_detail where order_id= :oderId", nativeQuery = true)
     List<OrderDetail> getAllOderDetailByOderId(@Param("oderId") Long oderId);
 }

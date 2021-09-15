@@ -11,6 +11,7 @@ import java.util.List;
 public class OrderDetailServiceImpl implements IOrderDetailService {
     @Autowired
     IOrderDetailRepository orderDetailRepository;
+    //Huynh code
     @Override
     public List<OrderDetail> findAllOderDetailsByOderId(Long oderId) {
         return orderDetailRepository.getAllOderDetailByOderId(oderId);

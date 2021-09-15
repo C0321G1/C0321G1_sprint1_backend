@@ -1,7 +1,11 @@
 package c0321g1_gaming.model.entity.services;
 
 import c0321g1_gaming.model.entity.order.OrderDetail;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,7 +25,7 @@ public class Services {
     @JoinColumn(name = "unitId",referencedColumnName = "unitId")
     private Unit unit;
     @OneToMany(mappedBy = "services", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIgnore
     private List<OrderDetail> ordersList;
 
     public Services() {

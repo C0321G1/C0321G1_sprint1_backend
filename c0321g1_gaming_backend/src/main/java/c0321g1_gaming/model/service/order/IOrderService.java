@@ -8,12 +8,12 @@ import java.util.Optional;
 
 public interface IOrderService {
     void create(Order order);
-
+    //Huynh code
     Page<Order> findAllOder(Pageable pageable);
-
+    //Huynh code
     Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer);
-
+    //Huynh code
     void confirmPayments(Long idOrders);
-
+    //Huynh code
     Optional<Order> findById(Long id);
 }
