@@ -102,6 +102,10 @@ public class Computer {
         this.flagDelete = flagDelete;
     }
 
+    public void setComputerStatus(ComputerStatus computerStatus) {
+        this.computerStatus = computerStatus;
+    }
+
     public ComputerStatus getComputerStatus() {
         return computerStatus;
     }
