@@ -38,8 +38,6 @@ public class ComputerRestController {
     @Autowired
     ComputerStatusService computerStatusService;
 
-
-
     /*Long-Computer*/
     @PostMapping("/create-computer")
     public ResponseEntity<?> createComputer(@Valid @RequestBody ComputerDto computerDto,
@@ -92,6 +90,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
+
     //NguyenNHN - Get all computer page
     @GetMapping("/computerPage")
     public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
@@ -101,6 +100,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
+
     //NguyenNHN - Get all computer manufacturer
     @GetMapping("/computerManufacturer")
     public ResponseEntity<Iterable<ComputerManufacturer>> getAllComputerManufacturer() {
@@ -110,6 +110,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
     }
+
     //NguyenNHN - Get all computer type
     @GetMapping("/computerType")
     public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
@@ -119,6 +120,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerTypes, HttpStatus.OK);
     }
+
     //NguyenNHN - Get all computer status
     @GetMapping("/computerStatus")
     public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
@@ -128,10 +130,11 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerStatus, HttpStatus.OK);
     }
+
     //NguyenNHN - Get computer by id
     @GetMapping("/computer/{id}")
     public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
-        if(id == null){
+        if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Optional<Computer> computer = computerService.findComputerById(id);
@@ -141,10 +144,11 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
+
     //NguyenNHN - Delete computer
     @DeleteMapping("/computer/{id}")
     public ResponseEntity<?> deleteComputer(@PathVariable Long id) {
-        if(id==null){
+        if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Optional<Computer> computer = computerService.findComputerById(id);
@@ -152,12 +156,13 @@ public class ComputerRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (computer.get().getComputerStatus().getComputerStatusId() == 1) {
-            return new ResponseEntity<>("Computer is online",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("Error delete: Computer " + computer.get().getComputerCode() + " is online", HttpStatus.NOT_ACCEPTABLE);
         }
         computer.get().setFlagDelete(1);
         computerService.saveComputer(computer.get());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     //NguyenNHN - Search computer
     @GetMapping("/computer/searchComputer")
     public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
@@ -182,8 +187,7 @@ public class ComputerRestController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
-        }
-        else {
+        } else {
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, startDateFromSearch, startDateToSearch, pageable);
             if (computerSearchPage.isEmpty()) {

@@ -34,6 +34,4 @@ public interface ComputerService {
 
     void saveComputer(Computer computer);
 
-    /*void setComputerStatus(Long id);*/
-
 }

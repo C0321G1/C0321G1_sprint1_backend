@@ -49,7 +49,7 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                            @Param("computer_id") Long computer_id);
 
 
-
+    //NguyenNHN repository
     @Query(value = "SELECT * FROM Computer WHERE computer.flag_delete=0", nativeQuery = true)
     Page<Computer> findAllComputer(Pageable pageable);
     @Query(value = "SELECT * FROM Computer WHERE computer.computer_id=?1", nativeQuery = true)
@@ -71,12 +71,5 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
     @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
 
-    /*@Query(value = "update cpmputer " +
-            "set flag_delete = 1 " +
-            "where computer_id = ?1 ", nativeQuery = true)
-    void deleteComputer(int computerId);*/
-
-    /*@Query(value="update computer set computer_status_id = ?2 where computer_id = ?1", nativeQuery = true)
-    void updateStatus(Long id, int status);*/
 
 }

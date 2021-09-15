@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.service.computer;
 
 import c0321g1_gaming.model.entity.computer.Computer;
+import c0321g1_gaming.model.entity.computer.ComputerStatus;
 import c0321g1_gaming.model.repository.computer.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,9 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Autowired
     ComputerRepository computerRepository;
+
+    @Autowired
+    ComputerStatusService computerStatusService;
 
 
     @Override
@@ -80,15 +84,5 @@ public class ComputerServiceImpl implements ComputerService {
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
-
-    /*@Override
-    public void setComputerStatus(Long id) {
-        Optional<Computer> computer = computerRepository.findComputerById(id);
-        if(computer.get().getComputerStatus().getComputerStatusId() != 1){
-            computerRepository.updateStatus(id, 1);
-        }else {
-            computerRepository.updateStatus(id, 2);
-        }
-    }*/
 
 }
