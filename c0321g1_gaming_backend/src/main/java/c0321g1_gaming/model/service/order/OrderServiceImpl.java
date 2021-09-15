@@ -1,6 +1,6 @@
 package c0321g1_gaming.model.service.order;
 
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.repository.order.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,16 +14,16 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     IOrderRepository orderRepository;
     @Override
-    public void create(Orders order) {
+    public void create(Order order) {
     }
 
     @Override
-    public Page<Orders> findAllOder(Pageable pageable) {
+    public Page<Order> findAllOder(Pageable pageable) {
         return orderRepository.pageOderAll(pageable);
     }
 
     @Override
-    public Page<Orders> findOderByIdCustomer(Pageable pageable, Long idCustomer) {
+    public Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer) {
         return orderRepository.pageOderByCustomer(pageable, idCustomer);
     }
 
@@ -33,7 +33,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
-    public Optional<Orders> findById(Long id) {
+    public Optional<Order> findById(Long id) {
         return orderRepository.findById(id);
     }
 

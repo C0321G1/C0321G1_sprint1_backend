@@ -1,14 +1,12 @@
 package c0321g1_gaming.dto.order;
 
-import c0321g1_gaming.model.entity.order.Orders;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Services;
-
-import java.util.List;
 
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private Orders orders;
+    private Order order;
     private Services services;
     private int quantity;
     private int totalPrices;
@@ -16,9 +14,9 @@ public class OrderDetailDto {
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, Orders orders, Services services, int quantity, int totalPrices) {
+    public OrderDetailDto(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.orders = orders;
+        this.order = order;
         this.services = services;
         this.quantity = quantity;
         this.totalPrices = totalPrices;
@@ -32,12 +30,12 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Order getOrders() {
+        return order;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setOrders(Order order) {
+        this.order = order;
     }
 
     public Services getServices() {

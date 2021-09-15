@@ -13,7 +13,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "orderId", referencedColumnName = "orderId")
-    private Orders orders;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "servicesId", referencedColumnName = "servicesId")
@@ -24,9 +24,9 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(Long orderDetailId, Orders orders, Services services, int quantity, int totalPrices) {
+    public OrderDetail(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.orders = orders;
+        this.order = order;
         this.services = services;
         this.quantity = quantity;
         this.totalPrices = totalPrices;
@@ -40,12 +40,12 @@ public class OrderDetail {
         this.orderDetailId = orderDetailId;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Order getOrders() {
+        return order;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setOrders(Order order) {
+        this.order = order;
     }
 
     public Services getServices() {
