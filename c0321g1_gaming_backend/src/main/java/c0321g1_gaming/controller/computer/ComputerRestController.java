@@ -33,7 +33,7 @@ public class ComputerRestController {
     @Autowired
     ComputerStatusService computerStatusService;
 
-    //NguyenNHN - Get all Computer
+    //NguyenNHN - Get all Computer List
     @GetMapping("/computer")
     public ResponseEntity<Iterable<Computer>> getAllComputer() {
         List<Computer> computers = computerService.findAll();
@@ -42,6 +42,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
+
 
     //NguyenNHN - Get all computer page
     @GetMapping("/computerPage")
@@ -52,6 +53,7 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
+
 
     //NguyenNHN - Get all computer manufacturer
     @GetMapping("/computerManufacturer")
