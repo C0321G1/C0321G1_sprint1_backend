@@ -12,17 +12,15 @@ public class GameDto {
     private String content;
     @NotNull
     private int flagDelete;
-    @NotBlank(message = "Flag Delete is required")
-    private String name;
     @NotBlank(message = "Name is required")
+    private String name;
+    @NotBlank(message = "Image is required")
     private String image;
-    @NotBlank(message = "Gaming is required")
+    @NotNull(message = "Gaming is required")
     @Min(value = 0,message = "Gaming must be greater than or equal to 0")
-    @Pattern(regexp = "^\\d+$",message = "Gaming must be a integer")
     private int gaming;
     @NotBlank(message = "Gaming is required")
     private String trailer;
-    @NotNull(message = "gameType is required")
     private GameType gameType;
 
     public GameDto() {
