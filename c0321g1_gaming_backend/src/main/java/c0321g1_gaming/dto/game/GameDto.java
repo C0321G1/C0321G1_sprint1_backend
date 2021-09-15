@@ -12,24 +12,22 @@ public class GameDto {
     private String content;
     @NotNull
     private int flagDelete;
-    @NotBlank(message = "Flag Delete is required")
-    private String name;
     @NotBlank(message = "Name is required")
+    private String name;
+    @NotBlank(message = "Image is required")
     private String image;
-    @NotBlank(message = "Gaming is required")
+    @NotNull(message = "Gaming is required")
     @Min(value = 0,message = "Gaming must be greater than or equal to 0")
-    @Pattern(regexp = "^\\d+$",message = "Gaming must be a integer")
-    private String gaming;
+    private int gaming;
     @NotBlank(message = "Gaming is required")
     private String trailer;
-    @NotNull(message = "gameType is required")
     private GameType gameType;
 
     public GameDto() {
     }
 
     public GameDto(Long gameId, String content, int flagDelete, String name,
-                   String image, String gaming, String trailer, GameType gameType) {
+                   String image, int gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
@@ -41,7 +39,7 @@ public class GameDto {
     }
 
     public GameDto(String content, int flagDelete, String name,
-                   String image, String gaming, String trailer, GameType gameType) {
+                   String image, int gaming, String trailer, GameType gameType) {
         this.content = content;
         this.flagDelete = flagDelete;
         this.name = name;
@@ -52,7 +50,7 @@ public class GameDto {
     }
 
     public GameDto(Long gameId, String content,String name,
-                   String image, String gaming, String trailer, GameType gameType) {
+                   String image, int gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.name = name;
@@ -102,11 +100,11 @@ public class GameDto {
         this.image = image;
     }
 
-    public String getGaming() {
+    public int getGaming() {
         return gaming;
     }
 
-    public void setGaming(String gaming) {
+    public void setGaming(int gaming) {
         this.gaming = gaming;
     }
 

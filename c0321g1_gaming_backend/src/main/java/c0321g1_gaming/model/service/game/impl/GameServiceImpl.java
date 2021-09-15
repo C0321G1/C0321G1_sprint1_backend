@@ -32,6 +32,7 @@ public class GameServiceImpl implements IGameService {
     }
 
     //    Creator: Thúy
+
     @Override
     public List<Game> getGameBySearchingName(String name, String gameType) {
         return gameRepository.getGameBySearchingName("%" + name + "%", "%" + gameType + "%");

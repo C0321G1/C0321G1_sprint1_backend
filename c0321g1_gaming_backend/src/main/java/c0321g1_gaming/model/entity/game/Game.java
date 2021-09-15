@@ -11,7 +11,7 @@ public class Game {
     private int flagDelete;
     private String name;
     private String image;
-    private String gaming;
+    private int gaming;
     private String trailer;
     @ManyToOne
     @JoinColumn(name = "gameTypeId",referencedColumnName = "gameTypeId")
@@ -20,7 +20,7 @@ public class Game {
     public Game() {
     }
 
-    public Game(String content, int flagDelete, String name, String image, String gaming, String trailer, GameType gameType) {
+    public Game(String content, int flagDelete, String name, String image, int gaming, String trailer, GameType gameType) {
         this.content = content;
         this.flagDelete = flagDelete;
         this.name = name;
@@ -30,7 +30,7 @@ public class Game {
         this.gameType = gameType;
     }
 
-    public Game(Long gameId, String content, String name, String image, String gaming, String trailer, GameType gameType) {
+    public Game(Long gameId, String content, String name, String image, int gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.name = name;
@@ -40,7 +40,7 @@ public class Game {
         this.gameType = gameType;
     }
 
-    public Game(Long gameId, String content, int flagDelete, String name, String image, String gaming, String trailer, GameType gameType) {
+    public Game(Long gameId, String content, int flagDelete, String name, String image, int gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
@@ -91,11 +91,11 @@ public class Game {
         this.image = image;
     }
 
-    public String getGaming() {
+    public int getGaming() {
         return gaming;
     }
 
-    public void setGaming(String gaming) {
+    public void setGaming(int gaming) {
         this.gaming = gaming;
     }
 

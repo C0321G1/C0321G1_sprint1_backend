@@ -18,16 +18,16 @@ public interface IGameRepository extends JpaRepository<Game, Long> {
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO game(`name`,content,image,gaming,trailer,game_type_id,flag_delete) VALUES (?1,?2,?3,?4,?5,?6,?7);", nativeQuery = true)
-    void saveGame(String name, String content, String image, String gaming, String trailer, Long gameTypeId, int flagDelete);
+    void saveGame(String name, String content, String image, int gaming, String trailer, int gameTypeId, int flagDelete);
 
     @Modifying
     @Transactional
     @Query(value ="UPDATE game " +
             "SET `name` =?1,content = ?2,image = ?3,gaming=?4,trailer=?5,game_type_id=?6,flag_delete=?7 WHERE game.game_id = ?8" , nativeQuery = true)
-    void updateGame(String name, String content, String image, String gaming, String trailer, Long gameTypeId,int flagDelete, Long gameId);
+    void updateGame(String name, String content, String image, int gaming, String trailer, int gameTypeId,int flagDelete, Long gameId);
 
 //    Creator: Thúy
-    @Query(value = "SELECT * FROM game " +
+    @Query(value = "SELECT game.game_id,game.name,game.image,game.gaming,game.trailer,game.content,game.game_type_id,game.flag_delete,game_type.name FROM game " +
             "JOIN game_type on game.game_type_id = game_type.game_type_id " +
             "WHERE ( game.name like ?1 ) and (game_type.name like ?2 ) and game.flag_delete = 0", nativeQuery = true)
     List<Game> getGameBySearchingName(String name, String gameType);

@@ -61,16 +61,16 @@ public class GameRestController_editGame {
 
 
     @Test
-    public void editGame_name_13() throws Exception {
+    public void editGame_name_19() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName(null);
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -84,16 +84,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_name_14() throws Exception {
+    public void editGame_name_20() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -107,16 +107,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_content_13() throws Exception {
+    public void editGame_content_19() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent(null);
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -130,16 +130,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_content_14() throws Exception {
+    public void editGame_content_20() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -154,7 +154,7 @@ public class GameRestController_editGame {
 
 
     @Test
-    public void editGame_content_17() throws Exception {
+    public void editGame_content_23() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>Võ lâm truyền kỳ [1] là một trò chơi nhập vai trực tuyến nhiều người chơi (MMORPG) được Việt hóa từ trò chơi Kiếm hiệp tình duyên Online (chữ Hán: 剑侠情缘; tiếng Anh: SWORDSMAN Online) của công ty Kingsoft (Kim Sơn) từ Trung Quốc và được VNG phân phối tại Việt Nam. Trò chơi cho phép các người chơi đóng vai dựa theo các tiểu thuyết kiếm hiệp của Trung Quốc. Trò chơi này từng gây cơn sốt ở Trung Quốc và được Hiệp hội Phần mềm Trung Quốc trao giải \"Trò chơi xuất sắc nhất năm 2003\"[2]\n" +
@@ -171,11 +171,11 @@ public class GameRestController_editGame {
                 "\n" +
                 "Tại Trung Quốc, tựa game Swordsman Online (JX Online) được phát hành bởi nhà phát hành Xoyo (phiên bản PC) và Tencent Games (phiên bản Mobile). Vào năm 2019, Seasun Games (thuộc Kingsoft) đã sản xuất phiên bản HD Remake của tựa game JX3 Online, sử dụng engine tân tiến và DirectX 11, đem đến những trải nghiệm với chất lượng tốt nhất.</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -189,16 +189,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_image_13() throws Exception {
+    public void editGame_image_19() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage(null);
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -212,16 +212,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_image_14() throws Exception {
+    public void editGame_image_20() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -235,62 +235,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_gaming_13() throws Exception {
+    public void editGame_gaming_22() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(null);
+        gameDto.setGaming(-7);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
-        gameDto.setGameType(gameType);
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .patch("/game/api/{id}",2)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-
-    }
-
-    @Test
-    public void editGame_gaming_15() throws Exception {
-        GameDto gameDto = new GameDto();
-        gameDto.setName("Võ lâm truyền kỳ");
-        gameDto.setContent("<p>võ lâm truyền kì</p>");
-        gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("abc");
-        gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
-        gameDto.setFlagDelete(0);
-        GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
-        gameDto.setGameType(gameType);
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .patch("/game/api/{id}",2)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-
-    }
-
-    @Test
-    public void editGame_gaming_16() throws Exception {
-        GameDto gameDto = new GameDto();
-        gameDto.setName("Võ lâm truyền kỳ");
-        gameDto.setContent("<p>võ lâm truyền kì</p>");
-        gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("-7");
-        gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
-        gameDto.setFlagDelete(0);
-        GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -304,16 +258,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_trailer_13() throws Exception {
+    public void editGame_trailer_19() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer(null);
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -327,16 +281,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_trailer_14() throws Exception {
+    public void editGame_trailer_20() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(2L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
@@ -350,39 +304,16 @@ public class GameRestController_editGame {
     }
 
     @Test
-    public void editGame_gameType_13() throws Exception {
+    public void editGame_24() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
+        gameDto.setGaming(10000);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
-        gameType.setGameTypeId(null);
-        gameDto.setGameType(gameType);
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .patch("/game/api/{id}",2)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-
-    }
-
-    @Test
-    public void editStudent_18() throws Exception {
-        GameDto gameDto = new GameDto();
-        gameDto.setName("Võ lâm truyền kỳ");
-        gameDto.setContent("<p>võ lâm truyền kì</p>");
-        gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming("10000");
-        gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
-        gameDto.setFlagDelete(0);
-        GameType gameType = new GameType();
-        gameType.setGameTypeId(1L);
+        gameType.setGameTypeId(1);
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(

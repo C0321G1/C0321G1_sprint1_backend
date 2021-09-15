@@ -3,6 +3,7 @@ package c0321g1_gaming.controller.game;
 import c0321g1_gaming.dto.game.GameDto;
 import c0321g1_gaming.model.entity.game.Game;
 import c0321g1_gaming.model.service.game.IGameService;
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,7 +64,7 @@ public class GameRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-// Creator: Nhung
+    // Creator: Nhung
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -78,21 +79,22 @@ public class GameRestController {
         return errors;
     }
 
-
     @PostMapping
-    public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto) {
+        try {
+            Game game = new Game();
+            gameDto.setFlagDelete(0);
+            BeanUtils.copyProperties(gameDto, game);
+            gameService.saveGame(game);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        Game game = new Game();
-        gameDto.setFlagDelete(0);
-        BeanUtils.copyProperties(gameDto, game);
-        gameService.saveGame(game);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult,
+    public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto,
                                            @PathVariable Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -100,13 +102,16 @@ public class GameRestController {
         Optional<Game> game = gameService.findById(id);
         if (!game.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            gameDto.setGameId(game.get().getGameId());
-            BeanUtils.copyProperties(gameDto, game.get());
-            gameService.updateGame(game.get());
-            return new ResponseEntity<>(HttpStatus.OK);
+            try {
+                gameDto.setGameId(game.get().getGameId());
+                BeanUtils.copyProperties(gameDto, game.get());
+                gameService.updateGame(game.get());
+                return new ResponseEntity<>(HttpStatus.OK);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
         }
     }
 }
