@@ -15,4 +15,9 @@ public class ComputerTypeServiceImpl implements ComputerTypeService{
     public List<ComputerType> findAll() {
         return computerTypeRepository.findAll();
     }
+
+    @Override
+    public ComputerType findByName(String name) {
+        return computerTypeRepository.findByName(name);
+    }
 }

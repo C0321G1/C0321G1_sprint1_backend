@@ -50,12 +50,19 @@ public class ComputerRestController {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
         }
         if (computer == null) {
+            Long manufacturerId = computerManufacturerService.
+                    findByName(computerDto.getComputerManufacturer().getName()).
+                    getComputerManufacturerId();
+            Long computerTypeId = computerTypeService.findByName(computerDto.getComputerType()
+                    .getName()).getComputerTypeId();
+            Long computerStatusId = computerStatusService.findByName(computerDto.getComputerStatus()
+                    .getName()).getComputerStatusId();
             computerService.createComputer(computerDto.getComputerCode(), computerDto.getLocation(),
                     computerDto.getStartUsedDate(), computerDto.getConfiguration(),
                     computerDto.getWarrantyPeriod(), computerDto.getFlagDelete(),
-                    computerDto.getComputerType().getComputerTypeId(),
-                    computerDto.getComputerManufacturer().getComputerManufacturerId(),
-                    computerDto.getComputerStatus().getComputerStatusId());
+                    computerTypeId,
+                    manufacturerId,
+                    computerStatusId);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -71,14 +78,24 @@ public class ComputerRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
         }
+        if (computerDto.getComputerStatus().getName().equals("Đang sử dụng")){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         if (computer == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        Long manufacturerId = computerManufacturerService.
+                findByName(computerDto.getComputerManufacturer().getName()).
+                getComputerManufacturerId();
+        Long computerTypeId = computerTypeService.findByName(computerDto.getComputerType()
+                .getName()).getComputerTypeId();
+        Long computerStatusId = computerStatusService.findByName(computerDto.getComputerStatus()
+                .getName()).getComputerStatusId();
         computerService.updateComputer(computerDto.getComputerCode(), computerDto.getLocation(),
                 computerDto.getStartUsedDate(), computerDto.getConfiguration(),
-                computerDto.getWarrantyPeriod(), computerDto.getComputerType().getComputerTypeId(),
-                computerDto.getComputerManufacturer().getComputerManufacturerId(),
-                computerDto.getComputerStatus().getComputerStatusId(), id);
+                computerDto.getWarrantyPeriod(), computerTypeId,
+                manufacturerId,
+                computerStatusId, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

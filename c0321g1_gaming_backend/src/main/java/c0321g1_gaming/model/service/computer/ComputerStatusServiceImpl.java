@@ -15,4 +15,9 @@ public class ComputerStatusServiceImpl implements ComputerStatusService{
     public List<ComputerStatus> findAll() {
         return computerStatusRepository.findAll();
     }
+
+    @Override
+    public ComputerStatus findByName(String name) {
+        return computerStatusRepository.findByName(name);
+    }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ComputerTypeService {
     List<ComputerType> findAll();
+    ComputerType findByName(String name);
 }

@@ -15,4 +15,9 @@ public class ComputerManufacturerServiceImpl implements ComputerManufacturerServ
     public List<ComputerManufacturer> findAll() {
         return computerManufacturerRepository.findAll();
     }
+
+    @Override
+    public ComputerManufacturer findByName(String name) {
+        return computerManufacturerRepository.findByName(name);
+    }
 }

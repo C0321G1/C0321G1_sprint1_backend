@@ -169,10 +169,10 @@ public class ComputerDto implements Validator {
         if (computerDto.location == null) {
             errors.rejectValue("location", "location.null",
                     "Location is required");
-        } else if (!Pattern.compile("^A[0-9]{4}|B[0-9]{4}|C[0-9]{4}|D[0-9]{4}$")
+        } else if (!Pattern.compile("^(A[0-9]{4}|B[0-9]{4}|C[0-9]{4}|D[0-9]{4})$")
                 .matcher(computerDto.location).find()) {
             errors.rejectValue("location", "location.format",
-                    "Location is required");
+                    "Location is AXXXX or BXXXX or CXXXX or DXXXX with X from 0-9");
         }
         if (computerDto.startUsedDate == null) {
             errors.rejectValue("startUsedDate", "startUsedDate.null",
