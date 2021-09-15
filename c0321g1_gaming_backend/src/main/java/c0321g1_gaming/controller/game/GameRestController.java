@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class GameRestController {
 
     //    Creator: Thúy
     @GetMapping
-    public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 2) Pageable pageable) {
+    public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 5) Pageable pageable) {
         Page<Game> gameList = gameService.getAllGame(pageable);
         if (gameList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -38,7 +39,7 @@ public class GameRestController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Page<Game>> searchGame(@PageableDefault(value = 2) Pageable pageable,
+    public ResponseEntity<Page<Game>> searchGame(@PageableDefault(size = 5) Pageable pageable,
                                                  @RequestParam String name, @RequestParam String gameType) {
         Page<Game> gameList = gameService.getGameBySearching(pageable, name, gameType);
         if (gameList.isEmpty()) {
@@ -58,6 +59,15 @@ public class GameRestController {
         } else {
             return new ResponseEntity<>(gameOptional.get(), HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/top")
+    public ResponseEntity<List<Game>> getTopGame() {
+        List<Game> gameList = gameService.searchTopGame();
+        if (gameList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(gameList, HttpStatus.OK);
     }
 
     @PatchMapping(value = "delete/{id}")
