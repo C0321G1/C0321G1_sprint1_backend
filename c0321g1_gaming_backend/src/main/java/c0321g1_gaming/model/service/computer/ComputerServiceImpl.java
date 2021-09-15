@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.service.computer;
 
 import c0321g1_gaming.model.entity.computer.Computer;
+import c0321g1_gaming.model.entity.computer.ComputerStatus;
 import c0321g1_gaming.model.repository.computer.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,9 +17,7 @@ public class ComputerServiceImpl implements ComputerService {
     @Autowired
     ComputerRepository computerRepository;
 
-
-
-
+    //Long computer
     @Override
     public void createComputer(String computer_code, String location, String start_used_date,
                                String configuration, String warranty_period, Integer flag_delete,
@@ -40,8 +39,7 @@ public class ComputerServiceImpl implements ComputerService {
         return computerRepository.searchComputerCode(computerCode);
     }
 
-
-
+    //NguyenNHN repository
     @Override
     public Page<Computer> getAllComputer(Pageable pageable) {
         return computerRepository.findAllComputer(pageable);
@@ -83,10 +81,9 @@ public class ComputerServiceImpl implements ComputerService {
         computerRepository.delete(computer);
     }
 
-
     @Override
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
-
 }
+

@@ -9,13 +9,14 @@ import java.util.Optional;
 
 public interface ComputerService {
 
-/*long-computer*/
+    /*long-computer*/
     void createComputer(String computer_code,String location,String start_used_date,
                         String configuration,String warranty_period,Integer flag_delete,
                         Long id_type,Long id_manufacturer,Long id_status);
     void updateComputer(String computer_code,String location,String start_used_date,
                         String configuration,String warranty_period,
                         Long id_type,Long id_manufacturer,Long id_status,Long computer_id);
+
     /*nguyen-computer*/
     Computer searchComputerCode(String computerCode);
 
@@ -34,5 +35,4 @@ public interface ComputerService {
     void deleteComputer(Computer computer);
 
     void saveComputer(Computer computer);
-
 }

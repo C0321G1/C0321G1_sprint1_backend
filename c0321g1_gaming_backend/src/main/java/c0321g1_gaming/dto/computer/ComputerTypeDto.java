@@ -9,11 +9,10 @@ public class ComputerTypeDto {
     private Long computerTypeId;
     private String name;
 
-
     public ComputerTypeDto() {
     }
 
-    public ComputerTypeDto(Long computerTypeId, String name, List<Computer> computerList) {
+    public ComputerTypeDto(Long computerTypeId, String name) {
         this.computerTypeId = computerTypeId;
         this.name = name;
     }
@@ -33,5 +32,4 @@ public class ComputerTypeDto {
     public void setName(String name) {
         this.name = name;
     }
-
 }

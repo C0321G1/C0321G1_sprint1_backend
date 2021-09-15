@@ -7,7 +7,6 @@ public class ComputerManufacturerDto {
     private Long computerManufacturerId;
     private String name;
 
-
     public ComputerManufacturerDto() {
     }
 
@@ -31,6 +30,6 @@ public class ComputerManufacturerDto {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
+
+
