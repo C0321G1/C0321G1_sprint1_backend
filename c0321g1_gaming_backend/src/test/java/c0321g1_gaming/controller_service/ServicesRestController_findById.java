@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller;
+package c0321g1_gaming.controller_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller.services;
+package c0321g1_gaming.controller_service.services;
 
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
@@ -42,7 +42,7 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
         }catch (Exception e){
-            System.out.printf(e.getMessage());
+            System.out.print(e.getMessage());
         }
         return null;
     }
@@ -97,7 +97,7 @@ public class ServicesRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
-
+// phap
     @GetMapping("")
     public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable pageable, Optional<String> name) {
         String keyword = "";
@@ -111,6 +111,7 @@ public class ServicesRestController {
         return new ResponseEntity<>(servicesPage, HttpStatus.OK);
     }
 
+//    phap
     @GetMapping("/searchNameCodePrices")
     public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable,Optional<String> code,
                                                                      Optional<String> name,Optional<String> prices ){
@@ -120,8 +121,13 @@ public class ServicesRestController {
         Page<Services> servicesPage=servicesService.pageServicesCodeNamePrices(keywordCode,keywordName,keywordPrices,pageable);
         return new ResponseEntity<>(servicesPage,HttpStatus.OK);
     }
+
+//    phap
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Services> deleteServices(@PathVariable Long id){
+        if (id==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Services services =servicesService.findById(id);
         if (services==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
