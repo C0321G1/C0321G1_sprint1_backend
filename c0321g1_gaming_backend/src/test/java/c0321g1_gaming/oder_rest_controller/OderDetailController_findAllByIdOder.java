@@ -59,7 +59,7 @@ public class OderDetailController_findAllByIdOder {
         Assertions.assertEquals(200, statusCode);
         Assertions.assertEquals(2, orderDetailList.size());
         Assertions.assertEquals(1, orderDetailList.get(1).getQuantity());
-        Assertions.assertEquals("pool", orderDetailList.get(1).getServices().getName());
-        Assertions.assertEquals(10000, orderDetailList.get(1).getServices().getPrices());
+        Assertions.assertEquals("nuoc", orderDetailList.get(1).getServices().getName());
+        Assertions.assertEquals(15000, orderDetailList.get(1).getServices().getPrices());
     }
 }

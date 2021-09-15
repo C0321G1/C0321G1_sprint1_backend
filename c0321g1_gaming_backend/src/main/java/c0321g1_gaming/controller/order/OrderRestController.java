@@ -39,13 +39,13 @@ public class OrderRestController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<Void> confirmPayment(@PathVariable Long id) {
-        Optional<Order> optionalOrders = orderService.findById(id);
+    @PatchMapping(value = "/{orderId}")
+    public ResponseEntity<Void> confirmPayment(@PathVariable Long orderId) {
+        Optional<Order> optionalOrders = orderService.findById(orderId);
         if (!optionalOrders.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        orderService.confirmPayments(id);
+        orderService.confirmPayments(orderId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

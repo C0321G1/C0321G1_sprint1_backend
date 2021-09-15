@@ -39,13 +39,13 @@ public class OderRestController_findAllOder{
         ResponseEntity<Page<Order>> pageResponseEntity
                 = this.orderRestController.findAllOder(
                 PageRequest.of(0, 5));
-        Page<Order> studentPage = pageResponseEntity.getBody();
+        Page<Order> oderPage = pageResponseEntity.getBody();
         int statusCode = pageResponseEntity.getStatusCodeValue();
 
         Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(5, studentPage.getTotalElements());
-        Assertions.assertEquals(2, studentPage.getTotalPages());
-        Assertions.assertEquals(1, studentPage.getContent().get(0).getOrderId());
-        Assertions.assertEquals(1, studentPage.getContent().get(0).getStatus());
+        Assertions.assertEquals(2, oderPage.getTotalElements());
+        Assertions.assertEquals(1, oderPage.getTotalPages());
+        Assertions.assertEquals(1, oderPage.getContent().get(0).getOrderId());
+        Assertions.assertEquals(1, oderPage.getContent().get(0).getStatus());
     }
 }

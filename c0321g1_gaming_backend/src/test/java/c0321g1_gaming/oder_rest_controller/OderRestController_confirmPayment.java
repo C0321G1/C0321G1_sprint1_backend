@@ -2,12 +2,10 @@ package c0321g1_gaming.oder_rest_controller;
 
 import c0321g1_gaming.controller.order.OrderRestController;
 import c0321g1_gaming.model.service.order.IOrderService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -27,7 +25,7 @@ public class OderRestController_confirmPayment {
     @Test
     public void confirmPayment_7() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/order/{id}", "null"))
+                MockMvcRequestBuilders.patch("/order/{orderId}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -35,7 +33,7 @@ public class OderRestController_confirmPayment {
     @Test
     public void confirmPayment_8() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/order/{id}", ""))
+                MockMvcRequestBuilders.patch("/order/{orderId}", ""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -43,16 +41,16 @@ public class OderRestController_confirmPayment {
     @Test
     public void confirmPayment_9() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/order/{id}", 100))
+                MockMvcRequestBuilders.patch("/order/{orderId}", 100))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void confirmPayment_10() {
-        ResponseEntity<Void> responseEntity = this.orderRestController.confirmPayment(1L);
-        int statusCode = responseEntity.getStatusCodeValue();
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(0, orderService.findById(1L).get().getStatus());
+    public void confirmPayment_10() throws Exception {
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.patch("/order/{orderId}", 1))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
     }
 }

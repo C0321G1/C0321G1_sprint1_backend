@@ -53,13 +53,13 @@ public class OderRestController_findAllOderByIdCustomer {
         ResponseEntity<Page<Order>> pageResponseEntity
                 = this.orderRestController.findAllOderByCustomerId(
                 PageRequest.of(0, 5), 1L);
-        Page<Order> studentPage = pageResponseEntity.getBody();
+        Page<Order> orderPage = pageResponseEntity.getBody();
         int statusCode = pageResponseEntity.getStatusCodeValue();
 
         Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(1, studentPage.getTotalElements());
-        Assertions.assertEquals(1, studentPage.getTotalPages());
-        Assertions.assertEquals(1, studentPage.getContent().get(0).getOrderId());
-        Assertions.assertEquals(1, studentPage.getContent().get(0).getStatus());
+        Assertions.assertEquals(1, orderPage.getTotalElements());
+        Assertions.assertEquals(1, orderPage.getTotalPages());
+        Assertions.assertEquals(1, orderPage.getContent().get(0).getOrderId());
+        Assertions.assertEquals(1, orderPage.getContent().get(0).getStatus());
     }
 }

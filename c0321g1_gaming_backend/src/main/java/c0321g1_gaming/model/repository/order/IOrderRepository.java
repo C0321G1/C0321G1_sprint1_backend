@@ -12,19 +12,19 @@ import java.util.Optional;
 
 @Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
-    @Query(value = " select * from orders", nativeQuery = true)
+    @Query(value = " select * from `order`", nativeQuery = true)
     Page<Order> pageOderAll(Pageable pageable);
 
     @Query(value = "select * " +
-            "from orders " +
-            "where orders.customer_id = :idCustomer", nativeQuery = true)
+            "from `order` " +
+            "where `order`.customer_id = :idCustomer", nativeQuery = true)
     Page<Order> pageOderByCustomer(Pageable pageable, @Param("idCustomer") Long idCustomer);
 
-    @Query(value = "update orders set status=0 where order_id =:oderId"
+    @Query(value = "update `order` set status =0 where order_id=:oderId;"
             , nativeQuery = true)
     void updateConfirmPayment(@Param("oderId") Long oderId);
 
-    @Query(value = "select * from orders where order_id=:oderId"
+    @Query(value = "select * from `order` where order_id=:oderId"
             , nativeQuery = true)
     Optional<Order> findById(@Param("oderId") Long oderId);
 
