@@ -24,7 +24,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Long accountId;
     private String username;
-    private Category category;
+    private Long categoryId;
     private Customer customer;
     private Employee employee;
     private List<AccountComputer> accountComputer;
@@ -34,12 +34,12 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long accountId, String username, Category category, Customer customer,
+    public UserDetailsImpl(Long accountId, String username, Long categoryId, Customer customer,
                            Employee employee, List<AccountComputer> accountComputer, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.accountId = accountId;
         this.username = username;
-        this.category = category;
+        this.categoryId = categoryId;
         this.customer = customer;
         this.employee = employee;
         this.accountComputer = accountComputer;
@@ -55,7 +55,7 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(
                 account.getAccountId(),
                 account.getUsername(),
-                account.getCategory(),
+                account.getCategory().getCategoryId(),
                 account.getCustomer(),
                 account.getEmployee(),
                 account.getAccountComputer(),
@@ -76,8 +76,8 @@ public class UserDetailsImpl implements UserDetails {
         return accountId;
     }
 
-    public Category getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
     public Customer getCustomer() {

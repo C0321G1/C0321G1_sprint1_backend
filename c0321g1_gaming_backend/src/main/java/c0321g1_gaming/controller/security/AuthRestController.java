@@ -48,7 +48,7 @@ public class AuthRestController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getAccountId(),
                 userDetails.getUsername(),
-                userDetails.getCategory(),
+                userDetails.getCategoryId(),
                 roles));
     }
 }
