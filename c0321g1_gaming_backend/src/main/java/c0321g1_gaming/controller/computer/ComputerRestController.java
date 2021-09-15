@@ -105,12 +105,17 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PostMapping("/create-computer")
-    public ResponseEntity<Void> createComputer(@RequestBody ComputerDto computerDto) {
+    public ResponseEntity<?> createComputer(@Valid @RequestBody ComputerDto computerDto,
+                                            BindingResult bindingResult) {
         Computer computer = computerService.searchComputerCode(computerDto.getComputerCode());
-        if (computer == null){
-            computerService.createComputer(computerDto.getComputerCode(),computerDto.getLocation(),
-                    computerDto.getStartUsedDate(),computerDto.getConfiguration(),
-                    computerDto.getWarrantyPeriod(),computerDto.getFlagDelete(),
+        new ComputerDto().validate(computerDto, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
+        }
+        if (computer == null) {
+            computerService.createComputer(computerDto.getComputerCode(), computerDto.getLocation(),
+                    computerDto.getStartUsedDate(), computerDto.getConfiguration(),
+                    computerDto.getWarrantyPeriod(), computerDto.getFlagDelete(),
                     computerDto.getComputerType().getComputerTypeId(),
                     computerDto.getComputerManufacturer().getComputerManufacturerId(),
                     computerDto.getComputerStatus().getComputerStatusId());
@@ -120,19 +125,23 @@ public class ComputerRestController {
     }
 
     /*Long-Computer*/
-    @PutMapping("/update-computer/{id}")
-    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto,
-                                               BindingResult bindingResult,
-                                               @PathVariable Long id) {
+    @PatchMapping("/update-computer/{id}")
+    public ResponseEntity<?> updateComputer(@Valid @RequestBody ComputerDto computerDto,
+                                            BindingResult bindingResult,
+                                            @PathVariable Long id) {
         Computer computer = computerService.findComputerById(id).get();
+        new ComputerDto().validate(computerDto, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
+        }
         if (computer == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        computerService.updateComputer(computerDto.getComputerCode(),computerDto.getLocation(),
-                computerDto.getStartUsedDate(),computerDto.getConfiguration(),
-                computerDto.getWarrantyPeriod(),computerDto.getComputerType().getComputerTypeId(),
+        computerService.updateComputer(computerDto.getComputerCode(), computerDto.getLocation(),
+                computerDto.getStartUsedDate(), computerDto.getConfiguration(),
+                computerDto.getWarrantyPeriod(), computerDto.getComputerType().getComputerTypeId(),
                 computerDto.getComputerManufacturer().getComputerManufacturerId(),
-                computerDto.getComputerStatus().getComputerStatusId(),id);
+                computerDto.getComputerStatus().getComputerStatusId(), id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

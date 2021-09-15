@@ -18,11 +18,11 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
 /*long-computer*/
     @Modifying
     @Query(value = "INSERT INTO computer (computer_code,location,start_used_date,configuration,warranty_period,\n" +
-            "            flag_delete,id_type,id_manufacturer,id_status)\n" +
+            "            flag_delete,computer_type_id,computer_manufacturer_id,computer_status_id)\n" +
             "VALUES (:computer_code,:location,:start_used_date,:configuration,:warranty_period,\n" +
             "            :flag_delete,:id_type,:id_manufacturer,:id_status);", nativeQuery = true)
     @Transactional
-    Void createComputer(@Param("computer_code") String computer_code,
+    Integer createComputer(@Param("computer_code") String computer_code,
                         @Param("location") String location,
                         @Param("start_used_date") String start_used_date,
                         @Param("configuration") String configuration,
@@ -33,13 +33,13 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                         @Param("id_status") Long id_status);
 /*long-computer*/
     @Modifying
-    @Query(value = "update computer c \n" +
-            "set c.computer_code = :computer_code,c.location = :location,c.start_used_date = :start_used_date," +
-            "c.configuration = :configuration,c.warranty_period = :warranty_period,\n" +
-            "c.id_type = :id_type,c.id_manufacturer = :id_manufacturer,:c.id_status = id_status\n" +
-            "where c.computer_id =:computer_id", nativeQuery = true)
+    @Query(value = "update computer \n" +
+            "set computer_code = :computer_code,location = :location,start_used_date = :start_used_date," +
+            "configuration = :configuration,warranty_period = :warranty_period,\n" +
+            "computer_type_id = :id_type,computer_manufacturer_id = :id_manufacturer,computer_status_id = :id_status\n" +
+            "where computer_id =:computer_id", nativeQuery = true)
     @Transactional
-    Void updateComputer(@Param("computer_code") String computer_code,
+    Integer updateComputer(@Param("computer_code") String computer_code,
                         @Param("location") String location,
                         @Param("start_used_date") String start_used_date,
                         @Param("configuration") String configuration,
@@ -49,6 +49,6 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                         @Param("id_status") Long id_status,
                         @Param("computer_id") Long computer_id);
 
-    @Query(value="select * from computer where computer.computer_code = ?",nativeQuery = true)
+    @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
 }
