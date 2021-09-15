@@ -8,31 +8,23 @@ import c0321g1_gaming.model.entity.employee.Employee;
 import java.util.List;
 
 public class JwtResponse {
+
+	//creator: Tra
 	private String token;
 	private String type = "Bearer";
 	private Long id;
 	private String username;
-	private Category category;
+	private Long categoryId;
 	private Customer customer;
 	private Employee employee;
 	private List<AccountComputer> accountComputer;
 	private List<String> roles;
 
-	public JwtResponse(String accessToken, Long id, String username, Category category, List<String> roles) {
-		this.token = accessToken;
-		this.id = id;
-		this.username = username;
-		this.roles = roles;
-	}
-
-	public JwtResponse(String token, Long id, String username, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer, List<String> roles) {
+	public JwtResponse(String token, Long id, String username, Long categoryId, List<String> roles) {
 		this.token = token;
 		this.id = id;
 		this.username = username;
-		this.category = category;
-		this.customer = customer;
-		this.employee = employee;
-		this.accountComputer = accountComputer;
+		this.categoryId = categoryId;
 		this.roles = roles;
 	}
 
@@ -52,12 +44,12 @@ public class JwtResponse {
 		this.type = type;
 	}
 
-	public Category getCategory() {
-		return category;
+	public Long getCategory() {
+		return categoryId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public Customer getCustomer() {
