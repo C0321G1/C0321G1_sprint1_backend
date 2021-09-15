@@ -30,11 +30,10 @@ public class GameServiceImpl implements IGameService {
 
     @Override
     public void updateGame(Game game) {
-        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(),game.getFlagDelete(), game.getGameId());
+        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete(), game.getGameId());
     }
 
-//        Creator: Thúy
-
+    //    Creator: Thúy
     @Override
     public Page<Game> getAllGame(Pageable pageable) {
         return gameRepository.getAllGame(pageable);
@@ -48,5 +47,10 @@ public class GameServiceImpl implements IGameService {
     @Override
     public void deleteGameFlag(Long gameId) {
         gameRepository.deleteGameFlag(gameId);
+    }
+
+    @Override
+    public List<Game> searchTopGame() {
+        return gameRepository.searchTopGame();
     }
 }
