@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class Computer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

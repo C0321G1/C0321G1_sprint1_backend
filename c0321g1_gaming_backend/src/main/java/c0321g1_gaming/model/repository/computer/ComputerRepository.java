@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.Optional;
 
@@ -31,4 +31,5 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
             "and (computer_status.name like ?4)) and flag_delete = 0", nativeQuery = true)
     Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
                                   Pageable pageable);
+
 }

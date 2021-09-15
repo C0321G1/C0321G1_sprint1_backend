@@ -18,7 +18,11 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Override
     public Page<Computer> getAllComputer(Pageable pageable) {
+<<<<<<< HEAD
+        return computerRepository.findAll(pageable);
+=======
         return computerRepository.findAllComputer(pageable);
+>>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
     }
 
     @Override
@@ -56,11 +60,17 @@ public class ComputerServiceImpl implements ComputerService {
     public void deleteComputer(Computer computer) {
         computerRepository.delete(computer);
     }
+<<<<<<< HEAD
+=======
 
     @Override
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
+>>>>>>> 4c33b42bec80e48e30fa4996029058d3ed9d4909
 }
