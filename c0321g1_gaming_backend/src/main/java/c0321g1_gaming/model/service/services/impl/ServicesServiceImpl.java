@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class ServicesServiceImpl implements IServicesService {
@@ -18,7 +20,7 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Autowired
     IUnitRepository unitRepository;
-
+// Khanh code
     @Override
     public void save(Services services) {
         List<Services> servicesList = servicesRepository.findAll();
@@ -56,7 +58,7 @@ public class ServicesServiceImpl implements IServicesService {
         return servicesRepository.pageServicesCodeNamePrices("%"+code+"%","%"+name+"%","%"+prices+"%",pageable);
     }
 
-
+// Khanh code
     @Override
     public void update(Services services) {
         List<Services> servicesList = servicesRepository.findAll();
@@ -79,6 +81,7 @@ public class ServicesServiceImpl implements IServicesService {
         servicesRepository.updateServices(services.getCode(),services.getFlag(),services.getImage(),services.getName(),services.getPrices(),
                 services.getQuantity(),services.getUnit().getUnitId(),services.getServicesId());
     }
+
 
 
 }

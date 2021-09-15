@@ -28,15 +28,19 @@ import java.util.Optional;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
-
+// Khanh code
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
+        if (id == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Services services = servicesService.findById(id);
         if (services == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
+
 
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

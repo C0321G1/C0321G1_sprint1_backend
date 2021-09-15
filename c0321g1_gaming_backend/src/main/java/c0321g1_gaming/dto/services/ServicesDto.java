@@ -1,8 +1,6 @@
 package c0321g1_gaming.dto.services;
-import c0321g1_gaming.model.entity.order.Orders;
 import c0321g1_gaming.model.entity.services.Unit;
 
-import java.util.List;
 
 
 import javax.validation.constraints.Min;
@@ -13,34 +11,24 @@ import javax.validation.constraints.NotNull;
 public class ServicesDto {
     private Long servicesId;
     private String code;
-    @NotNull(message = "Trường này không được để trống")
-    @Min(value = 0,message = "Trường này phải lớn hơn 0")
+    @NotNull(message = "This field is not be blank")
+    @Min(value = 0,message = "This field must be greater than 0")
     private int quantity;
-    @NotNull( message = "Trường này không được để trống")
-    @Min(value = 1000,message = "Trường này phải lớn hơn 1000")
+    @NotNull( message = "This field is not be blank")
+    @Min(value = 1000,message = "This field must be greater than 1000")
     private int prices;
-    @NotBlank(message = "Trường này không được để trống")
+    @NotBlank(message = "This field is not be blank")
     private String name;
     private int flag;
-    @NotBlank(message = "Trường này không được để trống")
+    @NotBlank(message = "This field is not be blank")
     private String image;
     private Unit unit;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, @NotNull(message = "Trường này không được để trống") @Min(value = 0, message = "Trường này phải lớn hơn 0") int quantity, @NotNull(message = "Trường này không được để trống") @Min(value = 1000, message = "Trường này phải lớn hơn 1000") int prices, @NotBlank(message = "Trường này không được để trống") String name, int flag, @NotBlank(message = "Trường này không được để trống") String image, Unit unit) {
+    public ServicesDto(Long servicesId, String code, @NotNull(message = "This field is not be blank") @Min(value = 0, message = "This field must be greater than 0") int quantity, @NotNull(message = "This field is not be blank") @Min(value = 1000, message = "This field must be greater than 1000") int prices, @NotBlank(message = "This field is not be blank") String name, int flag, @NotBlank(message = "This field is not be blank") String image, Unit unit) {
         this.servicesId = servicesId;
-        this.code = code;
-        this.quantity = quantity;
-        this.prices = prices;
-        this.name = name;
-        this.flag = flag;
-        this.image = image;
-        this.unit = unit;
-    }
-
-    public ServicesDto(String code, int quantity, int prices, String name, int flag, String image, Unit unit) {
         this.code = code;
         this.quantity = quantity;
         this.prices = prices;
