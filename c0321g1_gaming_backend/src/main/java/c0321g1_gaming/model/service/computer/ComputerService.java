@@ -8,6 +8,17 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ComputerService {
+
+/*long-computer*/
+    void createComputer(String computer_code,String location,String start_used_date,
+                        String configuration,String warranty_period,Integer flag_delete,
+                        Long id_type,Long id_manufacturer,Long id_status);
+    void updateComputer(String computer_code,String location,String start_used_date,
+                        String configuration,String warranty_period,
+                        Long id_type,Long id_manufacturer,Long id_status,Long computer_id);
+    /*nguyen-computer*/
+    Computer searchComputerCode(String computerCode);
+
     Page<Computer> getAllComputer(Pageable pageable);
 
     List<Computer> findAll();
@@ -21,14 +32,7 @@ public interface ComputerService {
     Optional<Computer> findComputerById(Long id);
 
     void deleteComputer(Computer computer);
-<<<<<<< HEAD
-=======
 
     void saveComputer(Computer computer);
-<<<<<<< HEAD
 
-
-=======
->>>>>>> ad036e4404c162616be0aa423a3b79bf1857d2f5
->>>>>>> 4c33b42bec80e48e30fa4996029058d3ed9d4909
 }
