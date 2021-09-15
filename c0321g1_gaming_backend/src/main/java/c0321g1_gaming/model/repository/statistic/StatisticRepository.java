@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-
+// Create by HauHP
 public interface StatisticRepository extends JpaRepository<OrderDetail, Long>{
     @Query(nativeQuery = true, value = "select sum(hour((timediff(start_time, end_time)))) as hour, computer_code as computer\n" +
             " from `order`\n" +
@@ -44,6 +44,8 @@ public interface StatisticRepository extends JpaRepository<OrderDetail, Long>{
             "join computer on account_computer.computer_id = computer.computer_id\n" +
             "join category on account.category_id = category.category_id\n" +
             "where start_time > date(:startDate) and end_time < date(:endDate)\n" +
-            "group by account;")
+            "group by account " +
+            "order by hour desc " +
+            "limit 10;")
     List<StatisticByAccount> getStatisticByAccount(String startDate, String endDate);
 }

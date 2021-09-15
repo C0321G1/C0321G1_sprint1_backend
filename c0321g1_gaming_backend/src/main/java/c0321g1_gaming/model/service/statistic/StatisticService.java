@@ -7,7 +7,7 @@ import c0321g1_gaming.dto.statistic.StatisticByMonth;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-
+// Create by HauHP
 public interface StatisticService {
     List<StatisticByComputer> getStatisticByComputer(String startDate, String endDate);
 
