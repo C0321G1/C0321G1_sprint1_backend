@@ -80,7 +80,6 @@ public class ComputerRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     //NguyenNHN - Get all Computer List
     @GetMapping("/computer")
     public ResponseEntity<Iterable<Computer>> getAllComputer() {
@@ -110,7 +109,6 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
     }
-
     //NguyenNHN - Get all computer type
     @GetMapping("/computerType")
     public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
@@ -120,7 +118,6 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerTypes, HttpStatus.OK);
     }
-
     //NguyenNHN - Get all computer status
     @GetMapping("/computerStatus")
     public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
@@ -130,7 +127,6 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computerStatus, HttpStatus.OK);
     }
-
     //NguyenNHN - Get computer by id
     @GetMapping("/computer/{id}")
     public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
@@ -144,7 +140,6 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
-
     //NguyenNHN - Delete computer
     @DeleteMapping("/computer/{id}")
     public ResponseEntity<?> deleteComputer(@PathVariable Long id) {
@@ -162,7 +157,6 @@ public class ComputerRestController {
         computerService.saveComputer(computer.get());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
     //NguyenNHN - Search computer
     @GetMapping("/computer/searchComputer")
     public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
@@ -197,3 +191,6 @@ public class ComputerRestController {
         }
     }
 }
+
+
+

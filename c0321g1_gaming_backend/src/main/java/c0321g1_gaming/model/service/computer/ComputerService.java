@@ -32,6 +32,7 @@ public interface ComputerService {
 
     Optional<Computer> findComputerById(Long id);
 
-    void saveComputer(Computer computer);
+    void deleteComputer(Computer computer);
 
+    void saveComputer(Computer computer);
 }

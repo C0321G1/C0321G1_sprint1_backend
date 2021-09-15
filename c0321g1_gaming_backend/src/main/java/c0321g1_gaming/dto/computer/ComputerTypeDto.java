@@ -9,7 +9,6 @@ public class ComputerTypeDto {
     private Long computerTypeId;
     private String name;
 
-
     public ComputerTypeDto() {
     }
 

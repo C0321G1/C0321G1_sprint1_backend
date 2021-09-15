@@ -30,7 +30,7 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                            @Param("id_type") Long id_type,
                            @Param("id_manufacturer") Long id_manufacturer,
                            @Param("id_status") Long id_status);
-    /*long-computer*/
+
     @Modifying
     @Query(value = "update computer \n" +
             "set computer_code = :computer_code,location = :location,start_used_date = :start_used_date," +
@@ -48,8 +48,6 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                            @Param("id_status") Long id_status,
                            @Param("computer_id") Long computer_id);
 
-
-    //NguyenNHN repository
     @Query(value = "SELECT * FROM Computer WHERE computer.flag_delete=0", nativeQuery = true)
     Page<Computer> findAllComputer(Pageable pageable);
     @Query(value = "SELECT * FROM Computer WHERE computer.computer_id=?1", nativeQuery = true)
@@ -70,6 +68,4 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                                   Pageable pageable);
     @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
-
-
 }

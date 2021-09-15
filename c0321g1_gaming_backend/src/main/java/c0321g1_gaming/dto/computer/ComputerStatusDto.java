@@ -16,7 +16,6 @@ public class ComputerStatusDto {
     public ComputerStatusDto(Long computerStatusId, String name) {
         this.computerStatusId = computerStatusId;
         this.name = name;
-
     }
 
     public Long getComputerStatusId() {
@@ -34,5 +33,4 @@ public class ComputerStatusDto {
     public void setName(String name) {
         this.name = name;
     }
-
 }
