@@ -1,7 +1,7 @@
-package c0321g1_gaming.model.repository.address;
+package c0321g1_gaming.model.repository.gender;
 
-import c0321g1_gaming.model.entity.address.Commune;
 import c0321g1_gaming.model.entity.gender.Gender;
+import c0321g1_gaming.model.entity.security.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommuneRepository extends JpaRepository<Commune,Long> {
+public interface GenderRepository extends JpaRepository<Gender,Long> {
     //creator: vinhdn
-    @Query(value = "select * from commune", nativeQuery = true)
-    List<Commune> findAllQuery();
+    @Query(value = "select * from gender", nativeQuery = true)
+    List<Gender> findAllQuery();
 }

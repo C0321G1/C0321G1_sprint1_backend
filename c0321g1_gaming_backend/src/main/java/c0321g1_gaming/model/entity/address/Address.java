@@ -21,12 +21,12 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "communeId", referencedColumnName = "communeId")
     private Commune commune;
-    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "address-customerList")
     private List<Customer> customerList;
 
-   @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-   @JsonBackReference
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "address-employeeList")
     private List<Employee> employeeList;
 
     public Address() {

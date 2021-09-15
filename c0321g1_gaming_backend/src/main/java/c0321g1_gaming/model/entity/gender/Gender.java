@@ -12,10 +12,10 @@ public class Gender {
     private Long genderId;
     private String name;
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "gender-employeeList")
     private List<Employee> employeeList;
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "gender-customerList")
     private List<Customer> customerList;
     public Gender() {
     }
