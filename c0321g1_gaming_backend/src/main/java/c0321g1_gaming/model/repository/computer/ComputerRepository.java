@@ -22,15 +22,15 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
             "            :flag_delete,:id_type,:id_manufacturer,:id_status);", nativeQuery = true)
     @Transactional
     Integer createComputer(@Param("computer_code") String computer_code,
-                        @Param("location") String location,
-                        @Param("start_used_date") String start_used_date,
-                        @Param("configuration") String configuration,
-                        @Param("warranty_period") String warranty_period,
-                        @Param("flag_delete") Integer flag_delete,
-                        @Param("id_type") Long id_type,
-                        @Param("id_manufacturer") Long id_manufacturer,
-                        @Param("id_status") Long id_status);
-/*long-computer*/
+                           @Param("location") String location,
+                           @Param("start_used_date") String start_used_date,
+                           @Param("configuration") String configuration,
+                           @Param("warranty_period") String warranty_period,
+                           @Param("flag_delete") Integer flag_delete,
+                           @Param("id_type") Long id_type,
+                           @Param("id_manufacturer") Long id_manufacturer,
+                           @Param("id_status") Long id_status);
+
     @Modifying
     @Query(value = "update computer \n" +
             "set computer_code = :computer_code,location = :location,start_used_date = :start_used_date," +
@@ -39,16 +39,14 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
             "where computer_id =:computer_id", nativeQuery = true)
     @Transactional
     Integer updateComputer(@Param("computer_code") String computer_code,
-                        @Param("location") String location,
-                        @Param("start_used_date") String start_used_date,
-                        @Param("configuration") String configuration,
-                        @Param("warranty_period") String warranty_period,
-                        @Param("id_type") Long id_type,
-                        @Param("id_manufacturer") Long id_manufacturer,
-                        @Param("id_status") Long id_status,
-                        @Param("computer_id") Long computer_id);
-
-
+                           @Param("location") String location,
+                           @Param("start_used_date") String start_used_date,
+                           @Param("configuration") String configuration,
+                           @Param("warranty_period") String warranty_period,
+                           @Param("id_type") Long id_type,
+                           @Param("id_manufacturer") Long id_manufacturer,
+                           @Param("id_status") Long id_status,
+                           @Param("computer_id") Long computer_id);
 
     @Query(value = "SELECT * FROM Computer WHERE computer.flag_delete=0", nativeQuery = true)
     Page<Computer> findAllComputer(Pageable pageable);
@@ -70,5 +68,4 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                                   Pageable pageable);
     @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
-
 }
