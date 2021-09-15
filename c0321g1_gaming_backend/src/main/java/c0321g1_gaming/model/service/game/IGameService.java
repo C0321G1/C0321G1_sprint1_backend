@@ -21,4 +21,6 @@ public interface IGameService {
     Page<Game> getGameBySearching(Pageable pageable, String name, String gameType);
 
     void deleteGameFlag(Long gameId);
+
+    List<Game> searchTopGame();
 }
