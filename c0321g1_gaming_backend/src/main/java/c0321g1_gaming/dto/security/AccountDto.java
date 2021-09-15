@@ -14,7 +14,6 @@ import java.util.Set;
 public class AccountDto {
 	private Long AccountId;
 	private String username;
-	private String email;
 	private String password;
 	private Set<Role> roles = new HashSet<>();
 	private Category category;
@@ -25,9 +24,9 @@ public class AccountDto {
 	}
 
 	public AccountDto(Long accountId, String username, String email, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
+
 		AccountId = accountId;
 		this.username = username;
-		this.email = email;
 		this.password = password;
 		this.roles = roles;
 		this.category = category;
@@ -82,14 +81,6 @@ public class AccountDto {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {

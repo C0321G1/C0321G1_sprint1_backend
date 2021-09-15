@@ -34,7 +34,7 @@ public class CusDTO {
         this.customerStatusId = customerStatusId;
     }
 
-    public Long getCustomerId() {
+    public Long getCustomerId(int i) {
         return customerId;
     }
 

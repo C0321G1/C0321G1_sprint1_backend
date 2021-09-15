@@ -29,7 +29,7 @@ public class CustomerRestController_updateCusDto {
     public void updateNewCusDto_name_18() throws Exception {
 
         CusDTO cusDTO = new CusDTO();
-        cusDTO.setFullName("Poli");
+        cusDTO.setFullName("Poli16-9");
         cusDTO.setEmail("A@gmail.com");
         cusDTO.setDateOfBirth("");
         cusDTO.setPhone("");
@@ -38,10 +38,9 @@ public class CustomerRestController_updateCusDto {
         cusDTO.setGenderId((long) 1);
         cusDTO.setCustomerStatusId((long) 1);
 
-        cusDTO.setPassword("1111111");
-        cusDTO.setUsername("Addddq1111");
-
-        cusDTO.setFlag(1);
+        cusDTO.setPassword("16-9");
+        cusDTO.setUsername("11a");
+        cusDTO.setCustomerId((long) 1);
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders

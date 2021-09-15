@@ -7,35 +7,32 @@ import java.util.List;
 
 @Entity
 public class Gender {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genderId;
     private String name;
+
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Employee> employeeList;
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Customer> customerList;
+
     public Gender() {
     }
 
-    public Gender(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList) {
+    public Gender(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList, List<Employee> employeeList1, List<Customer> customerList1) {
         this.genderId = genderId;
         this.name = name;
         this.employeeList = employeeList;
         this.customerList = customerList;
+        this.employeeList = employeeList1;
+        this.customerList = customerList1;
     }
 
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
-
-    public void setCustomerList(List<Customer> customerList) {
-        this.customerList = customerList;
-    }
-
-    public Long getGenderId(int i) {
+    public Long getGenderId() {
         return genderId;
     }
 
@@ -43,7 +40,7 @@ public class Gender {
         this.genderId = genderId;
     }
 
-    public String getName(String namNu) {
+    public String getName() {
         return name;
     }
 
@@ -58,4 +55,13 @@ public class Gender {
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
 }
+

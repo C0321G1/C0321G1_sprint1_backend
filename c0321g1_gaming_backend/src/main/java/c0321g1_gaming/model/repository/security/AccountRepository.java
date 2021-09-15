@@ -20,7 +20,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Modifying
     @Transactional
-    @Query(value="update `account` set`password`=?1, where `username`=?2",nativeQuery = true)
+    @Query(value="update `account` set`password`=?1 where `username`=?2",nativeQuery = true)
     Integer updateAccountDto(String password,String username);
 
 }
