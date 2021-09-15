@@ -7,14 +7,14 @@ import java.util.List;
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private List<Order> orderDtoList;
+    private Order order;
 
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, List<Order> orderDtoList) {
+    public OrderDetailDto(Long orderDetailId, Order order) {
         this.orderDetailId = orderDetailId;
-        this.orderDtoList = orderDtoList;
+        this.order = order;
     }
 
     public Long getOrderDetailId() {
@@ -25,11 +25,11 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public List<Order> getOrderDtoList() {
-        return orderDtoList;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderDtoList(List<Order> orderDtoList) {
-        this.orderDtoList = orderDtoList;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

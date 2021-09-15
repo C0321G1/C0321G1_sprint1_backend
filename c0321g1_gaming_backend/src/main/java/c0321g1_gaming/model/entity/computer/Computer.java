@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class Computer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,7 +106,7 @@ public class Computer {
         return computerStatus;
     }
 
-    public void setComputerStatus(ComputerStatus computerStatus) {
+    public Computer(ComputerStatus computerStatus) {
         this.computerStatus = computerStatus;
     }
 
