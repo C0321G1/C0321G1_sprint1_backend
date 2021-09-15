@@ -32,13 +32,14 @@ public interface IServicesRepository extends JpaRepository<Services, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE services " +
+    @Query(value = " UPDATE services " +
             "SET   `flag` = ?1  WHERE services_id = ?2 ", nativeQuery = true)
     void updateFlag(int flagDelete, Long servicesId);
 
+
     @Modifying
     @Transactional
-    @Query(value = "insert into services (`code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
+    @Query(value = " insert into services (`code`, `flag`, `image`, `name`, `prices`, `quantity`, `unit_id`)" +
             "value ( ?1 , ?2 , ?3 , ?4 ,?5 ,?6, ?7)", nativeQuery = true)
     void saveServices(String code, int flag, String image, String name, double prices, int quantity, int unitId);
 

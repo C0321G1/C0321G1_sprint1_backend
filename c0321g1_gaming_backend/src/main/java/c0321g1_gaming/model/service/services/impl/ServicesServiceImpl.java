@@ -20,7 +20,7 @@ public class ServicesServiceImpl implements IServicesService {
 
     @Autowired
     IUnitRepository unitRepository;
-
+// Khanh code
     @Override
     public void save(Services services) {
         List<Services> servicesList = servicesRepository.findAll();
@@ -58,7 +58,7 @@ public class ServicesServiceImpl implements IServicesService {
         return servicesRepository.pageServicesCodeNamePrices("%"+code+"%","%"+name+"%","%"+prices+"%",pageable);
     }
 
-
+// Khanh code
     @Override
     public void update(Services services) {
         List<Services> servicesList = servicesRepository.findAll();
