@@ -12,7 +12,7 @@ public class Commune {
     private Long communeId;
     private String name;
     @OneToMany(mappedBy = "commune",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "commune-addressList")
     private List<Address> addressList;
 
     public Commune() {

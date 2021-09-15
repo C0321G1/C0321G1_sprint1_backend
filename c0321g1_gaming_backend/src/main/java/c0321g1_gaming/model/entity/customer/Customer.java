@@ -31,7 +31,7 @@ public class Customer {
     private CustomerStatus customerStatus;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "customer-orderList")
     private List<Order> orderList;
 
     @OneToOne

@@ -26,17 +26,18 @@ public class Account {
     private Set<Role> roles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
+//    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
-
+    @JsonBackReference(value = "account-customer")
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private Customer customer;
 
     @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account-employee")
     private Employee employee;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account-accountComputer")
     private List<AccountComputer> accountComputer;
 
     public Account() {
