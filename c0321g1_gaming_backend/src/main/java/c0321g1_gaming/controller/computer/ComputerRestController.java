@@ -43,7 +43,6 @@ public class ComputerRestController {
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
 
-
     //NguyenNHN - Get all computer page
     @GetMapping("/computerPage")
     public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
@@ -53,7 +52,6 @@ public class ComputerRestController {
         }
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
-
 
     //NguyenNHN - Get all computer manufacturer
     @GetMapping("/computerManufacturer")
