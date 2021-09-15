@@ -1,5 +1,4 @@
 package c0321g1_gaming.controller.computer;
-
 import c0321g1_gaming.model.entity.computer.Computer;
 import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
 import c0321g1_gaming.model.entity.computer.ComputerStatus;
@@ -34,7 +33,7 @@ public class ComputerRestController {
     @Autowired
     ComputerStatusService computerStatusService;
 
-    //Get all Computer
+    //NguyenNHN - Get all Computer
     @GetMapping("/computer")
     public ResponseEntity<Iterable<Computer>> getAllComputer() {
         List<Computer> computers = computerService.findAll();
@@ -44,7 +43,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
 
-    //Get all computer page
+    //NguyenNHN - Get all computer page
     @GetMapping("/computerPage")
     public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
         Page<Computer> computers = computerService.getAllComputer(pageable);
@@ -54,7 +53,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computers, HttpStatus.OK);
     }
 
-    //Get all computer manufacturer
+    //NguyenNHN - Get all computer manufacturer
     @GetMapping("/computerManufacturer")
     public ResponseEntity<Iterable<ComputerManufacturer>> getAllComputerManufacturer() {
         List<ComputerManufacturer> computerManufacturers = computerManufacturerService.findAll();
@@ -64,7 +63,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
     }
 
-    //Get all computer type
+    //NguyenNHN - Get all computer type
     @GetMapping("/computerType")
     public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
         List<ComputerType> computerTypes = computerTypeService.findAll();
@@ -74,7 +73,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computerTypes, HttpStatus.OK);
     }
 
-    //Get all computer status
+    //NguyenNHN - Get all computer status
     @GetMapping("/computerStatus")
     public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
         List<ComputerStatus> computerStatus = computerStatusService.findAll();
@@ -84,7 +83,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computerStatus, HttpStatus.OK);
     }
 
-    //Get computer by id
+    //NguyenNHN - Get computer by id
     @GetMapping("/computer/{id}")
     public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
         if(id == null){
@@ -97,7 +96,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
-    //Delete computer
+    //NguyenNHN - Delete computer
     @DeleteMapping("/computer/{id}")
     public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
         if(id==null){
@@ -115,7 +114,7 @@ public class ComputerRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    //Search computer
+    //NguyenNHN - Search computer
     @GetMapping("/computer/searchComputer")
     public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
                                                          @RequestParam Optional<String> computerId,
