@@ -49,6 +49,8 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                         @Param("id_status") Long id_status,
                         @Param("computer_id") Long computer_id);
 
+
+
     @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
 }
