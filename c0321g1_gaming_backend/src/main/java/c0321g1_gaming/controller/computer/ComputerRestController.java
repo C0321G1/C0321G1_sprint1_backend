@@ -38,70 +38,7 @@ public class ComputerRestController {
     @Autowired
     ComputerStatusService computerStatusService;
 
-    @GetMapping("/computer")
-    public ResponseEntity<Iterable<Computer>> getAllComputer() {
-        List<Computer> computers = computerService.findAll();
-        if (computers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(computers, HttpStatus.OK);
-    }
 
-    @GetMapping("/computerPage")
-    public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
-        Page<Computer> computers = computerService.getAllComputer(pageable);
-        if (computers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(computers, HttpStatus.OK);
-    }
-
-    @GetMapping("/computerManufacturer")
-    public ResponseEntity<Iterable<ComputerManufacturer>> getAllComputerManufacturer() {
-        List<ComputerManufacturer> computerManufacturers = computerManufacturerService.findAll();
-        if (computerManufacturers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
-    }
-
-    @GetMapping("/computerType")
-    public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
-        List<ComputerType> computerTypes = computerTypeService.findAll();
-        if (computerTypes.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(computerTypes, HttpStatus.OK);
-    }
-
-    @GetMapping("/computerStatus")
-    public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
-        List<ComputerStatus> computerStatus = computerStatusService.findAll();
-        if (computerStatus.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(computerStatus, HttpStatus.OK);
-    }
-
-    @GetMapping("/computer/{id}")
-    public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
-        Optional<Computer> computer = computerService.findComputerById(id);
-        if (!computer.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(computer, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/computer/{id}")
-    public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
-        Optional<Computer> computer = computerService.findComputerById(id);
-        if (computer == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        computer.get().setFlagDelete(1);
-        computerService.saveComputer(computer.get());
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 
     /*Long-Computer*/
     @PostMapping("/create-computer")
@@ -144,4 +81,120 @@ public class ComputerRestController {
                 computerDto.getComputerStatus().getComputerStatusId(), id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
+
+
+
+
+    //NguyenNHN - Get all Computer List
+    @GetMapping("/computer")
+    public ResponseEntity<Iterable<Computer>> getAllComputer() {
+        List<Computer> computers = computerService.findAll();
+        if (computers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computers, HttpStatus.OK);
+    }
+    //NguyenNHN - Get all computer page
+    @GetMapping("/computerPage")
+    public ResponseEntity<Page<Computer>> getAllComputerPage(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Computer> computers = computerService.getAllComputer(pageable);
+        if (computers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computers, HttpStatus.OK);
+    }
+    //NguyenNHN - Get all computer manufacturer
+    @GetMapping("/computerManufacturer")
+    public ResponseEntity<Iterable<ComputerManufacturer>> getAllComputerManufacturer() {
+        List<ComputerManufacturer> computerManufacturers = computerManufacturerService.findAll();
+        if (computerManufacturers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computerManufacturers, HttpStatus.OK);
+    }
+    //NguyenNHN - Get all computer type
+    @GetMapping("/computerType")
+    public ResponseEntity<Iterable<ComputerType>> getAllComputerType() {
+        List<ComputerType> computerTypes = computerTypeService.findAll();
+        if (computerTypes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computerTypes, HttpStatus.OK);
+    }
+    //NguyenNHN - Get all computer status
+    @GetMapping("/computerStatus")
+    public ResponseEntity<Iterable<ComputerStatus>> getAllComputerStatus() {
+        List<ComputerStatus> computerStatus = computerStatusService.findAll();
+        if (computerStatus.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computerStatus, HttpStatus.OK);
+    }
+    //NguyenNHN - Get computer by id
+    @GetMapping("/computer/{id}")
+    public ResponseEntity<Optional<Computer>> getComputer(@PathVariable Long id) {
+        if(id == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Optional<Computer> computer = computerService.findComputerById(id);
+        if (!computer.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(computer, HttpStatus.OK);
+    }
+    //NguyenNHN - Delete computer
+    @DeleteMapping("/computer/{id}")
+    public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
+        if(id==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Optional<Computer> computer = computerService.findComputerById(id);
+        if (!computer.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if (computer.get().getComputerStatus().getComputerStatusId() == 1) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        computer.get().setFlagDelete(1);
+        computerService.saveComputer(computer.get());
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    //NguyenNHN - Search computer
+    @GetMapping("/computer/searchComputer")
+    public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
+                                                         @RequestParam Optional<String> computerId,
+                                                         @RequestParam Optional<String> location,
+                                                         @RequestParam Optional<String> computerType,
+                                                         @RequestParam Optional<String> computerStatus,
+                                                         @RequestParam Optional<String> startDateFrom,
+                                                         @RequestParam Optional<String> startDateTo
+    ) {
+        Page<Computer> computerSearchPage;
+        String computerIdSearch = computerId.orElse("");
+        String locationSearch = location.orElse("");
+        String statusSearch = computerStatus.orElse("");
+        String computerTypeSearch = computerType.orElse("");
+        String startDateFromSearch = startDateFrom.orElse("");
+        String startDateToSearch = startDateTo.orElse("");
+        if (startDateFromSearch == "" && startDateToSearch == "") {
+            computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
+                    statusSearch, pageable);
+            if (computerSearchPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
+        }
+        else {
+            computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
+                    statusSearch, startDateFromSearch, startDateToSearch, pageable);
+            if (computerSearchPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
+        }
+    }
 }
+

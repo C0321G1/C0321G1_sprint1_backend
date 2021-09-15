@@ -16,36 +16,8 @@ public class ComputerServiceImpl implements ComputerService {
     @Autowired
     ComputerRepository computerRepository;
 
-    @Override
-    public Page<Computer> getAllComputer(Pageable pageable) {
 
-        return computerRepository.findAllComputer(pageable);
-    }
 
-    @Override
-    public List<Computer> findAll() {
-        return computerRepository.findAll();
-    }
-
-    @Override
-    public Page<Computer> searchComputer(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public Optional<Computer> findComputerById(Long id) {
-        return computerRepository.findById(id);
-    }
-
-    @Override
-    public void deleteComputer(Computer computer) {
-        computerRepository.delete(computer);
-    }
-
-    @Override
-    public void saveComputer(Computer computer) {
-        computerRepository.save(computer);
-    }
 
     @Override
     public void createComputer(String computer_code, String location, String start_used_date,
@@ -68,5 +40,53 @@ public class ComputerServiceImpl implements ComputerService {
         return computerRepository.searchComputerCode(computerCode);
     }
 
+
+
+    @Override
+    public Page<Computer> getAllComputer(Pageable pageable) {
+        return computerRepository.findAllComputer(pageable);
+    }
+
+    @Override
+    public List<Computer> findAll() {
+        return computerRepository.findAll();
+    }
+
+    @Override
+    public Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                         String startDateFrom, String startDateTo, Pageable pageable) {
+        computerId = "%" + computerId + "%";
+        location = "%" + location + "%";
+        computerType = "%" + computerType + "%";
+        computerStatus = "%" + computerStatus + "%";
+        return computerRepository.searchComputer(computerId, location, computerType, computerStatus, startDateFrom,
+                startDateTo, pageable);
+    }
+
+    @Override
+    public Page<Computer> searchComputer(String computerId, String location, String computerType, String computerStatus,
+                                         Pageable pageable) {
+        computerId = "%" + computerId + "%";
+        location = "%" + location + "%";
+        computerType = "%" + computerType + "%";
+        computerStatus = "%" + computerStatus + "%";
+        return computerRepository.searchComputer(computerId, location, computerType, computerStatus, pageable);
+    }
+
+    @Override
+    public Optional<Computer> findComputerById(Long id) {
+        return computerRepository.findComputerById(id);
+    }
+
+    @Override
+    public void deleteComputer(Computer computer) {
+        computerRepository.delete(computer);
+    }
+
+
+    @Override
+    public void saveComputer(Computer computer) {
+        computerRepository.save(computer);
+    }
 
 }
