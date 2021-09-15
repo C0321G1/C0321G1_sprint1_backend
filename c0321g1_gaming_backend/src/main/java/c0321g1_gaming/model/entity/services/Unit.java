@@ -1,6 +1,5 @@
 package c0321g1_gaming.model.entity.services;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

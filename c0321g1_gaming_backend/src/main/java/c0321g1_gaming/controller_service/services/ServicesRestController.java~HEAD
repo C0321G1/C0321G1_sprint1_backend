@@ -28,10 +28,10 @@ import java.util.Optional;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
-
-//    khanh
+// Khanh code
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
+<<<<<<< HEAD:c0321g1_gaming_backend/src/main/java/c0321g1_gaming/controller_service/services/ServicesRestController.java
         try {
             Services services = servicesService.findById(id);
             if (id == null) {
@@ -44,11 +44,20 @@ public class ServicesRestController {
             return new ResponseEntity<>(services, HttpStatus.OK);
         }catch (Exception e){
             System.out.print(e.getMessage());
+=======
+        if (id == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Services services = servicesService.findById(id);
+        if (services == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+>>>>>>> 76be5dfa98a68b87164be9d0f3f2818b79012107:c0321g1_gaming_backend/src/main/java/c0321g1_gaming/controller/services/ServicesRestController.java
         }
         return null;
     }
 
-//khanh
+
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
@@ -62,94 +71,70 @@ public class ServicesRestController {
         return errors;
     }
 
-//    khanh
     @PostMapping(value = "/create")
     public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult) {
-        try {
-
-            if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
-            Services services = new Services();
-            System.out.println(servicesDto);
-            BeanUtils.copyProperties(servicesDto, services);
-            Unit unit = new Unit();
-            unit.setUnitId(servicesDto.getUnit().getUnitId());
-            services.setFlag(1);
-            services.setUnit(unit);
-            servicesService.save(services);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }
-        return null;
+        Services services = new Services();
+        System.out.println(servicesDto);
+        BeanUtils.copyProperties(servicesDto,services);
+        Unit unit = new Unit();
+        unit.setUnitId(servicesDto.getUnit().getUnitId());
+        services.setFlag(1);
+        services.setUnit(unit);
+        servicesService.save(services);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-//khanh
+
     @PatchMapping("{id}")
     public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
                                                  @PathVariable Long id) {
-        try {
-
-            Services services = servicesService.findById(id);
-            if (services == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            } else {
-                Services services1 = new Services();
-                servicesDto.setServicesId(services.getServicesId());
-                BeanUtils.copyProperties(servicesDto, services1);
-                Unit unit = new Unit();
-                unit.setUnitId(servicesDto.getUnit().getUnitId());
-                services1.setUnit(unit);
-                services1.setFlag(1);
-                servicesService.update(services1);
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        Services services = servicesService.findById(id);
+        if (services == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        } else {
+            Services services1 = new Services();
+            servicesDto.setServicesId(services.getServicesId());
+            BeanUtils.copyProperties(servicesDto, services1);
+            Unit unit = new Unit();
+            unit.setUnitId(servicesDto.getUnit().getUnitId());
+            services1.setUnit(unit);
+            services1.setFlag(1);
+            servicesService.update(services1);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        return null;
     }
 // phap
     @GetMapping("")
     public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable pageable, Optional<String> name) {
         String keyword = "";
-        try {
-            if (name.isPresent()) {
-                keyword = name.get();
-            }
-            Page<Services> servicesPage = servicesService.pageServicesAll(keyword, pageable);
-            if (servicesPage.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(servicesPage, HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        if (name.isPresent()) {
+            keyword = name.get();
         }
-        return null;
+        Page<Services> servicesPage = servicesService.pageServicesAll(keyword, pageable);
+        if (servicesPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(servicesPage, HttpStatus.OK);
     }
 
 //    phap
     @GetMapping("/searchNameCodePrices")
     public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable,Optional<String> code,
                                                                      Optional<String> name,Optional<String> prices ){
-        try {
-            String keywordCode = code.orElse("");
-            String keywordName = name.orElse("");
-            String keywordPrices = prices.orElse("");
-            Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
-            return new ResponseEntity<>(servicesPage, HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return null;
+        String keywordCode= code.orElse("");
+        String keywordName= name.orElse("");
+        String keywordPrices= prices.orElse("");
+        Page<Services> servicesPage=servicesService.pageServicesCodeNamePrices(keywordCode,keywordName,keywordPrices,pageable);
+        return new ResponseEntity<>(servicesPage,HttpStatus.OK);
     }
 
 //    phap
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Services> deleteServices(@PathVariable Long id){
-        try{
         if (id==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -161,9 +146,5 @@ public class ServicesRestController {
             servicesService.update(services);
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
