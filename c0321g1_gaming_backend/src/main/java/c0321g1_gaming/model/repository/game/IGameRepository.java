@@ -42,6 +42,6 @@ public interface IGameRepository extends JpaRepository<Game, Long> {
     @Query(value = "UPDATE game SET flag_delete = 1  WHERE game_id = ?1 ", nativeQuery = true)
     void deleteGameFlag(Long gameId);
 
-    @Query(value = "select * from game order by gaming desc limit 3", nativeQuery = true)
+    @Query(value = "SELECT * FROM game WHERE flag_delete = 0 order by gaming desc limit 3", nativeQuery = true)
     List<Game> searchTopGame();
 }
