@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class GameRestController_createGame {
     //    Creator: Nhung
+
     @Autowired
     private MockMvc mockMvc;
 
