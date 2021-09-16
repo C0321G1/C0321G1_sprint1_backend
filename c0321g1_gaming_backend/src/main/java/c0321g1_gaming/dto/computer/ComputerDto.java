@@ -154,17 +154,20 @@ public class ComputerDto implements Validator {
 
         if (computerDto.computerStatus.getName() == null) {
             errors.rejectValue("computerStatus", "computerStatus.null",
-                    "Computer Status is required");
+                    "Computer Status is required.");
         }
 
         if (computerDto.computerType.getName() == null) {
             errors.rejectValue("computerType", "computerType.null",
-                    "Computer Type is required");
+                    "Computer Type is required.");
         }
 
         if (computerDto.configuration == null) {
             errors.rejectValue("configuration", "configuration.null",
-                    "Configuration is required");
+                    "Configuration is required.");
+        } else if (computerDto.configuration.length() > 25) {
+            errors.rejectValue("configuration", "configuration.maxLength",
+                    "Configuration is too long.");
         }
         if (computerDto.location == null) {
             errors.rejectValue("location", "location.null",
@@ -184,6 +187,19 @@ public class ComputerDto implements Validator {
         if (computerDto.warrantyPeriod == null) {
             errors.rejectValue("warrantyPeriod", "warrantyPeriod.null",
                     "warrantyPeriod is required");
+        } else if (computerDto.warrantyPeriod.length() > 20) {
+            errors.rejectValue("warrantyPeriod", "warrantyPeriod.maxLength",
+                    "warrantyPeriod is too long");
+        }
+        if (computerDto.flagDelete != 0 && computerDto.flagDelete != 1) {
+            errors.rejectValue("flagDelete", "flagDelete.diff"
+                    , "FlagDelete not valid 0 and 1");
+        }
+
+        if (!computerDto.computerType.getName().equals("Loại 1")
+                && !computerDto.computerType.getName().equals("Loại 2")
+                && !computerDto.computerType.getName().equals("Loại 3")) {
+            errors.rejectValue("computerType", "computerType.name", "Name not valid");
         }
 
     }
