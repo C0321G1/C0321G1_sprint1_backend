@@ -3,13 +3,23 @@ package c0321g1_gaming.dto.game;
 
 import c0321g1_gaming.model.entity.game.GameType;
 
+import javax.validation.constraints.*;
+
 public class GameDto {
     private Long gameId;
+    @NotBlank(message = "Content is required")
+    @Size(max = 2007,message = "Content cannot be longer than 2000 characters")
     private String content;
+    @NotNull
     private int flagDelete;
+    @NotBlank(message = "Name is required")
     private String name;
+    @NotBlank(message = "Image is required")
     private String image;
-    private String gaming;
+    @NotNull(message = "Gaming is required")
+    @Min(value = 0,message = "Gaming must be greater than or equal to 0")
+    private Long gaming;
+    @NotBlank(message = "Gaming is required")
     private String trailer;
     private GameType gameType;
 
@@ -17,10 +27,32 @@ public class GameDto {
     }
 
     public GameDto(Long gameId, String content, int flagDelete, String name,
-                   String image, String gaming, String trailer, GameType gameType) {
+                   String image, Long gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
+    public GameDto(String content, int flagDelete, String name,
+                   String image, Long gaming, String trailer, GameType gameType) {
+        this.content = content;
+        this.flagDelete = flagDelete;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
+    public GameDto(Long gameId, String content,String name,
+                   String image, Long gaming, String trailer, GameType gameType) {
+        this.gameId = gameId;
+        this.content = content;
         this.name = name;
         this.image = image;
         this.gaming = gaming;
@@ -68,11 +100,11 @@ public class GameDto {
         this.image = image;
     }
 
-    public String getGaming() {
+    public Long getGaming() {
         return gaming;
     }
 
-    public void setGaming(String gaming) {
+    public void setGaming(Long gaming) {
         this.gaming = gaming;
     }
 
@@ -88,7 +120,7 @@ public class GameDto {
         return gameType;
     }
 
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
+    public void setGameType(GameType gameTypeId) {
+        this.gameType= gameTypeId;
     }
 }
