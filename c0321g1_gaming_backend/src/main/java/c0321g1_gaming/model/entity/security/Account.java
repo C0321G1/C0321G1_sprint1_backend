@@ -19,6 +19,7 @@ public class Account {
     private String username;
     private String password;
 
+    @JsonBackReference(value = "user_roles-roles")
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "accountId"),
@@ -26,8 +27,9 @@ public class Account {
     private Set<Role> roles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
+    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
+
     @JsonBackReference(value = "account-customer")
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private Customer customer;

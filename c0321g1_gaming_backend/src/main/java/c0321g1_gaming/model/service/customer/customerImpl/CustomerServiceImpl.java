@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-//    creator: vinhdn
+
+    //    creator: vinhdn
     @Override
     public void save(Customer customer) {
-        customerRepository.save(customer);
+        customerRepository.saveQuery(customer.getFullName(),
+                customer.getDateOfBirth(), customer.getPhone(), customer.getAddress().getAddressId(),
+                customer.getGender().getGenderId(), customer.getAccount().getAccountId(), customer.getFlag());
     }
 }
