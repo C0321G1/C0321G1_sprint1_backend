@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IGameRepository extends JpaRepository<Game, Long> {
-// Creator: Nhung
+    // Creator: Nhung
 
     @Query(value = "SELECT game_id,`name`,content,image,gaming,trailer,game_type_id,flag_delete FROM game WHERE game_id = ?;", nativeQuery = true)
     Optional<Game> findById(Long gameId);
