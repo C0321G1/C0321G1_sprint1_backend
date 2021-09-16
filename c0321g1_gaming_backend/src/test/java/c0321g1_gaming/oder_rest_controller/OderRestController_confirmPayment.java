@@ -1,6 +1,6 @@
 package c0321g1_gaming.oder_rest_controller;
 
-import c0321g1_gaming.controller.order.OrderRestController;
+import c0321g1_gaming.controller_service.order.OrderRestController;
 import c0321g1_gaming.model.service.order.IOrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

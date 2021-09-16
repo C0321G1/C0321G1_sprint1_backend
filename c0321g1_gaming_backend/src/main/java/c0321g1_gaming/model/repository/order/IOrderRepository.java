@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
+
     //Huynh code
     @Query(value = " select * from `order`", nativeQuery = true)
     Page<Order> pageOderAll(Pageable pageable);
@@ -25,6 +26,7 @@ public interface IOrderRepository extends JpaRepository<Order, Long> {
             , nativeQuery = true)
     void updateConfirmPayment(@Param("oderId") Long oderId);
     //Huynh code
+
     @Query(value = "select * from `order` where order_id=:oderId"
             , nativeQuery = true)
     Optional<Order> findById(@Param("oderId") Long oderId);

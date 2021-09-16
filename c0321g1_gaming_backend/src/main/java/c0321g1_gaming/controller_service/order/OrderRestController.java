@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller.order;
+package c0321g1_gaming.controller_service.order;
 
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.service.order.IOrderService;
@@ -29,6 +29,7 @@ public class OrderRestController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
+
     @GetMapping(value = "/{idCustomer}")
     public ResponseEntity<Page<Order>> findAllOderByCustomerId(@PageableDefault(value = 5) Pageable pageable,
                                                                @PathVariable Long idCustomer) {
@@ -39,19 +40,18 @@ public class OrderRestController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/getOder/{idOder}")
-    public ResponseEntity<Order> findOrderByIdOrder(@PageableDefault(value = 5) Pageable pageable,
-                                                          @PathVariable Long idOder) {
+    @GetMapping(value = "/getOrder/{idOder}")
+    public ResponseEntity<Order> findOrderByIdOrder(@PathVariable Long idOder) {
         Optional<Order> optionalOrder = orderService.findById(idOder);
         if (!optionalOrder.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(optionalOrder.get(), HttpStatus.OK);
+        return new ResponseEntity<>(optionalOrder.get(),HttpStatus.OK);
     }
 
-    @PatchMapping(value = "/{orderId}")
-    public ResponseEntity<Void> confirmPayment(@PathVariable Long orderId) {
-        Optional<Order> optionalOrders = orderService.findById(orderId);
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Void> confirmPayment(@PathVariable Long id) {
+        Optional<Order> optionalOrders = orderService.findById(id);
         if (!optionalOrders.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -63,3 +63,5 @@ public class OrderRestController {
 
 
 }
+
+

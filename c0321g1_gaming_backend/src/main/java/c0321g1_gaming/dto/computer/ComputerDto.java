@@ -19,12 +19,15 @@ public class ComputerDto {
     private ComputerStatus computerStatusDto;
     private ComputerType computerTypeDto;
     private ComputerManufacturer computerManufacturerDto;
-    private List<Order> ordersDtoList;
+
+    private List<Order> orderDtoList;
+
     public ComputerDto() {
     }
 
     public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate,
-                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> ordersDtoList) {
+             String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> orderDtoList) {
+
         this.computerId = computerId;
         this.computerCode = computerCode;
         this.location = location;
@@ -35,7 +38,7 @@ public class ComputerDto {
         this.computerStatusDto = computerStatusDto;
         this.computerTypeDto = computerTypeDto;
         this.computerManufacturerDto = computerManufacturerDto;
-        this.ordersDtoList = ordersDtoList;
+        this.orderDtoList = orderDtoList;
     }
 
     public Long getComputerId() {
@@ -119,10 +122,10 @@ public class ComputerDto {
     }
 
     public List<Order> getOrderDtoList() {
-        return ordersDtoList;
+        return orderDtoList;
     }
 
-    public void setOrderDtoList(List<Order> ordersDtoList) {
-        this.ordersDtoList = ordersDtoList;
+    public void setOrderDtoList(List<Order> orderDtoList) {
+        this.orderDtoList = orderDtoList;
     }
 }

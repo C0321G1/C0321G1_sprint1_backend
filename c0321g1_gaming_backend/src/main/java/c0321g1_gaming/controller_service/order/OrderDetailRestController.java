@@ -1,7 +1,6 @@
-package c0321g1_gaming.controller.order;
+package c0321g1_gaming.controller_service.order;
 
 import c0321g1_gaming.model.entity.order.OrderDetail;
-import c0321g1_gaming.model.service.order.OrderServiceImpl;
 import c0321g1_gaming.model.service.order_detail.IOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

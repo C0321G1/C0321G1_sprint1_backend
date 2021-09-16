@@ -6,7 +6,8 @@ import c0321g1_gaming.model.entity.services.Services;
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private Order orders;
+
+    private Order order;
     private Services services;
     private int quantity;
     private int totalPrices;
@@ -14,9 +15,11 @@ public class OrderDetailDto {
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, Order orders, Services services, int quantity, int totalPrices) {
+
+    public OrderDetailDto(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
+
         this.orderDetailId = orderDetailId;
-        this.orders = orders;
+        this.order = order;
         this.services = services;
         this.quantity = quantity;
         this.totalPrices = totalPrices;
@@ -30,12 +33,12 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Order getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(Order orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Services getServices() {
