@@ -26,15 +26,22 @@ public class OrderServiceImpl implements IOrderService {
     public Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer) {
         return orderRepository.pageOderByCustomer(pageable, idCustomer);
     }
-    //Huynh code
+
     @Override
-    public void confirmPayments( Long idOrders) {
-        orderRepository.updateConfirmPayment(idOrders);
+    public void saveOrder(Order order) {
+        orderRepository.save(order);
     }
+
+
     //Huynh code
     @Override
     public Optional<Order> findById(Long id) {
         return orderRepository.findById(id);
+    }
+    //Huynh code
+    @Override
+    public void confirmPayments(Long idOrder) {
+       orderRepository.updateConfirmPayment(idOrder);
     }
 
 

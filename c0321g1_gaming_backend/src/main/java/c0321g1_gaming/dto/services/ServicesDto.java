@@ -1,11 +1,6 @@
 package c0321g1_gaming.dto.services;
 import c0321g1_gaming.model.entity.services.Unit;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 76be5dfa98a68b87164be9d0f3f2818b79012107
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

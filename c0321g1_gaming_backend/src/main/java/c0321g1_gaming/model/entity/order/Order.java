@@ -19,6 +19,7 @@ public class Order {
     private List<OrderDetail> orderDetail;
     private int status;
 
+
     public Order() {
     }
 

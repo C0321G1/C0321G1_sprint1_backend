@@ -13,7 +13,8 @@ public interface IOrderService {
     //Huynh code
     Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer);
     //Huynh code
-    void confirmPayments(Long idOrders);
+    void saveOrder(Order order);
     //Huynh code
     Optional<Order> findById(Long id);
+    void confirmPayments(Long idOrder);
 }

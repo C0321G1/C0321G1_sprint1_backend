@@ -39,13 +39,25 @@ public class OrderRestController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/getOder/{idOder}")
+    public ResponseEntity<Order> findOrderByIdOrder(@PageableDefault(value = 5) Pageable pageable,
+                                                          @PathVariable Long idOder) {
+        Optional<Order> optionalOrder = orderService.findById(idOder);
+        if (!optionalOrder.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(optionalOrder.get(), HttpStatus.OK);
+    }
+
     @PatchMapping(value = "/{orderId}")
     public ResponseEntity<Void> confirmPayment(@PathVariable Long orderId) {
         Optional<Order> optionalOrders = orderService.findById(orderId);
         if (!optionalOrders.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        orderService.confirmPayments(orderId);
+        Order order = optionalOrders.get();
+        order.setStatus(0);
+        orderService.saveOrder(order);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
