@@ -7,6 +7,8 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long roleId;
+
+	@Enumerated(EnumType.STRING)
 	private ERole name;
 
 	public Role() {
