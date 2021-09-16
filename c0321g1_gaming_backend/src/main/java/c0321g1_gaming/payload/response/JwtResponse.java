@@ -20,15 +20,16 @@ public class JwtResponse {
 	private List<AccountComputer> accountComputer;
 	private List<String> roles;
 
-	public JwtResponse(String token, Long id, String username, Long categoryId, List<String> roles) {
+	public JwtResponse(String token, Long id, String username, Long categoryId,  Customer customer, List<String> roles) {
 		this.token = token;
 		this.id = id;
 		this.username = username;
 		this.categoryId = categoryId;
+		this.customer = customer;
 		this.roles = roles;
 	}
 
-	public String getToken() {
+    public String getToken() {
 		return token;
 	}
 
