@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +28,7 @@ public class GameRestController {
 
 //        Creator: Thúy
     @GetMapping
-    public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 5) Pageable pageable) {
+    public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 8) Pageable pageable) {
         Page<Game> gameList = gameService.getAllGame(pageable);
         if (gameList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -38,7 +37,7 @@ public class GameRestController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Page<Game>> searchGame(@PageableDefault(size = 5) Pageable pageable,
+    public ResponseEntity<Page<Game>> searchGame(@PageableDefault(size = 8) Pageable pageable,
                                                  @RequestParam String name, @RequestParam String gameType) {
         Page<Game> gameList = gameService.getGameBySearching(pageable, name, gameType);
         if (gameList.isEmpty()) {
