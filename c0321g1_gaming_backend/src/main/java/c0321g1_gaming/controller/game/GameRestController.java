@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class GameRestController {
     @Autowired
     private IGameService gameService;
 
-    //    Creator: Thúy
+//        Creator: Thúy
     @GetMapping
     public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 8) Pageable pageable) {
         Page<Game> gameList = gameService.getAllGame(pageable);
@@ -84,7 +83,7 @@ public class GameRestController {
         }
     }
 
-// Creator: Nhung
+    // Creator: Nhung
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -99,21 +98,22 @@ public class GameRestController {
         return errors;
     }
 
-
     @PostMapping
-    public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto) {
+        try {
+            Game game = new Game();
+            gameDto.setFlagDelete(0);
+            BeanUtils.copyProperties(gameDto, game);
+            gameService.saveGame(game);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        Game game = new Game();
-        gameDto.setFlagDelete(0);
-        BeanUtils.copyProperties(gameDto, game);
-        gameService.saveGame(game);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto, BindingResult bindingResult,
+    public ResponseEntity<Game> updateGame(@Valid @RequestBody GameDto gameDto,
                                            @PathVariable Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -121,13 +121,16 @@ public class GameRestController {
         Optional<Game> game = gameService.findById(id);
         if (!game.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            gameDto.setGameId(game.get().getGameId());
-            BeanUtils.copyProperties(gameDto, game.get());
-            gameService.updateGame(game.get());
-            return new ResponseEntity<>(HttpStatus.OK);
+            try {
+                gameDto.setGameId(game.get().getGameId());
+                BeanUtils.copyProperties(gameDto, game.get());
+                gameService.updateGame(game.get());
+                return new ResponseEntity<>(HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 }
