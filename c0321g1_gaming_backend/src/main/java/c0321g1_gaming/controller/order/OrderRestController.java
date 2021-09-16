@@ -49,7 +49,7 @@ public class OrderRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create_order")
     public ResponseEntity<Void> saveOrder(@RequestBody OrderDto orderDto){
         if (orderDto.getOrderId()==null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -32,7 +32,7 @@ public class OrderDetailRestController {
 
     }
      //  vu code
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create_order_detail/{id}")
     public ResponseEntity<Void> saveOrder(@RequestBody OrderDetailDto orderDetailDto) {
         if (orderDetailDto.getOrderId() == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
