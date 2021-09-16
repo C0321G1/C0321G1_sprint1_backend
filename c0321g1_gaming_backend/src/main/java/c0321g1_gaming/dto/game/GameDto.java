@@ -18,7 +18,7 @@ public class GameDto {
     private String image;
     @NotNull(message = "Gaming is required")
     @Min(value = 0,message = "Gaming must be greater than or equal to 0")
-    private int gaming;
+    private Long gaming;
     @NotBlank(message = "Gaming is required")
     private String trailer;
     private GameType gameType;
@@ -27,7 +27,7 @@ public class GameDto {
     }
 
     public GameDto(Long gameId, String content, int flagDelete, String name,
-                   String image, int gaming, String trailer, GameType gameType) {
+                   String image, Long gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
@@ -39,7 +39,7 @@ public class GameDto {
     }
 
     public GameDto(String content, int flagDelete, String name,
-                   String image, int gaming, String trailer, GameType gameType) {
+                   String image, Long gaming, String trailer, GameType gameType) {
         this.content = content;
         this.flagDelete = flagDelete;
         this.name = name;
@@ -50,7 +50,7 @@ public class GameDto {
     }
 
     public GameDto(Long gameId, String content,String name,
-                   String image, int gaming, String trailer, GameType gameType) {
+                   String image, Long gaming, String trailer, GameType gameType) {
         this.gameId = gameId;
         this.content = content;
         this.name = name;
@@ -100,11 +100,11 @@ public class GameDto {
         this.image = image;
     }
 
-    public int getGaming() {
+    public Long getGaming() {
         return gaming;
     }
 
-    public void setGaming(int gaming) {
+    public void setGaming(Long gaming) {
         this.gaming = gaming;
     }
 
