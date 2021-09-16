@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class GameRestController_createGame {
     //    Creator: Nhung
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -30,7 +31,7 @@ public class GameRestController_createGame {
         gameDto.setName(null);
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -53,7 +54,7 @@ public class GameRestController_createGame {
         gameDto.setName("");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -76,7 +77,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent(null);
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -99,7 +100,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -135,7 +136,7 @@ public class GameRestController_createGame {
                 "\n" +
                 "Tại Trung Quốc, tựa game Swordsman Online (JX Online) được phát hành bởi nhà phát hành Xoyo (phiên bản PC) và Tencent Games (phiên bản Mobile). Vào năm 2019, Seasun Games (thuộc Kingsoft) đã sản xuất phiên bản HD Remake của tựa game JX3 Online, sử dụng engine tân tiến và DirectX 11, đem đến những trải nghiệm với chất lượng tốt nhất.</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -158,7 +159,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage(null);
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -181,7 +182,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -204,7 +205,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(-77);
+        gameDto.setGaming(-77L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -227,7 +228,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer(null);
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -250,7 +251,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
@@ -273,7 +274,7 @@ public class GameRestController_createGame {
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
         gameDto.setImage("https://firebasestorage.googleapis.com/v0/b/c0321g1-sprint1.appspot.com/o/13-09-2021115219PMvltk.png?alt=media&token=e18e0de3-f620-4499-b341-f282dc48f21f");
-        gameDto.setGaming(10000);
+        gameDto.setGaming(10000L);
         gameDto.setTrailer("https://youtu.be/g-b2vjc1Y5Y");
         gameDto.setFlagDelete(0);
         GameType gameType = new GameType();
