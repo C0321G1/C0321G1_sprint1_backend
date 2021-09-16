@@ -43,7 +43,7 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
@@ -72,7 +72,7 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
@@ -101,7 +101,7 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
@@ -130,7 +130,7 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
@@ -148,7 +148,7 @@ public class ComputerRestController_createComputer {
     @Test
     public void createComputer_Location_15() throws Exception {
         ComputerDto computerDto = new ComputerDto();
-        computerDto.setComputerCode("CP1616");
+        computerDto.setComputerCode("CP1617");
         ComputerManufacturerDto computerManufacturerDto = new ComputerManufacturerDto();
         computerManufacturerDto.setComputerManufacturerId((long) 1);
         computerManufacturerDto.setName("Dell");
@@ -159,7 +159,7 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
@@ -177,7 +177,7 @@ public class ComputerRestController_createComputer {
     @Test
     public void createComputer_StartUsedDay_15() throws Exception {
         ComputerDto computerDto = new ComputerDto();
-        computerDto.setComputerCode("CP1616");
+        computerDto.setComputerCode("CP1618");
         ComputerManufacturerDto computerManufacturerDto = new ComputerManufacturerDto();
         computerManufacturerDto.setComputerManufacturerId((long) 1);
         computerManufacturerDto.setName("Dell");
@@ -188,13 +188,100 @@ public class ComputerRestController_createComputer {
         computerDto.setComputerStatus(computerStatusDto);
         ComputerTypeDto computerTypeDto = new ComputerTypeDto();
         computerTypeDto.setComputerTypeId((long) 1);
-        computerTypeDto.setName("1");
+        computerTypeDto.setName("Loại 1");
+        computerDto.setComputerType(computerTypeDto);
+        computerDto.setConfiguration("I3, Ram 10Gb");
+        computerDto.setFlagDelete(0);
+        computerDto.setLocation("A9090");
+        computerDto.setStartUsedDate("2021-09-20");
+        computerDto.setWarrantyPeriod("12 tháng");
+        this.mockMvc.perform
+                (MockMvcRequestBuilders.post("/create-computer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(computerDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void createComputer_NameComputerType_15() throws Exception {
+        ComputerDto computerDto = new ComputerDto();
+        computerDto.setComputerCode("CP1619");
+        ComputerManufacturerDto computerManufacturerDto = new ComputerManufacturerDto();
+        computerManufacturerDto.setComputerManufacturerId((long) 1);
+        computerManufacturerDto.setName("Dell");
+        computerDto.setComputerManufacturer(computerManufacturerDto);
+        ComputerStatusDto computerStatusDto = new ComputerStatusDto();
+        computerStatusDto.setComputerStatusId((long) 1);
+        computerStatusDto.setName("Đang sử dụng");
+        computerDto.setComputerStatus(computerStatusDto);
+        ComputerTypeDto computerTypeDto = new ComputerTypeDto();
+        computerTypeDto.setComputerTypeId((long) 1);
+        computerTypeDto.setName("Loại 99");
         computerDto.setComputerType(computerTypeDto);
         computerDto.setConfiguration("I3, Ram 10Gb");
         computerDto.setFlagDelete(0);
         computerDto.setLocation("A9090");
         computerDto.setStartUsedDate("2021-09-16");
         computerDto.setWarrantyPeriod("12 tháng");
+        this.mockMvc.perform
+                (MockMvcRequestBuilders.post("/create-computer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(computerDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void createComputer_Configuration_16() throws Exception {
+        ComputerDto computerDto = new ComputerDto();
+        computerDto.setComputerCode("CP1620");
+        ComputerManufacturerDto computerManufacturerDto = new ComputerManufacturerDto();
+        computerManufacturerDto.setComputerManufacturerId((long) 1);
+        computerManufacturerDto.setName("Dell");
+        computerDto.setComputerManufacturer(computerManufacturerDto);
+        ComputerStatusDto computerStatusDto = new ComputerStatusDto();
+        computerStatusDto.setComputerStatusId((long) 1);
+        computerStatusDto.setName("Đang sử dụng");
+        computerDto.setComputerStatus(computerStatusDto);
+        ComputerTypeDto computerTypeDto = new ComputerTypeDto();
+        computerTypeDto.setComputerTypeId((long) 1);
+        computerTypeDto.setName("Loại 1");
+        computerDto.setComputerType(computerTypeDto);
+        computerDto.setConfiguration("I3, Ram 10Gb88888888888888888888888888888888888888888888");
+        computerDto.setFlagDelete(0);
+        computerDto.setLocation("A9090");
+        computerDto.setStartUsedDate("2021-09-16");
+        computerDto.setWarrantyPeriod("12 tháng");
+        this.mockMvc.perform
+                (MockMvcRequestBuilders.post("/create-computer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(computerDto)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void createComputer_WarrantyPeriod_16() throws Exception {
+        ComputerDto computerDto = new ComputerDto();
+        computerDto.setComputerCode("CP1621");
+        ComputerManufacturerDto computerManufacturerDto = new ComputerManufacturerDto();
+        computerManufacturerDto.setComputerManufacturerId((long) 1);
+        computerManufacturerDto.setName("Dell");
+        computerDto.setComputerManufacturer(computerManufacturerDto);
+        ComputerStatusDto computerStatusDto = new ComputerStatusDto();
+        computerStatusDto.setComputerStatusId((long) 1);
+        computerStatusDto.setName("Đang sử dụng");
+        computerDto.setComputerStatus(computerStatusDto);
+        ComputerTypeDto computerTypeDto = new ComputerTypeDto();
+        computerTypeDto.setComputerTypeId((long) 1);
+        computerTypeDto.setName("Loại 1");
+        computerDto.setComputerType(computerTypeDto);
+        computerDto.setConfiguration("I3, Ram 10Gb");
+        computerDto.setFlagDelete(0);
+        computerDto.setLocation("A9090");
+        computerDto.setStartUsedDate("2021-09-16");
+        computerDto.setWarrantyPeriod("12 tháng 88888888888888888888888888888888888888888888");
         this.mockMvc.perform
                 (MockMvcRequestBuilders.post("/create-computer")
                         .contentType(MediaType.APPLICATION_JSON)
