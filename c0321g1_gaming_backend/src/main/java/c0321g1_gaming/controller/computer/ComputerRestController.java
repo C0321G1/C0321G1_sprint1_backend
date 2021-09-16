@@ -20,6 +20,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -174,6 +176,15 @@ public class ComputerRestController {
         String computerTypeSearch = computerType.orElse("");
         String startDateFromSearch = startDateFrom.orElse("");
         String startDateToSearch = startDateTo.orElse("");
+        if(startDateToSearch=="" && startDateFromSearch!=""){
+            startDateToSearch = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
+            computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
+                    statusSearch, startDateFromSearch, startDateToSearch, pageable);
+            if (computerSearchPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
+        }
         if (startDateFromSearch == "" && startDateToSearch == "") {
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, pageable);

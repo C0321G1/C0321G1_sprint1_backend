@@ -85,5 +85,12 @@ public class ComputerServiceImpl implements ComputerService {
     public void saveComputer(Computer computer) {
         computerRepository.save(computer);
     }
+
+    @Override
+    public void setComputerStatus(Long id) {
+        Optional<Computer> computer = computerRepository.findComputerById(id);
+        computer.get().getComputerStatus().setComputerStatusId(2L);
+        computerRepository.save(computer.get());
+    }
 }
 
