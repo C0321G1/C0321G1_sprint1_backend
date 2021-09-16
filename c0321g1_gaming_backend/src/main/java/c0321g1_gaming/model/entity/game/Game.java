@@ -7,11 +7,13 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameId;
+    @Column(length = 2007)
     private String content;
     private int flagDelete;
     private String name;
+    @Column(length = 1000)
     private String image;
-    private String gaming;
+    private Long gaming;
     private String trailer;
     @ManyToOne
     @JoinColumn(name = "gameTypeId",referencedColumnName = "gameTypeId")
@@ -20,7 +22,28 @@ public class Game {
     public Game() {
     }
 
-    public Game(String content, int flagDelete, String name, String image, String gaming, String trailer, GameType gameType) {
+    public Game(String content, int flagDelete, String name, String image, Long gaming, String trailer, GameType gameType) {
+        this.content = content;
+        this.flagDelete = flagDelete;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
+    public Game(Long gameId, String content, String name, String image, Long gaming, String trailer, GameType gameType) {
+        this.gameId = gameId;
+        this.content = content;
+        this.name = name;
+        this.image = image;
+        this.gaming = gaming;
+        this.trailer = trailer;
+        this.gameType = gameType;
+    }
+
+    public Game(Long gameId, String content, int flagDelete, String name, String image, Long gaming, String trailer, GameType gameType) {
+        this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
         this.name = name;
@@ -70,11 +93,11 @@ public class Game {
         this.image = image;
     }
 
-    public String getGaming() {
+    public Long getGaming() {
         return gaming;
     }
 
-    public void setGaming(String gaming) {
+    public void setGaming(Long gaming) {
         this.gaming = gaming;
     }
 

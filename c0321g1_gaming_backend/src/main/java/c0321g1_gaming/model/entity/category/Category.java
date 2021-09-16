@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.category;
 
 import c0321g1_gaming.model.entity.security.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
@@ -15,6 +16,8 @@ public class Category {
     private String endTime;
     private String fee;
     private String type;
+
+    @JsonBackReference
     @OneToOne(mappedBy = "category",cascade = CascadeType.ALL)
     private Account account;
 

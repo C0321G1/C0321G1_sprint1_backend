@@ -12,7 +12,7 @@ public class CustomerStatus {
     private Long customerStatusId;
     private String name;
     @OneToMany(mappedBy = "customerStatus",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "customerStatus-customerList")
     private List<Customer> customerList;
 
     public CustomerStatus() {
