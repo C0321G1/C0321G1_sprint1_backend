@@ -35,4 +35,6 @@ public interface ComputerService {
     void deleteComputer(Computer computer);
 
     void saveComputer(Computer computer);
+
+    void setComputerStatus(Long id);
 }
