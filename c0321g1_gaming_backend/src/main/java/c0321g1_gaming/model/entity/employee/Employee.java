@@ -12,12 +12,12 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
-    private String yearOfExp;
+    private Long yearOfExp;
     private String code;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private String level;
+    private Long level;
     private String email;
     private String name;
     private String image;
@@ -40,8 +40,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name,
-                    String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String name, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -67,11 +66,11 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getYearOfExp() {
+    public Long getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(String yearOfExp) {
+    public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -107,11 +106,11 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public String getLevel() {
+    public Long getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Long level) {
         this.level = level;
     }
 
