@@ -20,11 +20,16 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.save(account);
     }
 
-
     //creator: vinhdn
     @Override
     public List<Account> findAllQuery() {
         return accountRepository.findAllQuery();
+    }
+    //creator: vinhdn
+    @Override
+    public Optional<Account> findByUsernameQuery(String username) {
+        return accountRepository.findByUsernameQuery(username);
+
     }
 
 }

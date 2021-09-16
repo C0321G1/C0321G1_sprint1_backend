@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     //creator: Tra
     @Autowired
@@ -28,5 +28,4 @@ public class CategoryServiceImpl implements CategoryService{
     public void saveCategory(Category category) {
         categoryRepository.save(category);
     }
-
 }

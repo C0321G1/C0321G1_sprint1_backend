@@ -1,9 +1,13 @@
 package c0321g1_gaming.controller.customer;
 
 import c0321g1_gaming.dto.customer.CustomerDto;
+import c0321g1_gaming.model.entity.address.Address;
+import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.customer.Customer;
+import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.account.AccountService;
 import c0321g1_gaming.model.service.address.AddressService;
+import c0321g1_gaming.model.service.category.CategoryService;
 import c0321g1_gaming.model.service.customer.CustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -24,6 +30,8 @@ public class CustomerRestController {
     private AccountService accountService;
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private CategoryService categoryService;
 
     //creator: vinhdn
     @PostMapping("/create")
@@ -34,8 +42,25 @@ public class CustomerRestController {
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
+        if (customer.getAddress().getProvince() == null &&
+                customer.getAddress().getDistrict() == null &&
+                customer.getAddress().getCommune() == null) {
+            customer.setAddress(new Address());
+        } else {
+            addressService.save(customer.getAddress());
+            List<Address> addressList = addressService.findAll();
+            Address address = new Address();
+            address.setAddressId((long) addressList.size());
+            customer.setAddress(address);
+        }
+
         accountService.save(customer.getAccount());
-        addressService.save(customer.getAddress());
+
+        Optional<Account> accountOptional = accountService.findByUsernameQuery(customer.getAccount().getUsername());
+
+        customer.setAccount(accountOptional.get());
+
+        customer.setFlag(0);
         customerService.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

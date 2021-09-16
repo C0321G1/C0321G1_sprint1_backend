@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountService {
+
     //creator: vinhdn
     void save(Account account);
 
     //creator: vinhdn
     List<Account> findAllQuery();
+
+    //creator: vinhdn
+    Optional<Account> findByUsernameQuery(String username);
 }

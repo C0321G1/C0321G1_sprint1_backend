@@ -13,6 +13,14 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //creator: Tra
     Optional<Account> findByUsername(String username);
 
+    //creator: vinhdn
+    @Query(value = "select * from account", nativeQuery = true)
+    List<Account> findAllQuery();
+
+    //creator: vinhdn
+    @Query(value = "select * from account where username = ?1", nativeQuery = true)
+    Optional<Account> findByUsernameQuery(String username);
+
     Boolean existsByUsername(String username);
 
     //creator: vinhdn
@@ -21,7 +29,4 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "UPDATE account set username = ?1, password = ?2 where account_id = ?3 ", nativeQuery = true)
     void editAccountQuery(String username, String password, Long id);
 
-    //creator: vinhdn
-    @Query(value = "select * from account", nativeQuery = true)
-    List<Account> findAllQuery();
 }
