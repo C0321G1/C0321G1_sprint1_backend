@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.saveEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
                 employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
                 employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
-                employee.getGender().getGenderId(), 0);
+                employee.getGender().getGenderId(), employee.getAccount().getAccountId(),0);
     }
 
     //Linh create method findById
@@ -47,12 +47,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     //Linh create method editEmployee
+//    @Override
+//    public void editEmployee(Employee employee) {
+//        employeeRepository.editEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
+//                employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
+//                employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
+//                employee.getGender().getGenderId(), employee.getAccount().getAccountId(), employee.getEmployeeId());
+//
+//    }
+
+    //Linh create method editEmployee
     @Override
     public void editEmployee(Employee employee) {
-        employeeRepository.editEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
-                employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
-                employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
-                employee.getGender().getGenderId(), employee.getAccount().getAccountId(), employee.getEmployeeId());
+        employeeRepository.save(employee);
 
     }
 }

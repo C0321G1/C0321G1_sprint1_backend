@@ -23,7 +23,7 @@ public class EmployeeDto implements Validator {
     private Long yearOfExp;
 
     @NotEmpty
-    @Pattern(regexp = "(09\\d{8,9})|(\\(84\\)\\+9\\d{8,9})")
+    @Pattern(regexp = "(0\\d{9,10})")
     private String phone;
 
     @NotEmpty
@@ -41,7 +41,7 @@ public class EmployeeDto implements Validator {
     private String email;
 
     @NotEmpty
-    @Size(min = 6, max = 100)
+    @Size(min = 6, max = 50)
     private String fullName;
 
     @NotEmpty
