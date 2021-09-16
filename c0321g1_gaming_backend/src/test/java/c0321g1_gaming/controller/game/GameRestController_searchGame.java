@@ -38,7 +38,7 @@ public class GameRestController_searchGame {
     @Test
     public void searchGame_2() {
         ResponseEntity<Page<Game>> pageResponseEntity = this.gameRestController.searchGame(
-                PageRequest.of(0, 10), "Pubg", "Hành Động");
+                PageRequest.of(0, 8), "Pubg", "Hành Động");
         Page<Game> gamePage = pageResponseEntity.getBody();
         int statusCode = pageResponseEntity.getStatusCodeValue();
 

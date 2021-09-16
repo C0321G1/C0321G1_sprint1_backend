@@ -40,13 +40,13 @@ public class GameRestController_getListGame {
     public void getListStudent_6() {
         ResponseEntity<Page<Game>> pageResponseEntity
                 = this.gameRestController.getListGame(
-                PageRequest.of(0, 10));
+                PageRequest.of(0, 8));
         Page<Game> gamePage = pageResponseEntity.getBody();
         int statusCode = pageResponseEntity.getStatusCodeValue();
 
         Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(8, gamePage.getTotalElements());
-        Assertions.assertEquals(1, gamePage.getTotalPages());
+        Assertions.assertEquals(20, gamePage.getTotalElements());
+        Assertions.assertEquals(3, gamePage.getTotalPages());
         Assertions.assertEquals(1, gamePage.getContent().get(0).getGameId());
         Assertions.assertEquals("Pubg", gamePage.getContent().get(0).getName());
         Assertions.assertEquals("Đây là một trong những tựa game sinh tồn nổi tiếng nhất trên thế giới tính đến thời điểm hiện tại. Trò chơi này ban đầu dựa vào nền tảng của PlayerUnknown do Green thiết kế.", gamePage.getContent().get(0).getContent());
