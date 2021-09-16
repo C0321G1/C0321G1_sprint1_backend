@@ -26,7 +26,7 @@ public class Employee {
     private String image;
     private int flagDel;
 
-    @ManyToOne(targetEntity = Address.class)
+    @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
 
@@ -34,11 +34,11 @@ public class Employee {
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
 
-    @ManyToOne(targetEntity = Gender.class)
+    @ManyToOne
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne(targetEntity = Account.class)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 

@@ -4,8 +4,10 @@ import c0321g1_gaming.dto.employee.EmployeeDto;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.employee.Employee;
+import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.address.AddressService;
 import c0321g1_gaming.model.service.employee.EmployeeService;
+import c0321g1_gaming.model.service.security.AccountService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,8 +31,12 @@ public class EmployeeRestController {
 
     @Autowired
     EmployeeService employeeService;
+
     @Autowired
     AddressService addressService;
+
+    @Autowired
+    AccountService accountService;
 
     // khue create get list employee
     @GetMapping("/employee")
@@ -88,24 +94,25 @@ public class EmployeeRestController {
 
         Employee employee = new Employee();
         Address address = employeeDto.getAddress();
+        Account account = employeeDto.getAccount();
         BeanUtils.copyProperties(employeeDto, employee);
 
-        boolean isAddressExist = false;
-        List<Address> addressList = addressService.getAddressList();
-        for (Address value : addressList) {
-            if (value.equals(address)) {
-                address.setAddressId(value.getAddressId());
-                isAddressExist = true;
-                break;
-            }
-        }
-        if (!isAddressExist) {
+        Long addressId = addressService.initAddressId(address);
+        if (addressId != 0) {
+            address.setAddressId(addressId);
+        } else {
             addressService.saveAddress(employeeDto.getAddress());
-            System.err.println("aaa");
+            address.setAddressId((long) (addressService.getAddressList().size()));
         }
-        address.setAddressId(addressService.getAddressList().get(addressList.size()).getAddressId());
-        System.err.println(address.getAddressId());
-        System.err.println(employee.getAddress().getAddressId());
+
+        if (accountService.checkAccountExist(account)) {
+            return new ResponseEntity<>(bindingResult.getFieldErrors(),
+                    HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        accountService.saveAccount(account.getUsername(), account.getPassword());
+        account.setAccountId(accountService.initAccountId(account));
+
         employeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -125,7 +132,7 @@ public class EmployeeRestController {
     }
 
     // Linh create method editEmployee
-    @PatchMapping("/employee")
+    @PutMapping("/employee")
     public ResponseEntity<List<FieldError>> editEmployee(@RequestBody @Valid EmployeeDto employeeDto,
                                                          BindingResult bindingResult) {
         Optional<Employee> employeeOptional = employeeService.findById(employeeDto.getEmployeeId());
@@ -143,9 +150,12 @@ public class EmployeeRestController {
         Employee employee = employeeOptional.get();
         Address address = employeeDto.getAddress();
         BeanUtils.copyProperties(employeeDto, employee);
-        addressService.saveAddress(employeeDto.getAddress());
-        List<Address> addressList = addressService.getAddressList();
-        address.setAddressId(addressList.get(addressList.size()).getAddressId());
+
+        Long addressId = addressService.initAddressId(address);
+        if (addressId != 0) {
+            address.setAddressId(addressId);
+        }
+
         employeeService.editEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
