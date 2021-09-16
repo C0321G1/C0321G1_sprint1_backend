@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 @Repository
+
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     //creator: Tra
     @Query(value = "select * from category where category_id = ?1", nativeQuery= true)

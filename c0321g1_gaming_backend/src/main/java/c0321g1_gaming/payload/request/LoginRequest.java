@@ -3,6 +3,7 @@ package c0321g1_gaming.payload.request;
 import javax.validation.constraints.NotBlank;
 
 public class LoginRequest {
+	//creator: Tra
 	@NotBlank
 	private String username;
 

@@ -9,8 +9,10 @@ public interface AccountService {
 
     //creator: vinhdn
     void save(Account account);
+
     //creator: vinhdn
     List<Account> findAllQuery();
+
     //creator: vinhdn
     Optional<Account> findByUsernameQuery(String username);
 }
