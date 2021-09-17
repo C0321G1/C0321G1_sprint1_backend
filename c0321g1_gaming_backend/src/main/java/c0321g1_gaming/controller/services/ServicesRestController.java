@@ -66,12 +66,8 @@ public class ServicesRestController {
 
     //    khanh
     @PostMapping(value = "/create")
-    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult) {
+    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto) {
         try {
-
-            if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
             Services services = new Services();
             System.out.println(servicesDto);
             BeanUtils.copyProperties(servicesDto, services);
@@ -89,16 +85,14 @@ public class ServicesRestController {
 
     //khanh
     @PatchMapping("{id}")
-    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
+    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto,
                                                  @PathVariable Long id) {
         try {
 
             Services services = servicesService.findById(id);
             if (services == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            } else {
+            }  else {
                 Services services1 = new Services();
                 servicesDto.setServicesId(services.getServicesId());
                 BeanUtils.copyProperties(servicesDto, services1);
