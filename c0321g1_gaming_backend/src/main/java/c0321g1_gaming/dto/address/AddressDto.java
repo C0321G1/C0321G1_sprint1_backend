@@ -19,8 +19,9 @@ public class AddressDto {
     public AddressDto() {
     }
 
-    public AddressDto(Long addressId, Province province, District district,
-                      Commune commune, List<Customer> customerList, List<Employee> employeeList) {
+
+    public AddressDto(Long addressId, Province province, District district, Commune commune, List<Customer> customerList, List<Employee> employeeList) {
+
         this.addressId = addressId;
         this.province = province;
         this.district = district;

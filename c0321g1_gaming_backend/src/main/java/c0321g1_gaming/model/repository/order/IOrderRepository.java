@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+
 import java.util.Optional;
 
 
@@ -20,14 +21,10 @@ public interface IOrderRepository extends JpaRepository<Order, Long> {
             "from `order` " +
             "where `order`.customer_id = :idCustomer", nativeQuery = true)
     Page<Order> pageOderByCustomer(Pageable pageable, @Param("idCustomer") Long idCustomer);
-    //Huynh code
-    @Query(value = "update `order` set status =0 where order_id=:oderId;"
-            , nativeQuery = true)
-    void updateConfirmPayment(@Param("oderId") Long oderId);
-    //Huynh code
 
-    @Query(value = "select * from `order` where order_id=:oderId"
+    //Huynh code
+    @Query(value = "select * from `order` where order_id=:orderId"
             , nativeQuery = true)
-    Optional<Order> findById(@Param("oderId") Long oderId);
+    Optional<Order> findById(@Param("orderId") Long oderId);
 
 }

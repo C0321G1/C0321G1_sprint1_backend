@@ -16,32 +16,32 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public void create(Order order) {
     }
-    //Huynh code
+
+
     @Override
     public Page<Order> findAllOder(Pageable pageable) {
         return orderRepository.pageOderAll(pageable);
     }
-    //Huynh code
+
+
+
     @Override
     public Page<Order> findOderByIdCustomer(Pageable pageable, Long idCustomer) {
         return orderRepository.pageOderByCustomer(pageable, idCustomer);
     }
 
     @Override
+
     public void saveOrder(Order order) {
         orderRepository.save(order);
     }
 
 
     //Huynh code
+
     @Override
     public Optional<Order> findById(Long id) {
         return orderRepository.findById(id);
-    }
-    //Huynh code
-    @Override
-    public void confirmPayments(Long idOrder) {
-       orderRepository.updateConfirmPayment(idOrder);
     }
 
 

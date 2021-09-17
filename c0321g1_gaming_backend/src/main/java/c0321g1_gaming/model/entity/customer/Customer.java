@@ -33,7 +33,6 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
-
     private List<Order> orderList;
 
     @OneToOne

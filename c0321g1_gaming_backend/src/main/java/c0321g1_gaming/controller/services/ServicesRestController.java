@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,9 @@ import java.util.logging.Logger;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
+
     private static final Logger LOGGER = (Logger) LogManager.getLogger(ServicesRestController.class);
+
     //    khanh
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
@@ -45,7 +46,11 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+
+            e.printStackTrace();
+
         }
         return null;
     }
@@ -66,12 +71,8 @@ public class ServicesRestController {
 
     //    khanh
     @PostMapping(value = "/create")
-    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult) {
+    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto) {
         try {
-
-            if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
             Services services = new Services();
             System.out.println(servicesDto);
             BeanUtils.copyProperties(servicesDto, services);
@@ -82,23 +83,25 @@ public class ServicesRestController {
             servicesService.save(services);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+
+            e.printStackTrace();
+
         }
         return null;
     }
 
     //khanh
     @PatchMapping("{id}")
-    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
+    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto,
                                                  @PathVariable Long id) {
         try {
 
             Services services = servicesService.findById(id);
             if (services == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            } else {
+            }  else {
                 Services services1 = new Services();
                 servicesDto.setServicesId(services.getServicesId());
                 BeanUtils.copyProperties(servicesDto, services1);
@@ -110,7 +113,11 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+
+            e.printStackTrace();
+
         }
         return null;
     }
@@ -129,7 +136,10 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+            e.printStackTrace();
+
         }
         return null;
     }
@@ -145,7 +155,11 @@ public class ServicesRestController {
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+
+            e.printStackTrace();
+
         }
         return null;
     }
@@ -166,7 +180,11 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         } catch (Exception e) {
+
             LOGGER.config(e.getMessage());
+
+            e.printStackTrace();
+
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

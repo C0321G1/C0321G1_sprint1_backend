@@ -1,3 +1,4 @@
+
 package c0321g1_gaming.dto.computer;
 
 import c0321g1_gaming.model.entity.computer.Computer;
@@ -71,3 +72,4 @@ public class AccountComputerDto {
         this.account = account;
     }
 }
+

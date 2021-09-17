@@ -11,13 +11,15 @@ public class GameDto {
     private String image;
     private String gaming;
     private String trailer;
-    private GameType gameType;
+
+    private GameType gameTypeDto;
+
 
     public GameDto() {
     }
 
-    public GameDto(Long gameId, String content, int flagDelete, String name,
-                   String image, String gaming, String trailer, GameType gameType) {
+    public GameDto(Long gameId, String content, int flagDelete, String name, String image, String gaming,
+                   String trailer, GameType gameTypeDto) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;
@@ -25,7 +27,7 @@ public class GameDto {
         this.image = image;
         this.gaming = gaming;
         this.trailer = trailer;
-        this.gameType = gameType;
+        this.gameTypeDto = gameTypeDto;
     }
 
     public Long getGameId() {
@@ -84,11 +86,11 @@ public class GameDto {
         this.trailer = trailer;
     }
 
-    public GameType getGameType() {
-        return gameType;
+    public GameType getGameTypeDto() {
+        return gameTypeDto;
     }
 
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
+    public void setGameTypeDto(GameType gameTypeDto) {
+        this.gameTypeDto = gameTypeDto;
     }
 }

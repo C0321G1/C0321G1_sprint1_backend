@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface IOrderService {
     void create(Order order);
+
     //Huynh code
     Page<Order> findAllOder(Pageable pageable);
     //Huynh code
@@ -16,9 +17,6 @@ public interface IOrderService {
     void saveOrder(Order order);
     //Huynh code
     Optional<Order> findById(Long id);
-
-    void confirmPayments(Long idOrder);
-
 
 
 

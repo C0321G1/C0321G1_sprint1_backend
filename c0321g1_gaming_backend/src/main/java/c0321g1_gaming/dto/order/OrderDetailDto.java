@@ -17,7 +17,6 @@ public class OrderDetailDto {
 
 
     public OrderDetailDto(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
-
         this.orderDetailId = orderDetailId;
         this.order = order;
         this.services = services;
