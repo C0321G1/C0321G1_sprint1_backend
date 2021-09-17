@@ -1,38 +1,32 @@
 package c0321g1_gaming.dto.services;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+import javax.persistence.*;
 
 
 public class ServicesDto {
     private Long servicesId;
-    private String code;
-    @NotNull(message = "This field is not be blank")
-    @Min(value = 0,message = "This field must be greater than 0")
     private int quantity;
-    @NotNull( message = "This field is not be blank")
-    @Min(value = 1000,message = "This field must be greater than 1000")
     private int prices;
-    @NotBlank(message = "This field is not be blank")
     private String name;
-    private int flag;
-    @NotBlank(message = "This field is not be blank")
+    private int flagDelete;
     private String image;
-    private Unit unit;
+    private Unit unitDto;
+    private Order orderDto;
 
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, @NotNull(message = "This field is not be blank") @Min(value = 0, message = "This field must be greater than 0") int quantity, @NotNull(message = "This field is not be blank") @Min(value = 1000, message = "This field must be greater than 1000") int prices, @NotBlank(message = "This field is not be blank") String name, int flag, @NotBlank(message = "This field is not be blank") String image, Unit unit) {
+    public ServicesDto(Long servicesId, int quantity, int prices, String name, int flagDelete, String image, Unit unitDto, Order orderDto) {
         this.servicesId = servicesId;
-        this.code = code;
         this.quantity = quantity;
         this.prices = prices;
         this.name = name;
-        this.flag = flag;
+        this.flagDelete = flagDelete;
         this.image = image;
-        this.unit = unit;
+        this.unitDto = unitDto;
+        this.orderDto = orderDto;
     }
 
     public Long getServicesId() {
@@ -41,14 +35,6 @@ public class ServicesDto {
 
     public void setServicesId(Long servicesId) {
         this.servicesId = servicesId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public int getQuantity() {
@@ -75,12 +61,12 @@ public class ServicesDto {
         this.name = name;
     }
 
-    public int getFlag() {
-        return flag;
+    public int getFlagDelete() {
+        return flagDelete;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
+    public void setFlagDelete(int flagDelete) {
+        this.flagDelete = flagDelete;
     }
 
     public String getImage() {
@@ -91,11 +77,19 @@ public class ServicesDto {
         this.image = image;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public Unit getUnitDto() {
+        return unitDto;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setUnitDto(Unit unitDto) {
+        this.unitDto = unitDto;
+    }
+
+    public Order getOrderDto() {
+        return orderDto;
+    }
+
+    public void setOrderDto(Order orderDto) {
+        this.orderDto = orderDto;
     }
 }

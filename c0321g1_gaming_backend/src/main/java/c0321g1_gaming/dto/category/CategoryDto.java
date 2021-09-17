@@ -10,14 +10,14 @@ public class CategoryDto {
     private String name;
     private String startTime;
     private String endTime;
-    private String fee;
+    private int fee;
     private String type;
     private Account accountDto;
 
     public CategoryDto() {
     }
 
-    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, String fee, String type, Account accountDto) {
+    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account accountDto) {
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;
@@ -77,11 +77,11 @@ public class CategoryDto {
         this.endTime = endTime;
     }
 
-    public String getFee() {
+    public int getFee() {
         return fee;
     }
 
-    public void setFee(String fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 
