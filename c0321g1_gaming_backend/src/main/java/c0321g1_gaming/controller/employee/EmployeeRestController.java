@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -37,7 +38,7 @@ public class EmployeeRestController {
     }
     // khue create method delete Employee
     @DeleteMapping("/employee/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable int id) {
 
         if (id == 0){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
