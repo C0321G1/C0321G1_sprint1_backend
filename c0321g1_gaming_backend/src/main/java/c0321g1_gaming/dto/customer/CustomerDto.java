@@ -5,6 +5,7 @@ import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
+
 import java.util.List;
 
 
@@ -38,22 +39,6 @@ public class CustomerDto {
         this.account = account;
         this.code = code;
         this.gender = gender;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Long getCustomerId() {
@@ -134,5 +119,21 @@ public class CustomerDto {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

@@ -60,14 +60,6 @@ public class Customer {
         this.gender = gender;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
     public Long getCustomerId() {
         return customerId;
     }
@@ -112,8 +104,8 @@ public class Customer {
         return flag;
     }
 
-    public void setFlag(int flagDelete) {
-        this.flag = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getPhone() {
@@ -154,5 +146,13 @@ public class Customer {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

@@ -25,10 +25,9 @@ public class Address {
     @JsonBackReference
     private List<Customer> customerList;
 
-   @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-   @JsonBackReference
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Employee> employeeList;
-
     public Address() {
     }
 
@@ -89,5 +88,3 @@ public class Address {
         this.employeeList = employeeList;
     }
 }
-
-

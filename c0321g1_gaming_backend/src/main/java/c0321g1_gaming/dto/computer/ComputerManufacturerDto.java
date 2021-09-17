@@ -6,15 +6,15 @@ import java.util.List;
 public class ComputerManufacturerDto {
     private Long computerManufacturerId;
     private String name;
-    private List<Computer> computerList;
+    private List<Computer> computerDtoList;
 
     public ComputerManufacturerDto() {
     }
 
-    public ComputerManufacturerDto(Long computerManufacturerId, String name, List<Computer> computerList) {
+    public ComputerManufacturerDto(Long computerManufacturerId, String name, List<Computer> computerDtoList) {
         this.computerManufacturerId = computerManufacturerId;
         this.name = name;
-        this.computerList = computerList;
+        this.computerDtoList = computerDtoList;
     }
 
     public Long getComputerManufacturerId() {
@@ -33,11 +33,11 @@ public class ComputerManufacturerDto {
         this.name = name;
     }
 
-    public List<Computer> getComputerList() {
-        return computerList;
+    public List<Computer> getComputerDtoList() {
+        return computerDtoList;
     }
 
-    public void setComputerList(List<Computer> computerList) {
-        this.computerList = computerList;
+    public void setComputerDtoList(List<Computer> computerDtoList) {
+        this.computerDtoList = computerDtoList;
     }
 }
