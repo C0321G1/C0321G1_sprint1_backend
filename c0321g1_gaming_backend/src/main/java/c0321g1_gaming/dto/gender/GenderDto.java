@@ -2,7 +2,6 @@ package c0321g1_gaming.dto.gender;
 
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
-
 import java.util.List;
 
 public class GenderDto {

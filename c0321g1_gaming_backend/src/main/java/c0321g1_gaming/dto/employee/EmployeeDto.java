@@ -1,13 +1,8 @@
 package c0321g1_gaming.dto.employee;
-
-import c0321g1_gaming.dto.address.AddressDto;
-import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.entity.gender.Gender;
+import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.entity.security.Account;
-
-import java.util.List;
 
 
 public class EmployeeDto {
@@ -26,7 +21,6 @@ public class EmployeeDto {
     private Position position;
     private Account account;
     private Gender gender;
-
     public EmployeeDto() {
     }
 
@@ -48,44 +42,12 @@ public class EmployeeDto {
         this.gender = gender;
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
     public Long getYearOfExp() {
         return yearOfExp;
     }
 
     public void setYearOfExp(Long yearOfExp) {
         this.yearOfExp = yearOfExp;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getStartWorkDate() {
-        return startWorkDate;
-    }
-
-    public void setStartWorkDate(String startWorkDate) {
-        this.startWorkDate = startWorkDate;
     }
 
     public Long getLevel() {
@@ -110,22 +72,6 @@ public class EmployeeDto {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getFlagDel() {
@@ -160,6 +106,18 @@ public class EmployeeDto {
         this.account = account;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -167,4 +125,44 @@ public class EmployeeDto {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getStartWorkDate() {
+        return startWorkDate;
+    }
+
+    public void setStartWorkDate(String startWorkDate) {
+        this.startWorkDate = startWorkDate;
+    }
+
+
 }

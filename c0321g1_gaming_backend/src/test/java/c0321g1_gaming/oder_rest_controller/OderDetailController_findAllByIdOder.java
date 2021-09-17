@@ -1,7 +1,7 @@
 package c0321g1_gaming.oder_rest_controller;
 
 
-import c0321g1_gaming.controller_service.order.OrderDetailRestController;
+import c0321g1_gaming.controller.order.OrderDetailRestController;
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
