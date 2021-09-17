@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IOrderDetailService {
     //vu code
-    void createDetail(OrderDetailDto orderDetailDto);
+    void createDetail(OrderDetail orderDetail);
     List<OrderDetail> findAllOderDetailsByOderId(Long oderId);
 }
 

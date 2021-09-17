@@ -42,13 +42,13 @@ public class OrderRestController_createOrderDetail {
     @Test
     public void  createOrder_name_2() throws Exception {
         OrderDetailDto orderDetailDto = new OrderDetailDto();
-        orderDetailDto.setServiceId((long) 1);
-        orderDetailDto.setQuantity(1);
+        orderDetailDto.setServiceId(1L);
+        orderDetailDto.setQuantity(2);
         orderDetailDto.setTotalPrices(1);
-        orderDetailDto.setOrderId((long) 1);
+        orderDetailDto.setOrderId(1L);
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .post("/create")
+                        .post("/order-detail/create-detail")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(orderDetailDto)))
                 .andDo(print())

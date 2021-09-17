@@ -4,6 +4,7 @@ import c0321g1_gaming.dto.address.AddressDto;
 import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.employee.Position;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
 import java.util.List;
@@ -19,17 +20,17 @@ public class EmployeeDto {
     private String email;
     private String fullName;
     private String code;
-
-
-    private int flagDelete;
-    private List<Address> addressDtoList;
-    private Position positionDto;
-    private Account accountDto;
+    private String image;
+    private int flagDel;
+    private Address address;
+    private Position position;
+    private Account account;
+    private Gender gender;
 
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, int flagDelete, List<Address> addressDtoList, Position positionDto, Account accountDto) {
+    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -39,10 +40,12 @@ public class EmployeeDto {
         this.email = email;
         this.fullName = fullName;
         this.code = code;
-        this.flagDelete = flagDelete;
-        this.addressDtoList = addressDtoList;
-        this.positionDto = positionDto;
-        this.accountDto = accountDto;
+        this.image = image;
+        this.flagDel = flagDel;
+        this.address = address;
+        this.position = position;
+        this.account = account;
+        this.gender = gender;
     }
 
     public Long getEmployeeId() {
@@ -117,35 +120,51 @@ public class EmployeeDto {
         this.code = code;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public String getImage() {
+        return image;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public List<Address> getAddressDtoList() {
-        return addressDtoList;
+    public int getFlagDel() {
+        return flagDel;
     }
 
-    public void setAddressDtoList(List<Address> addressDtoList) {
-        this.addressDtoList = addressDtoList;
+    public void setFlagDel(int flagDel) {
+        this.flagDel = flagDel;
     }
 
-    public Position getPositionDto() {
-        return positionDto;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setPositionDto(Position positionDto) {
-        this.positionDto = positionDto;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Account getAccountDto() {
-        return accountDto;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setAccountDto(Account accountDto) {
-        this.accountDto = accountDto;
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

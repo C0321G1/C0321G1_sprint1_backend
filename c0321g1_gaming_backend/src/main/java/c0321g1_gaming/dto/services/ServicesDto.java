@@ -3,6 +3,7 @@ import c0321g1_gaming.model.entity.services.Unit;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 public class ServicesDto {

@@ -82,6 +82,10 @@ public class ServicesServiceImpl implements IServicesService {
                 services.getQuantity(),services.getUnit().getUnitId(),services.getServicesId());
     }
 
+    @Override
+    public List<Services> listServices() {
+        return this.servicesRepository.listServices();
+    }
 
 
 }

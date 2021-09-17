@@ -2,6 +2,8 @@ package c0321g1_gaming.dto.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
+
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 
@@ -13,37 +15,40 @@ public class CustomerDto {
     private String email;
     private String dateOfBirth;
     private String fullName;
-    private int flagDelete;
+    private int flag;
     private String phone;
     private List<Address> addressDtoList;
     private CustomerStatus customerStatusDto;
     private List<Order> orderDtoList;
     private Account accountDto;
+    private Address address;
+    private CustomerStatus customerStatus;
+    private List<Order> orderList;
+    private Account account;
+
     private String code;
+    private Gender gender;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flagDelete, String phone, List<Address> addressDtoList, CustomerStatus customerStatusDto, List<Order> orderDtoList, Account accountDto, String code) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, List<Address> addressDtoList, CustomerStatus customerStatusDto, List<Order> orderDtoList, Account accountDto, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.fullName = fullName;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.phone = phone;
         this.addressDtoList = addressDtoList;
         this.customerStatusDto = customerStatusDto;
         this.orderDtoList = orderDtoList;
         this.accountDto = accountDto;
+        this.address = address;
+        this.customerStatus = customerStatus;
+        this.orderList = orderList;
+        this.account = account;
         this.code = code;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+        this.gender = gender;
     }
 
     public Long getCustomerId() {
@@ -78,12 +83,12 @@ public class CustomerDto {
         this.fullName = fullName;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getPhone() {
@@ -124,5 +129,53 @@ public class CustomerDto {
 
     public void setAccountDto(Account accountDto) {
         this.accountDto = accountDto;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public CustomerStatus getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(CustomerStatus customerStatus) {
+        this.customerStatus = customerStatus;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

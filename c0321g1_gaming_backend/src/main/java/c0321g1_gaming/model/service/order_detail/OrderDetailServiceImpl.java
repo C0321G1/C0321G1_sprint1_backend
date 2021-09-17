@@ -14,13 +14,12 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
     private IOrderDetailRepository orderDetailRepository;
      //vu code
     @Override
-    public void createDetail(OrderDetailDto orderDetailDto) {
+    public void createDetail(OrderDetail orderDetail) {
         this.orderDetailRepository.createDetail(
-                orderDetailDto.getOrderId(),
-                orderDetailDto.getQuantity(),
-                orderDetailDto.getQuantity(),
-                orderDetailDto.getTotalPrices(),
-                orderDetailDto.getServiceId()
+                orderDetail.getQuantity(),
+                orderDetail.getTotalPrices(),
+                orderDetail.getOrder().getOrderId(),
+                orderDetail.getServices().getServicesId()
         );
     }
 
