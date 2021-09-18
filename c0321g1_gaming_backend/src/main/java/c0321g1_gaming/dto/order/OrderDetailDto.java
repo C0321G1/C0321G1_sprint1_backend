@@ -2,9 +2,6 @@ package c0321g1_gaming.dto.order;
 
 import c0321g1_gaming.model.entity.order.Order;
 
-import java.util.List;
-
-
 public class OrderDetailDto {
     private Long orderDetailId;
     private Order order;

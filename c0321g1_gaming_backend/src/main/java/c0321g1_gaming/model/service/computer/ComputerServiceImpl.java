@@ -1,7 +1,6 @@
 package c0321g1_gaming.model.service.computer;
 
 import c0321g1_gaming.model.entity.computer.Computer;
-import c0321g1_gaming.model.entity.computer.ComputerStatus;
 import c0321g1_gaming.model.repository.computer.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -89,8 +88,10 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public void setComputerStatus(Long id) {
         Optional<Computer> computer = computerRepository.findComputerById(id);
-        computer.get().getComputerStatus().setComputerStatusId(2L);
-        computerRepository.save(computer.get());
+        if(computer.isPresent()){
+            computer.get().getComputerStatus().setComputerStatusId(Long.valueOf(1));
+            computerRepository.save(computer.get());
+        }
     }
 }
 

@@ -9,7 +9,6 @@ import c0321g1_gaming.model.service.computer.ComputerManufacturerService;
 import c0321g1_gaming.model.service.computer.ComputerService;
 import c0321g1_gaming.model.service.computer.ComputerStatusService;
 import c0321g1_gaming.model.service.computer.ComputerTypeService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,12 +41,12 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PostMapping("/create-computer")
-    public ResponseEntity<?> createComputer(@Valid @RequestBody ComputerDto computerDto,
-                                            BindingResult bindingResult) {
+    public ResponseEntity<Void> createComputer(@Valid @RequestBody ComputerDto computerDto,
+                                               BindingResult bindingResult) {
         Computer computer = computerService.searchComputerCode(computerDto.getComputerCode());
         new ComputerDto().validate(computerDto, bindingResult);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (computer == null) {
             Long manufacturerId = computerManufacturerService.
@@ -70,18 +69,18 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PatchMapping("/update-computer/{id}")
-    public ResponseEntity<?> updateComputer(@Valid @RequestBody ComputerDto computerDto,
-                                            BindingResult bindingResult,
-                                            @PathVariable Long id) {
-        Computer computer = computerService.findComputerById(id).get();
+    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto,
+                                               BindingResult bindingResult,
+                                               @PathVariable Long id) {
+        Optional<Computer> computer = computerService.findComputerById(id);
         new ComputerDto().validate(computerDto, bindingResult);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (computerDto.getComputerStatus().getName().equals("Đang sử dụng")){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        if (computer == null) {
+        if (!computer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Long manufacturerId = computerManufacturerService.
@@ -153,7 +152,6 @@ public class ComputerRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Optional<Computer> computer = computerService.findComputerById(id);
-        /*computerService.setComputerStatus(id);*/
         if (!computer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -161,7 +159,7 @@ public class ComputerRestController {
     }
     //NguyenNHN - Delete computer
     @DeleteMapping("/computer/{id}")
-    public ResponseEntity<?> deleteComputer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -170,7 +168,7 @@ public class ComputerRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (computer.get().getComputerStatus().getComputerStatusId() == 1) {
-            return new ResponseEntity<>("Error delete: Computer " + computer.get().getComputerCode() + " is online", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         computer.get().setFlagDelete(1);
         computerService.saveComputer(computer.get());
@@ -193,7 +191,7 @@ public class ComputerRestController {
         String computerTypeSearch = computerType.orElse("");
         String startDateFromSearch = startDateFrom.orElse("");
         String startDateToSearch = startDateTo.orElse("");
-        if(startDateToSearch=="" && startDateFromSearch!=""){
+        if(startDateToSearch.equals("") && startDateFromSearch.equals("")){
             startDateToSearch = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, startDateFromSearch, startDateToSearch, pageable);
@@ -202,7 +200,7 @@ public class ComputerRestController {
             }
             return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
         }
-        if (startDateFromSearch == "" && startDateToSearch == "") {
+        if (startDateFromSearch.equals("") && startDateToSearch.equals("")) {
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, pageable);
             if (computerSearchPage.isEmpty()) {

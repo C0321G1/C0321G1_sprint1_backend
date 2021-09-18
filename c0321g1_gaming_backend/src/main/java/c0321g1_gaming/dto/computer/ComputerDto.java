@@ -1,15 +1,9 @@
 package c0321g1_gaming.dto.computer;
 
-import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
-import c0321g1_gaming.model.entity.computer.ComputerStatus;
-import c0321g1_gaming.model.entity.computer.ComputerType;
-import c0321g1_gaming.model.entity.order.Order;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class ComputerDto implements Validator {
