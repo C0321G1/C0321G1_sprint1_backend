@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,7 +63,7 @@ public class CategoryRestController {
             //số tiền còn lại trong tài khoản tương ứng với số thời gian còn lại
             double feeDouble = timeRemainingSecond / 60 * 20000;
 
-            String fee = String.valueOf((int)feeDouble);
+            String fee = String.valueOf((int) feeDouble);
             category.get().setFee(fee);
 
             //set startTime = null sau khi logout

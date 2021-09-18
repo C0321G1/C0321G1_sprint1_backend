@@ -11,7 +11,7 @@ public class ComputerManufacturer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long computerManufacturerId;
     private String name;
-    @OneToMany(mappedBy = "computerManufacturer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "computerManufacturer", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Computer> computerList;
 

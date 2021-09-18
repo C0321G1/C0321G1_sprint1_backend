@@ -1,6 +1,5 @@
 package c0321g1_gaming.model.service.user_detail_service_impl;
 
-import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
@@ -9,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Collection;
 import java.util.List;

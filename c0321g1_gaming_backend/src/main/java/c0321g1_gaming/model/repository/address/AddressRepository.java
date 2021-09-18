@@ -19,11 +19,6 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
     void saveAddress(Long provinceId, Long districtId, Long communeId);
 
     //    creator: vinhdn
-    @Query(value = " select * from address where province_id= ?1 and district_id =?2 and commune_id=?3",
-            nativeQuery = true)
-    List<Address> findAddressByQuery(Long provinceId, Long districtId, Long communeId);
-
-    //    creator: vinhdn
     @Query(value = "select * from address", nativeQuery = true)
     List<Address> findAllQuery();
 }

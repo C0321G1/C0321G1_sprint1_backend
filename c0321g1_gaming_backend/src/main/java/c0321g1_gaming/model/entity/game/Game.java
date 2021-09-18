@@ -14,7 +14,7 @@ public class Game {
     private String gaming;
     private String trailer;
     @ManyToOne
-    @JoinColumn(name = "gameTypeId",referencedColumnName = "gameTypeId")
+    @JoinColumn(name = "gameTypeId", referencedColumnName = "gameTypeId")
     private GameType gameType;
 
     public Game() {

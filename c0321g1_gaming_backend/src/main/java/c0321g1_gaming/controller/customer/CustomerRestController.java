@@ -2,12 +2,10 @@ package c0321g1_gaming.controller.customer;
 
 import c0321g1_gaming.dto.customer.CustomerDto;
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.account.AccountService;
 import c0321g1_gaming.model.service.address.AddressService;
-import c0321g1_gaming.model.service.category.CategoryService;
 import c0321g1_gaming.model.service.customer.CustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +28,6 @@ public class CustomerRestController {
     private AccountService accountService;
     @Autowired
     private AddressService addressService;
-    @Autowired
-    private CategoryService categoryService;
 
     //creator: vinhdn
     @PostMapping("/create")
@@ -42,6 +38,12 @@ public class CustomerRestController {
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
+        Optional<Account> accountOptional = accountService.
+                findByUsernameQuery(customer.getAccount().getUsername());
+        if (accountOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        accountService.save(customer.getAccount());
         if (customer.getAddress().getProvince() == null &&
                 customer.getAddress().getDistrict() == null &&
                 customer.getAddress().getCommune() == null) {
@@ -54,14 +56,18 @@ public class CustomerRestController {
             customer.setAddress(address);
         }
 
-        accountService.save(customer.getAccount());
-
-        Optional<Account> accountOptional = accountService.findByUsernameQuery(customer.getAccount().getUsername());
-
-        customer.setAccount(accountOptional.get());
-
         customer.setFlag(0);
         customerService.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //creator: vinhdn
+    @PostMapping("/checkUsername")
+    public ResponseEntity<Account> checkUsername(@RequestBody Account account) {
+        Optional<Account> accountOptional = accountService.
+                findByUsernameQuery(account.getUsername());
+        if (accountOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else return new ResponseEntity<>(HttpStatus.OK);
     }
 }

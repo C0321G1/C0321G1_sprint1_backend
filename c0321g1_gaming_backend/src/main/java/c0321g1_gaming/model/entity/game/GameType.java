@@ -11,7 +11,7 @@ public class GameType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gameTypeId;
     private String name;
-    @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gameType", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Game> gameList;
 

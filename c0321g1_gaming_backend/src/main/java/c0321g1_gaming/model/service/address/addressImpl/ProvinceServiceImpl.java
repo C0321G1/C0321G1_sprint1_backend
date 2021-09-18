@@ -12,6 +12,7 @@ import java.util.List;
 public class ProvinceServiceImpl implements ProvinceService {
     @Autowired
     private ProvinceRepository provinceRepository;
+
     //creator: vinhdn
     @Override
     public List<Province> findAll() {

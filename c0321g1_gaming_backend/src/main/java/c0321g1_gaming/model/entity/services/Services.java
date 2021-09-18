@@ -18,7 +18,7 @@ public class Services {
     private int flag;
     private String image;
     @ManyToOne
-    @JoinColumn(name = "unitId",referencedColumnName = "unitId")
+    @JoinColumn(name = "unitId", referencedColumnName = "unitId")
     private Unit unit;
     @OneToMany(mappedBy = "services", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -46,7 +46,6 @@ public class Services {
     public void setCode(String code) {
         this.code = code;
     }
-
 
 
     public List<Order> getOrderList() {
