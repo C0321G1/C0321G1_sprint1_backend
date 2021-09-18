@@ -15,21 +15,21 @@ public class AccountDto {
     private String password;
     private Set<Role> roles = new HashSet<>();
     private Category category;
-    private Customer customerDto;
-    private Employee employeeDto;
+    private Customer customer;
+    private Employee employee;
 
     public AccountDto() {
     }
 
 
-	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customerDto, Employee employeeDto) {
+	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customer, Employee employee) {
 		AccountId = accountId;
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
 		this.category = category;
-		this.customerDto = customerDto;
-		this.employeeDto = employeeDto;
+		this.customer = customer;
+		this.employee = employee;
 	}
 
 
@@ -73,19 +73,19 @@ public class AccountDto {
 		this.category = category;
 	}
 
-	public Customer getCustomerDto() {
-		return customerDto;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerDto(Customer customerDto) {
-		this.customerDto = customerDto;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public Employee getEmployeeDto() {
-		return employeeDto;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEmployeeDto(Employee employeeDto) {
-		this.employeeDto = employeeDto;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 }

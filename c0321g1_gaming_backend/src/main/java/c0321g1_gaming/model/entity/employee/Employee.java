@@ -19,7 +19,7 @@ public class Employee {
     private String startWorkDate;
     private Long level;
     private String email;
-    private String name;
+    private String fullName;
     private String image;
     private int flagDel;
     @ManyToOne
@@ -40,7 +40,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String name, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -49,7 +49,7 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
-        this.name = name;
+        this.fullName = fullName;
         this.image = image;
         this.flagDel = flagDel;
         this.address = address;
@@ -122,12 +122,12 @@ public class Employee {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String name) {
+        this.fullName = name;
     }
 
     public String getImage() {
