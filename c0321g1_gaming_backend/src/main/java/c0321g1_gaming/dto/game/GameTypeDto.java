@@ -8,15 +8,15 @@ import java.util.List;
 public class GameTypeDto {
     private Long gameTypeId;
     private String name;
-    private List<Game> gameDtoList;
+    private List<Game> gameList;
 
     public GameTypeDto() {
     }
 
-    public GameTypeDto(Long gameTypeId, String name, List<Game> gameDtoList) {
+    public GameTypeDto(Long gameTypeId, String name, List<Game> gameList) {
         this.gameTypeId = gameTypeId;
         this.name = name;
-        this.gameDtoList = gameDtoList;
+        this.gameList = gameList;
     }
 
     public Long getGameTypeId() {
@@ -35,11 +35,11 @@ public class GameTypeDto {
         this.name = name;
     }
 
-    public List<Game> getGameDtoList() {
-        return gameDtoList;
+    public List<Game> getGameList() {
+        return gameList;
     }
 
-    public void setGameDtoList(List<Game> gameDtoList) {
-        this.gameDtoList = gameDtoList;
+    public void setGameList(List<Game> gameList) {
+        this.gameList = gameList;
     }
 }

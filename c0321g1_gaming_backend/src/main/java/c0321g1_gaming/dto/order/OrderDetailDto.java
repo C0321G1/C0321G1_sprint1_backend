@@ -29,11 +29,11 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Order getOrders() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrders(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 

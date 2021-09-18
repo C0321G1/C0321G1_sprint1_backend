@@ -8,15 +8,15 @@ import java.util.List;
 public class CustomerStatusDto {
     private Long customerStatusId;
     private String name;
-    private List<Customer> customerDtoList;
+    private List<Customer> customerList;
 
     public CustomerStatusDto() {
     }
 
-    public CustomerStatusDto(Long customerStatusId, String name, List<Customer> customerDtoList) {
+    public CustomerStatusDto(Long customerStatusId, String name, List<Customer> customerList) {
         this.customerStatusId = customerStatusId;
         this.name = name;
-        this.customerDtoList = customerDtoList;
+        this.customerList = customerList;
     }
 
     public Long getCustomerStatusId() {
@@ -35,11 +35,11 @@ public class CustomerStatusDto {
         this.name = name;
     }
 
-    public List<Customer> getCustomerDtoList() {
-        return customerDtoList;
+    public List<Customer> getCustomerList() {
+        return customerList;
     }
 
-    public void setCustomerDtoList(List<Customer> customerDtoList) {
-        this.customerDtoList = customerDtoList;
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
 }
