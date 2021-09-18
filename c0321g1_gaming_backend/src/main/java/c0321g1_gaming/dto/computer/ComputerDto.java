@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 public class ComputerDto implements Validator {
-
     private Long computerId;
     private String computerCode;
     private String location;
@@ -159,7 +158,7 @@ public class ComputerDto implements Validator {
         if (computerDto.configuration == null) {
             errors.rejectValue("configuration", "configuration.null",
                     "Configuration is required.");
-        } else if (computerDto.configuration.length() > 25) {
+        } else if (computerDto.configuration.length() > 35) {
             errors.rejectValue("configuration", "configuration.maxLength",
                     "Configuration is too long.");
         }

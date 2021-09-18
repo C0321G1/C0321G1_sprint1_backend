@@ -4,9 +4,6 @@ import c0321g1_gaming.dto.computer.ComputerDto;
 import c0321g1_gaming.dto.computer.ComputerManufacturerDto;
 import c0321g1_gaming.dto.computer.ComputerStatusDto;
 import c0321g1_gaming.dto.computer.ComputerTypeDto;
-import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
-import c0321g1_gaming.model.entity.computer.ComputerStatus;
-import c0321g1_gaming.model.entity.computer.ComputerType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -85,7 +81,6 @@ public class ComputerRestController_createComputer {
                         .content(this.objectMapper.writeValueAsString(computerDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
-
     }
     @Test
     public void createComputer_ComputerCode_14() throws Exception {

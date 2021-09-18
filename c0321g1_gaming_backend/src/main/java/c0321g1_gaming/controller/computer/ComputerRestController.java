@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,8 +40,7 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PostMapping("/create-computer")
-    public ResponseEntity<Void> createComputer(@Valid @RequestBody ComputerDto computerDto,
-                                               BindingResult bindingResult) {
+    public ResponseEntity<Void> createComputer(@Valid @RequestBody ComputerDto computerDto, BindingResult bindingResult) {
         Computer computer = computerService.searchComputerCode(computerDto.getComputerCode());
         new ComputerDto().validate(computerDto, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -69,8 +67,7 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PatchMapping("/update-computer/{id}")
-    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto,
-                                               BindingResult bindingResult,
+    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto, BindingResult bindingResult,
                                                @PathVariable Long id) {
         Optional<Computer> computer = computerService.findComputerById(id);
         new ComputerDto().validate(computerDto, bindingResult);
@@ -191,7 +188,7 @@ public class ComputerRestController {
         String computerTypeSearch = computerType.orElse("");
         String startDateFromSearch = startDateFrom.orElse("");
         String startDateToSearch = startDateTo.orElse("");
-        if(startDateToSearch.equals("") && startDateFromSearch.equals("")){
+        if(startDateToSearch.equals("") && !startDateFromSearch.equals("")){
             startDateToSearch = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, startDateFromSearch, startDateToSearch, pageable);
@@ -200,6 +197,7 @@ public class ComputerRestController {
             }
             return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
         }
+
         if (startDateFromSearch.equals("") && startDateToSearch.equals("")) {
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, pageable);

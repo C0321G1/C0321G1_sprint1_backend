@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,19 +17,19 @@ public class ComputerServiceImpl implements ComputerService {
 
     //Long computer
     @Override
-    public void createComputer(String computer_code, String location, String start_used_date,
-                               String configuration, String warranty_period, Integer flag_delete,
-                               Long id_type, Long id_manufacturer, Long id_status) {
-        computerRepository.createComputer(computer_code, location, start_used_date, configuration,
-                warranty_period, flag_delete, id_type, id_manufacturer, id_status);
+    public void createComputer(String computerCode, String location, String startUsedDate,
+                               String configuration, String warrantyPeriod, Integer flagDelete,
+                               Long idType, Long idManufacturer, Long idStatus) {
+        computerRepository.createComputer(computerCode, location, startUsedDate, configuration,
+                warrantyPeriod, flagDelete, idType, idManufacturer, idStatus);
     }
 
     @Override
-    public void updateComputer(String computer_code, String location, String start_used_date,
-                               String configuration, String warranty_period, Long id_type,
-                               Long id_manufacturer, Long id_status, Long computer_id) {
-        computerRepository.updateComputer(computer_code, location, start_used_date, configuration, warranty_period,
-                id_type, id_manufacturer, id_status, computer_id);
+    public void updateComputer(String computerCode, String location, String startUsedDate,
+                               String configuration, String warrantyPeriod, Long idType,
+                               Long idManufacturer, Long idStatus, Long computerId) {
+        computerRepository.updateComputer(computerCode, location, startUsedDate, configuration, warrantyPeriod,
+                idType, idManufacturer, idStatus, computerId);
     }
 
     @Override
