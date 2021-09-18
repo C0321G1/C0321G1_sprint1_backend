@@ -1,10 +1,10 @@
 package c0321g1_gaming.dto.security;
+
 import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
-
 
 import java.util.HashSet;
 import java.util.List;
@@ -33,38 +33,6 @@ public class AccountDto {
 		this.category = category;
 		this.customer = customer;
 		this.employee = employee;
-		this.accountComputer = accountComputer;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-	public List<AccountComputer> getAccountComputer() {
-		return accountComputer;
-	}
-
-	public void setAccountComputer(List<AccountComputer> accountComputer) {
 		this.accountComputer = accountComputer;
 	}
 
@@ -106,5 +74,37 @@ public class AccountDto {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public List<AccountComputer> getAccountComputer() {
+		return accountComputer;
+	}
+
+	public void setAccountComputer(List<AccountComputer> accountComputer) {
+		this.accountComputer = accountComputer;
 	}
 }

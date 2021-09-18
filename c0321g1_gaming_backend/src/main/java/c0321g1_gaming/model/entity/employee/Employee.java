@@ -6,6 +6,7 @@ import c0321g1_gaming.model.entity.security.Account;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Employee {
     @Id

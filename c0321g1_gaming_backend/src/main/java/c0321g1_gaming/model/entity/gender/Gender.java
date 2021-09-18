@@ -1,7 +1,9 @@
 package c0321g1_gaming.model.entity.gender;
+
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 

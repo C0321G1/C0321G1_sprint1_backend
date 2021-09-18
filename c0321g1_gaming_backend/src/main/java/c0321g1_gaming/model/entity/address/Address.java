@@ -24,6 +24,7 @@ public class Address {
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
     @JsonBackReference(value = "address-customer")
     private List<Customer> customerList;
+
    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
    @JsonBackReference(value = "address-employee")
     private List<Employee> employeeList;
@@ -88,13 +89,4 @@ public class Address {
         this.employeeList = employeeList;
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        if ( this == obj) return true;
-//        if (obj == null || getClass() != obj.getClass()) return false;
-//        Address that = (Address) obj;
-//        return addressId == that.addressId;
-//    }
 }
-
-
