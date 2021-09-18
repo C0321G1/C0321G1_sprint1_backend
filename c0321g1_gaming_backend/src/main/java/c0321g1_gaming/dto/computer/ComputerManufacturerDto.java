@@ -1,8 +1,5 @@
 package c0321g1_gaming.dto.computer;
 
-import c0321g1_gaming.model.entity.computer.Computer;
-
-import java.util.List;
 public class ComputerManufacturerDto {
     private Long computerManufacturerId;
     private String name;
