@@ -19,12 +19,14 @@ public class ComputerDto {
     private ComputerStatus computerStatusDto;
     private ComputerType computerTypeDto;
     private ComputerManufacturer computerManufacturerDto;
+
     private List<Order> orderDtoList;
+
     public ComputerDto() {
     }
 
-    public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate,
-                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> orderDtoList) {
+    public ComputerDto(Long computerId, String computerCode, String location, String configuration,
+                       String startUsedDate, String warrantyPeriod, int flagDelete, ComputerStatus computerStatusDto, ComputerType computerTypeDto, ComputerManufacturer computerManufacturerDto, List<Order> orderDtoList) {
         this.computerId = computerId;
         this.computerCode = computerCode;
         this.location = location;

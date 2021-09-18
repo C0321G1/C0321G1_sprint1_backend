@@ -20,13 +20,15 @@ public class CustomerDto {
     private CustomerStatus customerStatus;
     private List<Order> orderList;
     private Account account;
+
     private String code;
     private Gender gender;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
+    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address,
+                       CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
         this.customerId = customerId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;

@@ -11,13 +11,15 @@ public class GameDto {
     private String image;
     private String gaming;
     private String trailer;
+
     private GameType gameTypeDto;
+
 
     public GameDto() {
     }
 
-    public GameDto(Long gameId, String content, int flagDelete, String name,
-                   String image, String gaming, String trailer, GameType gameTypeDto) {
+    public GameDto(Long gameId, String content, int flagDelete, String name, String image, String gaming,
+                   String trailer, GameType gameTypeDto) {
         this.gameId = gameId;
         this.content = content;
         this.flagDelete = flagDelete;

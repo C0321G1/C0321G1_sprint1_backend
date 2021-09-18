@@ -6,7 +6,9 @@ import java.util.List;
 public class ComputerManufacturerDto {
     private Long computerManufacturerId;
     private String name;
+
     private List<Computer> computerDtoList;
+
 
     public ComputerManufacturerDto() {
     }
