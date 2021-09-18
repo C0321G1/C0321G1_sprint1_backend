@@ -1,5 +1,4 @@
 package c0321g1_gaming.dto.security;
-
 import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
@@ -7,10 +6,15 @@ import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 import java.util.HashSet;
 import java.util.List;
+
+
+
+
 import java.util.Set;
 
 
 public class AccountDto {
+
 	private Long accountId;
 	private String username;
 	private String email;
@@ -20,6 +24,8 @@ public class AccountDto {
 	private Customer customer;
 	private Employee employee;
 	private List<AccountComputer> accountComputer;
+
+
 	public AccountDto() {
 	}
 

@@ -2,6 +2,7 @@ package c0321g1_gaming.model.entity.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.gender.Gender;
+
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -45,7 +46,9 @@ public class Customer {
     public Customer() {
     }
 
+
     public Customer(Long customerId, String email, String code, String dateOfBirth, String fullName, int flag, String phone, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, Gender gender) {
+
         this.customerId = customerId;
         this.email = email;
         this.code = code;

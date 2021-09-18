@@ -2,7 +2,9 @@ package c0321g1_gaming.dto.order;
 
 
 
+
 import c0321g1_gaming.model.entity.customer.Customer;
+
 
 
 public class OrderDto {
@@ -26,19 +28,4 @@ public class OrderDto {
         this.orderId = orderId;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }

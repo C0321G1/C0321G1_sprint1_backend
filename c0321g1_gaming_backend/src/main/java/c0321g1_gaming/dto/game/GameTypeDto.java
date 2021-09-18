@@ -8,7 +8,9 @@ import java.util.List;
 public class GameTypeDto {
     private Long gameTypeId;
     private String name;
+
     private List<Game> gameList;
+
 
     public GameTypeDto() {
     }

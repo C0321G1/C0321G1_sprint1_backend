@@ -8,6 +8,11 @@ public class ComputerManufacturerDto {
     private String name;
     private List<Computer> computerList;
 
+
+    private List<Computer> computerDtoList;
+
+
+
     public ComputerManufacturerDto() {
     }
 

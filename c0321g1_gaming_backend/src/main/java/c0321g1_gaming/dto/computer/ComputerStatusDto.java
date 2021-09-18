@@ -8,7 +8,10 @@ import java.util.List;
 public class ComputerStatusDto {
     private Long computerStatusId;
     private String name;
+
     private List<Computer> computerList;
+
+
 
     public ComputerStatusDto() {
     }

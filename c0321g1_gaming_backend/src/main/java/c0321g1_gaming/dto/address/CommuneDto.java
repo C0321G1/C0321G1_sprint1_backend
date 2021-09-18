@@ -11,9 +11,16 @@ public class CommuneDto {
     private String name;
     private List<Address> addressList;
 
+
     public CommuneDto() {
     }
 
+
+    public CommuneDto(Long communeId, String name, List<Address> addressList) {
+        this.communeId = communeId;
+        this.name = name;
+        this.addressList = addressList;
+    }
 
 
     public Long getCommuneId() {
@@ -39,4 +46,5 @@ public class CommuneDto {
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
     }
+
 }

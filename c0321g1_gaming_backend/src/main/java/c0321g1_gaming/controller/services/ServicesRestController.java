@@ -44,7 +44,6 @@ public class ServicesRestController {
         }
         return null;
     }
-
     //khanh
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -100,6 +99,7 @@ public class ServicesRestController {
             }
         }catch (Exception e){
             e.printStackTrace();
+
         }
         return null;
     }
@@ -117,8 +117,10 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
+
         }catch (Exception e){
             e.printStackTrace();
+
         }
         return null;
     }
@@ -134,7 +136,9 @@ public class ServicesRestController {
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         }catch (Exception e){
+
             e.printStackTrace();
+
         }
         return null;
     }

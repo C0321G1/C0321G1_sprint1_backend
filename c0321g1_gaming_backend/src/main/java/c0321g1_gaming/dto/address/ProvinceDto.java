@@ -8,6 +8,7 @@ import java.util.List;
 public class ProvinceDto {
     private Long provinceId;
     private String name;
+
     private List<Address> addressList;
     public ProvinceDto() {
     }

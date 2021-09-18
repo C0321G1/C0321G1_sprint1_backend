@@ -8,7 +8,9 @@ import java.util.List;
 public class CustomerStatusDto {
     private Long customerStatusId;
     private String name;
+
     private List<Customer> customerList;
+
 
     public CustomerStatusDto() {
     }

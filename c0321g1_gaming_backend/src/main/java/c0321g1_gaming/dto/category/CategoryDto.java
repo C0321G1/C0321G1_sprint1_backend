@@ -12,7 +12,10 @@ public class CategoryDto {
     private String endTime;
     private int fee;
     private String type;
+
     private Account account;
+
+
 
     public CategoryDto() {
     }

@@ -8,7 +8,13 @@ import java.util.List;
 public class ComputerTypeDto {
     private Long computerTypeId;
     private String name;
+
     private List<Computer> computerList;
+
+
+    private List<Computer> computerDtoList;
+
+
 
     public ComputerTypeDto() {
     }

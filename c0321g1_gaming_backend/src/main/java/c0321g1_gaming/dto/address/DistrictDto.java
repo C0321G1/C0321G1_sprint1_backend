@@ -8,7 +8,9 @@ import java.util.List;
 public class DistrictDto {
     private Long districtId;
     private String name;
+
     private List<Address> addressList;
+
 
     public DistrictDto() {
     }
@@ -17,6 +19,7 @@ public class DistrictDto {
         this.districtId = districtId;
         this.name = name;
         this.addressList = addressList;
+
     }
 
     public Long getDistrictId() {
@@ -42,4 +45,5 @@ public class DistrictDto {
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
     }
+
 }
