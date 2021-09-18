@@ -16,24 +16,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-
 @RestController
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CustomerRestController {
-
     @Autowired
     CustomerService customerService;
     @Autowired
-    GenderService genderService;
-    @Autowired
     AddressService addressService;
+    @Autowired
+    GenderService genderService;
     @Autowired
     ProvinceService provinceService;
     @Autowired
@@ -47,7 +43,7 @@ public class CustomerRestController {
      * Author: Dong
      **/
 
-    @GetMapping("/address")
+    @GetMapping("/customer/address")
     public ResponseEntity<List<
             Address>> getAllAddress() {
         List<Address> addressList = addressService.getAddressList();
@@ -57,7 +53,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(addressList, HttpStatus.OK);
     }
 
-    @GetMapping("/province")
+    @GetMapping("/customer/province")
     public ResponseEntity<List<Province>> getAllProvince() {
         List<Province> provinceList = provinceService.getProvinceList();
         if (provinceList.isEmpty()) {
@@ -66,7 +62,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(provinceList, HttpStatus.OK);
     }
 
-    @GetMapping("/district")
+    @GetMapping("/customer/district")
     public ResponseEntity<List<District>> getAllDistrict() {
         List<District> districtList = districtService.getDistrictList();
         if (districtList.isEmpty()) {
@@ -75,7 +71,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/commune")
+    @GetMapping(value = "/customer/commune")
     public ResponseEntity<List<Commune>> getAllCommune() {
         List<Commune> communeList = communeService.getCommuneList();
         if (communeList.isEmpty()) {
@@ -84,7 +80,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(communeList, HttpStatus.OK);
     }
 
-    @GetMapping("/gender")
+    @GetMapping("/customer/gender")
     public ResponseEntity<List<Gender>> getAllGender() {
         List<Gender> genderList = genderService.getGenderList();
         if (genderList.isEmpty()) {
@@ -93,13 +89,13 @@ public class CustomerRestController {
         return new ResponseEntity<>(genderList, HttpStatus.OK);
     }
 
-    @PatchMapping("/edit")
+    @PatchMapping("/customer/edit")
     public ResponseEntity<Customer> editCusDto(@RequestBody CusDTO cusDTO) {
         customerService.updateCusDto(cusDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/customer/create")
     public ResponseEntity<Void> createNewCusDto(@RequestBody CusDTO cusDTO) {
 
         customerService.saveCusDto(cusDTO);
@@ -115,7 +111,6 @@ public class CustomerRestController {
         }
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
-
     // Tung create method delete customer
     @DeleteMapping("/customer/delete/{id}")
     public ResponseEntity<?> deleteCustomer(@PathVariable int id) {
@@ -123,15 +118,15 @@ public class CustomerRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // Tung create method search Employee.
-    @GetMapping("customer/search")
+    // Tung create method search Employee
+    @GetMapping("/customer/search")
     public ResponseEntity<Page<Customer>> getSearchCustomer(@PageableDefault(value = 5) Pageable pageable,
-                                                            @RequestParam(defaultValue = "") String fullName,
+                                                            @RequestParam(defaultValue = "") String account,
                                                             @RequestParam(defaultValue = "") String dateBirthFrom,
                                                             @RequestParam(defaultValue = "") String dateBirthTo,
-                                                            @RequestParam(defaultValue = "") String status,
-                                                            @RequestParam(defaultValue = "") String province) {
-        Page<Customer> customers = customerService.searchCustomer(pageable, fullName, dateBirthFrom, dateBirthTo, status, province);
+                                                            @RequestParam(defaultValue = "")String status,
+                                                            @RequestParam(defaultValue = "")String province ) {
+        Page<Customer> customers = customerService.searchCustomer(pageable,account,dateBirthFrom,dateBirthTo,status,province);
         if (customers.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

@@ -10,12 +10,11 @@ import java.util.List;
 
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
-
     @Autowired
     ProvinceRepository provinceRepository;
 
     @Override
     public List<Province> getProvinceList() {
-        return provinceRepository.getProvinceList();
+        return null;
     }
 }

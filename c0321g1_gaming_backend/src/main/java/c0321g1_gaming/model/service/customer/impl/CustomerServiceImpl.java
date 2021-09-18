@@ -1,5 +1,12 @@
 package c0321g1_gaming.model.service.customer.impl;
 
+import c0321g1_gaming.model.entity.customer.Customer;
+import c0321g1_gaming.model.repository.customer.CustomerRepository;
+import c0321g1_gaming.model.service.customer.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import c0321g1_gaming.dto.customer.CusDTO;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.repository.customer.CustomerRepository;
@@ -69,8 +76,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<Customer> searchCustomer(Pageable pageable, String fullName, String dateBirthFrom, String dateBirthTo, String status, String province) {
-        return customerRepository.searchCustomer(pageable, fullName, dateBirthFrom, dateBirthTo, status, province);
+    public Page<Customer> searchCustomer(Pageable pageable, String account, String dateBirthFrom,
+                                         String dateBirthTo, String status, String province) {
+        return customerRepository.searchCustomer( pageable, account,
+                dateBirthFrom, dateBirthTo, status, province);
     }
 
     @Override

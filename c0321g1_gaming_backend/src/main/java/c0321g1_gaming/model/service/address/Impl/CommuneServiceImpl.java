@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CommuneServiceImpl implements CommuneService {
 
     @Autowired
     CommuneRepository communeRepository;
+
+
     @Override
-    public List<Commune> findAll() {
-        return communeRepository.findAll();
+    public List<Commune> getCommuneList() {
+        return communeRepository.getCommuneList();
     }
 }

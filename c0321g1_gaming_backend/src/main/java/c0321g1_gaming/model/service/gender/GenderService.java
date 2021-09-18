@@ -5,6 +5,7 @@ import c0321g1_gaming.model.entity.gender.Gender;
 import java.util.List;
 
 public interface GenderService {
+
     List<Gender> getGenderList();
 
     List<Gender> findAll();

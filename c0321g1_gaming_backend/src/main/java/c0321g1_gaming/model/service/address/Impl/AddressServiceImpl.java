@@ -10,12 +10,30 @@ import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
+
     @Autowired
     AddressRepository addressRepository;
 
 
     @Override
-    public List<Address> findAll() {
-        return addressRepository.findAll();
+    public Address searchAddress(Long province, Long district, Long commune) {
+        return null;
     }
+
+    @Override
+    public List<Address> getAddressList() {
+        return addressRepository.getAddressList();
+    }
+
+    @Override
+    public void saveAddress(Address address) {
+
+    }
+
+    @Override
+    public Long fileByAddressId(Address address) {
+        return null;
+    }
+
+
 }

@@ -16,6 +16,6 @@ public class DistrictServiceImpl implements DistrictService {
 
     @Override
     public List<District> getDistrictList() {
-        return districtRepository.getDistrictList();
+        return null;
     }
 }

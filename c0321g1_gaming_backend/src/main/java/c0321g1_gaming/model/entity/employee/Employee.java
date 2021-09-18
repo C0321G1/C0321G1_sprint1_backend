@@ -28,14 +28,13 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
-
     @ManyToOne
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
-
     @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
+
 
     public Employee() {
     }

@@ -10,17 +10,18 @@ import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
-
     @Autowired
     AddressRepository addressRepository;
 
+
+
     @Override
     public List<Address> getAddressList() {
-        return addressRepository.getAddressList();
+        return null;
     }
 
     @Override
     public void saveAddress(Address address) {
-        addressRepository.save(address);
+
     }
 }
