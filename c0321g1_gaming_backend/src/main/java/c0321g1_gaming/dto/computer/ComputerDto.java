@@ -20,11 +20,11 @@ public class ComputerDto {
     private ComputerType computerType;
     private ComputerManufacturer computerManufacturer;
     private List<Order> orderList;
+
     public ComputerDto() {
     }
 
-    public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate,
-                       String warrantyPeriod, int flagDelete, ComputerStatus computerStatus, ComputerType computerType, ComputerManufacturer computerManufacturer, List<Order> orderList) {
+    public ComputerDto(Long computerId, String computerCode, String location, String configuration, String startUsedDate, String warrantyPeriod, int flagDelete, ComputerStatus computerStatus, ComputerType computerType, ComputerManufacturer computerManufacturer, List<Order> orderList) {
         this.computerId = computerId;
         this.computerCode = computerCode;
         this.location = location;

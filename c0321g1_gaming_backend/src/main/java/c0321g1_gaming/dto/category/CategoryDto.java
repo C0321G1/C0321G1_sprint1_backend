@@ -14,6 +14,9 @@ public class CategoryDto {
     private String type;
     private Account account;
 
+
+
+
     public CategoryDto() {
     }
 

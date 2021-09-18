@@ -42,4 +42,5 @@ public class DistrictDto {
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
     }
+
 }

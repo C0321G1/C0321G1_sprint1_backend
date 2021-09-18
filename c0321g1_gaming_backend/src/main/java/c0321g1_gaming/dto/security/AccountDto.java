@@ -1,17 +1,18 @@
 package c0321g1_gaming.dto.security;
 
 import c0321g1_gaming.model.entity.category.Category;
-import c0321g1_gaming.model.entity.computer.AccountComputer;
+
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 public class AccountDto {
+
     private Long AccountId;
     private String username;
     private String password;
@@ -23,69 +24,71 @@ public class AccountDto {
     public AccountDto() {
     }
 
-	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customer, Employee employee) {
-		AccountId = accountId;
-		this.username = username;
-		this.password = password;
-		this.roles = roles;
-		this.category = category;
-		this.customer = customer;
-		this.employee = employee;
-	}
+    public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category,
+                      Customer customer, Employee employee) {
 
-	public Long getAccountId() {
-		return AccountId;
-	}
+        AccountId = accountId;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.category = category;
+        this.customer = customer;
+        this.employee = employee;
+    }
 
-	public void setAccountId(Long accountId) {
-		AccountId = accountId;
-	}
+    public Long getAccountId() {
+        return AccountId;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setAccountId(Long accountId) {
+        AccountId = accountId;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public Category getCategory() {
-		return category;
-	}
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public Category getCategory() {
+        return category;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public Employee getEmployee() {
-		return employee;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

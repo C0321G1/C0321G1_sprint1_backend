@@ -5,6 +5,7 @@ import c0321g1_gaming.model.entity.services.Services;
 
 public class OrderDetailDto {
     private Long orderDetailId;
+
     private Order order;
     private Services services;
     private int quantity;
@@ -12,6 +13,7 @@ public class OrderDetailDto {
 
     public OrderDetailDto() {
     }
+
 
     public OrderDetailDto(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;

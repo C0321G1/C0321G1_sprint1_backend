@@ -22,4 +22,5 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
     @Query(value="INSERT INTO address (province_id, district_id, commune_id)" +
             "VALUES (?1, ?2, ?3)", nativeQuery = true)
     void saveAddress(Long provinceId, Long districtId, Long communeId);
+
 }

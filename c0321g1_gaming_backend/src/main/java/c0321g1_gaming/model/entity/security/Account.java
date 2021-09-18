@@ -17,7 +17,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     private String username;
-    private String email;
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -34,7 +33,6 @@ public class Account {
     @JsonBackReference(value = "account-customer")
     private Customer customer;
 
-
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @JsonBackReference(value = "account-employee")
     private Employee employee;
@@ -46,10 +44,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(Long accountId, String username, String email, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
+    public Account(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
         this.accountId = accountId;
         this.username = username;
-        this.email = email;
         this.password = password;
         this.roles = roles;
         this.category = category;
@@ -72,14 +69,6 @@ public class Account {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {

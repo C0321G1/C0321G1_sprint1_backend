@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface CommuneService {
     List<Commune> getCommuneList();
+
 }
