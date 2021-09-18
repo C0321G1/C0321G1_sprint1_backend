@@ -1,4 +1,4 @@
-package c0321g1_gaming.model.service.address.impl;
+package c0321g1_gaming.model.service.address.Impl;
 
 import c0321g1_gaming.model.entity.address.Commune;
 import c0321g1_gaming.model.repository.address.CommuneRepository;
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class CommuneServiceImpl implements CommuneService {
 
@@ -16,6 +15,6 @@ public class CommuneServiceImpl implements CommuneService {
 
     @Override
     public List<Commune> getCommuneList() {
-        return communeRepository.getCommuneList();
+        return null;
     }
 }

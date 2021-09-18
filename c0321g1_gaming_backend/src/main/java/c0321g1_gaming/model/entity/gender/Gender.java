@@ -12,7 +12,7 @@ public class Gender {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genderId;
     private String name;
-    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Employee> employeeList;
     @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
@@ -22,11 +22,11 @@ public class Gender {
     public Gender() {
     }
 
-    public Gender(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList) {
+    public Gender(Long genderId, String name, List<Employee> employeeList, List<Customer> customerList, List<Employee> employeeList1, List<Customer> customerList1) {
         this.genderId = genderId;
         this.name = name;
-        this.employeeList = employeeList;
-        this.customerList = customerList;
+        this.employeeList = employeeList1;
+        this.customerList = customerList1;
     }
 
     public Long getGenderId() {

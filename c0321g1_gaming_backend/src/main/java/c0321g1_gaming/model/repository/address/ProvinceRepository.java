@@ -11,4 +11,5 @@ import java.util.List;
 public interface ProvinceRepository extends JpaRepository<Province, Long> {
     @Query(value="select * from province", nativeQuery = true)
     List<Province> getProvinceList();
+
 }

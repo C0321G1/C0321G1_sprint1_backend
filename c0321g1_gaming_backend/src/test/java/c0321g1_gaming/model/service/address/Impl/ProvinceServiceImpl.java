@@ -1,4 +1,4 @@
-package c0321g1_gaming.model.service.address.impl;
+package c0321g1_gaming.model.service.address.Impl;
 
 import c0321g1_gaming.model.entity.address.Province;
 import c0321g1_gaming.model.repository.address.ProvinceRepository;
@@ -10,12 +10,11 @@ import java.util.List;
 
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
-
     @Autowired
     ProvinceRepository provinceRepository;
 
     @Override
     public List<Province> getProvinceList() {
-        return provinceRepository.getProvinceList();
+        return null;
     }
 }

@@ -7,4 +7,7 @@ import java.util.List;
 public interface GenderService {
 
     List<Gender> getGenderList();
+
+    List<Gender> findAll();
 }
+

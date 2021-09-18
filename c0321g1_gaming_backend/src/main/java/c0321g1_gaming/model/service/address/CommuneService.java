@@ -7,5 +7,4 @@ import java.util.List;
 @Service
 public interface CommuneService {
     List<Commune> getCommuneList();
-
 }

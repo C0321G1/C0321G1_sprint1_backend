@@ -42,7 +42,7 @@ public class Address {
         this.employeeList = employeeList;
     }
 
-    public Long getAddressId() {
+    public Long getAddressId(long l) {
         return addressId;
     }
 
@@ -50,7 +50,7 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public Province getProvince() {
+    public Province getProvince(int i) {
         return province;
     }
 
@@ -58,7 +58,7 @@ public class Address {
         this.province = province;
     }
 
-    public District getDistrict() {
+    public District getDistrict(int i) {
         return district;
     }
 
@@ -66,7 +66,7 @@ public class Address {
         this.district = district;
     }
 
-    public Commune getCommune() {
+    public Commune getCommune(int i) {
         return commune;
     }
 
