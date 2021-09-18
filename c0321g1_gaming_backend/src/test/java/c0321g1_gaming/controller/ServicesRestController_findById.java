@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service;
+package c0321g1_gaming.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,37 +8,40 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServicesRestController_deleteServices {
+ class ServicesRestController_findById {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void deleteServices_id_25() throws Exception {
+     void findById_1() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/services/delete/{id}", "null"))
+                        .get("/services/{id}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteServices_id_27() throws Exception {
+     void findById_3() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/services/delete/{id}", 50))
+                        .get("/services/{id}", 30))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void deleteServices_id_28() throws Exception {
+     void findById_4() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/services/delete/{id}", 1))
+                        .get("/services/{id}", 1))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
+
     }
 }

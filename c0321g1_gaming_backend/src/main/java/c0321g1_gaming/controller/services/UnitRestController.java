@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service.services;
+package c0321g1_gaming.controller.services;
 
 import c0321g1_gaming.model.entity.services.Unit;
 import c0321g1_gaming.model.service.services.IUnitService;

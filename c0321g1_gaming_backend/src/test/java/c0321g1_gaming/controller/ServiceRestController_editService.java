@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service;
+package c0321g1_gaming.controller;
 
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Unit;
@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServiceRestController_editService {
+ class ServiceRestController_editService {
 
     @Autowired
     private MockMvc mockMvc;
@@ -26,7 +26,7 @@ public class ServiceRestController_editService {
     private ObjectMapper objectMapper;
 
     @Test
-    public void getInfoService_id_1() throws Exception {
+     void getInfoService_id_1() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/services/{id}", "null"))
@@ -36,7 +36,7 @@ public class ServiceRestController_editService {
 
 
     @Test
-    public void getInfoServices_id_3() throws Exception {
+     void getInfoServices_id_3() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/services/{id}", 99))
@@ -45,7 +45,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void getInfoServices_id_2() throws Exception {
+     void getInfoServices_id_2() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/services/{id}", 13))
@@ -60,7 +60,7 @@ public class ServiceRestController_editService {
 
 
     @Test
-    public void editService_name_13() throws Exception {
+     void editService_name_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName(null);
         servicesDto.setFlag(1);
@@ -83,7 +83,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_name_14() throws Exception {
+     void editService_name_14() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("");
         servicesDto.setFlag(1);
@@ -105,7 +105,7 @@ public class ServiceRestController_editService {
                 .andExpect(status().is4xxClientError());
     }
     @Test
-    public void editService_prices_13() throws Exception {
+     void editService_prices_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tger");
         servicesDto.setFlag(1);
@@ -128,7 +128,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_quantity_13() throws Exception {
+     void editService_quantity_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -151,7 +151,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_image_13() throws Exception {
+     void editService_image_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -174,7 +174,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_image_14() throws Exception {
+     void editService_image_14() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -196,7 +196,7 @@ public class ServiceRestController_editService {
                 .andExpect(status().is4xxClientError());
     }
     @Test
-    public void editService_unit_13() throws Exception {
+     void editService_unit_13() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -219,7 +219,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_price_15() throws Exception {
+     void editService_price_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -242,7 +242,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_price2_15() throws Exception {
+     void editService_price2_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -265,7 +265,7 @@ public class ServiceRestController_editService {
     }
 
     @Test
-    public void editService_quantity_15() throws Exception {
+     void editService_quantity_15() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Tiger");
         servicesDto.setFlag(1);
@@ -289,7 +289,7 @@ public class ServiceRestController_editService {
 
 
     @Test
-    public void editStudent_name_18() throws Exception {
+     void editStudent_name_18() throws Exception {
         ServicesDto servicesDto = new ServicesDto();
         servicesDto.setName("Bia heniken");
         servicesDto.setPrices(12000);

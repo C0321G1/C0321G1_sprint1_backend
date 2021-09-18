@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service;
+package c0321g1_gaming.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UnitRestController {
+ class UnitRestController {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getListStudent_5() throws Exception {
+     void getListStudent_5() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/units"))
@@ -27,7 +27,7 @@ public class UnitRestController {
     }
 
     @Test
-    public void getListStudent_6() throws Exception {
+     void getListStudent_6() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/units"))

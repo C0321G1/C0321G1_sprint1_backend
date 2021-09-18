@@ -1,6 +1,6 @@
-package c0321g1_gaming.controller_service;
+package c0321g1_gaming.controller;
 
-import c0321g1_gaming.controller_service.services.ServicesRestController;
+import c0321g1_gaming.controller.services.ServicesRestController;
 import c0321g1_gaming.model.entity.services.Services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServicesRestController_pageServicesAll {
+ class ServicesRestController_pageServicesAll {
     @Autowired
     private MockMvc mockMvc;
 
@@ -28,7 +28,7 @@ public class ServicesRestController_pageServicesAll {
     private ServicesRestController servicesRestController;
 
     @Test
-    public void pageServicesAll_5() throws Exception {
+     void pageServicesAll_5() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/services/"))
@@ -37,7 +37,7 @@ public class ServicesRestController_pageServicesAll {
     }
 
     @Test
-    public void pageServicesAll_6() {
+     void pageServicesAll_6() {
         ResponseEntity<Page<Services>> pageResponseEntity
                 = this.servicesRestController.pageServicesAll(
                 PageRequest.of(0,1),Optional.of(""));

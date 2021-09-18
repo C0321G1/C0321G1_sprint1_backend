@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service.services;
+package c0321g1_gaming.controller.services;
 
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 
 
+
 @RestController
 @CrossOrigin("http://localhost:4200/")
 @RequestMapping(value = "services")
@@ -29,21 +29,18 @@ public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
 
+
 //    khanh
     @GetMapping("/{id}")
-    public ResponseEntity<?> findServiceById(@PathVariable Long id) {
+    public ResponseEntity<Services> findServiceById(@PathVariable Long id) {
         try {
             Services services = servicesService.findById(id);
-            if (id == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (id == 0) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (services == null) {
+            if (id == null || id == 0 || services == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
         }catch (Exception e){
-            System.out.print(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -54,7 +51,7 @@ public class ServicesRestController {
     public Map<String, String> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
+        ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
@@ -68,7 +65,6 @@ public class ServicesRestController {
         try {
 
             Services services = new Services();
-            System.out.println(servicesDto);
             BeanUtils.copyProperties(servicesDto, services);
             Unit unit = new Unit();
             unit.setUnitId(servicesDto.getUnit().getUnitId());
@@ -77,7 +73,7 @@ public class ServicesRestController {
             servicesService.save(services);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -102,7 +98,7 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -120,7 +116,7 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -136,7 +132,7 @@ public class ServicesRestController {
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -157,7 +153,7 @@ public class ServicesRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

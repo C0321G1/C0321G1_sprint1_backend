@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service.order;
+package c0321g1_gaming.controller.order;
 
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import c0321g1_gaming.model.service.order_detail.IOrderDetailService;

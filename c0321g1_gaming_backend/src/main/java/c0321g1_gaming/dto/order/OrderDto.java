@@ -1,14 +1,9 @@
 package c0321g1_gaming.dto.order;
 
-import c0321g1_gaming.dto.computer.ComputerDto;
-import c0321g1_gaming.dto.customer.CustomerDto;
-import c0321g1_gaming.dto.services.ServicesDto;
-import c0321g1_gaming.model.entity.computer.Computer;
-import c0321g1_gaming.model.entity.customer.Customer;
-import c0321g1_gaming.model.entity.order.OrderDetail;
-import c0321g1_gaming.model.entity.services.Services;
 
-import java.util.List;
+import c0321g1_gaming.model.entity.customer.Customer;
+
+
 
 
 public class OrderDto {

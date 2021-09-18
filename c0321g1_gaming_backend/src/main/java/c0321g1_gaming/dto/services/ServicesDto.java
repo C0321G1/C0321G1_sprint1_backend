@@ -3,7 +3,6 @@ import c0321g1_gaming.model.entity.services.Unit;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 
 public class ServicesDto {
@@ -25,7 +24,7 @@ public class ServicesDto {
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, @NotNull(message = "This field is not be blank") @Min(value = 0, message = "This field must be greater than 0") int quantity, @NotNull(message = "This field is not be blank") @Min(value = 1000, message = "This field must be greater than 1000") int prices, @NotBlank(message = "This field is not be blank") String name, int flag, @NotBlank(message = "This field is not be blank") String image, Unit unit) {
+    public ServicesDto(Long servicesId, String code, int quantity, int prices,  String name, int flag, String image, Unit unit) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;
