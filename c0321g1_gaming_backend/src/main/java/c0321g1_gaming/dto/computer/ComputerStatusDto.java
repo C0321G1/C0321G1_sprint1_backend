@@ -1,10 +1,5 @@
 package c0321g1_gaming.dto.computer;
 
-import c0321g1_gaming.model.entity.computer.Computer;
-
-import java.util.List;
-
-
 public class ComputerStatusDto {
     private Long computerStatusId;
     private String name;

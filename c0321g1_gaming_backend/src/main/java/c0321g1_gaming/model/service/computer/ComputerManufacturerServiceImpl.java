@@ -4,7 +4,6 @@ import c0321g1_gaming.model.entity.computer.ComputerManufacturer;
 import c0321g1_gaming.model.repository.computer.ComputerManufacturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
