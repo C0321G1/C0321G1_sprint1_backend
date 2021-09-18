@@ -8,7 +8,6 @@ import c0321g1_gaming.model.entity.employee.Employee;
 
 import java.util.List;
 
-
 public class AddressDto {
     private Long addressId;
     private Province province;
@@ -75,4 +74,5 @@ public class AddressDto {
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
 }

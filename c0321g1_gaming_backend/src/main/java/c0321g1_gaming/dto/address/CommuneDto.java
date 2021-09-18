@@ -9,7 +9,7 @@ public class CommuneDto {
 
     private Long communeId;
     private String name;
-    private List<Address> addressDtoList;
+    private List<Address> addressList;
 
     public CommuneDto() {
     }
@@ -32,11 +32,11 @@ public class CommuneDto {
         this.name = name;
     }
 
-    public List<Address> getAddressDtoList() {
-        return addressDtoList;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddressDtoList(List<Address> addressDtoList) {
-        this.addressDtoList = addressDtoList;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
     }
 }
