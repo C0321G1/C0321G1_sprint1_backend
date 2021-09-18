@@ -1,4 +1,5 @@
 package c0321g1_gaming.dto.order;
+import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Services;
 
@@ -7,8 +8,8 @@ import javax.validation.constraints.NotNull;
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private Services services;
-    private Order order;
+    private ServicesDto services;
+    private OrderDto order;
     @NotNull
     @Min(1)
     private int quantity;
@@ -17,7 +18,7 @@ public class OrderDetailDto {
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, Services services, Order order, @NotNull @Min(1) int quantity, int totalPrices) {
+    public OrderDetailDto(Long orderDetailId, ServicesDto services, OrderDto order, @NotNull @Min(1) int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
         this.services = services;
         this.order = order;
@@ -33,19 +34,19 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Services getServices() {
+    public ServicesDto getServices() {
         return services;
     }
 
-    public void setServices(Services services) {
+    public void setServices(ServicesDto services) {
         this.services = services;
     }
 
-    public Order getOrder() {
+    public OrderDto getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(OrderDto order) {
         this.order = order;
     }
 

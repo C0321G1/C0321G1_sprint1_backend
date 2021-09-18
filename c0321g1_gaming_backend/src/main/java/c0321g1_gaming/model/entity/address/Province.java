@@ -12,7 +12,7 @@ public class Province {
     private Long provinceId;
     private String name;
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "province")
     private List<Address> addressList;
     public Province() {
     }

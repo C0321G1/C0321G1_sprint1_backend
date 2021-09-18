@@ -12,7 +12,7 @@ public class District {
     private Long districtId;
     private String name;
     @OneToMany(mappedBy = "district",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "district")
     private List<Address> addressList;
 
     public District() {

@@ -15,7 +15,7 @@ public class Order {
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "order-detail")
     private List<OrderDetail> orderDetail;
     private int status;
 

@@ -1,10 +1,15 @@
 package c0321g1_gaming.controller_service.order;
 
 
+import c0321g1_gaming.dto.order.ListOrderDetailDto;
 import c0321g1_gaming.dto.order.OrderDetailDto;
 
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.order.OrderDetail;
+import c0321g1_gaming.model.entity.services.Services;
+import c0321g1_gaming.model.service.order.IOrderService;
 import c0321g1_gaming.model.service.order_detail.IOrderDetailService;
+import c0321g1_gaming.model.service.services.IServicesService;
 import ch.qos.logback.core.boolex.EvaluationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +32,10 @@ import java.util.List;
 public class OrderDetailRestController {
     @Autowired
     IOrderDetailService orderDetailService;
+    @Autowired
+    IOrderService iOrderService;
+    @Autowired
+    IServicesService iServicesService;
     @GetMapping("/{id}")
     public ResponseEntity<List<OrderDetail>> findAllOderDetailByOrderId(@PathVariable Long id){
         List<OrderDetail> orderDetailList = orderDetailService.findAllOderDetailsByOderId(id);
@@ -36,35 +45,31 @@ public class OrderDetailRestController {
         return new ResponseEntity<>(orderDetailList,HttpStatus.OK);
 
     }
-     //  vu code
-//    @PostMapping(value = "/create-detail", consumes = MediaType.APPLICATION_JSON_VALUE,
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> saveOrder(@Valid  @ RequestBody OrderDetailDto orderDetailDto , BindingResult bindingResult) {
-//        if (bindingResult.hasFieldErrors()){
-//            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-//        }
-//        if (orderDetailDto == null) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        } else  {
-//            OrderDetail orderDetail =new OrderDetail();
-//            BeanUtils.copyProperties(orderDetailDto,orderDetail);
-//            this.orderDetailService.createDetail(orderDetail);
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        }
-//
-//
-//    }
+    //vu code
     @PostMapping(value ="/create-detail/{id}")
-    public ResponseEntity<Void> saveOrder(@Valid @ RequestBody OrderDetailDto orderDetailDto , BindingResult bindingResult) {
+    public ResponseEntity<Void> saveOrder(@Valid @ RequestBody ListOrderDetailDto listOrderDetailDto, BindingResult bindingResult ,@PathVariable Long id) {
         if (bindingResult.hasFieldErrors()){
+
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }
-        if (orderDetailDto == null) {
+        if (listOrderDetailDto == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else  {
-            OrderDetail orderDetail =new OrderDetail();
-            BeanUtils.copyProperties(orderDetailDto,orderDetail);
-            this.orderDetailService.createDetail(orderDetail);
+        }
+        else  {
+            Order order = this.iOrderService.findById(id).orElse(null);
+            for (int i = 0; i <listOrderDetailDto.getOrderDetailDtoList().size() ; i++) {
+                Services services =this.iServicesService.findById(listOrderDetailDto.getOrderDetailDtoList().get(i).getServices().getServicesId());
+                OrderDetail orderDetail =new OrderDetail();
+                orderDetail.setOrder(order);
+                orderDetail.setServices(services);
+                orderDetail.setOrderDetailId(id);
+                orderDetail.setQuantity(listOrderDetailDto.getOrderDetailDtoList().get(i).getQuantity());
+                orderDetail.setTotalPrices(listOrderDetailDto.getOrderDetailDtoList().get(i).getTotalPrices());
+
+                this.orderDetailService.createDetail(orderDetail);
+
+            }
+
             return new ResponseEntity<>(HttpStatus.OK);
         }
 

@@ -1,6 +1,7 @@
 package c0321g1_gaming.controller_service.order;
 
 import c0321g1_gaming.dto.order.OrderDto;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.service.order.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,13 +19,15 @@ public class OrderRestController {
 
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Void> saveOrder(@RequestBody OrderDto orderDto) {
+    public ResponseEntity<?> saveOrder(@RequestBody OrderDto orderDto) {
         if (orderDto.getOrderId() == null) {
             this.orderService.create(orderDto);
         } else if (orderDto.getCustomerId() == null) {
             return new ResponseEntity<>(HttpStatus.PAYMENT_REQUIRED);
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);//201
+        Long id = this.orderService.maxIdOrder();
+        Order order =this.orderService.findById(id).orElse(null);
+        return new ResponseEntity<>(order,HttpStatus.CREATED);//201
     }
 }
 

@@ -29,7 +29,12 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Optional<Order> findById(Long id) {
-        return Optional.empty();
+        return this.orderRepository.findById(id);
+    }
+
+    @Override
+    public Long maxIdOrder() {
+        return this.orderRepository.maxIdOrder();
     }
 
 }

@@ -16,4 +16,9 @@ public class ListOrderDetailDto {
     public void setOrderDetailDtoList(List<OrderDetailDto> orderDetailDtoList) {
         this.orderDetailDtoList = orderDetailDtoList;
     }
+
+    public ListOrderDetailDto() {
+    }
+
 }
+

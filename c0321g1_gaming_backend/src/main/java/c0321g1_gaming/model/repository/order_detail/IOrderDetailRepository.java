@@ -15,9 +15,10 @@ import java.util.List;
 public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Long> {
    @Transactional
     @Modifying
-    @Query(value= " INSERT INTO order_detail(`quantity`, `total_prices`, `order_id`, `services_id`)  VALUES (?1, ?2, ?3 ?4);", nativeQuery = true)
+    @Query(value= " INSERT INTO order_detail(quantity, total_prices, order_id, services_id)  VALUES (?1, ?2, ?3, ?4);", nativeQuery = true)
    void createDetail( int quantity, int totalPrices, Long orderId, Long serviceId);
     @Query(value = " select * from order_detail where order_id= :oderId", nativeQuery = true)
     List<OrderDetail> getAllOderDetailByOderId(@Param("oderId") Long oderId);
+
 
 }
