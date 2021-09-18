@@ -1,9 +1,10 @@
-package c0321g1_gaming.controller_service.services;
+package c0321g1_gaming.controller.services;
 
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 import c0321g1_gaming.model.entity.services.Unit;
 import c0321g1_gaming.model.service.services.IServicesService;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 
 @RestController
@@ -29,8 +30,7 @@ import java.util.Optional;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
-
-//    khanh
+    //    khanh
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
         try {
@@ -43,13 +43,13 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
-        }catch (Exception e){
-            System.out.print(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-//khanh
+    //khanh
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
@@ -63,14 +63,10 @@ public class ServicesRestController {
         return errors;
     }
 
-//    khanh
+    //    khanh
     @PostMapping(value = "/create")
-    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult) {
+    public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto) {
         try {
-
-            if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
             Services services = new Services();
             System.out.println(servicesDto);
             BeanUtils.copyProperties(servicesDto, services);
@@ -80,23 +76,22 @@ public class ServicesRestController {
             services.setUnit(unit);
             servicesService.save(services);
             return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
-//khanh
+
+    //khanh
     @PatchMapping("{id}")
-    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto, BindingResult bindingResult,
+    public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto,
                                                  @PathVariable Long id) {
         try {
 
             Services services = servicesService.findById(id);
             if (services == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else if (bindingResult.hasFieldErrors()) {
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            } else {
+            }  else {
                 Services services1 = new Services();
                 servicesDto.setServicesId(services.getServicesId());
                 BeanUtils.copyProperties(servicesDto, services1);
@@ -107,12 +102,13 @@ public class ServicesRestController {
                 servicesService.update(services1);
                 return new ResponseEntity<>(HttpStatus.OK);
             }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
-// phap
+
+    // phap
     @GetMapping("")
     public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable pageable, Optional<String> name) {
         String keyword = "";
@@ -125,45 +121,45 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-//    phap
+    //    phap
     @GetMapping("/searchNameCodePrices")
-    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable,Optional<String> code,
-                                                                     Optional<String> name,Optional<String> prices ){
+    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable, Optional<String> code,
+                                                                     Optional<String> name, Optional<String> prices) {
         try {
             String keywordCode = code.orElse("");
             String keywordName = name.orElse("");
             String keywordPrices = prices.orElse("");
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-//    phap
+    //    phap
     @PatchMapping("/delete/{id}")
-    public ResponseEntity<Services> deleteServices(@PathVariable Long id){
-        try{
-        if (id==null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        Services services =servicesService.findById(id);
-        if (services==null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
-            services.setFlag(0);
-            servicesService.update(services);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+    public ResponseEntity<Services> deleteServices(@PathVariable Long id) {
+        try {
+            if (id == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            Services services = servicesService.findById(id);
+            if (services == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                services.setFlag(0);
+                servicesService.update(services);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

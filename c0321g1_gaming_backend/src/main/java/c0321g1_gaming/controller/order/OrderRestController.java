@@ -1,4 +1,4 @@
-package c0321g1_gaming.controller_service.order;
+package c0321g1_gaming.controller.order;
 
 import c0321g1_gaming.dto.order.OrderDto;
 import c0321g1_gaming.model.entity.order.Order;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 public class OrderRestController {
     @Autowired
-
     IOrderService orderService;
 
 

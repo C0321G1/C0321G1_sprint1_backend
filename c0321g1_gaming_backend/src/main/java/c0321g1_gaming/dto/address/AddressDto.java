@@ -1,7 +1,5 @@
 package c0321g1_gaming.dto.address;
 
-import c0321g1_gaming.dto.customer.CustomerDto;
-import c0321g1_gaming.dto.employee.EmployeeDto;
 import c0321g1_gaming.model.entity.address.Commune;
 import c0321g1_gaming.model.entity.address.District;
 import c0321g1_gaming.model.entity.address.Province;

@@ -1,14 +1,10 @@
 package c0321g1_gaming.dto.security;
 
-import c0321g1_gaming.dto.category.CategoryDto;
-import c0321g1_gaming.dto.customer.CustomerDto;
-import c0321g1_gaming.dto.employee.EmployeeDto;
 import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 

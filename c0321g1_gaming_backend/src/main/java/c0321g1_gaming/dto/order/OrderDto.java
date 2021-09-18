@@ -1,6 +1,5 @@
 package c0321g1_gaming.dto.order;
 
-
 public class OrderDto {
     private Long orderId;
     private Long  customerId;
