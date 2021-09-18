@@ -1,6 +1,5 @@
 package c0321g1_gaming.controller.game;
 
-import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.game.Game;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,8 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameRestController_searchGame {
-//    Creator: Thúy
+class GameRestController_searchGame {
+    //    Creator: Thúy
     @Autowired
     private MockMvc mockMvc;
 
@@ -27,7 +26,7 @@ public class GameRestController_searchGame {
     private GameRestController gameRestController;
 
     @Test
-    public void searchGame_1() throws Exception {
+    void searchGame_1() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.
                         get("/employee/search?page=0&name=&gameType="))
@@ -36,7 +35,7 @@ public class GameRestController_searchGame {
     }
 
     @Test
-    public void searchGame_2() {
+    void searchGame_2() {
         ResponseEntity<Page<Game>> pageResponseEntity = this.gameRestController.searchGame(
                 PageRequest.of(0, 8), "Pubg", "Hành Động");
         Page<Game> gamePage = pageResponseEntity.getBody();
@@ -51,7 +50,7 @@ public class GameRestController_searchGame {
         Assertions.assertEquals("https://img4.thuthuatphanmem.vn/uploads/2020/10/30/hinh-anh-pubg-dep_030927068.jpg", gamePage.getContent().get(0).getImage());
         Assertions.assertEquals("https://www.youtube.com/embed/8ycrPEjBhIo", gamePage.getContent().get(0).getTrailer());
         Assertions.assertEquals(0, gamePage.getContent().get(0).getFlagDelete());
-        Assertions.assertEquals("20000", gamePage.getContent().get(0).getGaming());
+        Assertions.assertEquals(20000, gamePage.getContent().get(0).getGaming());
         Assertions.assertEquals(1, gamePage.getContent().get(0).getGameType().getGameTypeId());
     }
 }

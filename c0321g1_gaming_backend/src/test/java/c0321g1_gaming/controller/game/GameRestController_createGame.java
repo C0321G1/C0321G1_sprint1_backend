@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameRestController_createGame {
+class GameRestController_createGame {
     //    Creator: Nhung
 
     @Autowired
@@ -26,7 +26,7 @@ public class GameRestController_createGame {
     private ObjectMapper objectMapper;
 
     @Test
-    public void createGame_name_13() throws Exception {
+    void createGame_name_13() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName(null);
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -39,17 +39,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_name_14() throws Exception {
+    void createGame_name_14() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -62,17 +62,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_content_13() throws Exception {
+    void createGame_content_13() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent(null);
@@ -85,17 +85,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_content_14() throws Exception {
+    void createGame_content_14() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("");
@@ -108,10 +108,10 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
@@ -119,7 +119,7 @@ public class GameRestController_createGame {
 
 
     @Test
-    public void createGame_content_17() throws Exception {
+    void createGame_content_17() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>Võ lâm truyền kỳ [1] là một trò chơi nhập vai trực tuyến nhiều người chơi (MMORPG) được Việt hóa từ trò chơi Kiếm hiệp tình duyên Online (chữ Hán: 剑侠情缘; tiếng Anh: SWORDSMAN Online) của công ty Kingsoft (Kim Sơn) từ Trung Quốc và được VNG phân phối tại Việt Nam. Trò chơi cho phép các người chơi đóng vai dựa theo các tiểu thuyết kiếm hiệp của Trung Quốc. Trò chơi này từng gây cơn sốt ở Trung Quốc và được Hiệp hội Phần mềm Trung Quốc trao giải \"Trò chơi xuất sắc nhất năm 2003\"[2]\n" +
@@ -144,17 +144,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_image_13() throws Exception {
+    void createGame_image_13() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -167,17 +167,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_image_14() throws Exception {
+    void createGame_image_14() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -190,17 +190,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_gaming_16() throws Exception {
+    void createGame_gaming_16() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -213,17 +213,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_trailer_13() throws Exception {
+    void createGame_trailer_13() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -236,17 +236,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_trailer_14() throws Exception {
+    void createGame_trailer_14() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -259,17 +259,17 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
-    public void createGame_18() throws Exception {
+    void createGame_18() throws Exception {
         GameDto gameDto = new GameDto();
         gameDto.setName("Võ lâm truyền kỳ");
         gameDto.setContent("<p>võ lâm truyền kì</p>");
@@ -282,10 +282,10 @@ public class GameRestController_createGame {
         gameDto.setGameType(gameType);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .post("/game/api")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(this.objectMapper.writeValueAsString(gameDto)))
+                MockMvcRequestBuilders
+                        .post("/game/api")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(gameDto)))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

@@ -24,8 +24,8 @@ public interface IGameRepository extends JpaRepository<Game, Long> {
     @Modifying
     @Transactional
     @Query(value ="UPDATE game " +
-            "SET `name` =?1,content = ?2,image = ?3,gaming=?4,trailer=?5,game_type_id=?6,flag_delete=?7 WHERE game.game_id = ?8" , nativeQuery = true)
-    void updateGame(String name, String content, String image, Long gaming, String trailer, int gameTypeId,int flagDelete, Long gameId);
+            "SET `name` =?1,content = ?2,image = ?3,gaming=?4,trailer=?5,game_type_id=?6 WHERE game.game_id = ?7" , nativeQuery = true)
+    void updateGame(String name, String content, String image, Long gaming, String trailer, int gameTypeId, Long gameId);
 
 
     //    Creator: Thúy

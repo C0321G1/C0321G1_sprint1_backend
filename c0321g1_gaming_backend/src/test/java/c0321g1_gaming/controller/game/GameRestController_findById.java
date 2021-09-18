@@ -13,13 +13,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameRestController_findById {
-//    Creator: Thúy
+class GameRestController_findById {
+    //    Creator: Thúy
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void findById_id_1() throws Exception {
+    void findById_id_1() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/game/api/{id}", "null"))
@@ -28,7 +28,7 @@ public class GameRestController_findById {
     }
 
     @Test
-    public void findById_id_3() throws Exception {
+    void findById_id_3() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/game/api/{id}", 41))
@@ -37,7 +37,7 @@ public class GameRestController_findById {
     }
 
     @Test
-    public void findById_id_4() throws Exception {
+    void findById_id_4() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/game/api/{id}", 1))

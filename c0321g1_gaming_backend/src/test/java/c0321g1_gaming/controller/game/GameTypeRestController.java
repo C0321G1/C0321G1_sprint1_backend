@@ -12,25 +12,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameTypeRestController {
+class GameTypeRestController {
     //    Creator: Nhung
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getListGameType_5() throws Exception {
+    void getListGameType_5() throws Exception {
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/gameType/api"))
+                MockMvcRequestBuilders.get("/gameType/api"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    public void getListGameType_6() throws Exception {
+    void getListGameType_6() throws Exception {
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/gameType/api"))
+                MockMvcRequestBuilders.get("/gameType/api"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
