@@ -1,8 +1,6 @@
 package c0321g1_gaming.model.service.security;
 
-import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.security.Account;
-
 import java.util.List;
 import java.util.Optional;
 

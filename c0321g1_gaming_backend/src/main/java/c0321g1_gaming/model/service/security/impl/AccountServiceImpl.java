@@ -42,7 +42,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void remove(Long id) {
-        accountRepository.delete(accountRepository.findById(id).get());
+        Optional<Account> accountOptional = accountRepository.findById(id);
+        Account account = new Account();
+        if (accountOptional.isPresent()) {
+            account = accountOptional.get();
+        }
+        accountRepository.delete(account);
     }
 
     @Override

@@ -1,14 +1,10 @@
 package c0321g1_gaming.controller.employee;
 
 import c0321g1_gaming.dto.employee.EmployeeDto;
-
-import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.employee.Employee;
-import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.address.AddressService;
 import c0321g1_gaming.model.service.employee.EmployeeService;
 import c0321g1_gaming.model.service.security.AccountService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,17 +12,16 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EmployeeRestController {
 
     @Autowired
@@ -49,7 +44,7 @@ public class EmployeeRestController {
     }
     // khue create method delete Employee
     @DeleteMapping("/employee/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable int id) {
         if (id == 0){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
@@ -83,38 +78,9 @@ public class EmployeeRestController {
 
     // Linh create method createEmployee
     @PostMapping("/employee")
-    public ResponseEntity<List<FieldError>> createEmployee(@RequestBody @Valid EmployeeDto employeeDto,
-                                                           BindingResult bindingResult) {
-
-        new EmployeeDto().validate(employeeDto, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-                    HttpStatus.NOT_ACCEPTABLE);
-        }
-
-        Employee employee = new Employee();
-        Address address = employeeDto.getAddress();
-        Account account = employeeDto.getAccount();
-        BeanUtils.copyProperties(employeeDto, employee);
-
-        Long addressId = addressService.initAddressId(address);
-        if (addressId != 0) {
-            address.setAddressId(addressId);
-        } else {
-            addressService.saveAddress(employeeDto.getAddress());
-            address.setAddressId((long) (addressService.getAddressList().size()));
-        }
-
-        if (accountService.checkAccountExist(account)) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-                    HttpStatus.NOT_ACCEPTABLE);
-        }
-
-        accountService.saveAccount(account.getUsername(), account.getPassword());
-        account.setAccountId(accountService.initAccountId(account));
-
-        employeeService.saveEmployee(employee);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public Map<String, Object> createEmployee(@RequestBody @Valid EmployeeDto employeeDto,
+                                               BindingResult bindingResult) {
+        return this.employeeService.saveEmployee(employeeDto, bindingResult);
     }
 
     // Linh create method getEmployee
@@ -131,32 +97,10 @@ public class EmployeeRestController {
         return new ResponseEntity<>(employeeOptional.get(), HttpStatus.OK);
     }
 
-    // Linh create method editEmployee
+    // Linh create method createEmployee
     @PutMapping("/employee")
-    public ResponseEntity<List<FieldError>> editEmployee(@RequestBody @Valid EmployeeDto employeeDto,
-                                                         BindingResult bindingResult) {
-        Optional<Employee> employeeOptional = employeeService.findById(employeeDto.getEmployeeId());
-
-        if(!employeeOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        new EmployeeDto().validate(employeeDto, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-                    HttpStatus.NOT_ACCEPTABLE);
-        }
-
-        Employee employee = employeeOptional.get();
-        Address address = employeeDto.getAddress();
-        BeanUtils.copyProperties(employeeDto, employee);
-
-        Long addressId = addressService.initAddressId(address);
-        if (addressId != 0) {
-            address.setAddressId(addressId);
-        }
-
-        employeeService.editEmployee(employee);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public Map<String, Object> editEmployee(@RequestBody @Valid EmployeeDto employeeDto,
+                                              BindingResult bindingResult) {
+        return this.employeeService.editEmployee(employeeDto, bindingResult);
     }
 }

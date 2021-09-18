@@ -1,6 +1,6 @@
 package c0321g1_gaming.controller.security;
 
-import c0321g1_gaming.model.entity.employee.Position;
+import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.security.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class AccountRestController {
 
     @Autowired
@@ -27,14 +27,14 @@ public class AccountRestController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
-        accountService.saveAccount(account.getUsername(), account.getPassword());
+    public ResponseEntity<Account> createAccount(@RequestBody AccountDto accountDto) {
+        accountService.saveAccount(accountDto.getUsername(), accountDto.getPassword());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("/edit")
-    public ResponseEntity<Account> editAccount(@RequestBody Account account) {
-        accountService.editAccount(account.getUsername(), account.getPassword(), account.getAccountId());
+    public ResponseEntity<Account> editAccount(@RequestBody AccountDto accountDto) {
+        accountService.editAccount(accountDto.getUsername(), accountDto.getPassword(), accountDto.getAccountId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
