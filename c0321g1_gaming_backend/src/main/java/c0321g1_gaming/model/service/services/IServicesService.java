@@ -4,8 +4,6 @@ import c0321g1_gaming.model.entity.services.Services;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Optional;
-
 public interface IServicesService {
     void save(Services services);
     Page<Services> pageServicesAll(String name, Pageable pageable);
