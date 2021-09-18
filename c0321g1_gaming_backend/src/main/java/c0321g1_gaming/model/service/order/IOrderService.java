@@ -7,8 +7,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 public interface IOrderService {
-    void create(Order order);
-
     //Huynh code
     Page<Order> findAllOder(Pageable pageable);
     //Huynh code

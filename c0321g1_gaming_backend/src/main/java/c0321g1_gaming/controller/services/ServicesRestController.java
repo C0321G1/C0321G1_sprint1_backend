@@ -4,7 +4,6 @@ import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 import c0321g1_gaming.model.entity.services.Unit;
 import c0321g1_gaming.model.service.services.IServicesService;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +19,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.logging.Logger;
+
 
 
 @RestController
@@ -29,9 +28,6 @@ import java.util.logging.Logger;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
-
-    private static final Logger LOGGER = (Logger) LogManager.getLogger(ServicesRestController.class);
-
     //    khanh
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
@@ -46,15 +42,10 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
         } catch (Exception e) {
-
-            LOGGER.config(e.getMessage());
-
             e.printStackTrace();
-
         }
         return null;
     }
-
     //khanh
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -83,11 +74,7 @@ public class ServicesRestController {
             servicesService.save(services);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-
-            LOGGER.config(e.getMessage());
-
             e.printStackTrace();
-
         }
         return null;
     }
@@ -113,9 +100,6 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         } catch (Exception e) {
-
-            LOGGER.config(e.getMessage());
-
             e.printStackTrace();
 
         }
@@ -137,7 +121,6 @@ public class ServicesRestController {
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
 
-            LOGGER.config(e.getMessage());
             e.printStackTrace();
 
         }
@@ -155,8 +138,6 @@ public class ServicesRestController {
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
-
-            LOGGER.config(e.getMessage());
 
             e.printStackTrace();
 
@@ -180,11 +161,7 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         } catch (Exception e) {
-
-            LOGGER.config(e.getMessage());
-
             e.printStackTrace();
-
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

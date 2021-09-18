@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/order_detail")
 public class OrderDetailRestController {
     @Autowired
     IOrderDetailService orderDetailService;
     @GetMapping("/{idOder}")
     public ResponseEntity<List<OrderDetail>> findAllOderDetailByOrderId(@PathVariable Long idOder){
-        List<OrderDetail> orderDetailList = orderDetailService.findAllOderDetailsByOderId(idOder);
-        if(orderDetailList.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try{
+            List<OrderDetail> orderDetailList = orderDetailService.findAllOderDetailsByOderId(idOder);
+            if(orderDetailList.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(orderDetailList,HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-        return new ResponseEntity<>(orderDetailList,HttpStatus.OK);
     }
 }
