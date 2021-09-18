@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,6 +17,9 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Modifying
     @Query(value = "INSERT into account (username,password) values (?1,?2) ", nativeQuery = true)
     void saveQuery(String username, String password);
+
+    @Query(value = "select * from account", nativeQuery = true)
+    List<Account> getAccountList();
 
     @Query(value = "select * from account where account_id = ?1", nativeQuery = true)
     Optional<Account> findByIdQuery(Long id);

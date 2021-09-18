@@ -5,8 +5,5 @@ import java.util.List;
 
 public interface AddressService {
     List<Address> getAddressList();
-    void saveAddress(Address address);
-
-    Long initAddressId(Address address);
 
 }

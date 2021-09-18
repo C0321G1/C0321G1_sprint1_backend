@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 public class AccountDto {
-	private Long AccountId;
+	private Long accountId;
 	private String username;
 	private String email;
 	private String password;
@@ -25,7 +25,7 @@ public class AccountDto {
 	}
 
 	public AccountDto(Long accountId, String username, String email, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
-		AccountId = accountId;
+		this.accountId = accountId;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -69,11 +69,11 @@ public class AccountDto {
 	}
 
 	public Long getAccountId() {
-		return AccountId;
+		return accountId;
 	}
 
 	public void setAccountId(Long accountId) {
-		this.AccountId = accountId;
+		this.accountId = accountId;
 	}
 
 	public String getUsername() {

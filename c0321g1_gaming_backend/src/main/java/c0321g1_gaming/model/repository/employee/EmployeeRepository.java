@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -67,4 +68,6 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     void editEmployee(Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
                       String image, Long addressId, Long positionId, Long genderId, Long accountId, Long id);
 
+    @Query(value = "select * from employee", nativeQuery = true)
+    List<Employee> getEmployeeList();
 }
