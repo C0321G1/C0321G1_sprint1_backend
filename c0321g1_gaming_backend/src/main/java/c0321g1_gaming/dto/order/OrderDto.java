@@ -1,9 +1,8 @@
 package c0321g1_gaming.dto.order;
 
 
+
 import c0321g1_gaming.model.entity.customer.Customer;
-
-
 
 
 public class OrderDto {

@@ -29,8 +29,8 @@ public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
 
+    //    khanh
 
-//    khanh
     @GetMapping("/{id}")
     public ResponseEntity<Services> findServiceById(@PathVariable Long id) {
         try {
@@ -39,13 +39,13 @@ public class ServicesRestController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>(services, HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-//khanh
+    //khanh
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
@@ -59,11 +59,10 @@ public class ServicesRestController {
         return errors;
     }
 
-//    khanh
+    //    khanh
     @PostMapping(value = "/create")
     public ResponseEntity<Void> saveServices(@Valid @RequestBody ServicesDto servicesDto) {
         try {
-
             Services services = new Services();
             BeanUtils.copyProperties(servicesDto, services);
             Unit unit = new Unit();
@@ -72,12 +71,14 @@ public class ServicesRestController {
             services.setUnit(unit);
             servicesService.save(services);
             return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-//khanh
+
+    //khanh
     @PatchMapping("{id}")
     public ResponseEntity<Services> editServices(@Valid @RequestBody ServicesDto servicesDto,
                                                  @PathVariable Long id) {
@@ -102,7 +103,8 @@ public class ServicesRestController {
         }
         return null;
     }
-// phap
+
+    // phap
     @GetMapping("")
     public ResponseEntity<Page<Services>> pageServicesAll(@PageableDefault(value = 5) Pageable pageable, Optional<String> name) {
         String keyword = "";
@@ -121,10 +123,10 @@ public class ServicesRestController {
         return null;
     }
 
-//    phap
+    //    phap
     @GetMapping("/searchNameCodePrices")
-    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable,Optional<String> code,
-                                                                     Optional<String> name,Optional<String> prices ){
+    public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable, Optional<String> code,
+                                                                     Optional<String> name, Optional<String> prices) {
         try {
             String keywordCode = code.orElse("");
             String keywordName = name.orElse("");
@@ -137,7 +139,7 @@ public class ServicesRestController {
         return null;
     }
 
-//    phap
+    //    phap
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Services> deleteServices(@PathVariable Long id){
         try{
@@ -153,6 +155,7 @@ public class ServicesRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         }catch (Exception e){
+
             e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.OK);

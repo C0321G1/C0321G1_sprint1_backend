@@ -6,7 +6,6 @@ public class UnitDto {
     private int unitId;
     private String name;
 
-
     public UnitDto() {
     }
 

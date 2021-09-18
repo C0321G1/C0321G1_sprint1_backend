@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class GameType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameTypeId;
     private String name;
     @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)

@@ -1,7 +1,6 @@
 package c0321g1_gaming.model.entity.order;
 
 import c0321g1_gaming.model.entity.services.Services;
-
 import javax.persistence.*;
 
 @Entity

@@ -8,14 +8,14 @@ import java.util.List;
 public class ProvinceDto {
     private Long provinceId;
     private String name;
-    private List<Address> addressDtoList;
+    private List<Address> addressList;
     public ProvinceDto() {
     }
 
-    public ProvinceDto(Long provinceId, String name, List<Address> addressDtoList) {
+    public ProvinceDto(Long provinceId, String name, List<Address> addressList) {
         this.provinceId = provinceId;
         this.name = name;
-        this.addressDtoList = addressDtoList;
+        this.addressList = addressList;
     }
 
     public Long getProvinceId() {
@@ -34,11 +34,11 @@ public class ProvinceDto {
         this.name = name;
     }
 
-    public List<Address> getAddressDtoList() {
-        return addressDtoList;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddressDtoList(List<Address> addressDtoList) {
-        this.addressDtoList = addressDtoList;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
     }
 }

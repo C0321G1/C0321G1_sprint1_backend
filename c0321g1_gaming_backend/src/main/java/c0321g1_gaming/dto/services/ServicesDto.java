@@ -1,4 +1,5 @@
 package c0321g1_gaming.dto.services;
+import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -20,9 +21,11 @@ public class ServicesDto {
     @NotBlank(message = "This field is not be blank")
     private String image;
     private Unit unit;
+    private Order order;
 
     public ServicesDto() {
     }
+
 
     public ServicesDto(Long servicesId, String code, int quantity, int prices,  String name, int flag, String image, Unit unit) {
         this.servicesId = servicesId;
@@ -33,14 +36,7 @@ public class ServicesDto {
         this.flag = flag;
         this.image = image;
         this.unit = unit;
-    }
-
-    public Long getServicesId() {
-        return servicesId;
-    }
-
-    public void setServicesId(Long servicesId) {
-        this.servicesId = servicesId;
+        this.order = order;
     }
 
     public String getCode() {
@@ -49,6 +45,14 @@ public class ServicesDto {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Long getServicesId() {
+        return servicesId;
+    }
+
+    public void setServicesId(Long servicesId) {
+        this.servicesId = servicesId;
     }
 
     public int getQuantity() {
@@ -97,5 +101,13 @@ public class ServicesDto {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

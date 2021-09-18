@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
-    @Query(value = " select * from order where status = 1", nativeQuery = true)
+    @Query(value = " select * from `order` where status = 1", nativeQuery = true)
     Page<Order> pageOderAll(Pageable pageable);
 
     @Query(value = "select * " +

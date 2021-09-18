@@ -8,15 +8,15 @@ import java.util.List;
 public class PositionDto {
     private Long positionId;
     private String name;
-    private List<Employee> employeeDtoList;
+    private List<Employee> employeeList;
 
     public PositionDto() {
     }
 
-    public PositionDto(Long positionId, String name, List<Employee> employeeDtoList) {
+    public PositionDto(Long positionId, String name, List<Employee> employeeList) {
         this.positionId = positionId;
         this.name = name;
-        this.employeeDtoList = employeeDtoList;
+        this.employeeList = employeeList;
     }
 
     public Long getPositionId() {
@@ -35,11 +35,11 @@ public class PositionDto {
         this.name = name;
     }
 
-    public List<Employee> getEmployeeDtoList() {
-        return employeeDtoList;
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
-    public void setEmployeeDtoList(List<Employee> employeeDtoList) {
-        this.employeeDtoList = employeeDtoList;
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 }
