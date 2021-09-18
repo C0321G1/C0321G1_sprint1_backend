@@ -7,8 +7,7 @@ import javax.validation.constraints.NotNull;
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private  Long orderId;
-    private Long serviceId;
+    private Services services;
     private Order order;
     @NotNull
     @Min(1)
@@ -18,10 +17,9 @@ public class OrderDetailDto {
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, Long orderId, Long serviceId, Order order, @NotNull @Min(1) int quantity, int totalPrices) {
+    public OrderDetailDto(Long orderDetailId, Services services, Order order, @NotNull @Min(1) int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.orderId = orderId;
-        this.serviceId = serviceId;
+        this.services = services;
         this.order = order;
         this.quantity = quantity;
         this.totalPrices = totalPrices;
@@ -35,20 +33,12 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Services getServices() {
+        return services;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public Long getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
+    public void setServices(Services services) {
+        this.services = services;
     }
 
     public Order getOrder() {

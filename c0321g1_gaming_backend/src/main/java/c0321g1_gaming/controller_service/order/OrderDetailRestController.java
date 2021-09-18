@@ -5,6 +5,7 @@ import c0321g1_gaming.dto.order.OrderDetailDto;
 
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import c0321g1_gaming.model.service.order_detail.IOrderDetailService;
+import ch.qos.logback.core.boolex.EvaluationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,9 +37,25 @@ public class OrderDetailRestController {
 
     }
      //  vu code
-    @PostMapping(value = "/create-detail", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> saveOrder(@Valid  @RequestBody OrderDetailDto orderDetailDto , BindingResult bindingResult) {
+//    @PostMapping(value = "/create-detail", consumes = MediaType.APPLICATION_JSON_VALUE,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Void> saveOrder(@Valid  @ RequestBody OrderDetailDto orderDetailDto , BindingResult bindingResult) {
+//        if (bindingResult.hasFieldErrors()){
+//            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+//        }
+//        if (orderDetailDto == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } else  {
+//            OrderDetail orderDetail =new OrderDetail();
+//            BeanUtils.copyProperties(orderDetailDto,orderDetail);
+//            this.orderDetailService.createDetail(orderDetail);
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        }
+//
+//
+//    }
+    @PostMapping(value ="/create-detail/{id}")
+    public ResponseEntity<Void> saveOrder(@Valid @ RequestBody OrderDetailDto orderDetailDto , BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()){
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }
