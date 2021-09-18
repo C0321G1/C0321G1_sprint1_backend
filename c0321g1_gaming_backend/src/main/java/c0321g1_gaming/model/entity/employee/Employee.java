@@ -35,7 +35,7 @@ public class Employee {
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 

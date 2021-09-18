@@ -26,7 +26,7 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
 
@@ -34,7 +34,7 @@ public class Account {
     @JsonBackReference(value = "account-customer")
     private Customer customer;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @JsonBackReference(value = "account-employee")
     private Employee employee;
 
