@@ -22,9 +22,11 @@ public class Employee {
     private String fullName;
     private String image;
     private int flagDel;
+
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
+
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
@@ -40,7 +42,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
+                    String image, int flagDel, Address address, Position position, Gender gender, Account account) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -126,8 +129,8 @@ public class Employee {
         return fullName;
     }
 
-    public void setFullName(String name) {
-        this.fullName = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getImage() {

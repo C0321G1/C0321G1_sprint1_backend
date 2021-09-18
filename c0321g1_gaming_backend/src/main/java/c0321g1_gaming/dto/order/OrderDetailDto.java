@@ -3,7 +3,6 @@ package c0321g1_gaming.dto.order;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Services;
 
-
 public class OrderDetailDto {
     private Long orderDetailId;
     private Order order;
@@ -30,11 +29,11 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Order getOrders() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrders(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
