@@ -40,8 +40,7 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PostMapping("/create-computer")
-    public ResponseEntity<Void> createComputer(@Valid @RequestBody ComputerDto computerDto,
-                                            BindingResult bindingResult) {
+    public ResponseEntity<Void> createComputer(@Valid @RequestBody ComputerDto computerDto, BindingResult bindingResult) {
         Computer computer = computerService.searchComputerCode(computerDto.getComputerCode());
         new ComputerDto().validate(computerDto, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -68,9 +67,8 @@ public class ComputerRestController {
 
     /*Long-Computer*/
     @PatchMapping("/update-computer/{id}")
-    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto,
-                                            BindingResult bindingResult,
-                                            @PathVariable Long id) {
+    public ResponseEntity<Void> updateComputer(@Valid @RequestBody ComputerDto computerDto, BindingResult bindingResult,
+                                               @PathVariable Long id) {
         Optional<Computer> computer = computerService.findComputerById(id);
         new ComputerDto().validate(computerDto, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -199,7 +197,8 @@ public class ComputerRestController {
             }
             return new ResponseEntity<>(computerSearchPage, HttpStatus.OK);
         }
-        if (startDateFromSearch.equals("") && startDateToSearch.equals("") ) {
+
+        if (startDateFromSearch.equals("") && startDateToSearch.equals("")) {
             computerSearchPage = computerService.searchComputer(computerIdSearch, locationSearch, computerTypeSearch,
                     statusSearch, pageable);
             if (computerSearchPage.isEmpty()) {
