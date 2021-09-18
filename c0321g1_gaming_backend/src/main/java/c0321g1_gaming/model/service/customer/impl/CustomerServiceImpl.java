@@ -26,8 +26,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<Customer> searchCustomer(Pageable pageable, String fullName, String dateBirthFrom, String dateBirthTo, String status, String province) {
-        return customerRepository.searchCustomer( pageable, fullName, dateBirthFrom, dateBirthTo, status, province);
+    public Page<Customer> searchCustomer(Pageable pageable, String account, String dateBirthFrom,
+                                         String dateBirthTo, String status, String province) {
+        return customerRepository.searchCustomer( pageable, account,
+                dateBirthFrom, dateBirthTo, status, province);
     }
 
     @Override

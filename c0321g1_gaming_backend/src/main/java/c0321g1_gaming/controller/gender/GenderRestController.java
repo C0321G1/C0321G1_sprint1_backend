@@ -1,7 +1,7 @@
-package c0321g1_gaming.controller.customer;
+package c0321g1_gaming.controller.gender;
 
-import c0321g1_gaming.model.entity.customer.CustomerStatus;
-import c0321g1_gaming.model.service.customer.StatusService;
+import c0321g1_gaming.model.entity.gender.Gender;
+import c0321g1_gaming.model.service.gender.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +13,16 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class CustomerStatusRestController {
+public class GenderRestController {
     @Autowired
-    StatusService statusService;
+    GenderService genderService;
 
-    @GetMapping("/status")
-    public ResponseEntity<List<CustomerStatus>> getStatusList() {
-        List<CustomerStatus> statusList = statusService.getStatusList();
-        if(statusList.isEmpty()) {
+    @GetMapping("/gender")
+    public ResponseEntity<List<Gender>> getGenderList() {
+        List<Gender> genderList = genderService.getGenderList();
+        if(genderList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(statusList, HttpStatus.OK);
+        return new ResponseEntity<>(genderList, HttpStatus.OK);
     }
 }

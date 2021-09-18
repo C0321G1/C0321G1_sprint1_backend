@@ -9,9 +9,8 @@ import java.util.Optional;
 public interface CustomerService {
     Page<Customer> getListCustomer(Pageable pageable);
     void deleteCustomer(int id);
-    Page<Customer> searchCustomer(Pageable pageable, String fullName, String dateBirthFrom,
-                                  String dateBirthTo,
-                                  String status, String province);
+    Page<Customer> searchCustomer(Pageable pageable, String account, String dateBirthFrom,
+                                  String dateBirthTo, String status, String province);
     void saveCustomer(Customer customer);
 
     Optional<Customer> findById(Long id);

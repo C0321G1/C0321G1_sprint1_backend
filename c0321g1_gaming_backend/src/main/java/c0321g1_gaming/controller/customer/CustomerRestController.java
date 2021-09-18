@@ -36,14 +36,14 @@ public class CustomerRestController {
     }
 
     // Tung create method search Employee
-    @GetMapping("customer/search")
+    @GetMapping("/customer/search")
     public ResponseEntity<Page<Customer>> getSearchCustomer(@PageableDefault(value = 5) Pageable pageable,
-                                                            @RequestParam(defaultValue = "") String fullName,
+                                                            @RequestParam(defaultValue = "") String account,
                                                             @RequestParam(defaultValue = "") String dateBirthFrom,
                                                             @RequestParam(defaultValue = "") String dateBirthTo,
                                                             @RequestParam(defaultValue = "")String status,
                                                             @RequestParam(defaultValue = "")String province ) {
-        Page<Customer> customers = customerService.searchCustomer(pageable,fullName,dateBirthFrom,dateBirthTo,status,province);
+        Page<Customer> customers = customerService.searchCustomer(pageable,account,dateBirthFrom,dateBirthTo,status,province);
         if (customers.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
