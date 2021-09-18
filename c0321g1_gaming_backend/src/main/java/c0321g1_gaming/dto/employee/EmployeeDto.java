@@ -1,8 +1,8 @@
 package c0321g1_gaming.dto.employee;
 
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.employee.Position;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
 import javax.validation.constraints.*;
@@ -69,30 +69,6 @@ public class EmployeeDto {
         this.gender = gender;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -157,6 +133,22 @@ public class EmployeeDto {
         this.fullName = fullName;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getFlagDel() {
         return flagDel;
     }
@@ -189,4 +181,11 @@ public class EmployeeDto {
         this.account = account;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 }
