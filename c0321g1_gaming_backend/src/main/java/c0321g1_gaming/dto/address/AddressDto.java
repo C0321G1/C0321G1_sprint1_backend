@@ -8,7 +8,6 @@ import c0321g1_gaming.model.entity.employee.Employee;
 
 import java.util.List;
 
-
 public class AddressDto {
     private Long addressId;
     private Province province;
