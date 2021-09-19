@@ -1,15 +1,22 @@
 package c0321g1_gaming.dto.employee;
 
+import c0321g1_gaming.dto.address.AddressDto;
+import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.employee.Position;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
+<<<<<<< HEAD
 import javax.validation.constraints.*;
+=======
+import java.util.List;
+
+>>>>>>> origin
 
 public class EmployeeDto {
 
     private Long employeeId;
+<<<<<<< HEAD
 
     @NotNull
     @Min(0)
@@ -17,6 +24,9 @@ public class EmployeeDto {
 
     @NotEmpty
     @Pattern(regexp = "(0\\d{9,10})")
+=======
+    private String yearOfExp;
+>>>>>>> origin
     private String phone;
 
     @NotEmpty
@@ -24,6 +34,7 @@ public class EmployeeDto {
 
     @NotEmpty
     private String startWorkDate;
+<<<<<<< HEAD
 
     @NotNull
     @Min(1)
@@ -31,6 +42,9 @@ public class EmployeeDto {
 
     @NotEmpty
     @Pattern(regexp = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")
+=======
+    private String level;
+>>>>>>> origin
     private String email;
 
     @NotEmpty
@@ -40,6 +54,7 @@ public class EmployeeDto {
     @NotEmpty
     @Pattern(regexp = "EMP-\\d{4}")
     private String code;
+<<<<<<< HEAD
 
     private String image;
     private int flagDel;
@@ -47,11 +62,18 @@ public class EmployeeDto {
     private Position position;
     private Account account;
     private Gender gender;
+=======
+>>>>>>> origin
 
+
+    private int flagDelete;
+    private List<Address> addressDtoList;
+    private Position positionDto;
+    private Account accountDto;
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long employeeId, Long yearOfExp, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName, String code, String image, int flagDel, Address address, Position position, Account account, Gender gender) {
+    public EmployeeDto(Long employeeId, String yearOfExp, String phone, String dateOfBirth, String startWorkDate, String level, String email, String fullName, String code, int flagDelete, List<Address> addressDtoList, Position positionDto, Account accountDto) {
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.phone = phone;
@@ -61,12 +83,14 @@ public class EmployeeDto {
         this.email = email;
         this.fullName = fullName;
         this.code = code;
-        this.image = image;
-        this.flagDel = flagDel;
-        this.address = address;
-        this.position = position;
-        this.account = account;
-        this.gender = gender;
+        this.flagDelete = flagDelete;
+        this.addressDtoList = addressDtoList;
+        this.positionDto = positionDto;
+        this.accountDto = accountDto;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public Long getEmployeeId() {
@@ -77,11 +101,11 @@ public class EmployeeDto {
         this.employeeId = employeeId;
     }
 
-    public Long getYearOfExp() {
+    public String getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(Long yearOfExp) {
+    public void setYearOfExp(String yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -109,11 +133,11 @@ public class EmployeeDto {
         this.startWorkDate = startWorkDate;
     }
 
-    public Long getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Long level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -133,59 +157,35 @@ public class EmployeeDto {
         this.fullName = fullName;
     }
 
-    public String getCode() {
-        return code;
+    public int getFlagDelete() {
+        return flagDelete;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setFlagDelete(int flagDelete) {
+        this.flagDelete = flagDelete;
     }
 
-    public String getImage() {
-        return image;
+    public List<Address> getAddressDtoList() {
+        return addressDtoList;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setAddressDtoList(List<Address> addressDtoList) {
+        this.addressDtoList = addressDtoList;
     }
 
-    public int getFlagDel() {
-        return flagDel;
+    public Position getPositionDto() {
+        return positionDto;
     }
 
-    public void setFlagDel(int flagDel) {
-        this.flagDel = flagDel;
+    public void setPositionDto(Position positionDto) {
+        this.positionDto = positionDto;
     }
 
-    public Address getAddress() {
-        return address;
+    public Account getAccountDto() {
+        return accountDto;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setAccountDto(Account accountDto) {
+        this.accountDto = accountDto;
     }
 }
