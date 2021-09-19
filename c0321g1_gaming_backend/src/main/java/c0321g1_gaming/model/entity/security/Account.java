@@ -25,17 +25,21 @@ public class Account {
             joinColumns = @JoinColumn(name = "accountId"),
             inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles = new HashSet<>();
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
-    @OneToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account-customer")
     private Customer customer;
-    @OneToOne
-    @JoinColumn(name = "employeeId", referencedColumnName = "employeeId")
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account-employee")
     private Employee employee;
+
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account-computer")
     private List<AccountComputer> accountComputer;
 
     public Account() {

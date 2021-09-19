@@ -1,7 +1,9 @@
 package c0321g1_gaming.model.entity.gender;
+
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,11 +13,11 @@ public class Gender {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genderId;
     private String name;
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "gender-employee")
     private List<Employee> employeeList;
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "gender-customer")
     private List<Customer> customerList;
     public Gender() {
     }

@@ -11,9 +11,11 @@ public class Province {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long provinceId;
     private String name;
-    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "province")
     @JsonBackReference
     private List<Address> addressList;
+
     public Province() {
     }
 
