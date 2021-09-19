@@ -1,16 +1,13 @@
 package c0321g1_gaming.model.repository.statistic;
 
-import c0321g1_gaming.dto.order.OrderDetailDto;
 import c0321g1_gaming.dto.statistic.StatisticByAccount;
 import c0321g1_gaming.dto.statistic.StatisticByComputer;
 import c0321g1_gaming.dto.statistic.StatisticByMonth;
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 // Create by HauHP
 public interface StatisticRepository extends JpaRepository<OrderDetail, Long>{
     @Query(nativeQuery = true, value = "select sum(hour((timediff(start_time, end_time)))) as hour, computer_code as computer\n" +
