@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GenderRestController_getGenderList {
+class GenderRestController_getGenderList {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -34,7 +34,7 @@ public class GenderRestController_getGenderList {
     }
     //creator: vinhdn
     @Test
-    public void getGenderList_6() {
+    void getGenderList_6() {
         ResponseEntity<List<Gender>> responseEntity
                 = this.genderRestController.getGenderList();
         List<Gender> genderList = responseEntity.getBody();

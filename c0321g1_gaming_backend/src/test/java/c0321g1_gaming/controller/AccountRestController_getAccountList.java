@@ -26,7 +26,7 @@ public class AccountRestController_getAccountList {
 
     //creator: vinhdn
     @Test
-    public void getAccountList_5() throws Exception {
+    void getAccountList_5() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/account/list"))
                 .andDo(print())
@@ -35,7 +35,7 @@ public class AccountRestController_getAccountList {
 
     //creator: vinhdn
     @Test
-    public void getListStudent_6() {
+    void getListStudent_6() {
         ResponseEntity<List<Account>> responseEntity
                 = this.accountRestController.getAccountList();
         List<Account> accountList = responseEntity.getBody();

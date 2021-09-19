@@ -55,7 +55,7 @@ public class CategoryRestController {
             Date time2 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(endTime);
 
             //thời gian còn lại trong tài khoản
-            double timeRemaining = time2.getTime() - time1.getTime();
+            double timeRemaining = (double) time2.getTime() - (double) time1.getTime();
 
             //thời gian còn lại trong tài khoản tính ra phút
             double timeRemainingSecond = TimeUnit.MILLISECONDS.toMinutes((long) timeRemaining);

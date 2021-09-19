@@ -26,7 +26,7 @@ public class AddressRestController_getCommuneList {
     private AddressRestController addressRestController;
     //creator: vinhdn
     @Test
-    public void getCommuneList_5() throws Exception {
+    void getCommuneList_5() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/address/commune"))
                 .andDo(print())
@@ -34,7 +34,7 @@ public class AddressRestController_getCommuneList {
     }
     //creator: vinhdn
     @Test
-    public void getCommuneList_6() {
+    void getCommuneList_6() {
         ResponseEntity<List<Commune>> responseEntity
                 = this.addressRestController.getCommuneList();
         List<Commune> communeList = responseEntity.getBody();
