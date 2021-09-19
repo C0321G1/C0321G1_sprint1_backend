@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CustomerRestController_createCustomer {
+class CustomerRestController_createCustomer {
     @Autowired
     private MockMvc mockMvc;
 
@@ -28,7 +28,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_fullName_13() throws Exception {
+    void createCustomer_fullName_13() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName(null);
         customerDto.setPhone("0905123123");
@@ -56,7 +56,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_phone_13() throws Exception {
+    void createCustomer_phone_13() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName("test");
         customerDto.setPhone(null);
@@ -84,7 +84,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_fullName_14() throws Exception {
+    void createCustomer_fullName_14() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName("");
         customerDto.setPhone("0905123123");
@@ -112,7 +112,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_phone_14() throws Exception {
+    void createCustomer_phone_14() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName("test");
         customerDto.setPhone("");
@@ -140,7 +140,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_phone_15() throws Exception {
+    void createCustomer_phone_15() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName("test");
         customerDto.setPhone("123");
@@ -168,7 +168,7 @@ public class CustomerRestController_createCustomer {
 
     //creator: vinhdn
     @Test
-    public void createCustomer_18() throws Exception {
+    void createCustomer_18() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setFullName("test2");
         customerDto.setPhone("0905123123");

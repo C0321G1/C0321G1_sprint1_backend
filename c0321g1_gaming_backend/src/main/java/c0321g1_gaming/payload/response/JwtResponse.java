@@ -1,6 +1,5 @@
 package c0321g1_gaming.payload.response;
 
-import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;

@@ -19,14 +19,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AddressRestController_getDistrictList {
+class AddressRestController_getDistrictList {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
     private AddressRestController addressRestController;
     //creator: vinhdn
     @Test
-    public void getProvinceList_5() throws Exception {
+    void getProvinceList_5() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/address/district"))
                 .andDo(print())
@@ -34,7 +34,7 @@ public class AddressRestController_getDistrictList {
     }
     //creator: vinhdn
     @Test
-    public void getProvinceList_6() {
+    void getProvinceList_6() {
         ResponseEntity<List<District>> responseEntity
                 = this.addressRestController.getDistrictList();
         List<District> districtList = responseEntity.getBody();

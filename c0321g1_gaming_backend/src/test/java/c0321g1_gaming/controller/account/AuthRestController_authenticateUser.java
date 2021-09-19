@@ -23,7 +23,7 @@ public class AuthRestController_authenticateUser {
     private ObjectMapper objectMapper;
 
     @Test
-    public void authenticate_username_13() throws Exception {
+    void authenticate_username_13() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername(null);
         accountDto.setPassword("123456789");
@@ -38,7 +38,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_password_13() throws Exception {
+    void authenticate_password_13() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("tra123");
         accountDto.setPassword(null);
@@ -53,7 +53,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_username_14() throws Exception {
+    void authenticate_username_14() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("");
         accountDto.setPassword("123456789");
@@ -68,7 +68,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_password_14() throws Exception {
+    void authenticate_password_14() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("tra123");
         accountDto.setPassword("");
@@ -83,7 +83,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_username_17() throws Exception {
+    void authenticate_username_17() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("tra1234567891234");
         accountDto.setPassword("123456789");
@@ -98,7 +98,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_password_17() throws Exception {
+    void authenticate_password_17() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("tra123");
         accountDto.setPassword("123456789123456789");
@@ -113,7 +113,7 @@ public class AuthRestController_authenticateUser {
     }
 
     @Test
-    public void authenticate_18() throws Exception {
+    void authenticate_18() throws Exception {
         AccountDto accountDto = new AccountDto();
         accountDto.setUsername("tra123");
         accountDto.setPassword("123456789");

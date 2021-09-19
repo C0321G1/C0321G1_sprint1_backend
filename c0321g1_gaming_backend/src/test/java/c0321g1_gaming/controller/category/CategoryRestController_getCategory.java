@@ -13,12 +13,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CategoryRestController_getCategory {
+class CategoryRestController_getCategory {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getCategory_id_1() throws Exception {
+    void getCategory_id_1() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/api/category/{id}", "null"))
@@ -27,7 +27,7 @@ public class CategoryRestController_getCategory {
     }
 
     @Test
-    public void getCategory_id_3() throws Exception {
+    void getCategory_id_3() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/api/category/{id}", 99))
@@ -36,7 +36,7 @@ public class CategoryRestController_getCategory {
     }
 
     @Test
-    public void getCategory_id_4() throws Exception {
+    void getCategory_id_4() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .get("/api/category/{id}", 1))
