@@ -11,7 +11,7 @@ public class Unit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int unitId;
     private String name;
-    @OneToMany(mappedBy = "unit",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Services> servicesList;
 

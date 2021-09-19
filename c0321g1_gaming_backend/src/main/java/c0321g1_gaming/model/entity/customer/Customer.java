@@ -27,10 +27,10 @@ public class Customer {
     private Address address;
 
     @ManyToOne
-    @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
+    @JoinColumn(name = "statusId", referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
 
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonBackReference(value = "customer-orderList")
     private List<Order> orderList;
 

@@ -1,6 +1,5 @@
 package c0321g1_gaming.model.entity.computer;
 
-import c0321g1_gaming.model.entity.order.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -18,17 +17,18 @@ public class Computer {
     private String warrantyPeriod;
     private int flagDelete;
     @ManyToOne
-    @JoinColumn(name = "computerStatusId",referencedColumnName = "computerStatusId")
+    @JoinColumn(name = "computerStatusId", referencedColumnName = "computerStatusId")
     private ComputerStatus computerStatus;
     @ManyToOne
-    @JoinColumn(name = "computerTypeId",referencedColumnName = "computerTypeId")
+    @JoinColumn(name = "computerTypeId", referencedColumnName = "computerTypeId")
     private ComputerType computerType;
     @ManyToOne
-    @JoinColumn(name = "computerManufacturerId",referencedColumnName = "computerManufacturerId")
+    @JoinColumn(name = "computerManufacturerId", referencedColumnName = "computerManufacturerId")
     private ComputerManufacturer computerManufacturer;
-    @OneToMany(mappedBy = "computer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<AccountComputer> accountComputers;
+
     public Computer() {
     }
 

@@ -20,6 +20,7 @@ public class ComputerDto {
     private ComputerType computerType;
     private ComputerManufacturer computerManufacturer;
     private List<Order> orderList;
+
     public ComputerDto() {
     }
 

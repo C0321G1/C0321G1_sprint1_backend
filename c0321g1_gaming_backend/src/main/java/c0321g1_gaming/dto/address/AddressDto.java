@@ -16,6 +16,7 @@ public class AddressDto {
     private Commune commune;
     private List<Customer> customerList;
     private List<Employee> employeeList;
+
     public AddressDto() {
     }
 

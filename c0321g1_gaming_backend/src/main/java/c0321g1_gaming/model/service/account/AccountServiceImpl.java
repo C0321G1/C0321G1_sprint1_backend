@@ -25,6 +25,7 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> findAllQuery() {
         return accountRepository.findAllQuery();
     }
+
     //creator: vinhdn
     @Override
     public Optional<Account> findByUsernameQuery(String username) {

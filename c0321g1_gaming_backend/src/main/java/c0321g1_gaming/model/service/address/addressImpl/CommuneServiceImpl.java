@@ -12,6 +12,7 @@ import java.util.List;
 public class CommuneServiceImpl implements CommuneService {
     @Autowired
     private CommuneRepository communeRepository;
+
     //creator: vinhdn
     @Override
     public List<Commune> findAll() {
