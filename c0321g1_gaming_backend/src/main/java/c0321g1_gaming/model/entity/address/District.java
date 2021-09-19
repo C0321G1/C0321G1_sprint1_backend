@@ -11,7 +11,7 @@ public class District {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long districtId;
     private String name;
-    @OneToMany(mappedBy = "district",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "district")
     @JsonBackReference
     private List<Address> addressList;
 

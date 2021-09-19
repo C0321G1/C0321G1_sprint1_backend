@@ -14,11 +14,7 @@ public class CommuneDto {
     public CommuneDto() {
     }
 
-    public CommuneDto(Long communeId, String name, List<Address> addressList) {
-        this.communeId = communeId;
-        this.name = name;
-        this.addressList = addressList;
-    }
+
 
     public Long getCommuneId() {
         return communeId;

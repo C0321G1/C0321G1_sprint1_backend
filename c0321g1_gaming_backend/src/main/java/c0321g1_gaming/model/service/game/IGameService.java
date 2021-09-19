@@ -1,20 +1,27 @@
 package c0321g1_gaming.model.service.game;
 
 import c0321g1_gaming.model.entity.game.Game;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IGameService {
-    // Nhung
-    Optional<Game> findById(Long id);
 
-    Game save(Game game);
+    // Creator: Nhung
+    Optional<Game> findById(Long gameId);
 
-//    Creator: Thúy
-//    List<Game> findAll();
+    void saveGame(Game game);
 
-//    void delete(Long id);
+    void updateGame(Game game);
 
-    List<Game> getGameBySearchingName(String name, String gameType);
+    //    Creator: Thúy
+    Page<Game> getAllGame(Pageable pageable);
+
+    Page<Game> getGameBySearching(Pageable pageable, String name, String gameType);
+
+    void deleteGameFlag(Long gameId);
+
+    List<Game> searchTopGame();
 }

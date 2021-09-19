@@ -15,7 +15,7 @@ public class Category {
     private String endTime;
     private int fee;
     private String type;
-    @OneToOne(mappedBy = "category",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
     private Account account;
 
     public Category() {
@@ -55,7 +55,6 @@ public class Category {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
-
 
     public String getStartTime() {
         return startTime;

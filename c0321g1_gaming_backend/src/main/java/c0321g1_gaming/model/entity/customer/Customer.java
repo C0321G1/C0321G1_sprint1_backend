@@ -21,17 +21,23 @@ public class Customer {
     private String fullName;
     private int flag;
     private String phone;
+
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
+
     @ManyToOne
     @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
     private CustomerStatus customerStatus;
+
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orderList;
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
+
     @ManyToOne
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
@@ -51,14 +57,6 @@ public class Customer {
         this.customerStatus = customerStatus;
         this.orderList = orderList;
         this.account = account;
-        this.gender = gender;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -106,8 +104,8 @@ public class Customer {
         return flag;
     }
 
-    public void setFlag(int flagDelete) {
-        this.flag = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getPhone() {
@@ -148,5 +146,13 @@ public class Customer {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
