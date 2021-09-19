@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -164,5 +165,10 @@ public class ServicesRestController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/listAllServices")
+    public  ResponseEntity<List<Services>>getListServices() {
+          List<Services> listServices = servicesService.listServices();
+          return new ResponseEntity<>(listServices, HttpStatus.OK);
     }
 }

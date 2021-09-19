@@ -32,9 +32,8 @@ public class Customer {
     private CustomerStatus customerStatus;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "order-list")
     private List<Order> orderList;
-
     @OneToOne
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;

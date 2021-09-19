@@ -1,24 +1,10 @@
 package c0321g1_gaming.dto.order;
 
-import c0321g1_gaming.model.entity.computer.Computer;
-import c0321g1_gaming.model.entity.customer.Customer;
-import c0321g1_gaming.model.entity.order.OrderDetail;
-import c0321g1_gaming.model.entity.services.Services;
-import java.util.List;
-
-
-
 public class OrderDto {
     private Long orderId;
-    private  Customer customer;
+    private Long  customerId;
     private int status =1;
     public OrderDto() {
-    }
-
-    public OrderDto(Long orderId, Customer customer, int status) {
-        this.orderId = orderId;
-        this.customer = customer;
-        this.status = status;
     }
 
     public Long getOrderId() {
@@ -27,6 +13,22 @@ public class OrderDto {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 }

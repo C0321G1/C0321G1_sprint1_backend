@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-
+import java.util.List;
 @Repository
 public interface IServicesRepository extends JpaRepository<Services, Long> {
     //    phap
@@ -46,4 +46,6 @@ public interface IServicesRepository extends JpaRepository<Services, Long> {
             "set code =?1,flag = ?2,image = ?3,name=?4,prices=?5,quantity=?6,unit_id=?7 where services.services_id = ?8" , nativeQuery = true)
     void updateServices(String code, int flag, String image, String name, double prices, int quantity, int unitId,Long servicesId);
 
+    @Query(value = " select  * from  services where flag = 1" , nativeQuery = true)
+    List<Services> listServices();
 }

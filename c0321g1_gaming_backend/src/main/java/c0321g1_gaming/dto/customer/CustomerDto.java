@@ -2,12 +2,12 @@ package c0321g1_gaming.dto.customer;
 
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
+
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
 
 import java.util.List;
-
 
 public class CustomerDto {
     private Long customerId;
@@ -16,6 +16,10 @@ public class CustomerDto {
     private String fullName;
     private int flag;
     private String phone;
+    private List<Address> addressDtoList;
+    private CustomerStatus customerStatusDto;
+    private List<Order> orderDtoList;
+    private Account accountDto;
     private Address address;
     private CustomerStatus customerStatus;
     private List<Order> orderList;
@@ -25,22 +29,6 @@ public class CustomerDto {
     private Gender gender;
 
     public CustomerDto() {
-    }
-
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, Address address,
-                       CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
-        this.customerId = customerId;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.fullName = fullName;
-        this.flag = flag;
-        this.phone = phone;
-        this.address = address;
-        this.customerStatus = customerStatus;
-        this.orderList = orderList;
-        this.account = account;
-        this.code = code;
-        this.gender = gender;
     }
 
     public Long getCustomerId() {
@@ -89,6 +77,38 @@ public class CustomerDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Address> getAddressDtoList() {
+        return addressDtoList;
+    }
+
+    public void setAddressDtoList(List<Address> addressDtoList) {
+        this.addressDtoList = addressDtoList;
+    }
+
+    public CustomerStatus getCustomerStatusDto() {
+        return customerStatusDto;
+    }
+
+    public void setCustomerStatusDto(CustomerStatus customerStatusDto) {
+        this.customerStatusDto = customerStatusDto;
+    }
+
+    public List<Order> getOrderDtoList() {
+        return orderDtoList;
+    }
+
+    public void setOrderDtoList(List<Order> orderDtoList) {
+        this.orderDtoList = orderDtoList;
+    }
+
+    public Account getAccountDto() {
+        return accountDto;
+    }
+
+    public void setAccountDto(Account accountDto) {
+        this.accountDto = accountDto;
     }
 
     public Address getAddress() {

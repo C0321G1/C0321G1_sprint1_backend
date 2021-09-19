@@ -1,25 +1,27 @@
 package c0321g1_gaming.dto.order;
-
-import c0321g1_gaming.model.entity.order.Order;
+import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class OrderDetailDto {
     private Long orderDetailId;
-
-    private Order order;
-    private Services services;
+    private ServicesDto services;
+    private OrderDto order;
+    @NotNull
+    @Min(1)
     private int quantity;
     private int totalPrices;
 
     public OrderDetailDto() {
     }
 
-
-    public OrderDetailDto(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
+    public OrderDetailDto(Long orderDetailId, ServicesDto services, OrderDto order, @NotNull @Min(1) int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.order = order;
         this.services = services;
+        this.order = order;
         this.quantity = quantity;
         this.totalPrices = totalPrices;
     }
@@ -32,20 +34,20 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Services getServices() {
+    public ServicesDto getServices() {
         return services;
     }
 
-    public void setServices(Services services) {
+    public void setServices(ServicesDto services) {
         this.services = services;
+    }
+
+    public OrderDto getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderDto order) {
+        this.order = order;
     }
 
     public int getQuantity() {
@@ -63,4 +65,6 @@ public class OrderDetailDto {
     public void setTotalPrices(int totalPrices) {
         this.totalPrices = totalPrices;
     }
+
+
 }

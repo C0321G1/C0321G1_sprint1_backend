@@ -24,14 +24,6 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(Long orderDetailId, Order order, Services services, int quantity, int totalPrices) {
-        this.orderDetailId = orderDetailId;
-        this.order = order;
-        this.services = services;
-        this.quantity = quantity;
-        this.totalPrices = totalPrices;
-    }
-
     public Long getOrderDetailId() {
         return orderDetailId;
     }
@@ -71,4 +63,6 @@ public class OrderDetail {
     public void setTotalPrices(int totalPrices) {
         this.totalPrices = totalPrices;
     }
+
+
 }
