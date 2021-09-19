@@ -9,7 +9,6 @@ import c0321g1_gaming.model.entity.security.Account;
 
 import java.util.List;
 
-
 public class CustomerDto {
     private Long customerId;
     private String email;
@@ -30,25 +29,6 @@ public class CustomerDto {
     private Gender gender;
 
     public CustomerDto() {
-    }
-
-    public CustomerDto(Long customerId, String email, String dateOfBirth, String fullName, int flag, String phone, List<Address> addressDtoList, CustomerStatus customerStatusDto, List<Order> orderDtoList, Account accountDto, Address address, CustomerStatus customerStatus, List<Order> orderList, Account account, String code, Gender gender) {
-        this.customerId = customerId;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.fullName = fullName;
-        this.flag = flag;
-        this.phone = phone;
-        this.addressDtoList = addressDtoList;
-        this.customerStatusDto = customerStatusDto;
-        this.orderDtoList = orderDtoList;
-        this.accountDto = accountDto;
-        this.address = address;
-        this.customerStatus = customerStatus;
-        this.orderList = orderList;
-        this.account = account;
-        this.code = code;
-        this.gender = gender;
     }
 
     public Long getCustomerId() {

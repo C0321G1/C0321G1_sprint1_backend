@@ -1,15 +1,18 @@
 package c0321g1_gaming.dto.security;
-
 import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
+
 import java.util.HashSet;
+
+
 import java.util.Set;
 
 
 public class AccountDto {
+
     private Long AccountId;
     private String username;
     private String password;
@@ -21,8 +24,8 @@ public class AccountDto {
     public AccountDto() {
     }
 
-
-	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customerDto, Employee employeeDto) {
+	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category,
+					  Customer customerDto, Employee employeeDto) {
 		AccountId = accountId;
 		this.username = username;
 		this.password = password;
@@ -31,7 +34,6 @@ public class AccountDto {
 		this.customerDto = customerDto;
 		this.employeeDto = employeeDto;
 	}
-
 
 	public Long getAccountId() {
 		return AccountId;

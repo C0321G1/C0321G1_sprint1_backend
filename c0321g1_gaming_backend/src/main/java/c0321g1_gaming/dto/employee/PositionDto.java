@@ -8,7 +8,9 @@ import java.util.List;
 public class PositionDto {
     private Long positionId;
     private String name;
+
     private List<Employee> employeeDtoList;
+
 
     public PositionDto() {
     }

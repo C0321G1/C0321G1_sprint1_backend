@@ -5,9 +5,12 @@ import c0321g1_gaming.model.entity.order.OrderDetail;
 import java.util.List;
 
 public interface IOrderDetailService {
+
     //vu code
     void createDetail(OrderDetail orderDetail);
-    List<OrderDetail> findAllOderDetailsByOderId(Long oderId);
-    
+
+  //Huynh code
+
+  List<OrderDetail> findAllOderDetailsByOderId(Long oderId);
 }
 

@@ -12,12 +12,16 @@ public class CategoryDto {
     private String endTime;
     private String fee;
     private String type;
+
     private Account accountDto;
+
 
     public CategoryDto() {
     }
 
+
     public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, String fee, String type, Account accountDto) {
+
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;
@@ -27,6 +31,7 @@ public class CategoryDto {
         this.fee = fee;
         this.type = type;
         this.accountDto = accountDto;
+
     }
 
     public Long getCategoryId() {
@@ -93,11 +98,13 @@ public class CategoryDto {
         this.type = type;
     }
 
+
     public Account getAccountDto() {
         return accountDto;
     }
 
     public void setAccountDto(Account accountDto) {
         this.accountDto = accountDto;
+
     }
 }

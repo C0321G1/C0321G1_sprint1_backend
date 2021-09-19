@@ -1,7 +1,7 @@
 package c0321g1_gaming.dto.order;
 import c0321g1_gaming.dto.services.ServicesDto;
-import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Services;
+
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -65,4 +65,6 @@ public class OrderDetailDto {
     public void setTotalPrices(int totalPrices) {
         this.totalPrices = totalPrices;
     }
+
+
 }

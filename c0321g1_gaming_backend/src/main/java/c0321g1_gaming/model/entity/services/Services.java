@@ -2,7 +2,8 @@ package c0321g1_gaming.model.entity.services;
 
 import c0321g1_gaming.model.entity.order.OrderDetail;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 import javax.persistence.*;

@@ -4,7 +4,6 @@ import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 import c0321g1_gaming.model.entity.services.Unit;
 import c0321g1_gaming.model.service.services.IServicesService;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.logging.Logger;
+
 
 
 @RestController
@@ -48,7 +47,6 @@ public class ServicesRestController {
         }
         return null;
     }
-
     //khanh
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -104,6 +102,7 @@ public class ServicesRestController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return null;
     }
@@ -122,7 +121,9 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             e.printStackTrace();
+
         }
         return null;
     }
@@ -138,7 +139,9 @@ public class ServicesRestController {
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             e.printStackTrace();
+
         }
         return null;
     }
