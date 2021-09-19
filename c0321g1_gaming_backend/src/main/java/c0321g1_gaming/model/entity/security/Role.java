@@ -7,15 +7,13 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer roleId;
-	@Enumerated(EnumType.STRING)
 	private ERole name;
 
 	public Role() {
 
 	}
 
-	public Role(Integer roleId, ERole name) {
-		this.roleId = roleId;
+	public Role(ERole name) {
 		this.name = name;
 	}
 

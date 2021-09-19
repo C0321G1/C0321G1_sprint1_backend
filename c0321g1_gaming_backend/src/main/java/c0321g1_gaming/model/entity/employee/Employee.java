@@ -1,28 +1,31 @@
 package c0321g1_gaming.model.entity.employee;
 
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 @Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
-    private Long yearOfExp;
+    private String yearOfExp;
     private String code;
     private String phone;
     private String dateOfBirth;
     private String startWorkDate;
-    private Long level;
+    private String level;
     private String email;
     private String fullName;
     private String image;
+<<<<<<< HEAD
     private int flagDel;
 
+=======
+    private int flagDelete;
+>>>>>>> origin
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
@@ -35,15 +38,18 @@ public class Employee {
     @JoinColumn(name = "genderId", referencedColumnName = "genderId")
     private Gender gender;
 
-    @OneToOne
-    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Account account;
 
     public Employee() {
     }
 
+<<<<<<< HEAD
     public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
                     String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+=======
+    public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDelete, Address address, Position position, Account account) {
+>>>>>>> origin
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -52,12 +58,16 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
+<<<<<<< HEAD
         this.fullName = fullName;
         this.image = image;
         this.flagDel = flagDel;
+=======
+        this.name = name;
+        this.flagDelete = flagDelete;
+>>>>>>> origin
         this.address = address;
         this.position = position;
-        this.gender = gender;
         this.account = account;
     }
 
@@ -69,11 +79,11 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public Long getYearOfExp() {
+    public String getYearOfExp() {
         return yearOfExp;
     }
 
-    public void setYearOfExp(Long yearOfExp) {
+    public void setYearOfExp(String yearOfExp) {
         this.yearOfExp = yearOfExp;
     }
 
@@ -109,11 +119,11 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public Long getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Long level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -133,20 +143,12 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public String getImage() {
-        return image;
+    public int getFlagDelete() {
+        return flagDelete;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getFlagDel() {
-        return flagDel;
-    }
-
-    public void setFlagDel(int flagDel) {
-        this.flagDel = flagDel;
+    public void setFlagDelete(int flagDelete) {
+        this.flagDelete = flagDelete;
     }
 
     public Address getAddress() {
@@ -163,14 +165,6 @@ public class Employee {
 
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public Account getAccount() {
