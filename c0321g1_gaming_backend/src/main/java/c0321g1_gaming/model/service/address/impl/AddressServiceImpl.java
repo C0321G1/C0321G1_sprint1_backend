@@ -15,12 +15,32 @@ public class AddressServiceImpl implements AddressService {
     AddressRepository addressRepository;
 
     @Override
+    public Address searchAddress(Long provinceId, Long districtId, Long communeId) {
+        return addressRepository.searchAddress(provinceId, districtId, communeId);
+    }
+
+    @Override
     public List<Address> getAddressList() {
         return addressRepository.getAddressList();
     }
 
     @Override
     public void saveAddress(Address address) {
-        addressRepository.save(address);
+        addressRepository.saveAddress(address.getProvince().getProvinceId(), address.getDistrict().getDistrictId(),
+                address.getCommune().getCommuneId());
     }
+
+    @Override
+    public Long fileByAddressId(Address address) {
+            List<Address> addressList = addressRepository.getAddressList();
+            for (Address value : addressList) {
+                boolean checkProvince = value.getProvince().getName().equals(address.getProvince().getName());
+                boolean checkDistrict = value.getDistrict().getName().equals(address.getDistrict().getName());
+                boolean checkCommune = value.getCommune().getName().equals(address.getCommune().getName());
+                if (checkProvince && checkDistrict && checkCommune) {
+                    return value.getAddressId();
+                }
+            }
+            return 0L;
+        }
 }

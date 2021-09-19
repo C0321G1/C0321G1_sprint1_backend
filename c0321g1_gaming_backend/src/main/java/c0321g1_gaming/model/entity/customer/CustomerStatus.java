@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.customer;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,7 @@ public class CustomerStatus {
     private Long customerStatusId;
     private String name;
     @OneToMany(mappedBy = "customerStatus",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference("customerStatus_customer")
     private List<Customer> customerList;
 
     public CustomerStatus() {
@@ -24,7 +25,7 @@ public class CustomerStatus {
         this.customerList = customerList;
     }
 
-    public Long getCustomerStatusId(int i) {
+    public Long getCustomerStatusId() {
         return customerStatusId;
     }
 
@@ -32,7 +33,7 @@ public class CustomerStatus {
         this.customerStatusId = customerStatusId;
     }
 
-    public String getName(String aDo) {
+    public String getName() {
         return name;
     }
 

@@ -21,6 +21,11 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Modifying
     @Transactional
     @Query(value="update `account` set`password`=?1 where `username`=?2",nativeQuery = true)
-    Integer updateAccountDto(String password,String username);
+    void updateAccountDto(String password,String username);
 
+    @Transactional
+    @Modifying
+    @Query(value="INSERT INTO address (province_id, district_id, commune_id)" +
+            "VALUES (?1, ?2, ?3)", nativeQuery = true)
+    void saveAddress(Long provinceId, Long districtId, Long communeId);
 }

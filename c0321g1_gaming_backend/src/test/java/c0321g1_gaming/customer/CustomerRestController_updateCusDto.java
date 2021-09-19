@@ -1,6 +1,7 @@
 package c0321g1_gaming.customer;
 
 import c0321g1_gaming.dto.customer.CusDTO;
+import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.service.customer.CustomerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CustomerRestController_updateCusDto {
+class CustomerRestController_updateCusDto {
     @Autowired
     CustomerService customerService;
     @Autowired
@@ -26,7 +27,7 @@ public class CustomerRestController_updateCusDto {
     private ObjectMapper objectMapper;
 
     @Test
-    public void updateNewCusDto_name_18() throws Exception {
+    void updateNewCusDto_name_18() throws Exception {
 
         CusDTO cusDTO = new CusDTO();
         cusDTO.setFullName("Poli16-9");
@@ -34,7 +35,10 @@ public class CustomerRestController_updateCusDto {
         cusDTO.setDateOfBirth("");
         cusDTO.setPhone("");
 
-        cusDTO.setAddressId((long) 1);
+        Address address = new Address();
+        address.setAddressId(1L);
+        cusDTO.setAddress(address);
+
         cusDTO.setGenderId((long) 1);
         cusDTO.setCustomerStatusId((long) 1);
 
@@ -44,7 +48,7 @@ public class CustomerRestController_updateCusDto {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/edit")
+                        .patch("/customer/edit")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(this.objectMapper.writeValueAsString(cusDTO)))
                 .andDo(print())

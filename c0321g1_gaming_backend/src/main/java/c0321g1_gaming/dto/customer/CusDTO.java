@@ -1,6 +1,8 @@
 package c0321g1_gaming.dto.customer;
 
 
+import c0321g1_gaming.model.entity.address.Address;
+
 import javax.validation.constraints.NotBlank;
 
 public class CusDTO {
@@ -10,23 +12,24 @@ public class CusDTO {
     @NotBlank(message = "Please input date of birth")
     private String dateOfBirth;
     private String phone;
-    private Long addressId;
+    private Address address;
     private Long genderId;
+    private Long customerStatusId;
     private String password;
     private String username;
     private int flag;
-    private Long customerStatusId;
+
 
     public CusDTO() {
     }
 
-    public CusDTO(Long customerId, String fullName, String email, String dateOfBirth, String phone, Long addressId, Long genderId, String password, String username, int flag, Long customerStatusId) {
+    public CusDTO(Long customerId, String fullName, String email, @NotBlank(message = "Please input date of birth") String dateOfBirth, String phone, Address address, Long genderId, String password, String username, int flag, Long customerStatusId) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
-        this.addressId = addressId;
+        this.address = address;
         this.genderId = genderId;
         this.password = password;
         this.username = username;
@@ -34,7 +37,7 @@ public class CusDTO {
         this.customerStatusId = customerStatusId;
     }
 
-    public Long getCustomerId(int i) {
+    public Long getCustomerId() {
         return customerId;
     }
 
@@ -74,12 +77,12 @@ public class CusDTO {
         this.phone = phone;
     }
 
-    public Long getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Long getGenderId() {

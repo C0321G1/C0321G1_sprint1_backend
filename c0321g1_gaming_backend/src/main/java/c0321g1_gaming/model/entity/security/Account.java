@@ -5,12 +5,18 @@ import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "accountId")
 @Entity
 public class Account {
     @Id
@@ -30,13 +36,15 @@ public class Account {
     private Category category;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account_customer")
     private Customer customer;
 
-    @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account_employee")
     private Employee employee;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account_computer")
     private List<AccountComputer> accountComputer;
 
     public Account() {

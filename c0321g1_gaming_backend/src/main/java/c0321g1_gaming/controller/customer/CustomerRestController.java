@@ -5,12 +5,14 @@ import c0321g1_gaming.model.entity.address.Commune;
 import c0321g1_gaming.model.entity.address.District;
 import c0321g1_gaming.model.entity.address.Province;
 import c0321g1_gaming.model.entity.customer.Customer;
+import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.service.address.AddressService;
 import c0321g1_gaming.model.service.address.CommuneService;
 import c0321g1_gaming.model.service.address.DistrictService;
 import c0321g1_gaming.model.service.address.ProvinceService;
 import c0321g1_gaming.model.service.customer.CustomerService;
+import c0321g1_gaming.model.service.customer.CustomerStatusService;
 import c0321g1_gaming.model.service.gender.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +20,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 
 @RestController
@@ -40,6 +43,8 @@ public class CustomerRestController {
     DistrictService districtService;
     @Autowired
     CommuneService communeService;
+    @Autowired
+    CustomerStatusService customerStatusService;
 
 
     /**
@@ -47,7 +52,15 @@ public class CustomerRestController {
      * Author: Dong
      **/
 
-    @GetMapping("/address")
+    @GetMapping("/customer/customerStatus")
+    public ResponseEntity<List<CustomerStatus>> getAllCustomerStatus() {
+        List<CustomerStatus> customerStatusList = customerStatusService.getAllCustomerStatus();
+        if (customerStatusList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customerStatusList, HttpStatus.OK);
+    }
+    @GetMapping("/customer/address")
     public ResponseEntity<List<
             Address>> getAllAddress() {
         List<Address> addressList = addressService.getAddressList();
@@ -57,7 +70,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(addressList, HttpStatus.OK);
     }
 
-    @GetMapping("/province")
+    @GetMapping("/customer/province")
     public ResponseEntity<List<Province>> getAllProvince() {
         List<Province> provinceList = provinceService.getProvinceList();
         if (provinceList.isEmpty()) {
@@ -66,7 +79,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(provinceList, HttpStatus.OK);
     }
 
-    @GetMapping("/district")
+    @GetMapping("/customer/district")
     public ResponseEntity<List<District>> getAllDistrict() {
         List<District> districtList = districtService.getDistrictList();
         if (districtList.isEmpty()) {
@@ -75,7 +88,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/commune")
+    @GetMapping(value = "/customer/commune")
     public ResponseEntity<List<Commune>> getAllCommune() {
         List<Commune> communeList = communeService.getCommuneList();
         if (communeList.isEmpty()) {
@@ -84,7 +97,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(communeList, HttpStatus.OK);
     }
 
-    @GetMapping("/gender")
+    @GetMapping("/customer/gender")
     public ResponseEntity<List<Gender>> getAllGender() {
         List<Gender> genderList = genderService.getGenderList();
         if (genderList.isEmpty()) {
@@ -92,19 +105,40 @@ public class CustomerRestController {
         }
         return new ResponseEntity<>(genderList, HttpStatus.OK);
     }
-
-    @PatchMapping("/edit")
+    
+    @PatchMapping("/customer/edit")
     public ResponseEntity<Customer> editCusDto(@RequestBody CusDTO cusDTO) {
         customerService.updateCusDto(cusDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping(value = "/customer/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createNewCusDto(@RequestBody CusDTO cusDTO) {
+        Long addressId = addressService.fileByAddressId(cusDTO.getAddress());
+        System.out.println(addressId);
+        if (addressId != 0) {
+            cusDTO.getAddress().setAddressId(addressId);
+        } else {
+            addressService.saveAddress(cusDTO.getAddress());
+            cusDTO.getAddress().setAddressId((long) (addressService.getAddressList().size()));
+        }
 
         customerService.saveCusDto(cusDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/customer/{id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Customer> findByIdCustomer(@PathVariable("id") Long id) {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Customer customer = customerService.findById(id);
+        if(customer!= null) {
+            return new ResponseEntity<>(customer, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
     // Tung create get list customer
     @GetMapping("/customer/list")

@@ -3,6 +3,8 @@ package c0321g1_gaming.model.entity.address;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,12 +23,13 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "communeId", referencedColumnName = "communeId")
     private Commune commune;
+
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "address_customer")
     private List<Customer> customerList;
 
    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-   @JsonBackReference
+   @JsonBackReference(value = "address-employee")
     private List<Employee> employeeList;
 
     public Address() {
@@ -41,7 +44,7 @@ public class Address {
         this.employeeList = employeeList;
     }
 
-    public Long getAddressId(long l) {
+    public Long getAddressId() {
         return addressId;
     }
 
@@ -49,7 +52,7 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public Province getProvince(int i) {
+    public Province getProvince() {
         return province;
     }
 
@@ -57,7 +60,7 @@ public class Address {
         this.province = province;
     }
 
-    public District getDistrict(int i) {
+    public District getDistrict() {
         return district;
     }
 
@@ -65,7 +68,7 @@ public class Address {
         this.district = district;
     }
 
-    public Commune getCommune(int i) {
+    public Commune getCommune() {
         return commune;
     }
 

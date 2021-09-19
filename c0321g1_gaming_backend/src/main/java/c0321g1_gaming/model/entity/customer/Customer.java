@@ -4,12 +4,15 @@ import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.security.Account;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,18 +27,21 @@ public class Customer {
 
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
+//    @JsonBackReference
     private Address address;
 
     @ManyToOne
-    @JoinColumn(name = "statusId",referencedColumnName = "customerStatusId")
+    @JoinColumn(name = "customerStatusId",referencedColumnName = "customerStatusId")
+    @JsonBackReference
     private CustomerStatus customerStatus;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "customer_order")
     private List<Order> orderList;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
+    @JsonIgnore
     private Account account;
 
     @ManyToOne
@@ -155,4 +161,6 @@ public class Customer {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+
 }

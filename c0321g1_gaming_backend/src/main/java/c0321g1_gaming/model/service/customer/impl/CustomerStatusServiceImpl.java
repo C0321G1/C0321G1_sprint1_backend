@@ -12,7 +12,7 @@ public class CustomerStatusServiceImpl implements CustomerStatusService {
     @Autowired
     CustomerStatusRepository customerStatusRepository;
     @Override
-    public List<CustomerStatus> findAll() {
-        return customerStatusRepository.findAll();
+    public List<CustomerStatus> getAllCustomerStatus() {
+        return customerStatusRepository.getAllCustomerStatus();
     }
 }

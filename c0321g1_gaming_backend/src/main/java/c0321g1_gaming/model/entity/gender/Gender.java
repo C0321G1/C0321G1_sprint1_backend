@@ -16,8 +16,9 @@ public class Gender {
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Employee> employeeList;
+
     @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "gender_customer")
     private List<Customer> customerList;
 
     public Gender() {

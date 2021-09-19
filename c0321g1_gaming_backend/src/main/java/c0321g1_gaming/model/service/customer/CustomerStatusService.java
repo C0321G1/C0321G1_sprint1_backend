@@ -5,5 +5,5 @@ import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import java.util.List;
 
 public interface CustomerStatusService {
-    List<CustomerStatus>findAll();
+    List<CustomerStatus>getAllCustomerStatus();
 }

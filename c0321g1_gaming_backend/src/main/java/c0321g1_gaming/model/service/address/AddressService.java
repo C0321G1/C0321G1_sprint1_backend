@@ -8,8 +8,11 @@ import java.util.List;
 @Service
 public interface AddressService {
 
+    Address searchAddress(Long province,Long district,Long commune);
+
     List<Address> getAddressList();
 
     void saveAddress(Address address);
 
+    Long fileByAddressId(Address address);
 }
