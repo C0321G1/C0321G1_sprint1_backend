@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +21,13 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("game/api")
 public class GameRestController {
     @Autowired
     private IGameService gameService;
 
-//        Creator: Thúy
+    //        Creator: Thúy
     @GetMapping
     public ResponseEntity<Page<Game>> getListGame(@PageableDefault(size = 8) Pageable pageable) {
         Page<Game> gameList = gameService.getAllGame(pageable);
@@ -89,7 +90,7 @@ public class GameRestController {
     public Map<String, String> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
+        ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
@@ -99,16 +100,11 @@ public class GameRestController {
 
     @PostMapping
     public ResponseEntity<Void> saveGame(@Valid @RequestBody GameDto gameDto) {
-        try {
-            Game game = new Game();
-            gameDto.setFlagDelete(0);
-            BeanUtils.copyProperties(gameDto, game);
-            gameService.saveGame(game);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        Game game = new Game();
+        gameDto.setFlagDelete(0);
+        BeanUtils.copyProperties(gameDto, game);
+        gameService.saveGame(game);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("{id}")
@@ -121,15 +117,10 @@ public class GameRestController {
         if (!game.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            try {
-                gameDto.setGameId(game.get().getGameId());
-                BeanUtils.copyProperties(gameDto, game.get());
-                gameService.updateGame(game.get());
-                return new ResponseEntity<>(HttpStatus.OK);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
+            gameDto.setGameId(game.get().getGameId());
+            BeanUtils.copyProperties(gameDto, game.get());
+            gameService.updateGame(game.get());
+            return new ResponseEntity<>(HttpStatus.OK);
         }
     }
 }

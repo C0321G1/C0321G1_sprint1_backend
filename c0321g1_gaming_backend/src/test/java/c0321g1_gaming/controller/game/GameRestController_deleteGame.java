@@ -12,13 +12,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameRestController_deleteGame {
-//    Creator: Thúy
+class GameRestController_deleteGame {
+    //    Creator: Thúy
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void deleteGame_id_25() throws Exception {
+    void deleteGame_id_25() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .patch("/game/api/delete/{id}", "null"))
@@ -27,7 +27,7 @@ public class GameRestController_deleteGame {
     }
 
     @Test
-    public void deleteGame_id_27() throws Exception {
+    void deleteGame_id_27() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .patch("/game/api/delete/{id}", 41))
@@ -36,7 +36,7 @@ public class GameRestController_deleteGame {
     }
 
     @Test
-    public void deleteGame_id_28() throws Exception {
+    void deleteGame_id_28() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
                         .patch("/game/api/delete/{id}", 1))

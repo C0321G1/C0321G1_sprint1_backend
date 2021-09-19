@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("gameType/api")
 public class GameTypeRestController {
     @Autowired
-    private IGameTypeService IGameTypeService;
+    private IGameTypeService iGameTypeService;
 
     @GetMapping
     public ResponseEntity<List<GameType>> list() {
-        List<GameType> gameTypeList = IGameTypeService.findAll();
+        List<GameType> gameTypeList = iGameTypeService.findAll();
         if (gameTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

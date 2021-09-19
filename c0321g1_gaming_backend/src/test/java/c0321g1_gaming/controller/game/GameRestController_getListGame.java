@@ -1,7 +1,6 @@
 package c0321g1_gaming.controller.game;
 
 import c0321g1_gaming.model.entity.game.Game;
-import c0321g1_gaming.model.entity.game.GameType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.List;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GameRestController_getListGame {
-//    Creator: Thúy
+class GameRestController_getListGame {
+    //    Creator: Thúy
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,7 +26,7 @@ public class GameRestController_getListGame {
     private GameRestController gameRestController;
 
     @Test
-    public void getListGame_5() throws Exception {
+    void getListGame_5() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/game/api"))
                 .andDo(print())
@@ -37,7 +34,7 @@ public class GameRestController_getListGame {
     }
 
     @Test
-    public void getListStudent_6() {
+    void getListStudent_6() {
         ResponseEntity<Page<Game>> pageResponseEntity
                 = this.gameRestController.getListGame(
                 PageRequest.of(0, 8));
@@ -53,7 +50,7 @@ public class GameRestController_getListGame {
         Assertions.assertEquals("https://img4.thuthuatphanmem.vn/uploads/2020/10/30/hinh-anh-pubg-dep_030927068.jpg", gamePage.getContent().get(0).getImage());
         Assertions.assertEquals("https://www.youtube.com/embed/8ycrPEjBhIo", gamePage.getContent().get(0).getTrailer());
         Assertions.assertEquals(0, gamePage.getContent().get(0).getFlagDelete());
-        Assertions.assertEquals("20000", gamePage.getContent().get(0).getGaming());
+        Assertions.assertEquals(20000, gamePage.getContent().get(0).getGaming());
         Assertions.assertEquals(1, gamePage.getContent().get(0).getGameType().getGameTypeId());
     }
 }

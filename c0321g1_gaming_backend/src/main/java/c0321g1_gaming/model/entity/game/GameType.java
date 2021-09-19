@@ -3,7 +3,6 @@ package c0321g1_gaming.model.entity.game;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
