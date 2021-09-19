@@ -5,6 +5,7 @@ import c0321g1_gaming.model.service.order.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class OrderRestController {
     IOrderService orderService;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<Page<Order>> findAllOder(@PageableDefault(value = 5) Pageable pageable) {
+    public ResponseEntity<Page<Order>> findAllOder(@PageableDefault(value = 5, sort = "status", direction = Sort.Direction.DESC) Pageable pageable) {
         try {
             Page<Order> page = orderService.findAllOder(pageable);
             if (page.isEmpty()) {
@@ -29,24 +30,23 @@ public class OrderRestController {
             return new ResponseEntity<>(page, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     @GetMapping(value = "/{idCustomer}")
-    public ResponseEntity<Page<Order>> findAllOderByCustomerId(@PageableDefault(value = 5) Pageable pageable,
+    public ResponseEntity<Page<Order>> findAllOderByCustomerId(@PageableDefault(value = 5, sort = "status", direction = Sort.Direction.DESC) Pageable pageable,
                                                                @PathVariable Long idCustomer) {
         try {
             Page<Order> page = orderService.findOderByIdCustomer(pageable, idCustomer);
             if (page.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(page, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
-
+        return null;
     }
 
     @GetMapping(value = "/getOrder/{idOder}")
@@ -59,8 +59,8 @@ public class OrderRestController {
             return new ResponseEntity<>(optionalOrder.get(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     @PatchMapping(value = "/{id}")
@@ -76,10 +76,7 @@ public class OrderRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
-
+        return null;
     }
-
-
 }
