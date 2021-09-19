@@ -18,12 +18,18 @@ public class Employee {
     private String startWorkDate;
     private String level;
     private String email;
-    private String name;
+    private String fullName;
     private String image;
+<<<<<<< HEAD
+    private int flagDel;
+
+=======
     private int flagDelete;
+>>>>>>> origin
     @ManyToOne
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
+
     @ManyToOne
     @JoinColumn(name = "positionId", referencedColumnName = "positionId")
     private Position position;
@@ -38,7 +44,12 @@ public class Employee {
     public Employee() {
     }
 
+<<<<<<< HEAD
+    public Employee(Long employeeId, Long yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, Long level, String email, String fullName,
+                    String image, int flagDel, Address address, Position position, Gender gender, Account account) {
+=======
     public Employee(Long employeeId, String yearOfExp, String code, String phone, String dateOfBirth, String startWorkDate, String level, String email, String name, int flagDelete, Address address, Position position, Account account) {
+>>>>>>> origin
         this.employeeId = employeeId;
         this.yearOfExp = yearOfExp;
         this.code = code;
@@ -47,8 +58,14 @@ public class Employee {
         this.startWorkDate = startWorkDate;
         this.level = level;
         this.email = email;
+<<<<<<< HEAD
+        this.fullName = fullName;
+        this.image = image;
+        this.flagDel = flagDel;
+=======
         this.name = name;
         this.flagDelete = flagDelete;
+>>>>>>> origin
         this.address = address;
         this.position = position;
         this.account = account;
@@ -118,12 +135,12 @@ public class Employee {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getFlagDelete() {

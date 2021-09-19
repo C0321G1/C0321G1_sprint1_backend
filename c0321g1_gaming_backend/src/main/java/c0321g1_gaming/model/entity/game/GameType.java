@@ -8,8 +8,8 @@ import java.util.List;
 @Entity
 public class GameType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long gameTypeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int gameTypeId;
     private String name;
     @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)
     @JsonBackReference
@@ -23,11 +23,11 @@ public class GameType {
         this.gameList = gameList;
     }
 
-    public Long getGameTypeId() {
+    public int getGameTypeId() {
         return gameTypeId;
     }
 
-    public void setGameTypeId(Long gameTypeId) {
+    public void setGameTypeId(int gameTypeId) {
         this.gameTypeId = gameTypeId;
     }
 

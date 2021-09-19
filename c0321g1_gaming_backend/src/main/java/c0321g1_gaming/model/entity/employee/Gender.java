@@ -11,10 +11,16 @@ public class Gender {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long genderId;
     private String name;
-    @OneToMany(mappedBy = "gender",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "gender-employee")
     private List<Employee> employeeList;
+<<<<<<< HEAD:c0321g1_gaming_backend/src/main/java/c0321g1_gaming/model/entity/gender/Gender.java
+    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "gender-customer")
+    private List<Customer> customerList;
+=======
 
+>>>>>>> origin:c0321g1_gaming_backend/src/main/java/c0321g1_gaming/model/entity/employee/Gender.java
     public Gender() {
     }
 

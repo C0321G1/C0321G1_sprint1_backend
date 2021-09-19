@@ -22,11 +22,16 @@ public class Address {
     @JoinColumn(name = "communeId", referencedColumnName = "communeId")
     private Commune commune;
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "address-customer")
     private List<Customer> customerList;
 
+<<<<<<< HEAD
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
+    @JsonBackReference(value = "address-employee")
+=======
    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
    @JsonBackReference
+>>>>>>> origin
     private List<Employee> employeeList;
 
     public Address() {
@@ -88,6 +93,7 @@ public class Address {
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
 }
 
 

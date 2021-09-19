@@ -2,11 +2,11 @@ package c0321g1_gaming.model.entity.computer;
 
 import c0321g1_gaming.model.entity.order.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class Computer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,11 +101,15 @@ public class Computer {
         this.flagDelete = flagDelete;
     }
 
+    public void setComputerStatus(ComputerStatus computerStatus) {
+        this.computerStatus = computerStatus;
+    }
+
     public ComputerStatus getComputerStatus() {
         return computerStatus;
     }
 
-    public void setComputerStatus(ComputerStatus computerStatus) {
+    public Computer(ComputerStatus computerStatus) {
         this.computerStatus = computerStatus;
     }
 
@@ -124,4 +128,5 @@ public class Computer {
     public void setComputerManufacturer(ComputerManufacturer computerManufacturer) {
         this.computerManufacturer = computerManufacturer;
     }
+
 }

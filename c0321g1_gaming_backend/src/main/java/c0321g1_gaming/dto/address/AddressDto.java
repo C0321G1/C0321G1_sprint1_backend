@@ -7,7 +7,6 @@ import c0321g1_gaming.model.entity.employee.Employee;
 
 import java.util.List;
 
-
 public class AddressDto {
     private Long addressId;
     private ProvinceDto provinceDto;
@@ -74,4 +73,5 @@ public class AddressDto {
     public void setEmployeeDtoList(List<Employee> employeeDtoList) {
         this.employeeDtoList = employeeDtoList;
     }
+
 }

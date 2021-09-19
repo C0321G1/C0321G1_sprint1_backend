@@ -6,19 +6,64 @@ import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.employee.Position;
 import c0321g1_gaming.model.entity.security.Account;
 
+<<<<<<< HEAD
+import javax.validation.constraints.*;
+=======
 import java.util.List;
 
+>>>>>>> origin
 
 public class EmployeeDto {
+
     private Long employeeId;
+<<<<<<< HEAD
+
+    @NotNull
+    @Min(0)
+    private Long yearOfExp;
+
+    @NotEmpty
+    @Pattern(regexp = "(0\\d{9,10})")
+=======
     private String yearOfExp;
+>>>>>>> origin
     private String phone;
+
+    @NotEmpty
     private String dateOfBirth;
+
+    @NotEmpty
     private String startWorkDate;
+<<<<<<< HEAD
+
+    @NotNull
+    @Min(1)
+    private Long level;
+
+    @NotEmpty
+    @Pattern(regexp = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")
+=======
     private String level;
+>>>>>>> origin
     private String email;
+
+    @NotEmpty
+    @Size(min = 6, max = 50)
     private String fullName;
+
+    @NotEmpty
+    @Pattern(regexp = "EMP-\\d{4}")
     private String code;
+<<<<<<< HEAD
+
+    private String image;
+    private int flagDel;
+    private Address address;
+    private Position position;
+    private Account account;
+    private Gender gender;
+=======
+>>>>>>> origin
 
 
     private int flagDelete;
