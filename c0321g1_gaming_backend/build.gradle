@@ -5,6 +5,16 @@ plugins {
     id "org.sonarqube" version "3.0"
 }
 
+
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'http://18.117.115.7:9000/'
+        property 'sonar.login', 'f4570cffe1dd5bf39ecbeed0ef04eef921709b5a'
+        property 'sonar.projectKey', 'C0321G1_ReviewCode_NguyenNHN'
+        property 'sonar.projectName', 'C0321G1_ReviewCode_NguyenNHN'
+    }
+}
+
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
