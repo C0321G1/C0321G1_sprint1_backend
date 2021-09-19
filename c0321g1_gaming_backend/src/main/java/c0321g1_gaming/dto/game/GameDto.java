@@ -3,7 +3,10 @@ package c0321g1_gaming.dto.game;
 
 import c0321g1_gaming.model.entity.game.GameType;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class GameDto {
     private Long gameId;
