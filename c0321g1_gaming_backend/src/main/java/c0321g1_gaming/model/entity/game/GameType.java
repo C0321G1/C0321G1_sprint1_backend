@@ -9,7 +9,7 @@ import java.util.List;
 public class GameType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gameTypeId;
+    private int gameTypeId;
     private String name;
     @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)
     @JsonBackReference
@@ -23,11 +23,11 @@ public class GameType {
         this.gameList = gameList;
     }
 
-    public Long getGameTypeId() {
+    public int getGameTypeId() {
         return gameTypeId;
     }
 
-    public void setGameTypeId(Long gameTypeId) {
+    public void setGameTypeId(int gameTypeId) {
         this.gameTypeId = gameTypeId;
     }
 
