@@ -17,7 +17,11 @@ public class CategoryDto {
     public CategoryDto() {
     }
 
+<<<<<<< HEAD
     public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account account) {
+=======
+    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account accountDto) {
+>>>>>>> origin
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;

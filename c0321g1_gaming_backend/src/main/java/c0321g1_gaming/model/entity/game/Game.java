@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Game {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gameId;
     @Column(length = 2007)
     private String content;

@@ -1,6 +1,7 @@
 package c0321g1_gaming.model.entity.services;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import c0321g1_gaming.model.entity.order.Order;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,8 +12,8 @@ public class Unit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int unitId;
     private String name;
-    @OneToMany(mappedBy = "unit",cascade = CascadeType.ALL)
-    @JsonIgnore
+    @OneToMany(mappedBy ="unitDto",cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Services> servicesList;
 
     public Unit() {

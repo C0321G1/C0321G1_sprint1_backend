@@ -29,9 +29,14 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
+<<<<<<< HEAD
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @JsonBackReference(value = "account-customer")
+=======
+    @OneToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+>>>>>>> origin
     private Customer customer;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)

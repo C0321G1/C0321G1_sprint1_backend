@@ -25,8 +25,13 @@ public class Address {
     @JsonBackReference(value = "address-customer")
     private List<Customer> customerList;
 
+<<<<<<< HEAD
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
     @JsonBackReference(value = "address-employee")
+=======
+   @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
+   @JsonBackReference
+>>>>>>> origin
     private List<Employee> employeeList;
 
     public Address() {
@@ -90,3 +95,5 @@ public class Address {
     }
 
 }
+
+

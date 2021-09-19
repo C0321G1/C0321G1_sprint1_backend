@@ -1,5 +1,6 @@
 package c0321g1_gaming.model.entity.computer;
 
+import c0321g1_gaming.model.entity.order.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.List;

@@ -1,5 +1,6 @@
 package c0321g1_gaming.controller.services;
 
+<<<<<<< HEAD
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 import c0321g1_gaming.model.entity.services.Unit;
@@ -160,4 +161,7 @@ public class ServicesRestController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+=======
+public class ServicesRestController {
+>>>>>>> origin
 }
