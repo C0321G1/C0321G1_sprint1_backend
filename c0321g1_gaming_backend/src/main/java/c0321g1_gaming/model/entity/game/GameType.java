@@ -12,7 +12,7 @@ public class GameType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gameTypeId;
     private String name;
-    @OneToMany(mappedBy = "gameType",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gameType", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Game> gameList;
 

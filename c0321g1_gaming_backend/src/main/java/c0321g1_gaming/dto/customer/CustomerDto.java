@@ -1,8 +1,5 @@
 package c0321g1_gaming.dto.customer;
 
-import c0321g1_gaming.dto.address.AddressDto;
-import c0321g1_gaming.dto.gender.GenderDto;
-import c0321g1_gaming.dto.security.AccountDto;
 import c0321g1_gaming.model.entity.address.Address;
 import c0321g1_gaming.model.entity.customer.CustomerStatus;
 import c0321g1_gaming.model.entity.gender.Gender;
@@ -18,12 +15,13 @@ import java.util.List;
 public class CustomerDto {
     private Long customerId;
     private String email;
+    @NotNull
     private String dateOfBirth;
     @NotEmpty
     private String fullName;
     private int flag;
     @NotEmpty
-    @Pattern(regexp = "\\d{10,12}",message = "Phone must have 10 -12 number")
+    @Pattern(regexp = "\\d{10,12}", message = "Phone must have 10 -12 number")
     private String phone;
     private Address address;
     private CustomerStatus customerStatus;

@@ -1,8 +1,10 @@
 package c0321g1_gaming.dto.order;
+
 import c0321g1_gaming.model.entity.computer.Computer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.order.OrderDetail;
 import c0321g1_gaming.model.entity.services.Services;
+
 import java.util.List;
 
 
@@ -15,6 +17,7 @@ public class OrderDto {
     private Services services;
     private Customer customer;
     private List<OrderDetail> orderDetail;
+
     public OrderDto() {
     }
 

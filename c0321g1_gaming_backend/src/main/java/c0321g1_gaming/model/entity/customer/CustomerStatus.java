@@ -11,7 +11,7 @@ public class CustomerStatus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerStatusId;
     private String name;
-    @OneToMany(mappedBy = "customerStatus",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customerStatus", cascade = CascadeType.ALL)
     @JsonBackReference(value = "customerStatus-customerList")
     private List<Customer> customerList;
 

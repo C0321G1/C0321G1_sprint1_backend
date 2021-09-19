@@ -11,7 +11,7 @@ public class ComputerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long computerTypeId;
     private String name;
-    @OneToMany(mappedBy = "computerType",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "computerType", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Computer> computerList;
 

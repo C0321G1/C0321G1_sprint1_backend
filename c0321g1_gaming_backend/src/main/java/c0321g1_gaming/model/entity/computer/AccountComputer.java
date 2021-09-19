@@ -13,10 +13,10 @@ public class AccountComputer {
     private String timeLogin;
     private String timeLogout;
     @ManyToOne
-    @JoinColumn(name = "computerId",referencedColumnName = "computerId")
+    @JoinColumn(name = "computerId", referencedColumnName = "computerId")
     private Computer computer;
     @ManyToOne
-    @JoinColumn(name = "accountId",referencedColumnName = "accountId")
+    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
     private Account account;
 
     public AccountComputer() {

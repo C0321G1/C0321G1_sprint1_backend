@@ -18,7 +18,7 @@ public class Category {
     private String type;
 
     @JsonBackReference
-    @OneToOne(mappedBy = "category",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
     private Account account;
 
     public Category() {

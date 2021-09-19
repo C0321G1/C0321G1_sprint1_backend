@@ -1,7 +1,8 @@
 package c0321g1_gaming.dto.employee;
+
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.employee.Position;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
 
@@ -21,6 +22,7 @@ public class EmployeeDto {
     private Position position;
     private Account account;
     private Gender gender;
+
     public EmployeeDto() {
     }
 
@@ -137,7 +139,6 @@ public class EmployeeDto {
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
-
 
 
     public String getPhone() {
