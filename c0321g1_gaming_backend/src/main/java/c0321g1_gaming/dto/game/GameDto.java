@@ -13,6 +13,7 @@ public class GameDto {
     @NotNull
     private int flagDelete;
     @NotBlank(message = "Name is required")
+    @Size(max = 40,message = "Name cannot be longer than 40 characters")
     private String name;
     @NotBlank(message = "Image is required")
     private String image;
