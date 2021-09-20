@@ -10,18 +10,14 @@ public class CategoryDto {
     private String name;
     private String startTime;
     private String endTime;
-    private int fee;
+    private String fee;
     private String type;
     private Account account;
 
     public CategoryDto() {
     }
 
-<<<<<<< HEAD
-    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account account) {
-=======
-    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, int fee, String type, Account accountDto) {
->>>>>>> origin
+    public CategoryDto(Long categoryId, String description, String discount, String name, String startTime, String endTime, String fee, String type, Account account) {
         this.categoryId = categoryId;
         this.description = description;
         this.discount = discount;
@@ -81,11 +77,11 @@ public class CategoryDto {
         this.endTime = endTime;
     }
 
-    public int getFee() {
+    public String getFee() {
         return fee;
     }
 
-    public void setFee(int fee) {
+    public void setFee(String fee) {
         this.fee = fee;
     }
 

@@ -78,6 +78,9 @@ public class GameRestController {
         if (!gameOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
+            if(gameOptional.get().getFlagDelete() == 1) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
             gameService.deleteGameFlag(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

@@ -75,22 +75,23 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public void deleteComputer(Computer computer) {
-        computerRepository.delete(computer);
+    public void deleteComputer(int id) {
+        computerRepository.deleteComputer(id);
     }
 
     @Override
-    public void saveComputer(Computer computer) {
-        computerRepository.save(computer);
-    }
-
-    @Override
-    public void setComputerStatus(Long id) {
-        Optional<Computer> computer = computerRepository.findComputerById(id);
+    public void setComputerStatusOnline(int id) {
+        Optional<Computer> computer = computerRepository.findComputerById((long)id);
         if(computer.isPresent()){
-            computer.get().getComputerStatus().setComputerStatusId(Long.valueOf(1));
-            computerRepository.save(computer.get());
+            computerRepository.setComputerStatusOnline(id);
+        }
+    }
+
+    @Override
+    public void setComputerStatusOffline(int id) {
+        Optional<Computer> computer = computerRepository.findComputerById((long)id);
+        if(computer.isPresent()){
+            computerRepository.setComputerStatusOffline(id);
         }
     }
 }
-

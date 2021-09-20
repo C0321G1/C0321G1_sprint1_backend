@@ -28,5 +28,3 @@ public class ComputerManufacturerDto {
         this.name = name;
     }
 }
-
-

@@ -44,7 +44,7 @@ public class EmployeeRestController {
     }
     // khue create method delete Employee
     @DeleteMapping("/employee/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable int id) {
         if (id == 0){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
@@ -52,6 +52,9 @@ public class EmployeeRestController {
             if(!employeeOptional.isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }else {
+                if (employeeOptional.get().getFlagDel() == 1){
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
                 this.employeeService.deleteEmployee(id);
                 return new ResponseEntity<>(HttpStatus.OK);
             }

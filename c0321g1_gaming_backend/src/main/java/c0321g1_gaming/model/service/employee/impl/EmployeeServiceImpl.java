@@ -68,6 +68,12 @@ public class EmployeeServiceImpl implements EmployeeService {
             isError = true;
         }
 
+        if (!checkPassword(employeeDto)) {
+            result.put("status", false);
+            result.put("msgPassword", "Password not right format, please input again.");
+            isError = true;
+        }
+
         if (checkCode(employeeDto)) {
             result.put("status", false);
             result.put("msgCode", "Employee ID already used, please input again.");
@@ -106,8 +112,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             address.setAddressId(addressId);
         } else {
             addressRepository.saveAddress(address.getProvince().getProvinceId(),
-                                          address.getDistrict().getDistrictId(),
-                                          address.getCommune().getCommuneId());
+                    address.getDistrict().getDistrictId(),
+                    address.getCommune().getCommuneId());
             address.setAddressId((long) (addressRepository.getAddressList().size()));
         }
 
@@ -117,7 +123,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.saveEmployee(employee.getYearOfExp(), employee.getCode(), employee.getPhone(), employee.getDateOfBirth(),
                 employee.getStartWorkDate(), employee.getLevel(), employee.getEmail(), employee.getFullName(),
                 employee.getImage(), employee.getAddress().getAddressId(), employee.getPosition().getPositionId(),
-                employee.getGender().getGenderId(), employee.getAccount().getAccountId(),0);
+                employee.getGender().getGenderId(), employee.getAccount().getAccountId(), 0);
         result.put("status", true);
         result.put("msg", "Add new employee successfully !");
         return result;
@@ -148,6 +154,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (checkEmailByEdit(employeeDto)) {
             result.put("status", false);
             result.put("msgEmail", "Email already used, please input again.");
+            isError = true;
+        }
+
+        if (!checkPassword(employeeDto)) {
+            result.put("status", false);
+            result.put("msgPassword", "Password not right format, please input again.");
             isError = true;
         }
 
@@ -194,7 +206,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private Long initAccountId(Account account) {
         List<Account> accountList = accountRepository.getAccountList();
-        for (Account value: accountList) {
+        for (Account value : accountList) {
             if (value.getUsername().equals(account.getUsername())) {
                 return value.getAccountId();
             }
@@ -243,7 +255,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private boolean checkCode(EmployeeDto employeeDto) {
         List<Employee> employeeList = employeeRepository.getEmployeeList();
-        for (Employee e: employeeList) {
+        for (Employee e : employeeList) {
             if (employeeDto.getCode().equals(e.getCode())) {
                 return true;
             }
@@ -253,7 +265,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private boolean checkEmail(EmployeeDto employeeDto) {
         List<Account> accountList = accountRepository.getAccountList();
-        for (Account a: accountList) {
+        for (Account a : accountList) {
             if (employeeDto.getAccount().getUsername().equals(a.getUsername())) {
                 return true;
             }
@@ -261,10 +273,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         return false;
     }
 
+    private boolean checkPassword(EmployeeDto employeeDto) {
+        String regex = "^[A-Za-z0-9]{6,}$";
+        return employeeDto.getAccount().getPassword().matches(regex);
+    }
+
     private boolean checkEmailByEdit(EmployeeDto employeeDto) {
         List<Account> accountList = accountRepository.getAccountList();
         int count = 0;
-        for (Account a: accountList) {
+        for (Account a : accountList) {
             if (employeeDto.getAccount().getUsername().equals(a.getUsername()) &&
                     !employeeDto.getAccount().getAccountId().equals(a.getAccountId())) {
                 count++;

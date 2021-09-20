@@ -1,19 +1,28 @@
 package c0321g1_gaming.dto.order;
+import c0321g1_gaming.dto.services.ServicesDto;
 
-import c0321g1_gaming.model.entity.order.Order;
 
-import java.util.List;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class OrderDetailDto {
     private Long orderDetailId;
-    private List<Order> orderDtoList;
+    private ServicesDto services;
+    private OrderDto order;
+    @NotNull
+    @Min(1)
+    private int quantity;
+    private int totalPrices;
 
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(Long orderDetailId, List<Order> orderDtoList) {
+    public OrderDetailDto(Long orderDetailId, ServicesDto services, OrderDto order, @NotNull @Min(1) int quantity, int totalPrices) {
         this.orderDetailId = orderDetailId;
-        this.orderDtoList = orderDtoList;
+        this.services = services;
+        this.order = order;
+        this.quantity = quantity;
+        this.totalPrices = totalPrices;
     }
 
     public Long getOrderDetailId() {
@@ -24,21 +33,20 @@ public class OrderDetailDto {
         this.orderDetailId = orderDetailId;
     }
 
-<<<<<<< HEAD
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Services getServices() {
+    public ServicesDto getServices() {
         return services;
     }
 
-    public void setServices(Services services) {
+    public void setServices(ServicesDto services) {
         this.services = services;
+    }
+
+    public OrderDto getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderDto order) {
+        this.order = order;
     }
 
     public int getQuantity() {
@@ -51,13 +59,11 @@ public class OrderDetailDto {
 
     public int getTotalPrices() {
         return totalPrices;
-=======
-    public List<Order> getOrderDtoList() {
-        return orderDtoList;
->>>>>>> origin
     }
 
-    public void setOrderDtoList(List<Order> orderDtoList) {
-        this.orderDtoList = orderDtoList;
+    public void setTotalPrices(int totalPrices) {
+        this.totalPrices = totalPrices;
     }
+
+
 }

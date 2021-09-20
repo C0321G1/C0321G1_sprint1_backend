@@ -19,4 +19,12 @@ public class AddressServiceImpl implements AddressService {
         return addressRepository.getAddressList();
     }
 
+    //    creator: vinhdn
+    @Override
+    public void save(Address address) {
+        addressRepository.saveAddress(
+                address.getProvince() == null ? null : address.getProvince().getProvinceId(),
+                address.getDistrict() == null ? null : address.getDistrict().getDistrictId(),
+                address.getCommune() == null ? null : address.getCommune().getCommuneId());
+    }
 }

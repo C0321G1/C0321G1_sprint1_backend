@@ -160,22 +160,21 @@ public class ComputerRestController {
 
     //NguyenNHN - Delete computer
     @DeleteMapping("/computer/{id}")
-    public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
-        if (id == null) {
+    public ResponseEntity<Void> deleteComputer(@PathVariable int id) {
+        if (id == 0) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Optional<Computer> computer = computerService.findComputerById(id);
+        Optional<Computer> computer = computerService.findComputerById((long)id);
         if (!computer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (computer.get().getComputerStatus().getComputerStatusId() == 1) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
-        computer.get().setFlagDelete(1);
-        computerService.saveComputer(computer.get());
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        computerService.deleteComputer(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+
     //NguyenNHN - Search computer
     @GetMapping("/computer/searchComputer")
     public ResponseEntity<Page<Computer>> searchComputer(@PageableDefault(value = 5) Pageable pageable,
@@ -220,6 +219,3 @@ public class ComputerRestController {
         }
     }
 }
-
-
-

@@ -31,9 +31,9 @@ public interface ComputerService {
 
     Optional<Computer> findComputerById(Long id);
 
-    void deleteComputer(Computer computer);
+    void deleteComputer(int id);
 
-    void saveComputer(Computer computer);
+    void setComputerStatusOnline(int id);
 
-    void setComputerStatus(Long id);
+    void setComputerStatusOffline(int id);
 }
