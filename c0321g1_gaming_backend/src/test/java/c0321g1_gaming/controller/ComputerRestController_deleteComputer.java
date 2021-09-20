@@ -1,45 +1,44 @@
-package c0321g1_gaming.controller.game;
+package c0321g1_gaming.controller;
 
+import c0321g1_gaming.controller.computer.ComputerRestController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class GameRestController_deleteGame {
-    //    Creator: Thúy
+public class ComputerRestController_deleteComputer {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ComputerRestController computerRestController;
+    //Delete computer by id
     @Test
-    void deleteGame_id_25() throws Exception {
+    public void deleteComputer_id_1() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/game/api/delete/{id}", "null"))
+                        .delete("/computer/{id}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    void deleteGame_id_27() throws Exception {
+    public void deleteComputer_id_3() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/game/api/delete/{id}", 41))
+                        .delete("/computer/{id}", 50))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
-    void deleteGame_id_28() throws Exception {
+    public void deleteComputer_id_4() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .patch("/game/api/delete/{id}", 1))
+                        .delete("/computer/{id}", 8))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

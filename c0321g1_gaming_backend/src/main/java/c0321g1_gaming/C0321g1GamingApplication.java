@@ -10,4 +10,5 @@ public class C0321g1GamingApplication {
         SpringApplication.run(C0321g1GamingApplication.class, args);
     }
 
+
 }
