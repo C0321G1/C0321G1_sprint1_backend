@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class addressServiceImpl implements AddressService {
+public class AddressServiceImpl implements AddressService {
 
     @Autowired
     AddressRepository addressRepository;
@@ -19,8 +19,4 @@ public class addressServiceImpl implements AddressService {
         return addressRepository.getAddressList();
     }
 
-    @Override
-    public void saveAddress(Address address) {
-        addressRepository.save(address);
-    }
 }

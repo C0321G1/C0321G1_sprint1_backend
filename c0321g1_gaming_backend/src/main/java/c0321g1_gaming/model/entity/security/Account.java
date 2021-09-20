@@ -17,6 +17,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     private String username;
+    private String email;
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -25,34 +26,29 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "account-customer")
     private Customer customer;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account-employee")
     private Employee employee;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "account-computer")
     private List<AccountComputer> accountComputer;
 
     public Account() {
     }
 
-    public Account(Long accountId, String username, String password, Set<Role> roles, Category category,
-                   Customer customer, Employee employee, List<AccountComputer> accountComputer) {
-        this.accountId = accountId;
+    public Account(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
-        this.roles = roles;
-        this.category = category;
-        this.customer = customer;
-        this.employee = employee;
-        this.accountComputer = accountComputer;
     }
 
     public Long getAccountId() {
@@ -71,6 +67,14 @@ public class Account {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -85,37 +89,5 @@ public class Account {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public List<AccountComputer> getAccountComputer() {
-        return accountComputer;
-    }
-
-    public void setAccountComputer(List<AccountComputer> accountComputer) {
-        this.accountComputer = accountComputer;
     }
 }

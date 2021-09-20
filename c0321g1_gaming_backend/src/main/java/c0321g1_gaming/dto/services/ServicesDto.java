@@ -1,15 +1,24 @@
 package c0321g1_gaming.dto.services;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 public class ServicesDto {
     private Long servicesId;
     private String code;
+    @NotNull(message = "This field is not be blank")
+    @Min(value = 0,message = "This field must be greater than 0")
     private int quantity;
+    @NotNull( message = "This field is not be blank")
+    @Min(value = 1000,message = "This field must be greater than 1000")
     private int prices;
+    @NotBlank(message = "This field is not be blank")
     private String name;
     private int flag;
+    @NotBlank(message = "This field is not be blank")
     private String image;
     private Unit unit;
     private Order order;
@@ -17,7 +26,7 @@ public class ServicesDto {
     public ServicesDto() {
     }
 
-    public ServicesDto(Long servicesId, String code, int quantity, int prices, String name, int flag, String image, Unit unit, Order order) {
+    public ServicesDto(Long servicesId, String code, @NotNull(message = "This field is not be blank") @Min(value = 0, message = "This field must be greater than 0") int quantity, @NotNull(message = "This field is not be blank") @Min(value = 1000, message = "This field must be greater than 1000") int prices, @NotBlank(message = "This field is not be blank") String name, int flag, @NotBlank(message = "This field is not be blank") String image, Unit unit, Order order) {
         this.servicesId = servicesId;
         this.code = code;
         this.quantity = quantity;

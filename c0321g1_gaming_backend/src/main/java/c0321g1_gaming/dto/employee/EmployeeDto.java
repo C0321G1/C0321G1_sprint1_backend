@@ -1,20 +1,46 @@
 package c0321g1_gaming.dto.employee;
+
 import c0321g1_gaming.model.entity.address.Address;
-import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.employee.Position;
+import c0321g1_gaming.model.entity.gender.Gender;
 import c0321g1_gaming.model.entity.security.Account;
 
+import javax.validation.constraints.*;
 
 public class EmployeeDto {
+
     private Long employeeId;
+
+    @NotNull
+    @Min(0)
     private Long yearOfExp;
+
+    @NotEmpty
+    @Pattern(regexp = "(0\\d{9,10})")
     private String phone;
+
+    @NotEmpty
     private String dateOfBirth;
+
+    @NotEmpty
     private String startWorkDate;
+
+    @NotNull
+    @Min(1)
     private Long level;
+
+    @NotEmpty
+    @Pattern(regexp = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")
     private String email;
+
+    @NotEmpty
+    @Size(min = 6, max = 50)
     private String fullName;
+
+    @NotEmpty
+    @Pattern(regexp = "EMP-\\d{4}")
     private String code;
+
     private String image;
     private int flagDel;
     private Address address;
@@ -41,30 +67,6 @@ public class EmployeeDto {
         this.position = position;
         this.account = account;
         this.gender = gender;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getCode() {
-        return code;
     }
 
     public Long getEmployeeId() {
@@ -131,6 +133,22 @@ public class EmployeeDto {
         this.fullName = fullName;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getFlagDel() {
         return flagDel;
     }
@@ -161,5 +179,13 @@ public class EmployeeDto {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
