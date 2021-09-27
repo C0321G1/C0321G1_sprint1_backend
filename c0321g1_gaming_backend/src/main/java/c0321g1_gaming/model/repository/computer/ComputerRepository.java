@@ -65,4 +65,25 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
                                   Pageable pageable);
     @Query(value="select * from computer where computer.computer_code = ?1",nativeQuery = true)
     Computer searchComputerCode(String computerCode);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update computer " +
+            "set flag_delete = 1 " +
+            "where computer_id = ?1 ", nativeQuery = true)
+    void deleteComputer(int id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update computer " +
+            "set computer_status_id = 1 " +
+            "where computer_id = ?1 ", nativeQuery = true)
+    void setComputerStatusOnline(int id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update computer " +
+            "set computer_status_id = 2 " +
+            "where computer_id = ?1 ", nativeQuery = true)
+    void setComputerStatusOffline(int id);
 }

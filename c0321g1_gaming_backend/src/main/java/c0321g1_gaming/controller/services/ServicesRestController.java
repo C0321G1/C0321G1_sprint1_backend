@@ -1,6 +1,5 @@
 package c0321g1_gaming.controller.services;
 
-<<<<<<< HEAD
 import c0321g1_gaming.dto.services.ServicesDto;
 import c0321g1_gaming.model.entity.services.Services;
 import c0321g1_gaming.model.entity.services.Unit;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -28,6 +28,7 @@ import java.util.Optional;
 public class ServicesRestController {
     @Autowired
     private IServicesService servicesService;
+
     //    khanh
     @GetMapping("/{id}")
     public ResponseEntity<?> findServiceById(@PathVariable Long id) {
@@ -89,7 +90,7 @@ public class ServicesRestController {
             Services services = servicesService.findById(id);
             if (services == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }  else {
+            } else {
                 Services services1 = new Services();
                 servicesDto.setServicesId(services.getServicesId());
                 BeanUtils.copyProperties(servicesDto, services1);
@@ -102,6 +103,7 @@ public class ServicesRestController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return null;
     }
@@ -120,7 +122,9 @@ public class ServicesRestController {
             }
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             e.printStackTrace();
+
         }
         return null;
     }
@@ -130,13 +134,15 @@ public class ServicesRestController {
     public ResponseEntity<Page<Services>> pageServicesCodeNamePrices(@PageableDefault(value = 5) Pageable pageable, Optional<String> code,
                                                                      Optional<String> name, Optional<String> prices) {
         try {
-            String keywordCode = code.orElse("");
-            String keywordName = name.orElse("");
-            String keywordPrices = prices.orElse("");
+            String keywordCode = code.orElse("").trim();
+            String keywordName = name.orElse("").trim();
+            String keywordPrices = prices.orElse("").trim();
             Page<Services> servicesPage = servicesService.pageServicesCodeNamePrices(keywordCode, keywordName, keywordPrices, pageable);
             return new ResponseEntity<>(servicesPage, HttpStatus.OK);
         } catch (Exception e) {
+
             e.printStackTrace();
+
         }
         return null;
     }
@@ -145,11 +151,9 @@ public class ServicesRestController {
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Services> deleteServices(@PathVariable Long id) {
         try {
-            if (id == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+
             Services services = servicesService.findById(id);
-            if (services == null) {
+            if (services.getFlag() == 0) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
                 services.setFlag(0);
@@ -161,7 +165,24 @@ public class ServicesRestController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
-=======
-public class ServicesRestController {
->>>>>>> origin
+
+    @GetMapping("/listAllServices")
+    public ResponseEntity<List<Services>> getListServices() {
+        List<Services> listServices = servicesService.listServices();
+        return new ResponseEntity<>(listServices, HttpStatus.OK);
+    }
+
+    @PatchMapping("/setQuantity/{id}")
+    public ResponseEntity<Services> updateQuantity(@PathVariable Long id, @RequestBody Integer quantity) {
+        try {
+            Services services = servicesService.findById(id);
+            int newQuantity = services.getQuantity() - quantity;
+            services.setQuantity(newQuantity);
+            servicesService.update(services);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

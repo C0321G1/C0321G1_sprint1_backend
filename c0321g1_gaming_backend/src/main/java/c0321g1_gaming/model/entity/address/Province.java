@@ -1,7 +1,6 @@
 package c0321g1_gaming.model.entity.address;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,16 +11,22 @@ public class Province {
     private Long provinceId;
     private String name;
 
-    @OneToMany(mappedBy = "province")
-    @JsonBackReference
+    @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "province-address")
     private List<Address> addressList;
+
+    @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "province-district")
+    private List<District> districtList;
 
     public Province() {
     }
 
-    public Province(String name, List<Address> addressList) {
+    public Province(Long provinceId, String name, List<Address> addressList, List<District> districtList) {
+        this.provinceId = provinceId;
         this.name = name;
         this.addressList = addressList;
+        this.districtList = districtList;
     }
 
     public Long getProvinceId() {
@@ -46,5 +51,13 @@ public class Province {
 
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
+    }
+
+    public List<District> getDistrictList() {
+        return districtList;
+    }
+
+    public void setDistrictList(List<District> districtList) {
+        this.districtList = districtList;
     }
 }

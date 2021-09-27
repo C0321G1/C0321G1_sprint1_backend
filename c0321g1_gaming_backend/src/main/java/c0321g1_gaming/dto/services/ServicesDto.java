@@ -1,40 +1,39 @@
 package c0321g1_gaming.dto.services;
 import c0321g1_gaming.model.entity.order.Order;
 import c0321g1_gaming.model.entity.services.Unit;
-
-import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 public class ServicesDto {
     private Long servicesId;
+    private String code;
+    @NotNull(message = "This field is not be blank")
+    @Min(value = 0,message = "This field must be greater than 0")
     private int quantity;
+    @NotNull( message = "This field is not be blank")
+    @Min(value = 1000,message = "This field must be greater than 1000")
     private int prices;
+    @NotBlank(message = "This field is not be blank")
     private String name;
-    private int flagDelete;
+    private int flag;
+    @NotBlank(message = "This field is not be blank")
     private String image;
-<<<<<<< HEAD
     private Unit unit;
     private Order order;
-=======
-    private Unit unitDto;
-    private Order orderDto;
->>>>>>> origin
 
     public ServicesDto() {
     }
 
-<<<<<<< HEAD
     public ServicesDto(Long servicesId, String code, @NotNull(message = "This field is not be blank") @Min(value = 0, message = "This field must be greater than 0") int quantity, @NotNull(message = "This field is not be blank") @Min(value = 1000, message = "This field must be greater than 1000") int prices, @NotBlank(message = "This field is not be blank") String name, int flag, @NotBlank(message = "This field is not be blank") String image, Unit unit, Order order) {
-=======
-    public ServicesDto(Long servicesId, int quantity, int prices, String name, int flagDelete, String image, Unit unitDto, Order orderDto) {
->>>>>>> origin
         this.servicesId = servicesId;
+        this.code = code;
         this.quantity = quantity;
         this.prices = prices;
         this.name = name;
-        this.flagDelete = flagDelete;
+        this.flag = flag;
         this.image = image;
-<<<<<<< HEAD
         this.unit = unit;
         this.order = order;
     }
@@ -55,20 +54,6 @@ public class ServicesDto {
         this.servicesId = servicesId;
     }
 
-=======
-        this.unitDto = unitDto;
-        this.orderDto = orderDto;
-    }
-
-    public Long getServicesId() {
-        return servicesId;
-    }
-
-    public void setServicesId(Long servicesId) {
-        this.servicesId = servicesId;
-    }
-
->>>>>>> origin
     public int getQuantity() {
         return quantity;
     }
@@ -93,12 +78,12 @@ public class ServicesDto {
         this.name = name;
     }
 
-    public int getFlagDelete() {
-        return flagDelete;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setFlagDelete(int flagDelete) {
-        this.flagDelete = flagDelete;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getImage() {
@@ -109,20 +94,12 @@ public class ServicesDto {
         this.image = image;
     }
 
-    public Unit getUnitDto() {
-        return unitDto;
+    public Unit getUnit() {
+        return unit;
     }
 
-    public void setUnitDto(Unit unitDto) {
-        this.unitDto = unitDto;
-    }
-
-    public Order getOrderDto() {
-        return orderDto;
-    }
-
-    public void setOrderDto(Order orderDto) {
-        this.orderDto = orderDto;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     public Order getOrder() {

@@ -15,7 +15,7 @@ public class CommuneServiceImpl implements CommuneService {
     CommuneRepository communeRepository;
 
     @Override
-    public List<Commune> getCommuneList() {
-        return communeRepository.getCommuneList();
+    public List<Commune> getCommuneList(Long id) {
+        return communeRepository.getCommuneList(id);
     }
 }

@@ -2,6 +2,7 @@ package c0321g1_gaming.controller.employee;
 
 import c0321g1_gaming.dto.employee.EmployeeDto;
 import c0321g1_gaming.model.entity.employee.Employee;
+import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.service.address.AddressService;
 import c0321g1_gaming.model.service.employee.EmployeeService;
 import c0321g1_gaming.model.service.security.AccountService;
@@ -44,7 +45,7 @@ public class EmployeeRestController {
     }
     // khue create method delete Employee
     @DeleteMapping("/employee/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable int id) {
         if (id == 0){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
@@ -52,6 +53,9 @@ public class EmployeeRestController {
             if(!employeeOptional.isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }else {
+                if (employeeOptional.get().getFlagDel() == 1){
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
                 this.employeeService.deleteEmployee(id);
                 return new ResponseEntity<>(HttpStatus.OK);
             }
@@ -94,6 +98,9 @@ public class EmployeeRestController {
         if(!employeeOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        Employee employee = employeeOptional.get();
+        Account account = employee.getAccount();
+        account.setPassword("");
         return new ResponseEntity<>(employeeOptional.get(), HttpStatus.OK);
     }
 

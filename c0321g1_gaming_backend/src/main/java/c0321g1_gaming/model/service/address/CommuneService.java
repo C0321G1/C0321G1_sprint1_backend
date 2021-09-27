@@ -4,5 +4,5 @@ import c0321g1_gaming.model.entity.address.Commune;
 import java.util.List;
 
 public interface CommuneService {
-    List<Commune> getCommuneList();
+    List<Commune> getCommuneList(Long id);
 }

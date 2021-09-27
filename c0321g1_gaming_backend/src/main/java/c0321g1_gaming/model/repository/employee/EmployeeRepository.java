@@ -70,4 +70,6 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query(value = "select * from employee", nativeQuery = true)
     List<Employee> getEmployeeList();
+
+    Employee findEmployeeByPhone(String phone);
 }

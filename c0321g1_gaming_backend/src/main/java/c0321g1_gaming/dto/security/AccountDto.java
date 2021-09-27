@@ -1,59 +1,37 @@
 package c0321g1_gaming.dto.security;
 
-import c0321g1_gaming.dto.category.CategoryDto;
-import c0321g1_gaming.dto.customer.CustomerDto;
-import c0321g1_gaming.dto.employee.EmployeeDto;
 import c0321g1_gaming.model.entity.category.Category;
 import c0321g1_gaming.model.entity.computer.AccountComputer;
 import c0321g1_gaming.model.entity.customer.Customer;
 import c0321g1_gaming.model.entity.employee.Employee;
 import c0321g1_gaming.model.entity.security.Role;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
 public class AccountDto {
-<<<<<<< HEAD
 	private Long accountId;
-=======
-	private Long AccountId;
->>>>>>> origin
 	private String username;
-	private String email;
 	private String password;
 	private Set<Role> roles = new HashSet<>();
 	private Category category;
-<<<<<<< HEAD
 	private Customer customer;
 	private Employee employee;
 	private List<AccountComputer> accountComputer;
 	public AccountDto() {
 	}
 
-	public AccountDto(Long accountId, String username, String email, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
+	public AccountDto(Long accountId, String username, String password, Set<Role> roles, Category category, Customer customer, Employee employee, List<AccountComputer> accountComputer) {
 		this.accountId = accountId;
 		this.username = username;
-		this.email = email;
 		this.password = password;
 		this.roles = roles;
 		this.category = category;
 		this.customer = customer;
 		this.employee = employee;
 		this.accountComputer = accountComputer;
-=======
-	private Customer customerDto;
-	private Employee employeeDto;
-	public AccountDto() {
-	}
-
-	public AccountDto(String username, String email, String password) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
->>>>>>> origin
 	}
 
 	public Long getAccountId() {
@@ -61,11 +39,7 @@ public class AccountDto {
 	}
 
 	public void setAccountId(Long accountId) {
-<<<<<<< HEAD
 		this.accountId = accountId;
-=======
-		this.AccountId = accountId;
->>>>>>> origin
 	}
 
 	public String getUsername() {
@@ -74,14 +48,6 @@ public class AccountDto {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -99,7 +65,6 @@ public class AccountDto {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-<<<<<<< HEAD
 
 	public Category getCategory() {
 		return category;
@@ -132,6 +97,4 @@ public class AccountDto {
 	public void setAccountComputer(List<AccountComputer> accountComputer) {
 		this.accountComputer = accountComputer;
 	}
-=======
->>>>>>> origin
 }

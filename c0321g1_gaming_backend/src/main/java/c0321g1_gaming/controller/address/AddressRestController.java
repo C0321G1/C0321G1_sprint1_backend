@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -52,18 +53,18 @@ public class AddressRestController {
         return new ResponseEntity<>(provinceList, HttpStatus.OK);
     }
 
-    @GetMapping("/district")
-    public ResponseEntity<List<District>> getDistrictList() {
-        List<District> districtList = districtService.getDistrictList();
+    @GetMapping("/district/{id}")
+    public ResponseEntity<List<District>> getDistrictList(@PathVariable Long id) {
+        List<District> districtList = districtService.getDistrictList(id);
         if(districtList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
 
-    @GetMapping("/commune")
-    public ResponseEntity<List<Commune>> getCommuneList() {
-        List<Commune> communeList = communeService.getCommuneList();
+    @GetMapping("/commune/{id}")
+    public ResponseEntity<List<Commune>> getCommuneList(@PathVariable Long id) {
+        List<Commune> communeList = communeService.getCommuneList(id);
         if(communeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

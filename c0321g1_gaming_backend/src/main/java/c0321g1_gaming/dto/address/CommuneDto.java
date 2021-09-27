@@ -15,7 +15,6 @@ public class CommuneDto {
     }
 
 
-
     public Long getCommuneId() {
         return communeId;
     }

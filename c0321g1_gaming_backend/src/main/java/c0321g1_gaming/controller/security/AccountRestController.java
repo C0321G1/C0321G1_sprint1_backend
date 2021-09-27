@@ -26,9 +26,9 @@ public class AccountRestController {
         return new ResponseEntity<>(accountList, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Account> createAccount(@RequestBody AccountDto accountDto) {
-        accountService.saveAccount(accountDto.getUsername(), accountDto.getPassword());
+    @GetMapping("/account/{username}")
+    public ResponseEntity<Account> getAccountByUserName(@PathVariable(name = "username") String username) {
+        accountService.findByUsername(username);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -37,4 +37,32 @@ public class AccountRestController {
         accountService.editAccount(accountDto.getUsername(), accountDto.getPassword(), accountDto.getAccountId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    //vu code
+    @PostMapping("/account/getPass/{username}/{password}")
+    public ResponseEntity<Boolean> checkPassword(@PathVariable(name = "username") String username,
+                                                 @PathVariable(name = "password") String password) {
+        Account account = accountService.findByUsernames(username);
+        if (account == null) {
+            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+        }
+        boolean match = accountService.checkPassword(account, password);
+        if (match) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
+        }
+    }
+    //vucode
+    @PostMapping("/account/setPass/{username}/{newPassword}")
+    public ResponseEntity<Void> setNewPassword(@PathVariable(name = "username") String username,
+                                               @PathVariable(name = "newPassword") String newPassword) {
+        Account account = accountService.findByUsernames(username);
+        if (account == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        accountService.setNewPassword(account, newPassword);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

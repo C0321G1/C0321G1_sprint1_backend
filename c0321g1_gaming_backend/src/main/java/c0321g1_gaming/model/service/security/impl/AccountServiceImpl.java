@@ -4,6 +4,8 @@ import c0321g1_gaming.model.entity.security.Account;
 import c0321g1_gaming.model.repository.security.AccountRepository;
 import c0321g1_gaming.model.service.security.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<Account> findAll() {
@@ -36,8 +40,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void saveAccount(String username, String password) {
-        accountRepository.saveQuery(username, password);
+    public void saveAccount(String username, String password, Long category_id) {
+        String passwordEncode = passwordEncoder.encode(password);
+        accountRepository.saveQuery(username, passwordEncode, category_id);
     }
 
     @Override
@@ -58,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean checkAccountExist(Account account) {
         List<Account> accountList = accountRepository.findAll();
-        for (Account value: accountList) {
+        for (Account value : accountList) {
             if (value.getUsername().equals(account.getUsername())) {
                 return true;
             }
@@ -69,11 +74,33 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Long initAccountId(Account account) {
         List<Account> accountList = accountRepository.findAll();
-        for (Account value: accountList) {
+        for (Account value : accountList) {
             if (value.getUsername().equals(account.getUsername())) {
                 return value.getAccountId();
             }
         }
         return null;
+    }
+
+    @Override
+    public void saveRole(Long account_id, Long role_id) {
+        accountRepository.saveRole(account_id, role_id);
+    }
+
+    @Override
+    public boolean checkPassword(Account account, String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(password, account.getPassword());
+    }
+
+    @Override
+    public void setNewPassword(Account account, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        account.setPassword(passwordEncoder.encode(newPassword));
+        save(account);
+    }
+    @Override
+    public Account findByUsernames(String username) {
+        return this.accountRepository.findByUserNames(username);
     }
 }

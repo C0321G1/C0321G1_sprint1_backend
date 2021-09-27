@@ -2,6 +2,7 @@ package c0321g1_gaming.dto.computer;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
@@ -158,7 +159,7 @@ public class ComputerDto implements Validator {
         if (computerDto.configuration == null) {
             errors.rejectValue("configuration", "configuration.null",
                     "Configuration is required.");
-        } else if (computerDto.configuration.length() > 35) {
+        } else if (computerDto.configuration.length() > 100) {
             errors.rejectValue("configuration", "configuration.maxLength",
                     "Configuration is too long.");
         }

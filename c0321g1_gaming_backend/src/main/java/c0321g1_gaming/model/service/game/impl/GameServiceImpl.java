@@ -16,7 +16,7 @@ public class GameServiceImpl implements IGameService {
     @Autowired
     private IGameRepository gameRepository;
 
-    // Creator: Nhung
+// Creator: Nhung
 
     @Override
     public Optional<Game> findById(Long id) {
@@ -25,12 +25,12 @@ public class GameServiceImpl implements IGameService {
 
     @Override
     public void saveGame(Game game) {
-        gameRepository.saveGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getFlagDelete());
+        gameRepository.saveGame(game.getName().trim(), game.getContent().trim(), game.getImage(), game.getGaming(), game.getTrailer().trim(), game.getGameType().getGameTypeId(), game.getFlagDelete());
     }
 
     @Override
     public void updateGame(Game game) {
-        gameRepository.updateGame(game.getName(), game.getContent(), game.getImage(), game.getGaming(), game.getTrailer(), game.getGameType().getGameTypeId(), game.getGameId());
+        gameRepository.updateGame(game.getName().trim(), game.getContent().trim(), game.getImage(), game.getGaming(), game.getTrailer().trim(), game.getGameType().getGameTypeId(), game.getGameId());
     }
 
     //    Creator: Thúy

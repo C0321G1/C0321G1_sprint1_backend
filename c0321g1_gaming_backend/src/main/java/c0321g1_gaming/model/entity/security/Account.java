@@ -17,7 +17,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     private String username;
-    private String email;
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -29,14 +28,9 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private Category category;
-<<<<<<< HEAD
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @JsonBackReference(value = "account-customer")
-=======
-    @OneToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
->>>>>>> origin
     private Customer customer;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
@@ -50,10 +44,12 @@ public class Account {
     public Account() {
     }
 
-    public Account(String username, String email, String password) {
+    public Account(Long accountId, String username, String password, Set<Role> roles, Category category) {
+        this.accountId = accountId;
         this.username = username;
-        this.email = email;
         this.password = password;
+        this.roles = roles;
+        this.category = category;
     }
 
     public Long getAccountId() {
@@ -72,14 +68,6 @@ public class Account {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -94,5 +82,37 @@ public class Account {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public List<AccountComputer> getAccountComputer() {
+        return accountComputer;
+    }
+
+    public void setAccountComputer(List<AccountComputer> accountComputer) {
+        this.accountComputer = accountComputer;
     }
 }

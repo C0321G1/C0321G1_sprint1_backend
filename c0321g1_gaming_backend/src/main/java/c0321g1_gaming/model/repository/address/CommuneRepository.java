@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CommuneRepository extends JpaRepository<Commune,Long> {
-    @Query(value="select * from commune", nativeQuery = true)
-    List<Commune> getCommuneList();
+    @Query(value="select * from commune where district_id = ?1", nativeQuery = true)
+    List<Commune> getCommuneList(Long id);
 }
